@@ -1,7 +1,7 @@
 import streamlit as st
 
 # --- SAYFA AYARLARI ---
-st.set_page_config(page_title="M.cyhn | Matematik Portalı", page_icon="📐", layout="wide")
+st.set_page_config(page_title="M.cyhn | Matematik Portalı", page_icon="mc.png", layout="wide")
 
 # --- SAYFA ARKA PLANI ---
 st.markdown(
