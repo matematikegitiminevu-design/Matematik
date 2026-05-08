@@ -1,5 +1,9 @@
 import streamlit as st
 
+# Sol taraftaki menünün en üstüne ekler
+st.sidebar.image("logo.png") 
+st.sidebar.markdown("---") # Altına şık bir çizgi çeker
+
 # --- SAYFA AYARLARI ---
 st.set_page_config(page_title="M.cyhn | Matematik Portalı", page_icon="mc.png", layout="wide")
 
