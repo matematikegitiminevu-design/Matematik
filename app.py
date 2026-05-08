@@ -1,11 +1,5 @@
 import streamlit as st
 
-# --- GOOGLE DOĞRULAMA DOSYASI YÖNLENDİRMESİ ---
-# Eğer Google bu dosyayı ararsa, ona içeriği metin olarak göster
-if "googleda6033a641a920b8.html" in st.query_params:
-    st.write("google-site-verification: googleda6033a641a920b8.html")
-    st.stop()
-
 # --- SAYFA AYARLARI ---
 st.set_page_config(page_title="M.cyhn | Matematik Portalı", page_icon="📐", layout="wide")
 
