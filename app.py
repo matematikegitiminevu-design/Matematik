@@ -32,6 +32,12 @@ if giris_kontrol():
     with st.sidebar:
         st.title("📐 Matematik Portalı")
         st.write("Hoş geldiniz!")
+        # --- YAPAY ZEKA YÖNLENDİRME ---
+        st.divider()
+        st.success("🤖 Yapay Zeka Desteği")
+        st.link_button("cyhnAI Zekasına Sor", "https://SENIN_AI_SITENIN_LINKI.com")
+        st.divider()
+        # ------------------------------
         if st.button("Güvenli Çıkış"):
             st.session_state["giris_yapildi"] = False
             st.rerun()
