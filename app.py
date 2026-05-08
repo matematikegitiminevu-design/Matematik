@@ -17,7 +17,7 @@ if st.session_state["sayfa"] == "ana_menu":
     col1, col2, col3 = st.columns([1,2,1])
     
     with col2:
-        st.title("📐 M.cyhn Matematik Portalı")
+        st.title("📐 cyhn Matematik Portalı")
         st.markdown("*“Matematik, evrenin dilidir.”*")
         st.write("Platformumuza hoş geldiniz. Lütfen yapmak istediğiniz işlemi seçiniz:")
         st.divider()
@@ -46,7 +46,20 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
     col1, col2, col3 = st.columns([1,2,1])
     with col2:
         st.subheader("🔒 Özel Arşiv Erişimi")
-        st.write("Bu alan sadece yetkili kullanıcılara özeldir.")
+        st.write("Bu alan sadece yetkilendirilimiş kullanıcılara özeldir.")
+        
+        # --- TELİF HAKKI UYARISI ---
+        with st.expander("⚠️ Telif Hakkı ve Kullanım Şartları"):
+            st.warning("""
+                **Yasal Uyarı:** 
+                Bu platformda paylaşılan tüm ders notları ve materyaller **M.cyhn** telif hakları kapsamındadır. 
+                İçeriklerin izinsiz olarak kopyalanması, çoğaltılması veya başka platformlarda 
+                paylaşılması yasal sorumluluk doğurabilir. 
+                Sadece kişisel eğitim amaçlı kullanım içindir.
+            """)
+        st.divider()
+        # ----------------------------
+        
         sifre = st.text_input("Lütfen Erişim Şifresini Giriniz:", type="password")
         
         c1, c2 = st.columns(2)
