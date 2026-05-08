@@ -133,3 +133,13 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     # Alt Bilgi
     st.markdown("---")
     st.caption("M.cyhn Matematik Geliştirme Platformu © 2026")
+
+# --- CHATBOT ASİSTAN (JOTFORM) EKLEME ---
+import streamlit.components.v1 as components
+
+components.html(
+    """
+    <script src='https://cdn.jotfor.ms/agent/embedjs/019c71e214af725e8ca84db422ebe7088bfc/embed.js?autoOpenChatIn=0'></script>
+    """,
+    height=0,
+)
