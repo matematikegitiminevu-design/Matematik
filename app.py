@@ -114,10 +114,6 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         if st.button("Güvenli Çıkış"):
             ana_menuye_don()
             
-# Sol taraftaki menünün en üstüne ekler
-st.sidebar.image("mc.png") 
-st.sidebar.markdown("---") # Altına şık bir çizgi çeker
-
     st.title("📚 Matematik Ders Notları ve PDF Arşivi")
     # --- YENİ EKLENEN MESAJ ---
     st.markdown("""
