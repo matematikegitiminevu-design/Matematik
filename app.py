@@ -8,22 +8,14 @@ st.markdown(
     """
     <style>
     .stApp {
-        /* Daha koyu ve derin mavi tonları: Lacivert -> Orta Mavi -> Koyu Mavi */
-        background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #1e40af 100%);
+        background: linear-gradient(135deg, #0f172a 0%, #3b82f6 50%, #93c5fd 100%);
         background-attachment: fixed;
     }
     
-    /* Yazıların bu koyu renkte parlaması için beyaz rengi ve gölgeyi koruyoruz */
-    h1, h2, h3, p, span, label {
+    /* Yazıların daha okunaklı olması için beyaz gölge ekleyelim */
+    h1, h2, h3, p {
         color: white !important;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    }
-
-    /* Eğer butonların içindeki yazılar kaybolursa onları da düzeltebiliriz */
-    .stButton>button {
-        color: #1e3a8a !important;
-        background-color: white !important;
-        border-radius: 10px;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
     }
     </style>
     """,
