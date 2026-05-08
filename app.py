@@ -11,13 +11,13 @@ def giris_kontrol():
     if not st.session_state["giris_yapildi"]:
         col1, col2, col3 = st.columns([1,2,1])
         with col2:
-            st.title("🔒 Matematik Paneline Hoşgeldiniz!")
+            st.title("🔒 Türk'ün Matematik Paneline Hoşgeldiniz!")
             # Alt yazı / Kısa söz ekleme:
             st.markdown("*“Matematik, evrenin dilidir.”*") 
             st.write("Lütfen devam etmek için yetkili girişini yapınız.")
             
             st.divider() 
-            sifre = st.text_input("Erişim Şifresi:", type="password")
+            sifre = st.text_input("Erişim Şifresini Giriniz:", type="password")
             if st.button("Sisteme Giriş"):
                 if sifre == "mat2026":
                     st.session_state["giris_yapildi"] = True
