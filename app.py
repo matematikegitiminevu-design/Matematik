@@ -5,10 +5,10 @@ st.sidebar.image("mc250.png", width=250)
 
 # İsteğe bağlı: Logonun altına ince bir ayırıcı çizgi ve başlık ekleyebilirsiniz
 st.sidebar.markdown("---")
-st.sidebar.write("### M.cyhn Matematik")
+st.sidebar.write("### CYHN Matematik")
 
 # --- SAYFA AYARLARI ---
-st.set_page_config(page_title="M.cyhn | Matematik Portalı", page_icon="mc.png", layout="wide")
+st.set_page_config(page_title="CYHN | Matematik Portalı", page_icon="mc.png", layout="wide")
 
 # --- SAYFA ARKA PLANI ---
 st.markdown(
@@ -44,7 +44,7 @@ if st.session_state["sayfa"] == "ana_menu":
     col1, col2, col3 = st.columns([1,2,1])
     
     with col2:
-        st.title("GÖBELEK Matematik Portalı")
+        st.title("CYHN Matematik Portalı")
         st.markdown("*“Matematik, evrenin dilidir.”*")
         st.write("Platformumuza hoş geldiniz. Lütfen yapmak istediğiniz işlemi seçiniz:")
         st.divider()
@@ -66,7 +66,7 @@ if st.session_state["sayfa"] == "ana_menu":
                 st.rerun()
         
         st.divider()
-        st.caption("M.cyhn Matematik Geliştirme Platformu © 2026")
+        st.caption("CYHN Matematik Geliştirme Platformu © 2026")
 
 # --- 2. AŞAMA: ŞİFRE KONTROL EKRANI ---
 elif st.session_state["sayfa"] == "sifre_kontrol":
@@ -116,7 +116,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         st.write("Hoş geldiniz!")
         st.divider()
         st.success("🤖 Yapay Zeka Desteği")
-        st.link_button("cyhnAI Zekasına Sor", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc")
+        st.link_button("cyhnAI'a Sor", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc")
         st.divider()
         if st.button("Güvenli Çıkış"):
             ana_menuye_don()
@@ -166,4 +166,4 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
 
     # Alt Bilgi
     st.markdown("---")
-    st.caption("M.cyhn Matematik Geliştirme Platformu © 2026")
+    st.caption("CYHN Matematik Geliştirme Platformu © 2026")
