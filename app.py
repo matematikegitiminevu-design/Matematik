@@ -57,6 +57,8 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 paylaşılması yasal sorumluluk doğurabilir. 
                 Sadece kişisel eğitim amaçlı kullanım içindir.
             """)
+            # Onay kutucuğu
+            onay = st.checkbox("Okudum, anladım ve kullanım şartlarını kabul ediyorum.")
         st.divider()
         # ----------------------------
         
