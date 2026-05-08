@@ -48,8 +48,9 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
         st.subheader("🔒 Özel Arşiv Erişimi")
         st.write("Bu alan sadece yetkilendirilimiş kullanıcılara özeldir.")
         
-        # --- TELİF HAKKI UYARISI ---
-        with st.expander("⚠️ Telif Hakkı ve Kullanım Şartları"):
+       # --- TELİF HAKKI UYARISI ---
+        # expanded=True yaparak kutunun otomatik açık gelmesini sağladık
+        with st.expander("⚠️ Telif Hakkı ve Kullanım Şartları", expanded=True):
             st.warning("""
                 **Yasal Uyarı:** 
                 Bu platformda paylaşılan tüm ders notları ve materyaller **M.cyhn** telif hakları kapsamındadır. 
@@ -59,6 +60,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
             """)
             # Onay kutucuğu
             onay = st.checkbox("Okudum, anladım ve kullanım şartlarını kabul ediyorum.")
+            
         st.divider()
         # ----------------------------
         
