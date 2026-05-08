@@ -80,6 +80,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
         with st.expander("⚠️ Telif Hakkı ve Kullanım Şartları", expanded=True):
             st.warning("""
                 **Yasal Uyarı:** 
+                
                 Bu platformda paylaşılan tüm ders PDF notları ve materyallerin telif hakları doğrudan **Muharrem CEYHAN**'a aittir. 
     İçeriklerin izinsiz kopyalanması veya paylaşılması yasal sorumluluk doğurabilir. 
     Sadece kişisel eğitim amaçlıdır.
