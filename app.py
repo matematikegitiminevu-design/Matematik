@@ -1,5 +1,12 @@
 import streamlit as st
 
+# --- LOGOYU YAN MENÜYE EKLEME ---
+st.sidebar.image("mc.png") 
+
+# İsteğe bağlı: Logonun altına ince bir ayırıcı çizgi ve başlık ekleyebilirsiniz
+st.sidebar.markdown("---")
+st.sidebar.write("### M.cyhn Matematik")
+
 # --- SAYFA AYARLARI ---
 st.set_page_config(page_title="M.cyhn | Matematik Portalı", page_icon="mc.png", layout="wide")
 
