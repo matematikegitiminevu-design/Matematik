@@ -1,7 +1,7 @@
 import streamlit as st
 
 # --- SAYFA AYARLARI ---
-st.set_page_config(page_title="cyhnAI | Matematik Arşivi", page_icon="📐", layout="wide")
+st.set_page_config(page_title="M.cyhn | Matematik Arşivi", page_icon="📐", layout="wide")
 
 # --- GİRİŞ SİSTEMİ ---
 def giris_kontrol():
@@ -11,7 +11,7 @@ def giris_kontrol():
     if not st.session_state["giris_yapildi"]:
         col1, col2, col3 = st.columns([1,2,1])
         with col2:
-            st.title("🔒 Matematik Paneli")
+            st.title("🔒 Matematik Paneline Hoşgeldiniz!")
             sifre = st.text_input("Erişim Şifresi:", type="password")
             if st.button("Sisteme Giriş"):
                 if sifre == "mat2026":
