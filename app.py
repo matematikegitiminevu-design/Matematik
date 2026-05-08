@@ -44,7 +44,7 @@ if st.session_state["sayfa"] == "ana_menu":
     col1, col2, col3 = st.columns([1,2,1])
     
     with col2:
-        st.title("CYHN Matematik Portalı")
+        st.title("CYHNaı Matematik Portalı")
         st.markdown("*“Matematik, evrenin dilidir.”*")
         st.write("Platformumuza hoş geldiniz. Lütfen yapmak istediğiniz işlemi seçiniz:")
         st.divider()
