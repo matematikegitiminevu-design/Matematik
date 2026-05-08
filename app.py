@@ -15,7 +15,6 @@ def giris_kontrol():
             # Alt yazı / Kısa söz ekleme:
             st.markdown("*“Matematik, evrenin dilidir.”*") 
             st.write("Lütfen devam etmek için yetkili girişini yapınız.")
-            
             st.divider() 
             sifre = st.text_input("Erişim Şifresini Giriniz:", type="password")
             if st.button("Sisteme Giriş"):
