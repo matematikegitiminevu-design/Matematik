@@ -3,6 +3,14 @@ import streamlit as st
 # --- SAYFA AYARLARI ---
 st.set_page_config(page_title="M.cyhn | Matematik Portalı", page_icon="📐", layout="wide")
 
+# --- GOOGLE DOĞRULAMA KODU ---
+components.html(
+    """
+    <meta name="google-site-verification" content="O9e2wXECkBmV8edl91Ov0QPjWT9qakF70z9H3fGBgVI" /> 
+    """,
+    height=0,
+)
+
 # --- DURUM YÖNETİMİ (Session State) ---
 if "sayfa" not in st.session_state:
     st.session_state["sayfa"] = "ana_menu" # İlk açılışta ana menü görünsün
