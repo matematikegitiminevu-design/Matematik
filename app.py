@@ -46,9 +46,9 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
     col1, col2, col3 = st.columns([1,2,1])
     with col2:
         st.subheader("🔒 Özel Arşiv Erişimi")
-        st.write("Bu alan sadece yetkilendirilimiş kullanıcılara özeldir.")
+        st.write("Bu alan sadece yetkilendirilmiş kullanıcılara özeldir.")
         
-       # --- TELİF HAKKI UYARISI ---
+        # --- TELİF HAKKI UYARISI ---
         # expanded=True yaparak kutunun otomatik açık gelmesini sağladık
         with st.expander("⚠️ Telif Hakkı ve Kullanım Şartları", expanded=True):
             st.warning("""
@@ -60,16 +60,19 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
             """)
             # Onay kutucuğu
             onay = st.checkbox("Okudum, anladım ve kullanım şartlarını kabul ediyorum.")
-            
+        
         st.divider()
-        # ----------------------------
         
         sifre = st.text_input("Lütfen Erişim Şifresini Giriniz:", type="password")
         
         c1, c2 = st.columns(2)
         with c1:
             if st.button("Sisteme Giriş"):
-                if sifre == "mat2026":
+                # ÖNCE ONAY KUTUSUNA BAKIYORUZ:
+                if not onay:
+                    st.error("Lütfen önce kullanım şartlarını onaylayınız!")
+                # SONRA ŞİFREYE BAKIYORUZ:
+                elif sifre == "mat2026":
                     st.session_state["sayfa"] = "notlar_arsivi"
                     st.rerun()
                 else:
