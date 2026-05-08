@@ -95,6 +95,13 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             ana_menuye_don()
 
     st.title("📚 Matematik Ders Notları ve PDF Arşivi")
+    # --- YENİ EKLENEN MESAJ ---
+    st.markdown("""
+    > **Hoş geldiniz!** Bu arşiv, akademik yolculuğunuzda size rehberlik etmek için özenle hazırlanmıştır. 
+    > Aşağıdaki sekmeleri kullanarak ders notlarına erişebilir, çalışmalarınızı derinleştirebilirsiniz. 
+    > *Başarılar dileriz!*
+    """)
+    # --------------------------
     st.markdown("---")
 
     # Konulara göre sekmeler (Tablar)
