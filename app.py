@@ -1,51 +1,83 @@
 import streamlit as st
 
 # --- SAYFA AYARLARI ---
-st.set_page_config(page_title="M.cyhn | Matematik Arşivi", page_icon="📐", layout="wide")
+st.set_page_config(page_title="M.cyhn | Matematik Portalı", page_icon="📐", layout="wide")
 
-# --- GİRİŞ SİSTEMİ ---
-def giris_kontrol():
-    if "giris_yapildi" not in st.session_state:
-        st.session_state["giris_yapildi"] = False
+# --- DURUM YÖNETİMİ (Session State) ---
+if "sayfa" not in st.session_state:
+    st.session_state["sayfa"] = "ana_menu" # İlk açılışta ana menü görünsün
 
-    if not st.session_state["giris_yapildi"]:
-        col1, col2, col3 = st.columns([1,2,1])
-        with col2:
-            st.title("🔒 Matematiğin Paneline Hoşgeldiniz!")
-            # Alt yazı / Kısa söz ekleme:
-            st.markdown("*“Matematik, evrenin dilidir.”*") 
-            st.write("Lütfen devam etmek için yetkili girişini yapınız.")
-            st.divider() 
-            sifre = st.text_input("Erişim Şifresini Giriniz:", type="password")
+# --- FONKSİYONLAR ---
+def ana_menuye_don():
+    st.session_state["sayfa"] = "ana_menu"
+    st.rerun()
+
+# --- 1. AŞAMA: ANA KARŞILAMA MENÜSÜ ---
+if st.session_state["sayfa"] == "ana_menu":
+    col1, col2, col3 = st.columns([1,2,1])
+    
+    with col2:
+        st.title("📐 M.cyhn Matematik Portalı")
+        st.markdown("*“Matematik, evrenin dilidir.”*")
+        st.write("Platformumuza hoş geldiniz. Lütfen yapmak istediğiniz işlemi seçiniz:")
+        st.divider()
+
+        # İki büyük seçenek butonu
+        c1, c2 = st.columns(2)
+        
+        with c1:
+            st.info("🤖 **cyhnAI Destek**")
+            st.write("Sorularınızı sorun, yapay zeka ile anında çözüm bulun.")
+            # Yapay zeka sitene doğrudan yönlendirme butonu
+            st.link_button("Yapay Zekayı Başlat", "https://SENIN_AI_SITENIN_LINKI.com")
+
+        with c2:
+            st.success("📚 **Ders Notları**")
+            st.write("Lineer Cebir ve diğer ders notlarına erişin.")
+            if st.button("Arşivi Görüntüle"):
+                st.session_state["sayfa"] = "sifre_kontrol"
+                st.rerun()
+        
+        st.divider()
+        st.caption("M.cyhn Matematik Geliştirme Platformu © 2026")
+
+# --- 2. AŞAMA: ŞİFRE KONTROL EKRANI ---
+elif st.session_state["sayfa"] == "sifre_kontrol":
+    col1, col2, col3 = st.columns([1,2,1])
+    with col2:
+        st.subheader("🔒 Özel Arşiv Erişimi")
+        st.write("Bu alan sadece yetkili kullanıcılara özeldir.")
+        sifre = st.text_input("Lütfen Erişim Şifresini Giriniz:", type="password")
+        
+        c1, c2 = st.columns(2)
+        with c1:
             if st.button("Sisteme Giriş"):
                 if sifre == "mat2026":
-                    st.session_state["giris_yapildi"] = True
+                    st.session_state["sayfa"] = "notlar_arsivi"
                     st.rerun()
                 else:
                     st.error("Hatalı şifre!")
-        return False
-    return True
+        with c2:
+            if st.button("⬅ Geri Dön"):
+                ana_menuye_don()
 
-# --- ANA İÇERİK ---
-if giris_kontrol():
+# --- 3. AŞAMA: DERS NOTLARI VE PDF ARŞİVİ ---
+elif st.session_state["sayfa"] == "notlar_arsivi":
     # Sidebar (Yan Menü)
     with st.sidebar:
         st.title("📐 Matematik Portalı")
         st.write("Hoş geldiniz!")
-        # --- YAPAY ZEKA YÖNLENDİRME ---
         st.divider()
         st.success("🤖 Yapay Zeka Desteği")
         st.link_button("cyhnAI Zekasına Sor", "https://SENIN_AI_SITENIN_LINKI.com")
         st.divider()
-        # ------------------------------
         if st.button("Güvenli Çıkış"):
-            st.session_state["giris_yapildi"] = False
-            st.rerun()
+            ana_menuye_don()
 
     st.title("📚 Matematik Ders Notları ve PDF Arşivi")
     st.markdown("---")
 
-    # Konulara göre sekmeler (Tablar) oluşturuyoruz
+    # Konulara göre sekmeler (Tablar)
     tab1, tab2, tab3, tab4 = st.tabs([
         "🔢 Lineer Cebir PDF Notları", 
         "🎲 Boş Alan 1", 
@@ -66,14 +98,11 @@ if giris_kontrol():
     with tab2:
         st.subheader("Boş Alan 1")
         st.write("Bu bölümdeki dosyalar güncellenmektedir.")
-        # Liste şeklinde butonlar
-        st.link_button("👉 Boş Alan ", "BURAYA_DRIVE_LINKI_GELECEK")
         st.link_button("👉 Boş Alan ", "BURAYA_DRIVE_LINKI_GELECEK")
 
     with tab3:
         st.subheader("Boş Alan 2")
         st.write("Bu bölümdeki dosyalar güncellenmektedir.")
-        st.link_button("👉 Boş Alan", "BURAYA_DRIVE_LINKI_GELECEK")
         st.link_button("👉 Boş Alan", "BURAYA_DRIVE_LINKI_GELECEK")
 
     with tab4:
