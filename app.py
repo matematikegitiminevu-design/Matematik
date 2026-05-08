@@ -1,7 +1,7 @@
 import streamlit as st
 
 # --- LOGOYU YAN MENÜYE EKLEME ---
-st.sidebar.image("mc.png") 
+st.sidebar.image("mc.png", width=150) 
 
 # İsteğe bağlı: Logonun altına ince bir ayırıcı çizgi ve başlık ekleyebilirsiniz
 st.sidebar.markdown("---")
