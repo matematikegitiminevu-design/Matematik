@@ -29,7 +29,7 @@ if st.session_state["sayfa"] == "ana_menu":
             st.info("🤖 **cyhnAI Destek**")
             st.write("Sorularınıza yapay zeka ile anında çözüm bulun.")
             # Yapay zeka sitene doğrudan yönlendirme butonu
-            st.link_button("Yapay Zekayı Başlat", "https://SENIN_AI_SITENIN_LINKI.com")
+            st.link_button("Yapay Zekayı Başlat", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc")
 
         with c2:
             st.success("📚 **Ders Notları**")
@@ -89,7 +89,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         st.write("Hoş geldiniz!")
         st.divider()
         st.success("🤖 Yapay Zeka Desteği")
-        st.link_button("cyhnAI Zekasına Sor", "https://SENIN_AI_SITENIN_LINKI.com")
+        st.link_button("cyhnAI Zekasına Sor", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc")
         st.divider()
         if st.button("Güvenli Çıkış"):
             ana_menuye_don()
