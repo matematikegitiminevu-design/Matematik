@@ -4,9 +4,13 @@ import streamlit.components.v1 as components
 # --- SAYFA AYARLARI ---
 st.set_page_config(page_title="M.cyhn | Matematik Portalı", page_icon="📐", layout="wide")
 
-# --- GOOGLE DOĞRULAMA KODU (Alternatif ve Daha Güçlü Yöntem) ---
+# --- GOOGLE DOĞRULAMA KODU (KESİN ÇÖZÜM YÖNTEMİ) ---
 st.markdown(
-    f'<head><meta name="google-site-verification" content="O9e2wXECkBmV8edl91Ov0QPjWT9qakF70z9H3fGBgVI" /></head>',
+    """
+    <div style="display:none;">
+        <meta name="google-site-verification" content="O9e2wXECkBmV8edl91Ov0QPjWT9qakF70z9H3fGBgVI" />
+    </div>
+    """,
     unsafe_allow_html=True
 )
 
