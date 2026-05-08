@@ -27,7 +27,7 @@ if st.session_state["sayfa"] == "ana_menu":
         
         with c1:
             st.info("🤖 **cyhnAI Destek**")
-            st.write("Sorularınızı sorun, yapay zeka ile anında çözüm bulun.")
+            st.write("Sorularınıza yapay zeka ile anında çözüm bulun.")
             # Yapay zeka sitene doğrudan yönlendirme butonu
             st.link_button("Yapay Zekayı Başlat", "https://SENIN_AI_SITENIN_LINKI.com")
 
