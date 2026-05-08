@@ -3,6 +3,24 @@ import streamlit as st
 # --- SAYFA AYARLARI ---
 st.set_page_config(page_title="M.cyhn | Matematik Portalı", page_icon="📐", layout="wide")
 
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #93c5fd 100%);
+        background-attachment: fixed;
+    }
+    
+    /* Yazıların daha okunaklı olması için beyaz gölge ekleyelim */
+    h1, h2, h3, p {
+        color: white !important;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # --- DURUM YÖNETİMİ (Session State) ---
 if "sayfa" not in st.session_state:
     st.session_state["sayfa"] = "ana_menu" # İlk açılışta ana menü görünsün
