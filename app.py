@@ -80,10 +80,9 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
         with st.expander("⚠️ Telif Hakkı ve Kullanım Şartları", expanded=True):
             st.warning("""
                 **Yasal Uyarı:** 
-                Bu platformda paylaşılan tüm ders notları ve materyaller **M.cyhn** telif hakları kapsamındadır. 
-                İçeriklerin izinsiz olarak kopyalanması, çoğaltılması veya başka platformlarda 
-                paylaşılması yasal sorumluluk doğurabilir. 
-                Sadece kişisel eğitim amaçlı kullanım içindir.
+                Bu platformda paylaşılan tüm ders PDF notları ve materyallerin telif hakları doğrudan **Muharrem CEYHAN**'a aittir. 
+    İçeriklerin izinsiz kopyalanması veya paylaşılması yasal sorumluluk doğurabilir. 
+    Sadece kişisel eğitim amaçlıdır.
             """)
             # Onay kutucuğu
             onay = st.checkbox("Okudum, anladım ve kullanım şartlarını kabul ediyorum.")
