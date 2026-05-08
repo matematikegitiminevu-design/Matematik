@@ -4,12 +4,10 @@ import streamlit.components.v1 as components
 # --- SAYFA AYARLARI ---
 st.set_page_config(page_title="M.cyhn | Matematik Portalı", page_icon="📐", layout="wide")
 
-# --- GOOGLE DOĞRULAMA KODU ---
-components.html(
-    """
-    <meta name="google-site-verification" content="O9e2wXECkBmV8edl91Ov0QPjWT9qakF70z9H3fGBgVI" /> 
-    """,
-    height=0,
+# --- GOOGLE DOĞRULAMA KODU (Alternatif ve Daha Güçlü Yöntem) ---
+st.markdown(
+    f'<head><meta name="google-site-verification" content="O9e2wXECkBmV8edl91Ov0QPjWT9qakF70z9H3fGBgVI" /></head>',
+    unsafe_allow_html=True
 )
 
 # --- DURUM YÖNETİMİ (Session State) ---
