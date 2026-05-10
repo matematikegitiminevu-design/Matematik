@@ -1,7 +1,12 @@
 import streamlit as st
 
 # --- SAYFA AYARLARI ---
-st.set_page_config(page_title="CYHN | Matematik Portalı", page_icon="mc.png", layout="wide")
+st.set_page_config(
+    page_title="CYHN | Matematik Portalı", 
+    page_icon="mc.png", 
+    layout="wide"
+    initial_sidebar_state="expanded" 
+)
 
 USERS = {
     "muharrem": "mat2026",
