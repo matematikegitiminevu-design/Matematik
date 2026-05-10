@@ -6,7 +6,7 @@ st.sidebar.image("mc250.png")
 # İsteğe bağlı: Logonun altına ince bir ayırıcı çizgi ve başlık ekleyebilirsiniz
 st.sidebar.markdown("---")
 st.sidebar.write("### CYHN Matematik Portalı")
-
+st.sidebar.markdown("---")
 # --- SAYFA AYARLARI ---
 st.set_page_config(page_title="CYHN | Matematik Portalı", page_icon="mc.png", layout="wide")
 
