@@ -169,8 +169,8 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     # Konulara göre sekmeler (Tablar)
     tab1, tab2, tab3, tab4 = st.tabs([
         "🔢 Lineer Cebir PDF Notları", 
-        "🎲 Boş Alan 1", 
-        "📐 Boş Alan 2",
+        "🎲 Analiz PDF Notları", 
+        "📐 Soyut Matematikk PDF Notları",
         "📝 Boş Alan 3"
     ])
 
@@ -185,9 +185,14 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1cizrFK5VLT0LXGsYph1q5IOT7nx4TT_H/view?usp=sharing")
 
     with tab2:
-        st.subheader("Boş Alan 1")
-        st.write("Bu bölümdeki dosyalar güncellenmektedir.")
-        st.link_button("👉 Boş Alan ", "BURAYA_DRIVE_LINKI_GELECEK")
+        st.subheader("Analiz 1 ve 2 Ders Notları")
+        col1, col2 = st.columns(2)
+        with col1:
+            st.info("Analiz 1")
+            st.link_button("PDF'i Görüntüle", "BURAYA_DRIVE_LINKI_GELECEK")
+        with col2:
+            st.info("Analiz 2")
+            st.link_button("PDF'i Görüntüle", "BURAYA_DRIVE_LINKI_GELECEK")
 
     with tab3:
         st.subheader("Boş Alan 2")
