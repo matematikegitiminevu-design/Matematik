@@ -10,6 +10,7 @@ st.sidebar.write("### CYHN Matematik")
 # --- SAYFA AYARLARI ---
 st.set_page_config(page_title="CYHN | Matematik Portalı", page_icon="mc.png", layout="wide")
 
+
 # --- SAYFA ARKA PLANI ---
 st.markdown(
     """
