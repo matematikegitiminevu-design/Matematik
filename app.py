@@ -1,5 +1,8 @@
 import streamlit as st
 
+# --- SAYFA AYARLARI ---
+st.set_page_config(page_title="CYHN | Matematik Portalı", page_icon="mc.png", layout="wide")
+
 USERS = {
     "muharrem": "mat2026",
     "ogrenci1": "admin1",
@@ -35,8 +38,6 @@ st.sidebar.markdown(
 )
 st.sidebar.markdown("---")
 
-# --- SAYFA AYARLARI ---
-st.set_page_config(page_title="CYHN | Matematik Portalı", page_icon="mc.png", layout="wide")
 
 # --- SAYFA ARKA PLANI ---
 st.markdown(
