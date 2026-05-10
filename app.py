@@ -150,7 +150,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         st.title("📐 Matematik Portalı")
         st.write("Hoş geldiniz!")
         st.divider()
-        st.success("🤖 Yapay Zeka Desteği")
+        st.success("✨ Yapay Zeka Desteği")
         st.link_button("cyhnAI'a Sor", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc")
         st.divider()
         if st.button("Güvenli Çıkış"):
