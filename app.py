@@ -9,7 +9,7 @@ chat_code = """
 """
 
 # Bileşeni sayfanın en altına eklemek mantıklıdır
-components.html(chat_code, height=0, width=0)
+components.html(chat_code, height=500, width=400)
 
 USERS = {
     "muharrem": "mat2026",
