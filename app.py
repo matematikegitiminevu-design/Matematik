@@ -14,7 +14,7 @@ st.sidebar.image("mc250.png")
 
 # İsteğe bağlı: Logonun altına ince bir ayırıcı çizgi ve başlık ekleyebilirsiniz
 st.sidebar.markdown("---")
-st.sidebar.write("### CYHN Matematikk Portalı")
+st.sidebar.write("### CYHN Matematik Portalı")
 # İmza tarzı, ince yazı tasarımı
 st.sidebar.markdown(
     """
@@ -170,7 +170,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     tab1, tab2, tab3, tab4 = st.tabs([
         "🔢 Lineer Cebir PDF Notları", 
         "🎲 Analiz PDF Notları", 
-        "📐 Soyut Matematikk PDF Notları",
+        "📐 Soyut Matematik PDF Notları",
         "📝 Boş Alan 3"
     ])
 
