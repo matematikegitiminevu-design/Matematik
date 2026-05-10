@@ -1,4 +1,15 @@
 import streamlit as st
+import streamlit.components.v1 as components
+
+# Kodu buraya yapıştır
+chat_code = """
+<script 
+  src='https://cdn.jotfor.ms/agent/embedjs/019c71e214af725e8ca84db422ebe7088bfc/embed.js?autoOpenChatIn=0'>
+</script>
+"""
+
+# Bileşeni sayfanın en altına eklemek mantıklıdır
+components.html(chat_code, height=0, width=0)
 
 USERS = {
     "muharrem": "mat2026",
@@ -14,7 +25,7 @@ st.sidebar.image("mc250.png")
 
 # İsteğe bağlı: Logonun altına ince bir ayırıcı çizgi ve başlık ekleyebilirsiniz
 st.sidebar.markdown("---")
-st.sidebar.write("### CYHN Matematikk Portalı")
+st.sidebar.write("### CYHN Matematik Portalı")
 # İmza tarzı, ince yazı tasarımı
 st.sidebar.markdown(
     """
