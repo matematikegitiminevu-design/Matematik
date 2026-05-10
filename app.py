@@ -1,5 +1,4 @@
 import streamlit as st
-import streamlit.components.v1 as components
 
 USERS = {
     "muharrem": "mat2026",
