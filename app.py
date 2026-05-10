@@ -124,7 +124,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 else:
                     st.error("Hatalı şifre!")
         with c2:
-                if st.button("⬅ Geri Dön"):
+             if st.button("⬅ Geri Dön"):
                 ana_menuye_don()
 
 # --- 3. AŞAMA: DERS NOTLARI VE PDF ARŞİVİ ---
