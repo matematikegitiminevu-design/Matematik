@@ -1,5 +1,11 @@
 import streamlit as st
 
+USERS = {
+    "muharrem": "mat2026",
+    "ogrenci1": "12345",
+    "veli": "ceyhan2026"
+}
+
 # --- LOGOYU YAN MENÜYE EKLEME ---
 st.sidebar.image("mc250.png") 
 
@@ -109,20 +115,27 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
         
         st.divider()
         
+        # --- KULLANICI ADI VE ŞİFRE GİRİŞİ ---
+        kullanici_adi = st.text_input("Kullanıcı Adı:")
         sifre = st.text_input("Lütfen Erişim Şifresini Giriniz:", type="password")
         
         c1, c2 = st.columns(2)
         with c1:
             if st.button("Sisteme Giriş"):
-                # ÖNCE ONAY KUTUSUNA BAKIYORUZ:
+                # 1. Kontrol: Onay kutusu
                 if not onay:
                     st.error("Lütfen önce kullanım şartlarını onaylayınız!")
-                # SONRA ŞİFREYE BAKIYORUZ:
-                elif sifre == "mat2026":
+                
+                # 2. Kontrol: Kullanıcı adı ve Şifre eşleşmesi
+                elif kullanici_adi in USERS and USERS[kullanici_adi] == sifre:
                     st.session_state["sayfa"] = "notlar_arsivi"
+                    st.session_state["aktif_user"] = kullanici_adi # Kimin girdiğini hafızaya alalım
                     st.rerun()
+                
+                # 3. Kontrol: Hatalı bilgiler
                 else:
-                    st.error("Hatalı şifre!")
+                    st.error("Kullanıcı adı veya şifre hatalı!")
+                    
         with c2:
              if st.button("⬅ Geri Dön"):
                 ana_menuye_don()
