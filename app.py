@@ -9,14 +9,6 @@ st.sidebar.write("### CYHN Matematik")
 
 # --- SAYFA AYARLARI ---
 st.set_page_config(page_title="CYHN | Matematik Portalı", page_icon="mc.png", layout="wide")
-# --- GOOGLE DOĞRULAMA ---
-import streamlit.components.v1 as components
-
-# Görseldeki tırnak içindeki kodun tamamını buraya yapıştırın
-verification_code = """
-<meta name="google-site-verification" content="O9e2wXECkBmV8edl91Ov0QPjWT9qakF70z9H3fGBgVI" />
-"""
-components.html(verification_code, height=0)
 
 # --- SAYFA ARKA PLANI ---
 st.markdown(
