@@ -5,7 +5,7 @@ st.sidebar.image("mc250.png")
 
 # İsteğe bağlı: Logonun altına ince bir ayırıcı çizgi ve başlık ekleyebilirsiniz
 st.sidebar.markdown("---")
-st.sidebar.write("### CYHN Matematik Portalı")
+st.sidebar.write("### CYHN Matematik Portalııı")
 # İmza tarzı, ince yazı tasarımı
 st.sidebar.markdown(
     """
@@ -184,4 +184,4 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
 
     # Alt Bilgi
     st.markdown("---")
-    st.caption("CYHN Matematikk Geliştirme Platformu © 2026")
+    st.caption("CYHN Matematik Geliştirme Platformu © 2026")
