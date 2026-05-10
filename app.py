@@ -24,7 +24,7 @@ st.sidebar.markdown(
     """, 
     unsafe_allow_html=True
 )
-st.sidebar.markdown("---")
+st.sidebar.markdown("-0-")
 
 # --- SAYFA AYARLARI ---
 st.set_page_config(page_title="CYHN | Matematik Portalı", page_icon="mc.png", layout="wide")
