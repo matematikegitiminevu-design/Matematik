@@ -1,9 +1,12 @@
 import streamlit as st
 
 USERS = {
-    "muharrem": "mat20266",
+    "muharrem": "mat2026",
     "ogrenci1": "admin1",
-    "ogrenci2": "admin2"
+    "ogrenci2": "admin2",
+    "ogrenci3": "admin3",
+    "ogrenci4": "admin4"
+    
 }
 
 # --- LOGOYU YAN MENÜYE EKLEME ---
@@ -11,7 +14,7 @@ st.sidebar.image("mc250.png")
 
 # İsteğe bağlı: Logonun altına ince bir ayırıcı çizgi ve başlık ekleyebilirsiniz
 st.sidebar.markdown("---")
-st.sidebar.write("### CYHN Matematikkk Portalı")
+st.sidebar.write("### CYHN Matematik Portalı")
 # İmza tarzı, ince yazı tasarımı
 st.sidebar.markdown(
     """
