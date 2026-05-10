@@ -120,7 +120,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
         
         # --- KULLANICI ADI VE ŞİFRE GİRİŞİ ---
         kullanici_adi = st.text_input("Kullanıcı Adı:")
-        sifre = st.text_input("Lütfen Erişim Şifresini Giriniz:", type="password")
+        sifre = st.text_input("Portal Erişim Şifresi:", type="password")
         
         c1, c2 = st.columns(2)
         with c1:
