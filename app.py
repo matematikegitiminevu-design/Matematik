@@ -1,16 +1,6 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-# Kodu buraya yapıştır
-chat_code = """
-<script 
-  src='https://cdn.jotfor.ms/agent/embedjs/019c71e214af725e8ca84db422ebe7088bfc/embed.js?autoOpenChatIn=0'>
-</script>
-"""
-
-# Bileşeni sayfanın en altına eklemek mantıklıdır
-components.html(chat_code, height=500, width=400)
-
 USERS = {
     "muharrem": "mat2026",
     "ogrenci1": "admin1",
@@ -106,6 +96,16 @@ if st.session_state["sayfa"] == "ana_menu":
         
         st.divider()
         st.caption("CYHN Matematik Geliştirme Platformu © 2026")
+
+# Kodu buraya yapıştır
+chat_code = """
+<script 
+  src='https://cdn.jotfor.ms/agent/embedjs/019c71e214af725e8ca84db422ebe7088bfc/embed.js?autoOpenChatIn=0'>
+</script>
+"""
+
+# Bileşeni sayfanın en altına eklemek mantıklıdır
+components.html(chat_code, height=500, width=400)
 
 # --- 2. AŞAMA: ŞİFRE KONTROL EKRANI ---
 elif st.session_state["sayfa"] == "sifre_kontrol":
