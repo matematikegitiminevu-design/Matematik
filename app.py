@@ -81,7 +81,7 @@ if st.session_state["sayfa"] == "ana_menu":
         c1, c2 = st.columns(2)
         
         with c1:
-            st.info("🤖 **cyhnAI Destek**")
+            st.info("✨ **cyhnAI Destek**")
             st.write("Sorularınıza yapay zeka ile anında çözüm bulun.")
             # Yapay zeka sitene doğrudan yönlendirme butonu
             st.link_button("Yapay Zekayı Başlat", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc")
@@ -147,13 +147,13 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
 elif st.session_state["sayfa"] == "notlar_arsivi":
     # Sidebar (Yan Menü)
     with st.sidebar:
-        st.title("📐 Matematik Portalı")
+        st.title("♾️ Matematik Portalı")
         st.write("Hoş geldiniz!")
         st.divider()
         st.success("✨ Yapay Zeka Desteği")
         st.link_button("cyhnAI'a Sor", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc")
         st.divider()
-        if st.button("Güvenli Çıkış"):
+        if st.button("🔐 Güvenli Çıkış"):
             ana_menuye_don()
             
     st.title("📚 Matematik Ders Notları ve PDF Arşivi")
