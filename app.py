@@ -100,7 +100,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
             st.warning("""
                 **Yasal Uyarı:** 
                 Bu platformda paylaşılan tüm ders PDF notlarının telif hakları doğrudan **Muharrem CEYHAN**'a aittir. 
-    İçeriklerin izinsiz kopyalanması veya paylaşılması yasal sorumluluk doğurabilir. 
+    Tüm hakları saklıdır. İçeriklerin tamamının veya bir kısmının, yazarın yazılı izni olmaksızın kopyalanması, çoğaltılması, işlenmesi veya herhangi bir dijital/basılı mecrada paylaşılması kesinlikle yasaktır. 
     Sadece kişisel eğitim amaçlıdır..!
             """)
             # Onay kutucuğu
