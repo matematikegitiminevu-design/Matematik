@@ -184,15 +184,4 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
 
     # Alt Bilgi
     st.markdown("---")
-    # Sol tarafa platform adı, sağ tarafa imza gelecek şekilde düzenleme
-st.markdown(
-    """
-    <div style="display: flex; justify-content: space-between; align-items: center; opacity: 0.8; font-size: 0.85rem;">
-        <div>CYHN Matematik Geliştirme Platformu © 2026</div>
-        <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 300; font-style: italic;">
-            Muharrem CEYHAN
-        </div>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+    st.caption("CYHN Matematikk Geliştirme Platformu © 2026")
