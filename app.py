@@ -197,7 +197,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
 
     with tab3:
         st.subheader("Soyut Matematik Ders Notu")
-         col1, col2 = st.columns(2)
+        col1, col2 = st.columns(2)
         with col1:
             st.info("Analiz 1")
             st.link_button("PDF'i Görüntüle", "BURAYA_DRIVE_LINKI_GELECEK")
