@@ -101,8 +101,8 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 **Yasal Uyarı:** 
                 Bu platformda paylaşılan tüm ders PDF notlarının telif hakları doğrudan **Muharrem CEYHAN**'a aittir. 
     Tüm hakları saklıdır.    
-    İçeriklerin tamamının veya bir kısmının, yazarın yazılı izni olmaksızın kopyalanması, çoğaltılması, işlenmesi veya herhangi bir dijital/basılı mecrada paylaşılması **kesinlikle yasaktır**. 
-        Sadece kişisel eğitim amaçlıdır..!
+    İçeriklerin tamamının veya bir kısmının, yazarın yazılı izni olmaksızın kopyalanması, çoğaltılması, işlenmesi veya herhangi bir dijital/basılı mecrada paylaşılması **kesinlikle yasaktır**. (© 2026)
+    Sadece kişisel eğitim amaçlıdır..!
             """)
             # Onay kutucuğu
             onay = st.checkbox("Okudum, anladım ve kullanım şartlarını kabul ediyorum.")
