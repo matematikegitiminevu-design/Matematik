@@ -5,7 +5,7 @@ st.sidebar.image("mc250.png")
 
 # İsteğe bağlı: Logonun altına ince bir ayırıcı çizgi ve başlık ekleyebilirsiniz
 st.sidebar.markdown("---")
-st.sidebar.write("### CYHN Matematik Portalııı")
+st.sidebar.write("### CYHN Matematik Portalıı")
 # İmza tarzı, ince yazı tasarımı
 st.sidebar.markdown(
     """
