@@ -176,7 +176,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
 
     with tab1:
         st.subheader("Lineer Cebir Ders Notları")
-        st.warning("Bu bölümdeki dosyalar güncellenmektedir. PDF ler henüz yüklenmemiştir!")
+        st.warning("❗Bu bölümdeki dosyalar güncellenmektedir. PDF ler henüz yüklenmemiştir!")
         col1, col2 = st.columns(2)
         with col1:
             st.info("Lineer Cebir 1")
@@ -187,7 +187,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
 
     with tab2:
         st.subheader("Analiz 1 ve 2 Ders Notları")
-        st.warning("Bu bölümdeki dosyalar güncellenmektedir. PDF ler henüz yüklenmemiştir!")
+        st.warning("❗Bu bölümdeki dosyalar güncellenmektedir. PDF ler henüz yüklenmemiştir!")
         col1, col2 = st.columns(2)
         with col1:
             st.info("Analiz 1")
@@ -198,12 +198,12 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
 
     with tab3:
         st.subheader("Soyut Matematik Ders Notu")
-        st.warning("Bu bölümdeki dosyalar güncellenmektedir. PDF ler henüz yüklenmemiştir!")
+        st.warning("❗Bu bölümdeki dosyalar güncellenmektedir. PDF ler henüz yüklenmemiştir!")
         st.link_button("PDF'i Görüntüle ", "BURAYA_DRIVE_LINKI_GELECEK")
 
     with tab4:
         st.subheader("Boş Alan 3")
-        st.warning("Bu bölümdeki dosyalar güncellenmektedir. PDF ler henüz yüklenmemiştir!")
+        st.warning("❗Bu bölümdeki dosyalar güncellenmektedir. PDF ler henüz yüklenmemiştir!")
         st.link_button("👉 Boş Alan", "BURAYA_DRIVE_LINKI_GELECEK")
 
     # Alt Bilgi
