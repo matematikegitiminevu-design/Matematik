@@ -9,6 +9,21 @@ USERS = {
     
 }
 
+# --- PDF GÖSTERME FONKSİYONU (İframe/Gömme Mantığı) ---
+def pdf_goster_gomulu(drive_url):
+    # Drive linkini önizleme moduna çevirerek site içine gömüyoruz
+    if "/view?usp=sharing" in drive_url:
+        embed_url = drive_url.replace("/view?usp=sharing", "/preview")
+    elif "/view" in drive_url:
+        embed_url = drive_url.replace("/view", "/preview")
+    else:
+        embed_url = drive_url
+
+    st.markdown(
+        f'<iframe src="{embed_url}" width="100%" height="800" allow="autoplay"></iframe>', 
+        unsafe_allow_html=True
+    )
+    
 # --- LOGOYU YAN MENÜYE EKLEME ---
 st.sidebar.image("mc250.png") 
 
