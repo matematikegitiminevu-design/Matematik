@@ -1,15 +1,6 @@
 import streamlit as st
-# 2. Google Doğrulama Kodunu En Üstte Çalıştır
-# Bu kod sayfada görünmez ama Google botları tarafından okunabilir.
-st.markdown(
-    f"""
-    <div style="display:none">
-        <meta name="google-site-verification" content="O9e2wXECkBmV8edl91Ov0QPjWT9qakF70z9H3fGBgVI" />
-    </div>
-    """, 
-    unsafe_allow_html=True
-)
-# --- SAYFA AYARLARI ---
+
+SAYFA AYARLARI ---
 st.set_page_config(
     page_title="CYHN | Matematik Portalı", 
     page_icon="mc.png", 
