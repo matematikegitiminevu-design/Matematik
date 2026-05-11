@@ -8,16 +8,11 @@ st.set_page_config(
     initial_sidebar_state="expanded" 
 )
 
-# --- GOOGLE DOĞRULAMA KODU BAŞLANGIÇ ---
-st.markdown(
-    """
-    <div style="display:none">
-        <meta name="google-site-verification" content="O9e2wXECkBmV8edl91Ov0QPjWT9qakF70z9H3fGBgVI" />
-    </div>
-    """, 
-    unsafe_allow_html=True
-)
-# --- GOOGLE DOĞRULAMA KODU BİTİŞ ---
+# 2. GOOGLE DOĞRULAMA (DAHA BASİT VE GÖRÜNÜR HALİ)
+# display:none yerine doğrudan en üste görünmez bir metin olarak ekleyelim
+st.write('<span style="display:none">google-site-verification: O9e2wXECkBmV8edl91Ov0QPjWT9qakF70z9H3fGBgVI</span>', unsafe_allow_html=True)
+st.markdown(f'<meta name="google-site-verification" content="O9e2wXECkBmV8edl91Ov0QPjWT9qakF70z9H3fGBgVI" />', unsafe_allow_html=True)
+
 USERS = {
     "muharrem": "mat2026",
     "ogrenci1": "admin1",
