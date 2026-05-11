@@ -1,5 +1,6 @@
 import streamlit as st
 
+
 SAYFA AYARLARI ---
 st.set_page_config(
     page_title="CYHN | Matematik Portalı", 
