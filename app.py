@@ -28,7 +28,6 @@ st.sidebar.markdown(
     """
     <meta name="google-site-verification" content="O9e2wXECkBmV8edl91Ov0QPjWT9qakF70z9H3fGBgVI" />
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap');
     
     .signature {
         font-family: 'Dancing Script', cursive;
