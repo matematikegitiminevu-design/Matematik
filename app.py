@@ -1,5 +1,14 @@
 import streamlit as st
-
+# --- GOOGLE DOĞRULAMA KODU BAŞLANGIÇ ---
+st.markdown(
+    """
+    <div style="display:none">
+        <meta name="google-site-verification" content="O9e2wXECkBmV8edl91Ov0QPjWT9qakF70z9H3fGBgVI" />
+    </div>
+    """, 
+    unsafe_allow_html=True
+)
+# --- GOOGLE DOĞRULAMA KODU BİTİŞ ---
 
 #---SAYFA AYARLARI ---
 st.set_page_config(
