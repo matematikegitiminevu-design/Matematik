@@ -37,7 +37,7 @@ st.sidebar.write("### CYHN Matematik Portalı")
 st.sidebar.markdown(
     """
     <style>
-    
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap');
     .signature {
         font-family: 'Dancing Script', cursive;
         font-size: 24px;
