@@ -1,4 +1,13 @@
 import streamlit as st
+
+#---SAYFA AYARLARI ---
+st.set_page_config(
+    page_title="CYHN | Matematik Portalı", 
+    page_icon="mc.png", 
+    layout="wide",
+    initial_sidebar_state="expanded" 
+)
+
 # --- GOOGLE DOĞRULAMA KODU BAŞLANGIÇ ---
 st.markdown(
     """
@@ -9,15 +18,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 # --- GOOGLE DOĞRULAMA KODU BİTİŞ ---
-
-#---SAYFA AYARLARI ---
-st.set_page_config(
-    page_title="CYHN | Matematik Portalı", 
-    page_icon="mc.png", 
-    layout="wide",
-    initial_sidebar_state="expanded" 
-)
-
 USERS = {
     "muharrem": "mat2026",
     "ogrenci1": "admin1",
