@@ -32,11 +32,10 @@ st.sidebar.image("mc250.png")
 
 # İsteğe bağlı: Logonun altına ince bir ayırıcı çizgi ve başlık ekleyebilirsiniz
 st.sidebar.markdown("---")
-st.sidebar.write("### CYHN Matematikk Portalı")
+st.sidebar.write("### CYHN Matematik Portalı")
 # İmza tarzı, ince yazı tasarımı
 st.sidebar.markdown(
     """
-    <meta name="google-site-verification" content="O9e2wXECkBmV8edl91Ov0QPjWT9qakF70z9H3fGBgVI" />
     <style>
     
     .signature {
