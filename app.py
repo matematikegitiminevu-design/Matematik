@@ -10,7 +10,7 @@ st.set_page_config(
 )
 
 # GOOGLE DOĞRULAMA (Yeni Yöntem)
-components.html(
+st.components.html(
     """
     <meta name="google-site-verification" content="O9e2wXECkBmV8edl91Ov0QPjWT9qakF70z9H3fGBgVI" />
     <script>
