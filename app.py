@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 
 #---SAYFA AYARLARI ---
 st.set_page_config(
@@ -8,10 +9,17 @@ st.set_page_config(
     initial_sidebar_state="expanded" 
 )
 
-# 2. GOOGLE DOĞRULAMA (DAHA BASİT VE GÖRÜNÜR HALİ)
-# display:none yerine doğrudan en üste görünmez bir metin olarak ekleyelim
-st.write('<span style="display:none">google-site-verification: O9e2wXECkBmV8edl91Ov0QPjWT9qakF70z9H3fGBgVI</span>', unsafe_allow_html=True)
-st.markdown(f'<meta name="google-site-verification" content="O9e2wXECkBmV8edl91Ov0QPjWT9qakF70z9H3fGBgVI" />', unsafe_allow_html=True)
+# GOOGLE DOĞRULAMA (Yeni Yöntem)
+components.html(
+    """
+    <meta name="google-site-verification" content="O9e2wXECkBmV8edl91Ov0QPjWT9qakF70z9H3fGBgVI" />
+    <script>
+        console.log("Google Verification Tag Loaded");
+    </script>
+    """,
+    height=0,
+)
+# GOOGLE DOĞRULAMA BİTİŞ
 
 USERS = {
     "muharrem": "mat2026",
