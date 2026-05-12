@@ -9,17 +9,6 @@ st.set_page_config(
     initial_sidebar_state="expanded" 
 )
 
-# GOOGLE DOĞRULAMA (Yeni Yöntem)
-st.components.v1.html(
-    """
-    <meta name="google-site-verification" content="O9e2wXECkBmV8edl91Ov0QPjWT9qakF70z9H3fGBgVI" />
-    <script>
-        console.log("Google Verification Tag Loaded");
-    </script>
-    """,
-    height=0,
-)
-# GOOGLE DOĞRULAMA BİTİŞ
 
 USERS = {
     "muharrem": "mat2026",
