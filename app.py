@@ -174,7 +174,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
 
     # Konulara göre sekmeler (Tablar)
     tab1, tab2, tab3, tab4 = st.tabs([
-        "Deneme alanı"
+        "Deneme alanı",
         "🔢 Lineer Cebir PDF Notları", 
         "🎲 Analiz PDF Notları", 
         "📐 Soyut Matematik PDF Notları",
