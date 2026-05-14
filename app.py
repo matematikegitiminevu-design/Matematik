@@ -173,7 +173,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     st.markdown("---")
 
     # Konulara göre sekmeler (Tablar)
-    tab1, tab2, tab3, tab4 = st.tabs([
+    tab0, tab1, tab2, tab3, tab4 = st.tabs([
         "Deneme alanı",
         "🔢 Lineer Cebir PDF Notları", 
         "🎲 Analiz PDF Notları", 
