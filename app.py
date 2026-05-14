@@ -180,7 +180,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         "📝 Boş Alan 3"
     ])
     
-     with tab0:
+    with tab0:
         st.subheader("Boş bir kısım")
         st.warning("Bu bölüm deneme amaçlı açılmıştır.")
         col1, col2, col3, col4 = st.columns(4)
