@@ -191,7 +191,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             text-decoration: none;
         }
         </style>
-        <a href="mailto:muharremceyhan@email.com" class="float-button">
+        <a href="mailto:matematikegitiminevu@gmail.com" class="float-button">
             📩 İletişime Geç
         </a>
         """, unsafe_allow_html=True)
