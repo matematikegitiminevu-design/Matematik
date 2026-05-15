@@ -170,7 +170,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         .float-button {
             position: fixed;
             bottom: 20px;
-            right: 20px;
+            left: 20px;
             background-color: #1e3a8a; /* Portal rengine uygun mavi (veya #25d366 yeşil) */
             color: white !important;
             padding: 12px 20px;
