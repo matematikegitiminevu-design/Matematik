@@ -1,4 +1,5 @@
 import streamlit as st
+import base64
 
 #---SAYFA AYARLARI ---
 st.set_page_config(
@@ -8,6 +9,48 @@ st.set_page_config(
     initial_sidebar_state="expanded" 
 )
 
+# --- RESMİ BASE64'E ÇEVİREN FONKSİYON ---
+def get_base64(bin_file):
+    with open(bin_file, 'rb') as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+try:
+    bin_str = get_base64("Arkaplan.png") 
+    bg_image_style = f'background-image: url("data:image/png;base64,{bin_str}");'
+except:
+    bg_image_style = ""
+
+# --- SAYFA ARKA PLANI (Gelişmiş CSS) ---
+st.markdown(
+    f"""
+    <style>
+    .stApp {{
+        {bg_image_style}
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }}
+    
+    /* Resmin üzerine karartma katmanı (Yazıların okunması için ŞART) */
+    .stApp::before {{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(30, 58, 138, 0.85) 100%);
+        z-index: -1;
+    }}
+
+    h1, h2, h3, p, span {{
+        color: white !important;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 USERS = {
     "muharrem": "mat2026",
