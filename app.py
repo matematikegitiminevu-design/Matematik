@@ -173,7 +173,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             left: 20px;
             background-color: #1e3a8a; /* Portal rengine uygun mavi (veya #25d366 yeşil) */
             color: white !important;
-            padding: 12px 20px;
+            padding: 10px 17px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
