@@ -8,6 +8,20 @@ st.set_page_config(
     initial_sidebar_state="expanded" 
 )
 
+# Sayfanın en üstüne eklenecek menü tasarımı
+m1, m2, m3, m4 = st.columns(4)
+
+if m1.button("🏠 Ana Sayfa", use_container_width=True):
+    st.session_state["sayfa"] = "ana_menu"
+if m2.button("👥 Biz Kimiz", use_container_width=True):
+    st.session_state["sayfa"] = "biz_kimiz"
+if m3.button("ℹ️ Hakkımızda", use_container_width=True):
+    st.session_state["sayfa"] = "hakkimizda"
+if m4.button("🔐 Portal", use_container_width=True):
+    st.session_state["sayfa"] = "sifre_kontrol"
+
+st.divider() # Menü ile içerik arasına çizgi
+
 # --- SAYFA ARKA PLANI ---
 st.markdown(
     """
