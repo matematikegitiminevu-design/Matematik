@@ -173,6 +173,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                     st.session_state["sayfa"] = "notlar_arsivi"
                     st.session_state["aktif_user"] = kullanici_adi # Kimin girdiğini hafızaya alalım
                     st.rerun()
+                    
                     # --- POPUP TARZI KARŞILAMA ---
                     # Sağ altta küçük bir popup (toast) çıkarır
                     st.toast(f"Hoş geldin {kullanici_adi.capitalize()}! Başarılar dileriz. 🚀")
@@ -181,7 +182,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                     st.balloons() 
                     
                     import time
-                    time.sleep(1.5) # Mesajın okunması için kısa bir bekleme
+                    time.sleep(2) # Mesajın okunması için kısa bir bekleme
                     st.rerun()
             
                 # 3. Kontrol: Hatalı bilgiler
