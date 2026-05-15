@@ -189,7 +189,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         time.sleep(1)
     # Sidebar (Yan Menü)
         with st.sidebar:
-            st.title("♾️ Matematik Portalı")
+            st.title(f"♾️ Hoş Geldin, {st.session_state['aktif_user'].capitalize()}!")
             st.write("Hoş geldiniz!")
             st.divider()
             st.success("✨ Yapay Zeka Desteği")
