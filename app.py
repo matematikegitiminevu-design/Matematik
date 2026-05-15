@@ -215,10 +215,10 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             </a>
             """, unsafe_allow_html=True)
 
-        st.divider()
-        if st.button("🔐 Güvenli Çıkış"):
-                st.session_state["aktif_user"] = None
-                ana_menuye_don()
+            st.divider()
+            if st.button("🔐 Güvenli Çıkış"):
+                    st.session_state["aktif_user"] = None
+                    ana_menuye_don()
             
         st.title("📚 Matematik Ders Notları ve PDF Arşivi")
         kullanici = st.session_state["aktif_user"].capitalize()
