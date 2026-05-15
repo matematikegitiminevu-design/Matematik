@@ -139,6 +139,20 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                     st.session_state["sayfa"] = "notlar_arsivi"
                     st.session_state["aktif_user"] = kullanici_adi # Kimin girdiğini hafızaya alalım
                     st.rerun()
+
+                # --- ÖNCE GÖRSEL ÖĞELERİ ÇALIŞTIR ---
+                    # Sağ altta küçük bir popup (toast) çıkarır
+                    st.toast(f"Hoş geldin {kullanici_adi.capitalize()}! Başarılar dileriz. 🚀")
+                    
+                    # Görsel bir şölen için balonlar
+                    st.balloons() 
+                    
+                    # Mesajın ve balonların görünmesi için kısa bir bekleme süresi
+                    import time
+                    time.sleep(2) 
+                    
+                    # --- EN SON SAYFAYI YENİLE ---
+                    st.rerun()
                 
                 # 3. Kontrol: Hatalı bilgiler
                 else:
