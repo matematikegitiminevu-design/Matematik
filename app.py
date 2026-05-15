@@ -164,6 +164,38 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
 
 # --- 3. AŞAMA: DERS NOTLARI VE PDF ARŞİVİ ---
 elif st.session_state["sayfa"] == "notlar_arsivi":
+    # --- YÜZEN İLETİŞİM BUTONU (Buraya ekle) ---
+    st.markdown("""
+        <style>
+        .float-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #1e3a8a; /* Portal rengine uygun mavi (veya #25d366 yeşil) */
+            color: white !important;
+            padding: 12px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 2px 2px 15px rgba(0,0,0,0.4);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        .float-button:hover {
+            background-color: #1e40af;
+            transform: scale(1.05);
+            color: white !important;
+            text-decoration: none;
+        }
+        </style>
+        <a href="mailto:muharremceyhan@email.com" class="float-button">
+            📩 İletişime Geç
+        </a>
+        """, unsafe_allow_html=True)
+    # ------------------------------------------
     with st.spinner("Matematik Portalı Hazırlanıyor..."):
         import time
         time.sleep(1)
