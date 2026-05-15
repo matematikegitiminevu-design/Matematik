@@ -171,7 +171,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     with st.sidebar:
             st.title(f"♾️ Hoş Geldin, {st.session_state['aktif_user'].capitalize()}!")
             # --- ÖZEL BUTON TASARIMLARI (CSS) ---
-        st.markdown("""
+            st.markdown("""
             <style>
             .sidebar-custom-button {
                 display: flex;
