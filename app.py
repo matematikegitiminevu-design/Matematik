@@ -200,10 +200,10 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                     📩 Bana E-Posta Gönder
                 </a>
                 """, unsafe_allow_html=True)
-         st.divider()
-         st.success("✨ Yapay Zeka Desteği")
-         st.link_button("cyhnAI'a Sor", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc")
-         st.divider()
+             st.divider()
+             st.success("✨ Yapay Zeka Desteği")
+             st.link_button("cyhnAI'a Sor", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc")
+             st.divider()
             if st.button("🔐 Güvenli Çıkış"):
                 st.session_state["aktif_user"] = None
                 ana_menuye_don()
