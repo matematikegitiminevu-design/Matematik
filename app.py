@@ -8,6 +8,103 @@ st.set_page_config(
     initial_sidebar_state="expanded" 
 )
 
+# --- MENÜ DURUM YÖNETİMİ ---
+if "ana_sayfa_sekme" not in st.session_state:
+    st.session_state["ana_sayfa_sekme"] = "Ana Sayfa"
+
+# --- PROFESYONEL ÜST BAR CSS ---
+st.markdown("""
+<style>
+    /* Üst Menü Konteynırı */
+    .nav-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        padding: 10px;
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        margin-bottom: 30px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Butonları Menü Linki Gibi Gösterme */
+    div.stButton > button {
+        background-color: transparent !important;
+        color: white !important;
+        border: none !important;
+        font-size: 18px !important;
+        font-weight: 500 !important;
+        transition: all 0.3s ease;
+        border-bottom: 2px solid transparent !important;
+    }
+    
+    div.stButton > button:hover {
+        color: #ff4b4b !important;
+        border-bottom: 2px solid #ff4b4b !important;
+        background-color: rgba(255, 75, 75, 0.05) !important;
+    }
+
+    /* Aktif sayfa alt çizgisi (Opsiyonel görsel destek) */
+    .active-tab {
+        color: #ff4b4b !important;
+        font-weight: bold !important;
+    }
+</style>
+""", unsafe_allow_html=True)
+
+# --- ÜST MENÜ TASARIMI ---
+# Sitenin en üstünde 4 eşit sütun oluşturuyoruz
+m1, m2, m3, m4 = st.columns(4)
+
+with m1:
+    if st.button("🏠 Ana Sayfa", use_container_width=True):
+        st.session_state["ana_sayfa_sekme"] = "Ana Sayfa"
+        st.rerun()
+with m2:
+    if st.button("👥 Biz Kimiz", use_container_width=True):
+        st.session_state["ana_sayfa_sekme"] = "Biz Kimiz"
+        st.rerun()
+with m3:
+    if st.button("ℹ️ Hakkımızda", use_container_width=True):
+        st.session_state["ana_sayfa_sekme"] = "Hakkımızda"
+        st.rerun()
+with m4:
+    if st.button("🔐 Portal Giriş", use_container_width=True):
+        st.session_state["ana_sayfa_sekme"] = "Portal"
+        st.rerun()
+
+st.markdown("---") # Menü bitti, içerik başlıyor
+
+# --- SAYFA İÇERİKLERİ ---
+
+if st.session_state["ana_sayfa_sekme"] == "Ana Sayfa":
+    # Senin mevcut "ana_menu" kodlarını buraya alabilirsin
+    st.title("CYHN Matematik Portalı'na Hoş Geldiniz")
+    # ... içerik ...
+
+elif st.session_state["ana_sayfa_sekme"] == "Biz Kimiz":
+    col1, col2 = st.columns([1, 2])
+    with col1:
+        st.image("mc250.png") # Kendi profil resmin
+    with col2:
+        st.header("Muharrem Ceyhan")
+        st.write("""
+        İlköğretim Matematik Öğretmenliği öğrencisiyim. Teknolojiyi ve matematiği 
+        birleştirerek öğrencilere dijital dünyada rehberlik etmeyi amaçlıyorum.
+        """)
+
+elif st.session_state["ana_sayfa_sekme"] == "Hakkımızda":
+    st.header("Portal Hakkında")
+    st.info("""
+    Bu platform, matematik eğitiminde yapay zeka ve dijital materyallerin 
+    etkin kullanımını göstermek amacıyla geliştirilmiştir.
+    """)
+
+elif st.session_state["ana_sayfa_sekme"] == "Portal":
+    # Senin mevcut şifre kontrol ve ders notları kodların buraya gelecek
+    # Daha önce yazdığın if st.session_state["sayfa"] == "sifre_kontrol" bloklarını 
+    # bu bölümün içine entegre edebilirsin.
+    st.write("Lütfen giriş yapınız.")
 
 # --- SAYFA ARKA PLANI ---
 st.markdown(
