@@ -216,7 +216,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             """, unsafe_allow_html=True)
 
         st.divider()
-            if st.button("🔐 Güvenli Çıkış"):
+                if st.button("🔐 Güvenli Çıkış"):
                 st.session_state["aktif_user"] = None
                 ana_menuye_don()
             
