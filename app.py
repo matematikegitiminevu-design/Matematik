@@ -171,35 +171,35 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         with st.sidebar:
             st.title(f"♾️ Hoş Geldin, {st.session_state['aktif_user'].capitalize()}!")
             # --- SİDEBAR İÇİ İLETİŞİM BUTONU (Özel Tasarım) ---
-        st.markdown("""
-            <style>
-            .sidebar-contact-button {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 10px;
-                background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
-                color: white !important;
-                padding: 12px 20px;
-                border-radius: 12px;
-                text-decoration: none;
-                font-weight: bold;
-                transition: all 0.3s ease;
-                border: 1px solid rgba(255,255,255,0.1);
-                margin-bottom: 20px;
-            }
-            .sidebar-contact-button:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-                background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
-                text-decoration: none;
-                color: #ffffff !important;
-            }
-            </style>
-            <a href="mailto:matematikegitiminevu@gmail.com" class="sidebar-contact-button">
-                📩 Bana E-Posta Gönder
-            </a>
-            """, unsafe_allow_html=True)
+            st.markdown("""
+                <style>
+                .sidebar-contact-button {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+                    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+                    color: white !important;
+                    padding: 12px 20px;
+                    border-radius: 12px;
+                    text-decoration: none;
+                    font-weight: bold;
+                    transition: all 0.3s ease;
+                    border: 1px solid rgba(255,255,255,0.1);
+                    margin-bottom: 20px;
+                }
+                .sidebar-contact-button:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                    background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+                    text-decoration: none;
+                    color: #ffffff !important;
+                }
+                </style>
+                <a href="mailto:matematikegitiminevu@gmail.com" class="sidebar-contact-button">
+                    📩 Bana E-Posta Gönder
+                </a>
+                """, unsafe_allow_html=True)
          st.divider()
          st.success("✨ Yapay Zeka Desteği")
          st.link_button("cyhnAI'a Sor", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc")
