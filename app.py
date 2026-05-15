@@ -39,7 +39,7 @@ st.markdown(
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(30, 58, 138, 0.95) 100%);
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(30, 58, 138, 0.98) 100%);
         z-index: -1;
     }}
 
