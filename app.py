@@ -168,7 +168,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         import time
         time.sleep(1)
     # Sidebar (Yan Menü)
-        with st.sidebar:
+    with st.sidebar:
             st.title(f"♾️ Hoş Geldin, {st.session_state['aktif_user'].capitalize()}!")
             # --- ÖZEL BUTON TASARIMLARI (CSS) ---
         st.markdown("""
