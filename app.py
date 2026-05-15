@@ -151,6 +151,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
 
 # --- 3. AŞAMA: DERS NOTLARI VE PDF ARŞİVİ ---
 elif st.session_state["sayfa"] == "notlar_arsivi":
+    with st.spinner("Matematik Portalı Hazırlanıyor..."):
     # Sidebar (Yan Menü)
     with st.sidebar:
         st.title("♾️ Matematik Portalı")
