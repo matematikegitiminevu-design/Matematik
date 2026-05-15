@@ -179,7 +179,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 st.session_state["aktif_user"] = None
                 ana_menuye_don()
             
-         st.title("📚 Matematik Ders Notları ve PDF Arşivi")
+        st.title("📚 Matematik Ders Notları ve PDF Arşivi")
         kullanici = st.session_state["aktif_user"].capitalize()
         # --- YENİ EKLENEN MESAJ ---
          st.markdown(f"""
