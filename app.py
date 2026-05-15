@@ -153,25 +153,25 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
 elif st.session_state["sayfa"] == "notlar_arsivi":
     with st.spinner("Matematik Portalı Hazırlanıyor..."):
     # Sidebar (Yan Menü)
-    with st.sidebar:
-        st.title("♾️ Matematik Portalı")
-        st.write("Hoş geldiniz!")
-        st.divider()
-        st.success("✨ Yapay Zeka Desteği")
-        st.link_button("cyhnAI'a Sor", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc")
-        st.divider()
-        if st.button("🔐 Güvenli Çıkış"):
-            ana_menuye_don()
+        with st.sidebar:
+            st.title("♾️ Matematik Portalı")
+            st.write("Hoş geldiniz!")
+            st.divider()
+            st.success("✨ Yapay Zeka Desteği")
+            st.link_button("cyhnAI'a Sor", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc")
+            st.divider()
+            if st.button("🔐 Güvenli Çıkış"):
+                ana_menuye_don()
             
-    st.title("📚 Matematik Ders Notları ve PDF Arşivi")
-    # --- YENİ EKLENEN MESAJ ---
-    st.markdown("""
-    > **Hoş geldiniz!** Bu arşiv, akademik yolculuğunuzda size rehberlik etmek için özenle hazırlanmıştır. 
-    > Aşağıdaki sekmeleri kullanarak ders notlarına erişebilir, çalışmalarınızı derinleştirebilirsiniz. 
-    > *Başarılar dileriz!*
-    """)
-    # --------------------------
-    st.markdown("---")
+        st.title("📚 Matematik Ders Notları ve PDF Arşivi")
+        # --- YENİ EKLENEN MESAJ ---
+        st.markdown("""
+        > **Hoş geldiniz!** Bu arşiv, akademik yolculuğunuzda size rehberlik etmek için özenle hazırlanmıştır. 
+        > Aşağıdaki sekmeleri kullanarak ders notlarına erişebilir, çalışmalarınızı derinleştirebilirsiniz. 
+        > *Başarılar dileriz!*
+        """)
+        # --------------------------
+        st.markdown("---")
 
     # Konulara göre sekmeler (Tablar)
     tab0, tab1, tab2, tab3, tab4 = st.tabs([
