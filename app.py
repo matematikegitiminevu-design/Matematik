@@ -1,5 +1,5 @@
 import streamlit as st
-from streamlit_option_menu import option_menu
+
 #---SAYFA AYARLARI ---
 st.set_page_config(
     page_title="CYHN | Matematik Portalı", 
@@ -8,39 +8,6 @@ st.set_page_config(
     initial_sidebar_state="expanded" 
 )
 
-
-# Sayfa ayarlarından hemen sonra, içerik başlamadan önce:
-selected = option_menu(
-    menu_title=None, # Başlık istemiyoruz
-    options=["Ana Sayfa", "Biz Kimiz", "Hakkımızda", "Portal Giriş"], # Menü seçenekleri
-    icons=["house", "people", "info-circle", "lock"], # Bootstrap ikonları
-    menu_icon="cast", 
-    default_index=0, 
-    orientation="horizontal", # Üst bar olması için yatay yapıyoruz
-    styles={
-        "container": {"padding": "0!important", "background-color": "rgba(255,255,255,0.05)"},
-        "icon": {"color": "#ff4b4b", "font-size": "20px"}, 
-        "nav-link": {"font-size": "18px", "text-align": "left", "margin":"0px", "--hover-color": "rgba(255,255,255,0.1)"},
-        "nav-link-selected": {"background-color": "#1e3a8a"},
-    }
-)
-
-# Menü seçimine göre sayfa içeriğini yönetme
-if selected == "Ana Sayfa":
-    st.title("Hoş Geldiniz!")
-    # Ana sayfa içeriği...
-    
-elif selected == "Biz Kimiz":
-    st.subheader("Ekibimiz")
-    st.write("Muharrem Ceyhan önderliğinde kurulan bu portal...")
-
-elif selected == "Hakkımızda":
-    st.subheader("Portalın Amacı")
-    st.write("Bu platform matematik eğitimini dijitalle birleştirmek için tasarlandı.")
-
-elif selected == "Portal Giriş":
-    # Senin mevcut şifre kontrol ve notlar arşivi kodların buraya gelecek
-    pass
 
 # --- SAYFA ARKA PLANI ---
 st.markdown(
