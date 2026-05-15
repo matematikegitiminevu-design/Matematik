@@ -8,6 +8,25 @@ st.set_page_config(
     initial_sidebar_state="expanded" 
 )
 
+# --- SAYFA ARKA PLANI ---
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #1e40af 100%);
+        background-attachment: fixed;
+    }
+    
+    /* Yazıların daha okunaklı olması için beyaz gölge ekleyelim */
+    h1, h2, h3, p {
+        color: white !important;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 USERS = {
     "muharrem": "mat2026",
     "ogrenci1": "admin1",
