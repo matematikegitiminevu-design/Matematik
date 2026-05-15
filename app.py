@@ -170,40 +170,52 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     # Sidebar (Yan Menü)
         with st.sidebar:
             st.title(f"♾️ Hoş Geldin, {st.session_state['aktif_user'].capitalize()}!")
-            # --- SİDEBAR İÇİ İLETİŞİM BUTONU (Özel Tasarım) ---
-            st.markdown("""
-                <style>
-                .sidebar-contact-button {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 10px;
-                    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
-                    color: white !important;
-                    padding: 12px 20px;
-                    border-radius: 12px;
-                    text-decoration: none;
-                    font-weight: bold;
-                    transition: all 0.3s ease;
-                    border: 1px solid rgba(255,255,255,0.1);
-                    margin-bottom: 20px;
-                }
-                .sidebar-contact-button:hover {
-                    transform: translateY(-2px);
-                    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-                    background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
-                    text-decoration: none;
-                    color: #ffffff !important;
-                }
-                </style>
-                <a href="mailto:matematikegitiminevu@gmail.com" class="sidebar-contact-button">
-                    📩 İletişim Maili
-                </a>
-                """, unsafe_allow_html=True)
-            st.divider()
-            st.success("✨ Yapay Zeka Desteği")
-            st.link_button("cyhnAI'a Sor", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc")
-            st.divider()
+            # --- ÖZEL BUTON TASARIMLARI (CSS) ---
+        st.markdown("""
+            <style>
+            .sidebar-custom-button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+                color: white !important;
+                padding: 12px 20px;
+                border-radius: 12px;
+                text-decoration: none;
+                font-weight: bold;
+                transition: all 0.3s ease;
+                border: 1px solid rgba(255,255,255,0.1);
+                margin-bottom: 15px;
+                width: 100%;
+            }
+            .sidebar-custom-button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+                text-decoration: none;
+                color: #ffffff !important;
+            }
+            .ai-button {
+                background: linear-gradient(135deg, #059669 0%, #10b981 100%) !important; /* Yapay zeka için yeşil tonu */
+            }
+            .ai-button:hover {
+                background: linear-gradient(135deg, #10b981 0%, #34d399 100%) !important;
+            }
+            </style>
+            
+            <!-- İletişim Butonu -->
+            <a href="mailto:matematikegitiminevu@gmail.com" class="sidebar-custom-button">
+                📩 İletişim Maili
+            </a>
+            
+            <!-- Yapay Zeka Butonu (Aynı Tasarım) -->
+            <a href="https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc" target="_blank" class="sidebar-custom-button ai-button">
+                ✨ cyhnAI'a Sor
+            </a>
+            """, unsafe_allow_html=True)
+
+        st.divider()
             if st.button("🔐 Güvenli Çıkış"):
                 st.session_state["aktif_user"] = None
                 ana_menuye_don()
