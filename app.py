@@ -1,5 +1,5 @@
 import streamlit as st
-
+from streamlit_option_menu import option_menu
 #---SAYFA AYARLARI ---
 st.set_page_config(
     page_title="CYHN | Matematik Portalı", 
@@ -8,7 +8,6 @@ st.set_page_config(
     initial_sidebar_state="expanded" 
 )
 
-from streamlit_option_menu import option_menu
 
 # Sayfa ayarlarından hemen sonra, içerik başlamadan önce:
 selected = option_menu(
