@@ -12,6 +12,69 @@ st.set_page_config(
 if "ana_sayfa_sekme" not in st.session_state:
     st.session_state["ana_sayfa_sekme"] = "Ana Sayfa"
 
+# --- PROFESYONEL ÜST BAR CSS ---
+st.markdown("""
+<style>
+    /* Üst Menü Konteynırı */
+    .nav-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        padding: 10px;
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        margin-bottom: 30px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Butonları Menü Linki Gibi Gösterme */
+    div.stButton > button {
+        background-color: transparent !important;
+        color: white !important;
+        border: none !important;
+        font-size: 18px !important;
+        font-weight: 500 !important;
+        transition: all 0.3s ease;
+        border-bottom: 2px solid transparent !important;
+    }
+    
+    div.stButton > button:hover {
+        color: #ff4b4b !important;
+        border-bottom: 2px solid #ff4b4b !important;
+        background-color: rgba(255, 75, 75, 0.05) !important;
+    }
+
+    /* Aktif sayfa alt çizgisi (Opsiyonel görsel destek) */
+    .active-tab {
+        color: #ff4b4b !important;
+        font-weight: bold !important;
+    }
+</style>
+""", unsafe_allow_html=True)
+
+# --- ÜST MENÜ TASARIMI ---
+# Sitenin en üstünde 4 eşit sütun oluşturuyoruz
+m1, m2, m3, m4 = st.columns(4)
+
+with m1:
+    if st.button("🏠 Ana Sayfa", use_container_width=True):
+        st.session_state["ana_sayfa_sekme"] = "Ana Sayfa"
+        st.rerun()
+with m2:
+    if st.button("👥 Biz Kimiz", use_container_width=True):
+        st.session_state["ana_sayfa_sekme"] = "Biz Kimiz"
+        st.rerun()
+with m3:
+    if st.button("ℹ️ Hakkımızda", use_container_width=True):
+        st.session_state["ana_sayfa_sekme"] = "Hakkımızda"
+        st.rerun()
+with m4:
+    if st.button("🔐 Portal Giriş", use_container_width=True):
+        st.session_state["ana_sayfa_sekme"] = "Portal"
+        st.rerun()
+
+st.markdown("---") # Menü bitti, içerik başlıyor
+
 # --- SAYFA İÇERİKLERİ ---
 
 if st.session_state["ana_sayfa_sekme"] == "Ana Sayfa":
@@ -173,18 +236,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                     st.session_state["sayfa"] = "notlar_arsivi"
                     st.session_state["aktif_user"] = kullanici_adi # Kimin girdiğini hafızaya alalım
                     st.rerun()
-                    
-                    # --- POPUP TARZI KARŞILAMA ---
-                    # Sağ altta küçük bir popup (toast) çıkarır
-                    st.toast(f"Hoş geldin {kullanici_adi.capitalize()}! Başarılar dileriz. 🚀")
-                    
-                    # Görsel bir şölen için balonlar (isteğe bağlı)
-                    st.balloons() 
-                    
-                    import time
-                    time.sleep(2) # Mesajın okunması için kısa bir bekleme
-                    st.rerun()
-            
+                
                 # 3. Kontrol: Hatalı bilgiler
                 else:
                     st.error("Kullanıcı adı veya şifre hatalı!")
@@ -200,7 +252,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         time.sleep(1)
     # Sidebar (Yan Menü)
         with st.sidebar:
-            st.title(f"♾️ Hoş Geldin, {st.session_state['aktif_user'].capitalize()}!")
+            st.title("♾️ Matematik Portalı")
             st.write("Hoş geldiniz!")
             st.divider()
             st.success("✨ Yapay Zeka Desteği")
@@ -210,10 +262,9 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 ana_menuye_don()
             
         st.title("📚 Matematik Ders Notları ve PDF Arşivi")
-        kullanici = st.session_state["aktif_user"].capitalize()
         # --- YENİ EKLENEN MESAJ ---
-        st.markdown(f"""
-        > **Hoş geldin {kullanici}!** Bu arşiv, akademik yolculuğunuzda size rehberlik etmek için özenle hazırlanmıştır. 
+        st.markdown("""
+        > **Hoş geldiniz!** Bu arşiv, akademik yolculuğunuzda size rehberlik etmek için özenle hazırlanmıştır. 
         > Aşağıdaki sekmeleri kullanarak ders notlarına erişebilir, çalışmalarınızı derinleştirebilirsiniz. 
         > *Başarılar dileriz!*
         """)
