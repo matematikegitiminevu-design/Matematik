@@ -197,7 +197,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 }
                 </style>
                 <a href="mailto:matematikegitiminevu@gmail.com" class="sidebar-contact-button">
-                    📩 Bana E-Posta Gönder
+                    📩 İletişim Maili
                 </a>
                 """, unsafe_allow_html=True)
             st.divider()
