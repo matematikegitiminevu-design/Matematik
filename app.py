@@ -184,7 +184,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     with tab0:
         st.subheader("Güncel Duyurular Bölümü")
         st.warning("❗BU bölümde üniversiteye dair güncel bilgiler paylaşılmaktadır.")
-        col1, col2 = st.columns(3)
+        col1, col2, col3 = st.columns(3)
         with col1:
             st.info("Ders Programı")
             st.link_button("PDF'i Görüntüle", "BURAYA_DRIVE_LINKI_GELECEK")
