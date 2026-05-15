@@ -180,7 +180,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 ana_menuye_don()
             
          st.title("📚 Matematik Ders Notları ve PDF Arşivi")
-         kullanici = st.session_state["aktif_user"].capitalize()
+        kullanici = st.session_state["aktif_user"].capitalize()
         # --- YENİ EKLENEN MESAJ ---
          st.markdown(f"""
          > **Hoş geldin {kullanici}!** Bu arşiv, akademik yolculuğunuzda size rehberlik etmek için özenle hazırlanmıştır. 
