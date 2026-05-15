@@ -173,13 +173,26 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     st.markdown("---")
 
     # Konulara göre sekmeler (Tablar)
-    tab1, tab2, tab3, tab4 = st.tabs([
+    tab0, tab1, tab2, tab3, tab4 = st.tabs([
         "🔢 Lineer Cebir PDF Notları", 
         "🎲 Analiz PDF Notları", 
         "📐 Soyut Matematik PDF Notları",
         "📝 Boş Alan 3"
     ])
-    
+
+    with tab0:
+        st.subheader("Güncel Duyurular Bölümü")
+        st.warning("❗BU bölümde üniversiteye dair güncel bilgiler paylaşılmaktadır.")
+        col1, col2 = st.columns(3)
+        with col1:
+            st.info("Ders Programı")
+            st.link_button("PDF'i Görüntüle", "BURAYA_DRIVE_LINKI_GELECEK")
+        with col2:
+            st.info("Sınav takvimi")
+            st.link_button("PDF'i Görüntüle", "BURAYA_DRIVE_LINKI_GELECEK")
+        with col3:
+            st.info("Boş alan")
+            
     with tab1:
         st.subheader("Lineer Cebir Ders Notları")
         st.warning("❗Bu bölümdeki dosyalar güncellenmektedir. PDF ler henüz yüklenmemiştir!")
