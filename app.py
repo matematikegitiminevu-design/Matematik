@@ -193,16 +193,6 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             st.link_button("PDF'i Görüntüle", "BURAYA_DRIVE_LINKI_GELECEK")
         with col3:
             st.info("Boş alan")
-        st.markdown("""
-        <div class="announcement-card">
-            <h4>📌 Vize Sınavları Hakkında</h4>
-            <p>Lineer Cebir vize sınavı 15 Nisan saat 10:00'da yapılacaktır. Lütfen öğrenci kimliklerinizi yanınızda bulundurun.</p>
-        </div>
-        <div class="announcement-card" style="border-left-color: #28a745;">
-            <h4>✅ Yeni Notlar Yüklendi</h4>
-            <p>Analiz-2 dersinin 'İntegral Uygulamaları' konusu arşive eklenmiştir.</p>
-        </div>
-    """, unsafe_allow_html=True)
             
     with tab1:
         st.subheader("Lineer Cebir Ders Notları")
