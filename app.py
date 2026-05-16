@@ -104,7 +104,7 @@ if st.session_state["sayfa"] == "ana_menu":
         with c2:
             # cyhnAI Destek Kartı
             with st.container(border=True):
-                st.markdown("### 🤖 cyhnAI Destek")
+                st.markdown("### ✨ cyhnAI Destek")
                 st.write("Matematik sorularınıza, formüllere ve takıldığınız konulara yapay zeka ile anında çözüm bulun.")
                 st.write("") # Küçük bir boşluk
                 # link_button zaten varsayılan olarak şık durur
