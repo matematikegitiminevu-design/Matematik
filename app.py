@@ -115,7 +115,14 @@ if st.session_state["sayfa"] == "ana_menu":
 # Alt Bilgi (Footer) Tasarımı
         c_left, c_right = st.columns(2)
         with c_left:
-            st.caption("🚀 CYHN Matematik Geliştirme Platformu © 2026")
+            st.markdown(
+                """
+                <p style='text-align: left; color: gray; font-size: 0.8rem;'>
+                    🚀 CYHN Matematik Geliştirme Platformu © 2026
+                </p>
+                """, 
+                unsafe_allow_html=True
+            )
         with c_right:
             st.markdown(
                 """
