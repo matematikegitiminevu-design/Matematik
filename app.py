@@ -264,7 +264,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         with col1:
             with st.container(border=True): # 1. Kartı başlattık
                 st.markdown("**Lineer Cebir 1**")
-                st.link_button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln1")
+                st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln1")
         with col2:
             with st.container(border=True): # 1. Kartı başlattık
                 st.markdown("**Lineer Cebir 2**")
