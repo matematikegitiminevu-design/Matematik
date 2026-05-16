@@ -97,7 +97,7 @@ if st.session_state["sayfa"] == "ana_menu":
                 st.write("Lineer Cebir, Analiz ve Soyut Matematik ders notlarına, güncel duyurulara tek tıkla erişin.")
                 st.write("") # Küçük bir boşluk
                 # type="primary" butonu sitenizin ana rengine (genelde kırmızı/turuncu/mavi) boyar
-                if st.button("Arşivi Görüntüle", type="primary", use_container_width=True):
+                if st.button("Arşivi Görüntüle", use_container_width=True):
                     st.session_state["sayfa"] = "sifre_kontrol"
                     st.rerun()
                     
@@ -120,7 +120,7 @@ if st.session_state["sayfa"] == "ana_menu":
             st.markdown(
                 """
                 <p style='text-align: right; color: gray; font-size: 0.8rem;'>
-                    Developed with ❤️ by <a href="https://github.com/kullanici_adin" target="_blank" style="color: #FF4B4B; text-decoration: none; font-weight: bold;">CYHN</a>
+                    Developed with ❤️ by <span style='color: #FF4B4B; font-weight: bold;'>CYHN</span>
                 </p>
                 """, 
                 unsafe_allow_html=True
