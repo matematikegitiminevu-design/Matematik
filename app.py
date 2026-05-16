@@ -81,7 +81,8 @@ if st.session_state["sayfa"] == "ana_menu":
         st.markdown(
             """
             *“Matematik, evrenin dilidir.”*  
-            Bilgiye açılan kapıya hoş geldiniz.. Akademik arşivimize ulaşmak veya yapay zeka asistanımızdan destek almak için lütfen bir işlem seçiniz.
+            Bilgiye açılan kapıya hoş geldiniz..! 
+            Akademik arşivimize ulaşmak veya yapay zeka asistanımızdan destek almak için lütfen bir işlem seçiniz.
             """
         )
         st.divider()
