@@ -251,7 +251,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         with col2:
             with st.container(border=True):
                 st.markdown("**Ders Programı**")
-                st.link_button("Programı Görüntüle", "BURAYA_DRIVE_LINKI_GELECEK", use_container_width=True)
+                st.link_button("Programı Görüntüle", "Dersprogramı.pdf", use_container_width=True)
         with col3:
             with st.container(border=True):
                 st.markdown("**Sınav Takvimi**")
