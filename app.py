@@ -242,17 +242,20 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
 
     with tab0:
         st.subheader("Güncel Duyurular Bölümü")
-        st.warning("❗BU bölümde üniversiteye dair güncel bilgiler paylaşılmaktadır.")
+        st.warning("❗Bu kısımda Matematik Eğitimi Anabilimdalının güncel bilgileri paylaşılmaktadır.")
         col1, col2, col3 = st.columns(3)
         with col1:
             with st.container(border=True):
                 st.markdown("**NEVÜ MAFET**")
                 st.link_button("Sayfayı Görüntüle", "BURAYA_DRIVE_LINKI_GELECEK", use_container_width=True)
         with col2:
-            st.info("Sınav takvimi")
-            st.link_button("PDF'i Görüntüle", "BURAYA_DRIVE_LINKI_GELECEK")
+            with st.container(border=True):
+                st.markdown("**Ders Programı**")
+                st.link_button("Programı Görüntüle", "BURAYA_DRIVE_LINKI_GELECEK", use_container_width=True)
         with col3:
-            st.info("Boş alan")
+            with st.container(border=True):
+                st.markdown("**Sınav Takvimi**")
+                st.link_button("Takvimi Görüntüle", "BURAYA_DRIVE_LINKI_GELECEK", use_container_width=True)
             
     with tab1:
         st.subheader("Lineer Cebir Ders Notları")
