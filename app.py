@@ -245,7 +245,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         st.warning("❗BU bölümde üniversiteye dair güncel bilgiler paylaşılmaktadır.")
         col1, col2, col3 = st.columns(3)
         with col1:
-            st.info("Ders Programı")
+            st.info("NEVÜ MAFET")
             st.link_button("PDF'i Görüntüle", "BURAYA_DRIVE_LINKI_GELECEK")
         with col2:
             st.info("Sınav takvimi")
@@ -258,12 +258,14 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         st.warning("❗Bu bölümdeki dosyalar güncellenmektedir. PDF ler henüz yüklenmemiştir!")
         col1, col2 = st.columns(2)
         with col1:
-            st.info("Lineer Cebir 1")
-            st.link_button("PDF'i Görüntüle", "BURAYA_DRIVE_LINKI_GELECEK")
+            with st.container(border=True): # 1. Kartı başlattık
+                st.markdown("**Lineer Cebir 1**")
+                st.link_button("PDF'i Görüntüle", "BURAYA_DRIVE_LINKI_GELECEK", use_container_width=True) # 2. Genişliği eşitledik  
         with col2:
-            st.info("Lineer Cebir 2")
-            st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1cizrFK5VLT0LXGsYph1q5IOT7nx4TT_H/view?usp=sharing")
-
+            with st.container(border=True): # 1. Kartı başlattık
+                st.markdown("**Lineer Cebir 2**")
+                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1cizrFK5VLT0LXGsYph1q5IOT7nx4TT_H/view?usp=sharing", use_container_width=True) # 2. Genişliği eşitledik
+    
     with tab2:
         st.subheader("Analiz 1 ve 2 Ders Notları")
         st.warning("❗Bu bölümdeki dosyalar güncellenmektedir. PDF ler henüz yüklenmemiştir!")
