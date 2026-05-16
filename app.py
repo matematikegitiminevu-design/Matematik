@@ -78,26 +78,47 @@ if st.session_state["sayfa"] == "ana_menu":
     
     with col2:
         st.title("CYHN Matematik Portalı")
-        st.markdown("*“Matematik, evrenin dilidir.”*")
-        st.write("Platformumuza hoş geldiniz. Lütfen yapmak istediğiniz işlemi seçiniz:")
+        st.markdown(
+            """
+            *“Matematik, evrenin dilidir.”*  
+            Platformumuza hoş geldiniz. Akademik arşivimize ulaşmak veya yapay zeka asistanımızdan destek almak için lütfen bir işlem seçiniz.
+            """
+        )
         st.divider()
+        
 
         # İki büyük seçenek butonu
         c1, c2 = st.columns(2)
         
         with c1:
-            st.success("📚 **Ders Notları**")
-            st.write("Lineer Cebir ve diğer ders notlarına erişin.")
-            if st.button("Arşivi Görüntüle"):
-                st.session_state["sayfa"] = "sifre_kontrol"
-                st.rerun()
+            # Ders Notları Kartı
+            with st.container(border=True):
+                st.markdown("### 📚 Ders Arşivi")
+                st.write("Lineer Cebir, Analiz ve Soyut Matematik ders notlarına, güncel duyurulara tek tıkla erişin.")
+                st.write("") # Küçük bir boşluk
+                # type="primary" butonu sitenizin ana rengine (genelde kırmızı/turuncu/mavi) boyar
+                if st.button("Arşivi Görüntüle", type="primary", use_container_width=True):
+                    st.session_state["sayfa"] = "sifre_kontrol"
+                    st.rerun()
+                    
         with c2:
-            st.info("✨ **cyhnAI Destek**")
-            st.write("Sorularınıza yapay zeka ile anında çözüm bulun.")
-            st.link_button("Yapay Zekayı Başlat", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc")
+            # cyhnAI Destek Kartı
+            with st.container(border=True):
+                st.markdown("### 🤖 cyhnAI Destek")
+                st.write("Matematik sorularınıza, formüllere ve takıldığınız konulara yapay zeka ile anında çözüm bulun.")
+                st.write("") # Küçük bir boşluk
+                # link_button zaten varsayılan olarak şık durur
+                st.link_button("Yapay Zekayı Başlat", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc", use_container_width=True)
         
         st.divider()
-        st.caption("CYHN Matematik Geliştirme Platformu © 2026")
+
+# Alt Bilgi (Footer) Tasarımı
+        c_left, c_right = st.columns(2)
+        with c_left:
+            st.caption("🚀 CYHN Matematik Geliştirme Platformu © 2026")
+        with c_right:
+            # Sağ alt köşeye küçük bir statü/bilgi notu
+            st.markdown("<p style='text-align: right; color: gray; font-size: 0.8rem;'>v2.0 | Aktif</p>", unsafe_allow_html=True)
 
 # --- 2. AŞAMA: ŞİFRE KONTROL EKRANI ---
 elif st.session_state["sayfa"] == "sifre_kontrol":
