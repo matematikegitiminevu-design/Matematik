@@ -262,11 +262,11 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         st.warning("❗Bu bölümdeki dosyalar güncellenmektedir. PDF ler henüz yüklenmemiştir!")
         col1, col2 = st.columns(2)
         with col1:
-            with st.container(border=True): # 1. Kartı başlattık
+            with st.container(border=True):
                 st.markdown("**Lineer Cebir 1**")
                 st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln1")
         with col2:
-            with st.container(border=True): # 1. Kartı başlattık
+            with st.container(border=True):
                 st.markdown("**Lineer Cebir 2**")
                 st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1cizrFK5VLT0LXGsYph1q5IOT7nx4TT_H/view?usp=sharing", use_container_width=True)
     
@@ -275,21 +275,23 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         st.warning("❗Bu bölümdeki dosyalar güncellenmektedir. PDF ler henüz yüklenmemiştir!")
         col1, col2 = st.columns(2)
         with col1:
-            st.info("Analiz 1")
-            st.link_button("PDF'i Görüntüle", "BURAYA_DRIVE_LINKI_GELECEK")
+            with st.container(border=True):
+                st.markdown("**Analiz 1**")
+                st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln1")
         with col2:
-            st.info("Analiz 2")
-            st.link_button("PDF'i Görüntüle", "BURAYA_DRIVE_LINKI_GELECEK")
+            with st.container(border=True):
+                st.markdown("**Analiz 2**")
+                st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln1")
 
     with tab3:
         st.subheader("Soyut Matematik Ders Notu")
         st.warning("❗Bu bölümdeki dosyalar güncellenmektedir. PDF ler henüz yüklenmemiştir!")
-        st.link_button("PDF'i Görüntüle ", "BURAYA_DRIVE_LINKI_GELECEK")
+        st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln1")
 
     with tab4:
         st.subheader("Boş Alan 3")
         st.warning("❗Bu bölümdeki dosyalar güncellenmektedir. PDF ler henüz yüklenmemiştir!")
-        st.link_button("👉 Boş Alan", "BURAYA_DRIVE_LINKI_GELECEK")
+        st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln1")
 
     # Alt Bilgi
     st.markdown("---")
