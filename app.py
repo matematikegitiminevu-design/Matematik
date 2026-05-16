@@ -74,7 +74,7 @@ def ana_menuye_don():
 
 # --- 1. AŞAMA: ANA KARŞILAMA MENÜSÜ ---
 if st.session_state["sayfa"] == "ana_menu":
-    col1, col2, col3 = st.columns([1,2,1])
+    col1, col2, col3 = st.columns([0.5, 3, 0.5])
     
     with col2:
         st.title("CYHN Matematik Portalı")
