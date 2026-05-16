@@ -277,21 +277,21 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         with col1:
             with st.container(border=True):
                 st.markdown("**Analiz 1**")
-                st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln1")
+                st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln2")
         with col2:
             with st.container(border=True):
                 st.markdown("**Analiz 2**")
-                st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln1")
+                st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln3")
 
     with tab3:
         st.subheader("Soyut Matematik Ders Notu")
         st.warning("❗Bu bölümdeki dosyalar güncellenmektedir. PDF ler henüz yüklenmemiştir!")
-        st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln1")
+        st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln4")
 
     with tab4:
         st.subheader("Boş Alan 3")
         st.warning("❗Bu bölümdeki dosyalar güncellenmektedir. PDF ler henüz yüklenmemiştir!")
-        st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln1")
+        st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln5")
 
     # Alt Bilgi
     st.markdown("---")
