@@ -94,7 +94,7 @@ if st.session_state["sayfa"] == "ana_menu":
             # Ders Notları Kartı
             with st.container(border=True):
                 st.markdown("### 📚 Ders Arşivi")
-                st.write("Lineer Cebir, Analiz ve Soyut Matematik ders notlarına, güncel duyurulara tek tıkla erişin.")
+                st.write("Akademik ders notlarının yanı sıra; haftalık ders programları, güncel sınav takvimleri ve bölüm duyurularına tek tıkla erişin.")
                 st.write("") # Küçük bir boşluk
                 # type="primary" butonu sitenizin ana rengine (genelde kırmızı/turuncu/mavi) boyar
                 if st.button("Arşivi Görüntüle", use_container_width=True):
