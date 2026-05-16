@@ -86,17 +86,15 @@ if st.session_state["sayfa"] == "ana_menu":
         c1, c2 = st.columns(2)
         
         with c1:
-            st.info("✨ **cyhnAI Destek**")
-            st.write("Sorularınıza yapay zeka ile anında çözüm bulun.")
-            # Yapay zeka sitene doğrudan yönlendirme butonu
-            st.link_button("Yapay Zekayı Başlat", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc")
-
-        with c2:
             st.success("📚 **Ders Notları**")
             st.write("Lineer Cebir ve diğer ders notlarına erişin.")
             if st.button("Arşivi Görüntüle"):
                 st.session_state["sayfa"] = "sifre_kontrol"
                 st.rerun()
+        with c2:
+            st.info("✨ **cyhnAI Destek**")
+            st.write("Sorularınıza yapay zeka ile anında çözüm bulun.")
+            st.link_button("Yapay Zekayı Başlat", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc")
         
         st.divider()
         st.caption("CYHN Matematik Geliştirme Platformu © 2026")
