@@ -266,10 +266,10 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     # Konulara göre sekmeler (Tablar)
     tab0, tab1, tab2, tab3, tab4 = st.tabs([
         "📢 Güncel Duyurular",
+        "📝 Algoritma ve Programlama",
         "🔢 Lineer Cebir PDF Notları", 
         "🎲 Analiz PDF Notları", 
-        "📐 Soyut Matematik PDF Notları",
-        "📝 Boş Alan 3"
+        "📐 Soyut Matematik PDF Notları"
     ])
 
     with tab0:
@@ -288,8 +288,13 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             with st.container(border=True):
                 st.markdown("**Sınav Takvimi**")
                 st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln0")
-            
+
     with tab1:
+            st.subheader("Algoritma ve Programlama Ders Notu")
+            st.warning("❗Bu bölümdeki dosyalar güncellenmektedir. PDF ler henüz yüklenmemiştir!")
+            st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln5")
+
+    with tab2:
         st.subheader("Lineer Cebir Ders Notları")
         st.warning("❗Bu bölümdeki dosyalar güncellenmektedir. PDF ler henüz yüklenmemiştir!")
         col1, col2 = st.columns(2)
@@ -302,7 +307,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 st.markdown("**Lineer Cebir 2**")
                 st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1cizrFK5VLT0LXGsYph1q5IOT7nx4TT_H/view?usp=sharing", use_container_width=True)
     
-    with tab2:
+    with tab3:
         st.subheader("Analiz 1 ve 2 Ders Notları")
         st.warning("❗Bu bölümdeki dosyalar güncellenmektedir. PDF ler henüz yüklenmemiştir!")
         col1, col2 = st.columns(2)
@@ -315,15 +320,12 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 st.markdown("**Analiz 2**")
                 st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln3")
 
-    with tab3:
+    with tab4:
         st.subheader("Soyut Matematik Ders Notu")
         st.warning("❗Bu bölümdeki dosyalar güncellenmektedir. PDF ler henüz yüklenmemiştir!")
         st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln4")
 
-    with tab4:
-        st.subheader("Boş Alan 3")
-        st.warning("❗Bu bölümdeki dosyalar güncellenmektedir. PDF ler henüz yüklenmemiştir!")
-        st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln5")
+    
 
     # Alt Bilgi
     st.markdown("---")
