@@ -117,8 +117,14 @@ if st.session_state["sayfa"] == "ana_menu":
         with c_left:
             st.caption("🚀 CYHN Matematik Geliştirme Platformu © 2026")
         with c_right:
-            # Sağ alt köşeye küçük bir statü/bilgi notu
-            st.markdown("<p style='text-align: right; color: gray; font-size: 0.8rem;'>v2.0 | Aktif</p>", unsafe_allow_html=True)
+    st.markdown(
+        """
+        <p style='text-align: right; color: gray; font-size: 0.8rem;'>
+            Developed with ❤️ by <a href="https://github.com/kullanici_adin" target="_blank" style="color: #FF4B4B; text-decoration: none; font-weight: bold;">CYHN</a>
+        </p>
+        """, 
+        unsafe_allow_html=True
+    )
 
 # --- 2. AŞAMA: ŞİFRE KONTROL EKRANI ---
 elif st.session_state["sayfa"] == "sifre_kontrol":
