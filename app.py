@@ -287,7 +287,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         with col3:
             with st.container(border=True):
                 st.markdown("**Sınav Takvimi**")
-                st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln1")
+                st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln0")
             
     with tab1:
         st.subheader("Lineer Cebir Ders Notları")
