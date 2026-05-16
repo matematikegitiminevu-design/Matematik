@@ -266,7 +266,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     # Konulara göre sekmeler (Tablar)
     tab0, tab1, tab2, tab3, tab4 = st.tabs([
         "📢 Güncel Duyurular",
-        "📝 Algoritma ve Programlama",
+        "💻 Algoritma ve Programlama",
         "🔢 Lineer Cebir PDF Notları", 
         "🎲 Analiz PDF Notları", 
         "📐 Soyut Matematik PDF Notları"
