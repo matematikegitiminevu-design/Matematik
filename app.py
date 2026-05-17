@@ -296,15 +296,15 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         with col1:
             with st.container(border=True):
                 st.markdown("**Algoritmaya Giriş**")
-                st.link_button("Sayfayı Görüntüle", "https://drive.google.com/file/d/1Dz9nJXinGmgUajJH4Ljov7sSpMQv89Pn/view?usp=sharing", use_container_width=True)
+                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1Dz9nJXinGmgUajJH4Ljov7sSpMQv89Pn/view?usp=sharing", use_container_width=True)
         with col2:
             with st.container(border=True):
                 st.markdown("**Python 1.kısım**")
-                st.link_button("Programı Görüntüle", "https://drive.google.com/file/d/1eQdLmcqXiTYdhQ-n53IJbj6DFgrlvpl5/view?usp=sharing", use_container_width=True)
+                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1eQdLmcqXiTYdhQ-n53IJbj6DFgrlvpl5/view?usp=sharing", use_container_width=True)
         with col3:
             with st.container(border=True):
                 st.markdown("**Python 2.kısım**")
-                st.link_button("Sayfayı Görüntüle", "https://drive.google.com/file/d/1WUxVwNK4uvNj8k23yeZtfWEVyOwMQH9o/view?usp=sharing", use_container_width=True)
+                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1WUxVwNK4uvNj8k23yeZtfWEVyOwMQH9o/view?usp=sharing", use_container_width=True)
         with col4:
             with st.container(border=True):
                 st.markdown("**💻 Özel Notlar (M.C.)**")
