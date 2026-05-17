@@ -170,24 +170,21 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 if not onay:
                     st.error("Lütfen önce kullanım şartlarını onaylayınız!")
                 
-                # 2. Kontrol: Kullanıcı adı ve Şifre eşleşmesi
+                # 2. Kontrol: Kullanıcı adı ve Şifre eşleşmesi (YENİ VE DÜZELTİLEN KISIM BURASI)
                 elif kullanici_adi in USERS and USERS[kullanici_adi] == sifre:
-                    st.session_state["sayfa"] = "notlar_arsivi"
-                    st.session_state["aktif_user"] = kullanici_adi # Kimin girdiğini hafızaya alalım
-                    st.rerun()
-
-                # --- ÖNCE GÖRSEL ÖĞELERİ ÇALIŞTIR ---
-                    # Sağ altta küçük bir popup (toast) çıkarır
-                    st.toast(f"Hoş geldin {kullanici_adi.capitalize()}! Başarılar dileriz. 🚀")
+                    # Başarılı giriş popup mesajı (Ekranın sağ altında görünür)
+                    st.toast(f"🔑 Giriş Başarılı! Hoş geldin {kullanici_adi.capitalize()}. 🚀", icon="🎉")
                     
-                    # Görsel bir şölen için balonlar
+                    # Havai fişek/balon efekti
                     st.balloons() 
                     
-                    # Mesajın ve balonların görünmesi için kısa bir bekleme süresi
+                    # Kullanıcı mesajı görsün diye 2 saniye bekletiyoruz
                     import time
                     time.sleep(2) 
                     
-                    # --- EN SON SAYFAYI YENİLE ---
+                    # Bilgileri kaydedip sayfayı yönlendiriyoruz
+                    st.session_state["aktif_user"] = kullanici_adi 
+                    st.session_state["sayfa"] = "notlar_arsivi"    
                     st.rerun()
                 
                 # 3. Kontrol: Hatalı bilgiler
