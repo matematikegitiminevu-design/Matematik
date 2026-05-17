@@ -321,7 +321,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         with col2:
             with st.container(border=True):
                 st.markdown("**Lineer Cebir 2**")
-                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1cizrFK5VLT0LXGsYph1q5IOT7nx4TT_H/view?usp=sharing", use_container_width=True)
+                st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln6")
     
     with tab3:
         st.subheader("Analiz 1 ve 2 Ders Notları")
