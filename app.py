@@ -180,7 +180,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                     
                     # Kullanıcı mesajı görsün diye 2 saniye bekletiyoruz
                     import time
-                    time.sleep(5) 
+                    time.sleep(4) 
                     
                     # Bilgileri kaydedip sayfayı yönlendiriyoruz
                     st.session_state["aktif_user"] = kullanici_adi 
