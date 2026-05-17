@@ -290,9 +290,9 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln0")
 
     with tab1:
-            st.subheader("Algoritma ve Programlama Ders Notu")
-            st.warning("❗Bu bölümdeki dosyalar güncellenmektedir. PDF ler henüz yüklenmemiştir!")
-            st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln5")
+        st.subheader("Algoritma ve Programlama Ders Notu")
+        st.warning("❗Bu bölümdeki dosyalar güncellenmektedir. PDF ler henüz yüklenmemiştir!")
+        st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln5")
 
     with tab2:
         st.subheader("Lineer Cebir Ders Notları")
