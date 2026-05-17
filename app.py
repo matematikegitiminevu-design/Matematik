@@ -6,8 +6,7 @@ USERS = {
     "ogrenci1": "admin1",
     "ogrenci2": "admin2",
     "ogrenci3": "admin3",
-    "ogrenci4": "admin4",
-    "İbrahim Akkutlu": "Akkutlu63"
+    "ogrenci4": "admin4"
     
 }
     
