@@ -1,5 +1,17 @@
 import streamlit as st
 
+#---KULLANICI İSİMLERİ VE ŞİFRELERİ ---
+USERS = {
+    "muharrem": "mat2026",
+    "ogrenci1": "admin1",
+    "ogrenci2": "admin2",
+    "ogrenci3": "admin3",
+    "ogrenci4": "admin4"
+    
+}
+    
+
+
 #---SAYFA AYARLARI ---
 st.set_page_config(
     page_title="CYHN | Matematik Portalı", 
@@ -28,15 +40,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-USERS = {
-    "muharrem": "mat2026",
-    "ogrenci1": "admin1",
-    "ogrenci2": "admin2",
-    "ogrenci3": "admin3",
-    "ogrenci4": "admin4"
-    
-}
-    
 # --- LOGOYU YAN MENÜYE EKLEME ---
 st.sidebar.image("mc250.png") 
 
