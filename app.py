@@ -6,8 +6,10 @@ USERS = {
     "mustafa": "mustafabekmezci2026",
     "ogrenci2": "admin2",
     "ogrenci3": "admin3",
-    "ogrenci4": "admin4"
-    
+    "ogrenci4": "admin4",
+    "ogrenci5": "admin5",
+    "ogrenci6": "admin6",
+    "ogrenci7": "admin7"
 }
     
 
