@@ -3,7 +3,7 @@ import streamlit as st
 #---KULLANICI İSİMLERİ VE ŞİFRELERİ ---
 USERS = {
     "muharrem": "mat2026",
-    "mustafa": "bekmezci2026",
+    "mustafa": "bekmezcioğlu2026",
     "ahmed": "ahmedbedenli50",
     "ibrahim": "akkutlu2026",
     "ogrenci4": "admin4",
