@@ -292,7 +292,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
 
     with tab1:
         st.subheader("Algoritma ve Programlama Ders Notu")
-        st.warning("Algoritma dersinde kullanılmış olan notlar aşağıdadır.")
+        st.warning("❗Algoritma dersinde kullanılmış olan notlar aşağıdadır.")
         col1, col2, col3, col4 = st.columns(4)
         with col1:
             with st.container(border=True):
