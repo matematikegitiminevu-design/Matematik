@@ -288,7 +288,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         with col3:
             with st.container(border=True):
                 st.markdown("**Sınav Takvimi**")
-                st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln0")
+                st.link_button("Programı Görüntüle", "st.link_button("Programı Görüntüle", "https://dosyalar.nevsehir.edu.tr/6667946ceeefe0f7a69e00d88e9e25d7/matematik-egitimi-2025-2026-bahar-donemi-haftalik-program_final-hali-4.pdf", use_container_width=True)", use_container_width=True)
 
     with tab1:
         st.subheader("Algoritma ve Programlama Ders Notu")
