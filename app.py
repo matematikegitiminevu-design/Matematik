@@ -341,8 +341,9 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
 
     with tab4:
         st.subheader("Soyut Matematik Ders Notu")
-        st.warning("❗Website bakımı nedeniyle bu bölümdeki dosyalar güncellenmektedir. PDF ler henüz yüklenmemiştir!")
-        st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln4")
+        st.warning("❗Soyut matematik dersinde kullanılmış olan notlar aşağıdadır.")
+        st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1AFXcBbNphoZDs41NjH-ofDbkePWk3emL/view?usp=sharing", use_container_width=True)
+        
 
     
 
