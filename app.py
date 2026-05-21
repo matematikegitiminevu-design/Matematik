@@ -152,7 +152,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
     Tüm hakları saklıdır.    
     İçeriklerin tamamının veya bir kısmının, yazarın yazılı izni olmaksızın kopyalanması, çoğaltılması, işlenmesi veya herhangi bir dijital/basılı mecrada paylaşılması **kesinlikle yasaktır**.
     Sadece kişisel eğitim amaçlıdır..!
-    (© 2026)...
+    (© 2026)
             """)
             # Onay kutucuğu
             onay = st.checkbox("Okudum, anladım ve kullanım şartlarını kabul ediyorum.")
