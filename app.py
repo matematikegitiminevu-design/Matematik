@@ -43,7 +43,7 @@ st.markdown(
 # --- LOGOYU YAN MENÜYE EKLEME ---
 st.sidebar.image("mc250.png") 
 
-# İsteğe bağlı: Logonun altına ince bir ayırıcı çizgi ve başlık ekleyebilirsiniz
+# Logonun altına ince bir ayırıcı çizgi ve başlık 
 st.sidebar.markdown("---")
 st.sidebar.write("### CYHN Matematik Portalı")
 # İmza tarzı, ince yazı tasarımı
