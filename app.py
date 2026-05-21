@@ -4,7 +4,7 @@ import streamlit as st
 USERS = {
     "muharrem": "mat2026",
     "mustafa": "mustafabekmezci2026",
-    "ahmed": "ahmedbedenli2026",
+    "ahmed": "ahmedbedenli50",
     "ogrenci3": "admin3",
     "ogrenci4": "admin4",
     "ogrenci5": "admin5",
