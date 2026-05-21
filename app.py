@@ -26,11 +26,7 @@ st.set_page_config(
 # --- SAYFA ARKA PLANI ---
 st.markdown(
     """
-    <meta name="google" content="notranslate" />
     <style>
-    .stApp, body, html {
-        translate: no !important;
-    }
     .stApp {
         background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #1e40af 100%);
         background-attachment: fixed;
