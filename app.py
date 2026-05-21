@@ -32,16 +32,29 @@ st.markdown(
         background-attachment: fixed;
     }
     
-    /* Yazıların daha okunaklı olması için beyaz gölge ekleyelim */
-    h1, h2, h3, p {
+    /* Yazıların daha okunaklı olması için gölge */
+    h1, h2, h3, p, span, label {
         color: white !important;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+    }
+
+    /* 🛠️ GİRİŞ KUTULARINI MAT VE BELİRGİN YAPMA 🛠️ */
+    .stTextInput input {
+        background-color: #1e293b !important; /* Şeffaflığı bitiren mat koyu gri/mavi tonu */
+        color: white !important;               /* İçindeki yazı rengi beyaz */
+        border: 1px solid #334155 !important;  /* Kutunun etrafına ince şık bir çerçeve */
+        border-radius: 8px !important;         /* Kenarları hafif yumuşat */
+    }
+
+    /* Kutunun içine tıklandığında (Focus modunda) çerçevenin parlaması için */
+    .stTextInput input:focus {
+        border-color: #FF4B4B !important;      /* Tıklanınca senin ana rengin olan kırmızı yansın */
+        box-shadow: 0 0 0 1px #FF4B4B !important;
     }
     </style>
     """,
     unsafe_allow_html=True
 )
-
 # --- LOGOYU YAN MENÜYE EKLEME ---
 st.sidebar.image("mc250.png") 
 
