@@ -341,7 +341,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     
     with tab3:
         st.subheader("Analiz 1 ve 2 Ders Notları")
-        st.warning("❗Website bakımı nedeniyle bu bölümdeki dosyalar güncellenmektedir. PDF ler henüz yüklenmemiştir!")
+        st.warning("❗Website bakımı nedeniyle bu bölümdeki dosyalar güncellenmektedir. Analiz 1 PDF dosyası henüz yüklenmemiştir!")
         col1, col2 = st.columns(2)
         with col1:
             with st.container(border=True):
