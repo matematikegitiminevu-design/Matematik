@@ -350,7 +350,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         with col2:
             with st.container(border=True):
                 st.markdown("**Analiz 2**")
-                st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln3")
+                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1_v-11l519_-I8VD759O0-0Vwo6oasGHB/view?usp=sharing", use_container_width=True)
 
     with tab4:
         st.subheader("Soyut Matematik Ders Notu")
