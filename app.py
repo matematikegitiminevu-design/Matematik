@@ -99,7 +99,7 @@ if st.session_state["sayfa"] == "ana_menu":
         st.markdown(
             """
             *“Matematik, evrenin dilidir.”*  
-            Bilgiye açılan kapıya hoş geldiniz..! Akademik arşivimize ulaşmak veya yapay zeka asistanımızdan destek almak için lütfen bir işlem seçiniz.
+            Bilgiye açılan kapıya hoş geldiniz..! Akademik ders notları arşivimize ulaşmak veya yapay zeka asistanımızdan destek almak için lütfen bir işlem seçiniz.
             """
         )
         st.divider()
@@ -111,7 +111,7 @@ if st.session_state["sayfa"] == "ana_menu":
         with c1:
             # Ders Notları Kartı
             with st.container(border=True):
-                st.markdown("### 📚 Ders Arşivi")
+                st.markdown("### 📚 Ders Notları Arşivi")
                 st.write("Akademik ders notlarının yanı sıra; haftalık ders programları, güncel sınav takvimleri ve bölüm duyurularına tek tıkla erişin.")
                 st.write("") # Küçük bir boşluk
                 # type="primary" butonu sitenizin ana rengine (genelde kırmızı/turuncu/mavi) boyar
