@@ -308,7 +308,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     with tab1:
         st.subheader("Algoritma ve Programlama Ders Notu")
         st.warning("❗Algoritma dersinde kullanılmış olan notlar aşağıdadır.")
-        col1, col2, col3, col4 = st.columns(4)
+        col1, col2, col3, col4, col5 = st.columns(5)
         with col1:
             with st.container(border=True):
                 st.markdown("**Algoritmaya Giriş**")
@@ -322,6 +322,10 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 st.markdown("**Python 2.kısım**")
                 st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1WUxVwNK4uvNj8k23yeZtfWEVyOwMQH9o/view?usp=sharing", use_container_width=True)
         with col4:
+            with st.container(border=True):
+                st.markdown("**Dosya Oluşturma İşlemleri**")
+                st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln3")
+        with col5:
             with st.container(border=True):
                 st.markdown("**💻 Özel Notlar (M.C.)**")
                 st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln5")
