@@ -324,7 +324,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         with col4:
             with st.container(border=True):
                 st.markdown("**Dosya İşlemleri**")
-                st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln3")
+                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1JLnAzmiXzytjKCUzUheIFzhPcj8gODml/view?usp=sharing", use_container_width=True)
         with col5:
             with st.container(border=True):
                 st.markdown("**💻 Özel Notlar (M.C.)**")
