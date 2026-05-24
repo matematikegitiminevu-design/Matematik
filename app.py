@@ -7,7 +7,7 @@ USERS = {
     "ahmed": "ahmedbedenli50",
     "ibrahim": "akkutlu2026",
     "serap": "serapnom26",
-    "ogrenci5": "admin5",
+    "mehmet": "mehmetgüver26",
     "ogrenci6": "admin6",
     "ogrenci7": "admin7"
 }
