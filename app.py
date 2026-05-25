@@ -263,7 +263,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             <a href="mailto:matematikegitiminevu@gmail.com" class="sidebar-custom-button">
                 📩 İletişim Maili
             </a>
-            <a href="https://wa.me/905061905437?text=Merhaba,%20CYHN%20Matematik%20Portalı%20üzerinden%20ulaşıyorum." target="_blank" class="sidebar-custom-button wp-button">
+            <a href="https://wa.me/90**********?text=Merhaba,%20CYHN%20Matematik%20Portalı%20üzerinden%20ulaşıyorum." target="_blank" class="sidebar-custom-button wp-button">
                 📞 WhatsApp İletişim
             </a>
 
