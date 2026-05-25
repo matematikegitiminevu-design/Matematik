@@ -136,7 +136,7 @@ if st.session_state["sayfa"] == "ana_menu":
             st.markdown(
                 """
                 <p style='text-align: left; color: gray; font-size: 0.8rem;'>
-                    🚀 CYHN Matematik Geliştirme Platformu © 2026
+                    🚀 CYHN Matematik Geliştirme Platformu © 2026 🇹🇷
                 </p>
                 """, 
                 unsafe_allow_html=True
