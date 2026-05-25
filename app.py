@@ -370,4 +370,4 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
 
     # Alt Bilgi
     st.markdown("---")
-    st.caption(""🇹🇷" CYHN Matematik Geliştirme Platformu © 2026")
+    st.caption("🇹🇷 CYHN Matematik Geliştirme Platformu © 2026")
