@@ -145,7 +145,7 @@ if st.session_state["sayfa"] == "ana_menu":
             st.markdown(
                 """
                 <p style='text-align: right; color: gray; font-size: 0.8rem;'>
-                    🇹🇷 Developed with by <span style='color: #FF4B4B; font-weight: bold;'>CYHN</span>
+                    Developed with by 🇹🇷 <span style='color: #FF4B4B; font-weight: bold;'>CYHN</span>
                 </p>
                 """, 
                 unsafe_allow_html=True
