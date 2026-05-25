@@ -248,8 +248,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%) !important; /* Yapay zeka için yeşil tonu */
             }
             .ai-button:hover {
-                background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
-                color: #ffffff !important;
+                background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%) !important;
             }
                 /* WhatsApp için marka rengi gradyanı */
             .wp-button {
@@ -261,14 +260,13 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             </style>
             
             <!-- İletişim Butonu -->
-            <a href="mailto:matematikegitiminevu@gmail.com" class="sidebar-custom-button">
+            <a href="mailto:matematikegitiminevu@gmail.com" target="_blank" class="sidebar-custom-button">
                 📩 İletişim Maili
             </a>
             <a href="https://wa.me/905061905437?text=Merhaba,%20CYHN%20Matematik%20Portalı%20üzerinden%20ulaşıyorum." target="_blank" class="sidebar-custom-button wp-button">
-                🟢 WhatsApp İletişim
+                📞 WhatsApp İletişim
             </a>
 
-            
             <!-- Yapay Zeka Butonu (Aynı Tasarım) -->
             <a href="https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc" target="_blank" class="sidebar-custom-button ai-button">
                 ✨ cyhnAI'a Sor
