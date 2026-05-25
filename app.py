@@ -250,12 +250,23 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             .ai-button:hover {
                 background: linear-gradient(135deg, #10b981 0%, #34d399 100%) !important;
             }
+                /* WhatsApp için marka rengi gradyanı */
+            .wp-button {
+                background: linear-gradient(135deg, #128C7E 0%, #25D366 100%) !important;
+            }
+            .wp-button:hover {
+                background: linear-gradient(135deg, #25D366 0%, #4FCE5D 100%) !important;
+            }
             </style>
             
             <!-- İletişim Butonu -->
             <a href="mailto:matematikegitiminevu@gmail.com" class="sidebar-custom-button">
                 📩 İletişim Maili
             </a>
+            <a href="https://wa.me/905061905437?text=Merhaba,%20CYHN%20Matematik%20Portalı%20üzerinden%20ulaşıyorum." target="_blank" class="sidebar-custom-button wp-button">
+                🟢 WhatsApp İletişim
+            </a>
+
             
             <!-- Yapay Zeka Butonu (Aynı Tasarım) -->
             <a href="https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc" target="_blank" class="sidebar-custom-button ai-button">
