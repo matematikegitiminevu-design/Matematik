@@ -245,17 +245,17 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 color: #ffffff !important;
             }
             .ai-button {
-                background: linear-gradient(135deg, #059669 0%, #10b981 100%) !important; /* Yapay zeka için yeşil tonu */
+                background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%) !important; /* Yapay zeka için yeşil tonu */
             }
             .ai-button:hover {
-                background: linear-gradient(135deg, #10b981 0%, #34d399 100%) !important;
+                background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%) !important;
             }
                 /* WhatsApp için marka rengi gradyanı */
             .wp-button {
-                background: linear-gradient(135deg, #128C7E 0%, #25D366 100%) !important;
+                background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%) !important;
             }
             .wp-button:hover {
-                background: linear-gradient(135deg, #25D366 0%, #4FCE5D 100%) !important;
+                background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%) !important;
             }
             </style>
             
