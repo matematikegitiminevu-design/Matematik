@@ -245,20 +245,16 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 color: #ffffff !important;
             }
             .ai-button {
-                background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%) !important; /* Yapay zeka için yeşil tonu */
                 text-decoration: none !important;
             }
             .ai-button:hover {
-                background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%) !important;
                 text-decoration: none !important;
             }
                 /* WhatsApp için marka rengi gradyanı */
             .wp-button {
-                background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%) !important;
                 text-decoration: none !important;
             }
             .wp-button:hover {
-                background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%) !important;
                 text-decoration: none !important;
             }
             </style>
