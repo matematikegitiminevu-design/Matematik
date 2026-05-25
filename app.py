@@ -230,7 +230,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 color: white !important;
                 padding: 12px 20px;
                 border-radius: 12px;
-                text-decoration: none;
+                text-decoration: none !important;
                 font-weight: bold;
                 transition: all 0.3s ease;
                 border: 1px solid rgba(255,255,255,0.1);
@@ -241,26 +241,30 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 transform: translateY(-2px);
                 box-shadow: 0 4px 12px rgba(0,0,0,0.2);
                 background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
-                text-decoration: none;
+                text-decoration: none !important;
                 color: #ffffff !important;
             }
             .ai-button {
                 background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%) !important; /* Yapay zeka için yeşil tonu */
+                text-decoration: none !important;
             }
             .ai-button:hover {
                 background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%) !important;
+                text-decoration: none !important;
             }
                 /* WhatsApp için marka rengi gradyanı */
             .wp-button {
                 background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%) !important;
+                text-decoration: none !important;
             }
             .wp-button:hover {
                 background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%) !important;
+                text-decoration: none !important;
             }
             </style>
             
             <!-- İletişim Butonu -->
-            <a href="mailto:matematikegitiminevu@gmail.com" target="_blank" class="sidebar-custom-button">
+            <a href="mailto:matematikegitiminevu@gmail.com" class="sidebar-custom-button">
                 📩 İletişim Maili
             </a>
             <a href="https://wa.me/905061905437?text=Merhaba,%20CYHN%20Matematik%20Portalı%20üzerinden%20ulaşıyorum." target="_blank" class="sidebar-custom-button wp-button">
