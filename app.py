@@ -280,12 +280,13 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     st.markdown("---")
 
     # Konulara göre sekmeler (Tablar)
-    tab0, tab1, tab2, tab3, tab4 = st.tabs([
+    tab0, tab1, tab2, tab3, tab4, tab5 = st.tabs([
         "📢 Güncel Duyurular",
         "💻 Algoritma ve Programlama",
         "🔢 Lineer Cebir PDF Notları", 
         "🎲 Analiz PDF Notları", 
-        "📐 Soyut Matematik PDF Notları"
+        "📐 Soyut Matematik PDF Notları",
+        "📖 Türk Dili 2 Videoları"
     ])
 
     with tab0:
@@ -360,8 +361,11 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         st.subheader("Soyut Matematik Ders Notu")
         st.warning("❗Soyut matematik dersinde kullanılmış olan notlar aşağıdadır.")
         st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1AFXcBbNphoZDs41NjH-ofDbkePWk3emL/view?usp=sharing", use_container_width=True)
-        
 
+    with tab5:
+        st.subheader("Türk Dili 2 Videoları")
+        st.warning("❗Türk Dili 2 dersine ait UBYS sisteminde de yüklü olan videolara aşağıdaki bağlantıdan tıklayarak ulaşabilirsiniz.")
+        st.link_button("Videoları Görüntüle", "https://bulut.nevsehir.edu.tr/index.php/s/eMP56Ty6dfeCdFc", use_container_width=True)
     
 
     # Alt Bilgi
