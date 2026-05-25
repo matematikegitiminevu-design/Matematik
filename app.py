@@ -248,7 +248,8 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%) !important; /* Yapay zeka için yeşil tonu */
             }
             .ai-button:hover {
-                background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%) !important;
+                background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+                color: #ffffff !important;
             }
                 /* WhatsApp için marka rengi gradyanı */
             .wp-button {
