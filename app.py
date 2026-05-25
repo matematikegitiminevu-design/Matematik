@@ -188,7 +188,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 # 2. Kontrol: Kullanıcı adı ve Şifre eşleşmesi (YENİ VE DÜZELTİLEN KISIM BURASI)
                 elif kullanici_adi in USERS and USERS[kullanici_adi] == sifre:
                     # Başarılı giriş popup mesajı (Ekranın sağ altında görünür)
-                    st.toast(f"🔑 Giriş Başarılı! Hoş geldin {kullanici_adi.capitalize()}. 🚀", icon="🎉")
+                    st.toast(f"🔑 Giriş Başarılı! Hoş geldin {kullanici_adi.capitalize()}. 🇹🇷", icon="🎉")
                     
                     # Havai fişek/balon efekti
                     st.balloons() 
