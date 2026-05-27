@@ -126,7 +126,7 @@ if st.session_state["sayfa"] == "ana_menu":
                 st.write("Matematik sorularınıza, formüllere ve takıldığınız tüm konularda yapay zeka desteğimiz ile anında çözüm bulun.")
                 st.write("") # Küçük bir boşluk
                 # link_button zaten varsayılan olarak şık durur
-                st.link_button("Yapay Zekayı Başlat", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc", use_container_width=True)
+                st.link_button("Yapay Zekayı Başlat", "ttps://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc", use_container_width=True)
         
         st.divider()
 
