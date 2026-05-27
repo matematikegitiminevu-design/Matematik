@@ -218,7 +218,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     # Sidebar (Yan Menü)
     with st.sidebar:
             st.title(f"♾️ Hoş Geldin, {st.session_state['aktif_user'].capitalize()}!")
-            st.markdown("💡 *Bir sorunuz mu var? Aşağıdaki kanallardan bize hızlıca ulaşabilir veya yapay zeka asistanımıza danışabilirsiniz.*")
+            st.markdown("💡 *Bir sorun mu var? Aşağıdaki kanallardan bize hızlıca ulaşabilir veya yapay zeka asistanımıza danışabilirsin.*")
             # --- ÖZEL BUTON TASARIMLARI (CSS) ---
             st.markdown("""
             <style>
