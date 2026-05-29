@@ -208,9 +208,9 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                     
         with c2:
             mail_konu = "CYHN%20Portal%20Eri%C5%9Fim%20Talebi"
-            mail_icerik = "Merhaba%20Hocam,%0D%0ACYHN%20Matematik%20Portalı%20için%20kullanıcı%20adı%20ve%20şifre%20talep%20ediyorum.%0D%0A%0D%0AAdım%20Soyadım:%20%0D%0AÖğrenci%20Numaram:%20"
+            mail_icerik = "Merhaba,%0D%0ACYHN%20Matematik%20Portalı%20için%20kullanıcı%20adı%20ve%20şifre%20talep%20ediyorum.%0D%0A%0D%0AAdım%20Soyadım:%20"
             mail_link = f"mailto:matematikegitiminevu@gmail.com?subject={mail_konu}&body={mail_icerik}"
-            
+             
             # Şifre Al butonu
             st.link_button("🔑 Şifre Al / Erişim İste", mail_link, use_container_width=True)
 
