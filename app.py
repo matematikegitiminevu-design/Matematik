@@ -180,7 +180,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
         
         c1, c2, c3 = st.columns(3)
         with c1:
-            if st.button("Sisteme Giriş, use_container_width=True"):
+            if st.button("Sisteme Giriş", use_container_width=True):
                 # 1. Kontrol: Onay kutusu
                 if not onay:
                     st.error("Lütfen önce kullanım şartlarını onaylayınız!")
@@ -215,7 +215,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
             st.link_button("🔑 Şifre Al / Erişim İste", mail_link, use_container_width=True)
 
         with c3:
-             if st.button("⬅ Geri Dön, use_container_width=True"):
+             if st.button("⬅ Geri Dön", use_container_width=True):
                 ana_menuye_don()
 
 # --- 3. AŞAMA: DERS NOTLARI VE PDF ARŞİVİ ---
