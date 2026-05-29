@@ -292,8 +292,8 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     # --- YENİ EKLENEN MESAJ ---
     st.markdown(f"""
     > **Hoş geldin {kullanici}!** Bu arşiv, akademik yolculuğunda sana rehberlik etmek için özenle hazırlanmıştır. 
-    > Aşağıdaki sekmeleri%0D%0Akullanarak ders notlarına erişebilir, çalışmalarını derinleştirebilirsin. 
-    > Bir sorun olduğunda yan menüde bulunan iletişim kanallarından bana ulaşabilirsin.
+    > Aşağıdaki sekmeleri kullanarak ders notlarına erişebilir, çalışmalarını derinleştirebilirsin. 
+    > Bir sorun olduğunda yan menüde bulunan iletişim kanallarından bana ulaşabilirsin. *Başarılar.*
        """)
     # --------------------------
     st.markdown("---")
