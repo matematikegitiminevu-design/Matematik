@@ -212,7 +212,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
             mail_link = f"mailto:matematikegitiminevu@gmail.com?subject={mail_konu}&body={mail_icerik}"
              
             # Şifre Al butonu
-            st.link_button("📩 Erişim Yetkisi Talep Et", mail_link, use_container_width=True)
+            st.link_button("📩 Erişim Talep Et", mail_link, use_container_width=True)
         
         with c3:
              if st.button("⬅ Ana Menüye Dön", use_container_width=True):
