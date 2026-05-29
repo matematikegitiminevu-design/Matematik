@@ -352,7 +352,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     
     with tab2:
         st.subheader("Lineer Cebir Ders Notları")
-        st.warning("❗Website bakımı nedeniyle bu bölümdeki dosyalar güncellenmektedir. PDF ler henüz yüklenmemiştir!")
+        st.warning("❗Website bakımı nedeniyle bu bölümdeki dosyalar güncellenmektedir. Lineer Cebir 1 PDF dosyası henüz yüklenmemiştir!")
         col1, col2 = st.columns(2)
         with col1:
             with st.container(border=True):
@@ -361,7 +361,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         with col2:
             with st.container(border=True):
                 st.markdown("**Lineer Cebir 2**")
-                st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln6")
+                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1yk5VmfUbipnQR8IK6gWVHW9LMibP-zVR/view?usp=sharing", use_container_width=True)
     
     with tab3:
         st.subheader("Analiz 1 ve 2 Ders Notları")
