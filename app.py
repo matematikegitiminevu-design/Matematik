@@ -212,7 +212,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
             mail_link = f"mailto:matematikegitiminevu@gmail.com?subject={mail_konu}&body={mail_icerik}"
              
             # Şifre Al butonu
-            st.link_button("📧 Erişim Yetkisi Talep Et", mail_link, use_container_width=True)
+            st.link_button("📩 Erişim Yetkisi Talep Et", mail_link, use_container_width=True)
         
         with c3:
              if st.button("⬅ Ana Menüye Dön", use_container_width=True):
@@ -315,15 +315,15 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         with col1:
             with st.container(border=True):
                 st.markdown("**NEVÜ MAFET**")
-                st.link_button("Sayfayı Görüntüle", "https://mafet.nevsehir.edu.tr/", use_container_width=True)
+                st.link_button("🌐 MAFET Resmî Web Sitesi", "https://mafet.nevsehir.edu.tr/", use_container_width=True)
         with col2:
             with st.container(border=True):
                 st.markdown("**Ders Programı**")
-                st.link_button("Programı Görüntüle", "https://dosyalar.nevsehir.edu.tr/6667946ceeefe0f7a69e00d88e9e25d7/matematik-egitimi-2025-2026-bahar-donemi-haftalik-program_final-hali-4.pdf", use_container_width=True)
+                st.link_button("📅 Haftalık Ders Programı (PDF)", "https://dosyalar.nevsehir.edu.tr/6667946ceeefe0f7a69e00d88e9e25d7/matematik-egitimi-2025-2026-bahar-donemi-haftalik-program_final-hali-4.pdf", use_container_width=True)
         with col3:
             with st.container(border=True):
                 st.markdown("**Sınav Takvimi**")
-                st.link_button("Programı Görüntüle", "https://dosyalar.nevsehir.edu.tr/27b9857ff2d7c3247d597c4ca999de35/matematik-egitimi-2025-2026-bahar-donemi-final-programi.pdf", use_container_width=True)
+                st.link_button("📝 Dönem İçi Sınav Takvimi (PDF)", "https://dosyalar.nevsehir.edu.tr/27b9857ff2d7c3247d597c4ca999de35/matematik-egitimi-2025-2026-bahar-donemi-final-programi.pdf", use_container_width=True)
 
     with tab1:
         st.subheader("Algoritma ve Programlama Ders Notu")
