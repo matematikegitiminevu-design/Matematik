@@ -12,7 +12,7 @@ USERS = {
     "irem": "iremyıldızoğlu26",
     "admin1": "adminşifre1",
     "admin2": "adminşifre2",
-    "admin3": "adminşifre3"
+    "admin3": "adminşifre3",
     
 }
     
