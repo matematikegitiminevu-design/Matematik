@@ -11,7 +11,7 @@ USERS = {
     "nisa": "nisatürk38",
     "irem": "iremyıldızoğlu26",
     "deniz": "denizekici26",
-    "admin2": "adminşifre2",
+    "rumeysa": "rumeysa38",
     "admin3": "adminşifre3"
     
 }
