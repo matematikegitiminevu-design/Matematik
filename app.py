@@ -7,7 +7,7 @@ USERS = {
     "ahmed": "ahmedbedenli50",
     "ibrahim": "akkutlu2026",
     "serap": "serapnom26",
-    "mehmet": "mehmetgüver51",
+    "mehmet": "guver51",
     "nisa": "nisatürk38",
     "irem": "iremyıldızoğlu26",
     "admin1": "adminşifre1",
