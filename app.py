@@ -10,7 +10,7 @@ USERS = {
     "mehmet": "guver51",
     "nisa": "nisatürk38",
     "irem": "iremyıldızoğlu26",
-    "admin1": "adminşifre1",
+    "deniz": "denizekici26",
     "admin2": "adminşifre2",
     "admin3": "adminşifre3"
     
