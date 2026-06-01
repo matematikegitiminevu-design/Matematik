@@ -5,7 +5,7 @@ USERS = {
     "muharrem": "mat2026",
     "mustafa": "bekmezcioğlu2026",
     "ahmed": "ahmedbedenli50",
-    "ibrahim": "akkutlu2026",
+    "ibrahim": "akkutlu26",
     "serap": "serapnom26",
     "mehmet": "guver51",
     "nisa": "nisatürk38",
