@@ -12,6 +12,9 @@ USERS = {
     "irem": "iremyıldızoğlu26",
     "deniz": "denizekici26",
     "rumeysa": "rumeysa38",
+    "gülsüm": "keve26",
+    "admin1": "adminşifre1",
+    "admin2": "adminşifre2",
     "admin3": "adminşifre3"
     
 }
