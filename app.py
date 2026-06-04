@@ -1,5 +1,49 @@
 import streamlit as st
 
+# ==========================================
+# 🛠️ BAKIM MODU AYARI (Açmak için True, kapatmak için False yapın)
+BAKIM_MODU = True
+# ==========================================
+
+if BAKIM_MODU:
+    # Sayfa ayarlarını bakım moduna uygun yapıyoruz
+    st.set_page_config(page_title="CYHN | Bakım Çalışması", page_icon="🔧", layout="centered")
+    
+    # Arka planı koyu mat yapıp yazıyı tam ortalayan şık bir tasarım ekliyoruz
+    st.markdown("""
+        <style>
+        .stApp {
+            background-color: #0f172a !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .bakim-kutusu {
+            text-align: center;
+            background-color: #1e293b;
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid #334155;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+        h1, p { color: white !important; }
+        </style>
+        
+        <div class="bakim-kutusu">
+            <h1>🔧 Sistem Bakım Çalışması</h1>
+            <p style="font-size: 1.2rem; margin-top: 15px;">
+                Web sitemiz, sizlere daha güvenli ve güncel bir ders notu arşivi sunabilmek adına kısa süreliğine bakıma alınmıştır.
+            </p>
+            <p style="color: #94a3b8 !important; font-size: 0.9rem; margin-top: 20px;">
+                Anlayışınız için teşekkür ederiz. Lütfen daha sonra tekrar deneyiniz.
+            </p>
+        </div>
+    """, unsafe_allow_html=True)
+    
+    # Kodun geri kalanının çalışmasını tamamen durduruyoruz
+    st.stop()
+
+
 #---KULLANICI İSİMLERİ VE ŞİFRELERİ ---
 USERS = {
     "muharrem": "mat2026",
