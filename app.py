@@ -30,7 +30,7 @@ if BAKIM_MODU:
         </style>
         
         <div class="bakim-kutusu">
-            <h1>🔧/n Sistem Bakım Çalışması</h1>
+            <h1>🔧 Sistem Bakım Çalışması</h1>
             <p style="font-size: 1.2rem; margin-top: 15px;">
                 Web sitemiz, sizlere daha güvenli ve güncel bir ders notu arşivi sunabilmek adına kısa süreliğine bakıma alınmıştır.
             </p>
