@@ -149,20 +149,6 @@ def ana_menuye_don():
     st.session_state["sayfa"] = "ana_menu"
     st.rerun()
     
-# 📍 TAM BURAYA, FONKSİYONUN BİTTİĞİ YERE YAPIŞTIRIYORSUN:
-def goster_pdf_korumali(pdf_url):
-    if "/view" in pdf_url:
-        pdf_url = pdf_url.split("/view")[0] + "/preview"
-        
-    html_kodu = f"""
-    <iframe 
-        src="{pdf_url}" 
-        width="100%" 
-        height="800px" 
-        style="border: none; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
-    </iframe>
-    """
-    st.markdown(html_kodu, unsafe_allow_html=True)    
 
 # --- 1. AŞAMA: ANA KARŞILAMA MENÜSÜ ---
 if st.session_state["sayfa"] == "ana_menu":
@@ -372,9 +358,6 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     # --------------------------
     st.markdown("---")
 
-    # 🛠️ BURAYI EKLE:
-    arama_terimi = st.text_input("🔍 Arşiv İçinde Not Ara...", placeholder="Örn: Python, Matris, Giriş...").strip().lower()
-    st.markdown("---")
 
     # Konulara göre sekmeler (Tablar)
     tab0, tab1, tab2, tab3, tab4, tab5 = st.tabs([
