@@ -2,7 +2,7 @@ import streamlit as st
 
 # ==========================================
 # 🛠️ BAKIM MODU AYARI (Açmak için True, kapatmak için False yapın)
-BAKIM_MODU = False
+BAKIM_MODU = True
 # ==========================================
 
 if BAKIM_MODU:
