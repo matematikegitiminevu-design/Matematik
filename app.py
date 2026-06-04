@@ -37,6 +37,14 @@ if BAKIM_MODU:
             <p style="color: #94a3b8 !important; font-size: 0.9rem; margin-top: 20px;">
                 Anlayışınız için teşekkür ederiz. Lütfen daha sonra tekrar deneyiniz.
             </p>
+            <div style="margin-top: 30px; border-top: 1px solid #334155; padding-top: 15px;">
+                <p style="color: #FF4B4B !important; font-weight: bold; font-size: 1.1rem; margin-bottom: 5px;">
+                    Muharrem CEYHAN
+                </p>
+                <p style="color: #64748b !important; font-size: 0.85rem; letter-spacing: 1px;">
+                    CYHN MATEMATİK GELİŞTİRME PLATFORMU
+                </p>
+            </div>
         </div>
     """, unsafe_allow_html=True)
     
