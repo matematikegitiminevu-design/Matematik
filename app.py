@@ -357,13 +357,6 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     # --------------------------
     st.markdown("---")
 
-    # 🔍 BURAYA EKLEDİK:
-    arama_terimi = st.text_input(
-        "🔍 Arşiv İçinde Not Ara...", 
-        placeholder="Örn: Python, Matris, Lineer, Çıkmış Sorular..."
-    ).strip().lower()
-    st.markdown("---")
-
     # Konulara göre sekmeler (Tablar)
     tab0, tab1, tab2, tab3, tab4, tab5 = st.tabs([
         "📢 Güncel Duyurular",
