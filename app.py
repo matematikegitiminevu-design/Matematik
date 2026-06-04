@@ -7,7 +7,7 @@ BAKIM_MODU = True
 
 if BAKIM_MODU:
     # Sayfa ayarlarını bakım moduna uygun yapıyoruz
-    st.set_page_config(page_title="CYHN | Bakım Çalışması", page_icon="🔧", layout="centered")
+    st.set_page_config(page_title="CYHN | Website Bakım Çalışması", page_icon="🔧", layout="centered")
     
     # Arka planı koyu mat yapıp yazıyı tam ortalayan şık bir tasarım ekliyoruz
     st.markdown("""
