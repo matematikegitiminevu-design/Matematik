@@ -387,31 +387,33 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 st.link_button("📝 Dönem İçi Sınav Takvimi (PDF)", "https://dosyalar.nevsehir.edu.tr/27b9857ff2d7c3247d597c4ca999de35/matematik-egitimi-2025-2026-bahar-donemi-final-programi.pdf", use_container_width=True)
 
     with tab1:
-        st.subheader("💻 Algoritma ve Programlama Ders Notu")
+        st.subheader("Algoritma ve Programlama Ders Notu")
         st.warning("❗Algoritma dersinde kullanılmış olan notlar aşağıdadır.")
-        
-        # 1. Ders notlarının listesi
-        algoritma_havuzu = {
-            "Seçim Yapın...": "",
-            "Algoritmaya Giriş": "https://drive.google.com/file/d/1Dz9nJXinGmgUajJH4Ljov7sSpMQv89Pn/preview",
-            "Python 1.kısım": "https://drive.google.com/file/d/1eQdLmcqXiTYdhQ-n53IJbj6DFgrlvpl5/preview",
-            "Python 2.kısım": "https://drive.google.com/file/d/1WUxVwNK4uvNj8k23yeZtfWEVyOwMQH9o/preview",
-            "Dosya İşlemleri": "https://drive.google.com/file/d/1JLnAzmiXzytjKCUzUheIFzhPcj8gODml/preview",
-            "Python Notları Toplu": "https://drive.google.com/file/d/1pv5oPwe81IOMzNBb12q-GaQVL-VEnD7y/preview",
-            "💻 Özel Notlar (M.C.)": "https://drive.google.com/file/d/1OUdyrIEHGOgsj-ltJBPb4u6KxPuWLjNF/preview"
-        }
-        
-        # 2. Arama çubuğuna yazılan kelimeye göre filtreleme yapıyoruz
-        filtrelenmis_isimler = [isim for isim in algoritma_havuzu.keys() if isim == "Seçim Yapın..." or arama_terimi in isim.lower()]
-        
-        # 3. Öğrencinin seçeceği açılır liste (selectbox)
-        secilen_not = st.selectbox("👉 İncelemek istediğiniz ders notunu seçiniz:", options=filtrelenmis_isimler, key="algo_secim")
-        
-        # 4. Seçim yapıldıysa sitenin içinde gömülü gösteriyoruz
-        if secilen_not != "Seçim Yapın...":
-            secilen_link = algoritma_havuzu[secilen_not]
-            st.markdown(f"### 📄 {secilen_not}")
-            goster_pdf_korumali(secilen_link)
+        col1, col2, col3, col4, col5, col6 = st.columns(6)
+        with col1:
+            with st.container(border=True):
+                st.markdown("**Algoritmaya Giriş**")
+                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1Dz9nJXinGmgUajJH4Ljov7sSpMQv89Pn/view?usp=sharing", use_container_width=True)
+        with col2:
+            with st.container(border=True):
+                st.markdown("**Python 1.kısım**")
+                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1eQdLmcqXiTYdhQ-n53IJbj6DFgrlvpl5/view?usp=sharing", use_container_width=True)
+        with col3:
+            with st.container(border=True):
+                st.markdown("**Python 2.kısım**")
+                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1WUxVwNK4uvNj8k23yeZtfWEVyOwMQH9o/view?usp=sharing", use_container_width=True)
+        with col4:
+            with st.container(border=True):
+                st.markdown("**Dosya İşlemleri**")
+                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1JLnAzmiXzytjKCUzUheIFzhPcj8gODml/view?usp=sharing", use_container_width=True)
+        with col5:
+            with st.container(border=True):
+                st.markdown("**Python Notları Toplu**")
+                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1pv5oPwe81IOMzNBb12q-GaQVL-VEnD7y/view?usp=sharing", use_container_width=True)
+        with col6:
+            with st.container(border=True):
+                st.markdown("**💻 Özel Notlar (M.C.)**")
+                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1OUdyrIEHGOgsj-ltJBPb4u6KxPuWLjNF/view?usp=sharing", use_container_width=True)
     
     with tab2:
         st.subheader("Lineer Cebir Ders Notları")
