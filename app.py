@@ -293,7 +293,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         
         # Süre hesaplama mantığı
         simdi = datetime.now()
-        hedef = datetime.strptime(HEDEF_ZAMAN, "%Y-%m-%d %H:%M:%00")
+        hedef = datetime.strptime(HEDEF_ZAMAN, "%Y-%m-%d %H:%M:%S")
         kalan_sure = hedef - simdi
         
         # Eğer süre henüz dolmadıysa kalan zamanı hesapla
