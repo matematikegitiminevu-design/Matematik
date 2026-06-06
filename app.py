@@ -1,5 +1,28 @@
 import streamlit as st
 
+
+#---KULLANICI İSİMLERİ VE ŞİFRELERİ ---
+USERS = {
+    "muharrem": "mat2026",
+    "mustafa": "bekmezcioğlu2026",
+    "ahmed": "ahmedbedenli50",
+    "ibrahim": "akkutlu26",
+    "serap": "serapnom26",
+    "mehmet": "guver51",
+    "nisa": "nisatürk38",
+    "irem": "iremyıldızoğlu26",
+    "deniz": "denizekici26",
+    "rumeysa": "rumeysa38",
+    "gülsüm": "keve26",
+    "seyit": "seyitcantör26",
+    "hicran": "hicranünal26",
+    "duygu": "duyguongeli26",
+    "admin3": "adminşifre3",
+    "admin3": "adminşifre3"
+    
+}
+
+
 # =========================================================================
 # 🛠️ SİTE GENEL BAKIM MODU AYARI (Tüm siteyi kapatmak için True yapın)
 BAKIM_MODU = False  
@@ -79,27 +102,6 @@ if BAKIM_MODU:
     
     # Kodun geri kalanının çalışmasını tamamen durduruyoruz
     st.stop()
-
-#---KULLANICI İSİMLERİ VE ŞİFRELERİ ---
-USERS = {
-    "muharrem": "mat2026",
-    "mustafa": "bekmezcioğlu2026",
-    "ahmed": "ahmedbedenli50",
-    "ibrahim": "akkutlu26",
-    "serap": "serapnom26",
-    "mehmet": "guver51",
-    "nisa": "nisatürk38",
-    "irem": "iremyıldızoğlu26",
-    "deniz": "denizekici26",
-    "rumeysa": "rumeysa38",
-    "gülsüm": "keve26",
-    "seyit": "seyitcantör26",
-    "hicran": "hicranünal26",
-    "duygu": "duyguongeli26",
-    "admin3": "adminşifre3",
-    "admin3": "adminşifre3"
-    
-}
 
 #---SAYFA AYARLARI ---
 st.set_page_config(
