@@ -305,46 +305,29 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             <div style="display: flex; justify-content: center; gap: 15px; margin-top: 25px; margin-bottom: 10px;">
                 <div style="background: #ef4444; padding: 12px 20px; border-radius: 10px; min-width: 70px; text-align: center;">
                     <span style="font-size: 1.8rem; font-weight: bold; display: block; color: white !important;">{gun}</span>
-                    <span style="font-size: 0.8rem; color: #fee2e2 !important; text-transform: uppercase;">Gün</span>
+                    <span style="font-size: 0.8rem; color: #fee2e2 !important; text-transform: uppercase; font-family: sans-serif;">Gün</span>
                 </div>
                 <div style="background: #3b82f6; padding: 12px 20px; border-radius: 10px; min-width: 70px; text-align: center;">
                     <span style="font-size: 1.8rem; font-weight: bold; display: block; color: white !important;">{saat}</span>
-                    <span style="font-size: 0.8rem; color: #dbeafe !important; text-transform: uppercase;">Saat</span>
+                    <span style="font-size: 0.8rem; color: #dbeafe !important; text-transform: uppercase; font-family: sans-serif;">Saat</span>
                 </div>
                 <div style="background: #10b981; padding: 12px 20px; border-radius: 10px; min-width: 70px; text-align: center;">
                     <span style="font-size: 1.8rem; font-weight: bold; display: block; color: white !important;">{dakika}</span>
-                    <span style="font-size: 0.8rem; color: #d1fae5 !important; text-transform: uppercase;">Dk</span>
+                    <span style="font-size: 0.8rem; color: #d1fae5 !important; text-transform: uppercase; font-family: sans-serif;">Dk</span>
                 </div>
             </div>
             """
         else:
-            # Süre dolmuşsa görünecek yazı
             sayaç_html = """
-            <p style="color: #10b981 !important; font-weight: bold; font-size: 1.2rem; margin-top: 25px; text-align: center;">
+            <p style="color: #10b981 !important; font-weight: bold; font-size: 1.2rem; margin-top: 25px; text-align: center; font-family: sans-serif;">
                 🔄 Güncelleme çalışmaları tamamlanmak üzere, sistem birazdan açılacaktır.
             </p>
             """
 
-        # Çakışmaları önlemek için CSS stil şablonu (Normal Markdown)
-        st.markdown("""
-            <style>
-            .arsiv-bakim-kutusu {
-                text-align: center;
-                background-color: #1e293b;
-                padding: 40px;
-                border-radius: 16px;
-                border: 1px solid #334155;
-                box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-                margin-top: 50px;
-            }
-            .arsiv-bakim-kutusu h2, .arsiv-bakim-kutusu p { color: white !important; }
-            </style>
-        """, unsafe_allow_html=True)
-        
-        # Dinamik içeriklerin f-string birleştirmesi
-        ana_kutu_html = f"""
-        <div class="arsiv-bakim-kutusu">
-            <h2>🔧 Arşiv Güncelleme Çalışması</h2>
+        # 🛠️ TÜM BLOK TEK BİR HTML METNİ OLARAK BİRLEŞTİRİLİYOR (Hiçbir çakışma riski yok)
+        tam_sayfa_html = f"""
+        <div style="text-align: center; background-color: #1e293b; padding: 40px; border-radius: 16px; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.5); font-family: sans-serif;">
+            <h2 style="color: white !important; margin-bottom: 15px;">🔧 Arşiv Güncelleme Çalışması</h2>
             <p style="font-size: 1.1rem; margin-top: 15px; color: #cbd5e1 !important; text-align: center;">
                 Değerli öğrencimiz, sizlere daha güncel, eksiksiz ve güvenli bir ders notu arşivi sunabilmek adına <b>Ders Notları Arşivi</b> kısa süreliğine bakıma alınmıştır.
             </p>
@@ -364,7 +347,9 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             </div>
         </div>
         """
-        st.markdown(ana_kutu_html, unsafe_allow_html=True)
+        
+        # Streamlit'in ham HTML oynatıcısını çağırıyoruz (Yükseklik 480px tam oturacaktır)
+        st.components.v1.html(tam_sayfa_html, height=480, scrolling=False)
         
         # Ana Menüye Dönüş Butonu
         st.write("")
