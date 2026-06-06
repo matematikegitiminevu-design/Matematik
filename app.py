@@ -283,20 +283,19 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     # 🛠️ ARŞİV İÇİN BAKIM MODU AYARI (Açmak için True, kapatmak için False yapın)
     ARSIV_BAKIM_MODU = True  
     
-    # 📅 BAKIMIN BİTECEĞİ HEDEF TARİH VE SAAT (Yıl, Ay, Gün, Saat, Dakika)
-    # Örnek: 10 Haziran 2026, Saat 18:00'e kadar geri sayım yapar.
-    HEDEF_ZAMAN = "2026-06-10 18:00:00"
+    # 📅 BAKIMIN BİTECEĞİ HEDEF TARİH VE SAAT (Yıl-Ay-Gün Saat:Dakika:Saniye)
+    HEDEF_ZAMAN = "2026-06-07 01:00:00"
     # =========================================================================
 
     if ARSIV_BAKIM_MODU:
         from datetime import datetime
         
-        # Süre hesaplama mantığı
+        # Süre hesaplama motoru
         simdi = datetime.now()
         hedef = datetime.strptime(HEDEF_ZAMAN, "%Y-%m-%d %H:%M:%S")
         kalan_sure = hedef - simdi
         
-        # Eğer süre henüz dolmadıysa kalan zamanı hesapla
+        # Eğer süre henüz dolmadıysa kalan zamanı hesapla ve HTML olarak biçimlendir
         if kalan_sure.total_seconds() > 0:
             gun = kalan_sure.days
             saat, artan = divmod(kalan_sure.seconds, 3600)
@@ -304,29 +303,29 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             
             sayaç_html = f"""
             <div style="display: flex; justify-content: center; gap: 15px; margin-top: 25px; margin-bottom: 10px;">
-                <div style="background: #ef4444; padding: 12px 20px; border-radius: 10px; min-width: 70px;">
+                <div style="background: #ef4444; padding: 12px 20px; border-radius: 10px; min-width: 70px; text-align: center;">
                     <span style="font-size: 1.8rem; font-weight: bold; display: block; color: white !important;">{gun}</span>
                     <span style="font-size: 0.8rem; color: #fee2e2 !important; text-transform: uppercase;">Gün</span>
                 </div>
-                <div style="background: #3b82f6; padding: 12px 20px; border-radius: 10px; min-width: 70px;">
+                <div style="background: #3b82f6; padding: 12px 20px; border-radius: 10px; min-width: 70px; text-align: center;">
                     <span style="font-size: 1.8rem; font-weight: bold; display: block; color: white !important;">{saat}</span>
                     <span style="font-size: 0.8rem; color: #dbeafe !important; text-transform: uppercase;">Saat</span>
                 </div>
-                <div style="background: #10b981; padding: 12px 20px; border-radius: 10px; min-width: 70px;">
+                <div style="background: #10b981; padding: 12px 20px; border-radius: 10px; min-width: 70px; text-align: center;">
                     <span style="font-size: 1.8rem; font-weight: bold; display: block; color: white !important;">{dakika}</span>
                     <span style="font-size: 0.8rem; color: #d1fae5 !important; text-transform: uppercase;">Dk</span>
                 </div>
             </div>
             """
         else:
-            # Süre dolmuşsa ama bakım modu hala True unutulmuşsa görünecek yazı
+            # Süre dolmuşsa görünecek yazı
             sayaç_html = """
-            <p style="color: #10b981 !important; font-weight: bold; font-size: 1.2rem; margin-top: 25px;">
+            <p style="color: #10b981 !important; font-weight: bold; font-size: 1.2rem; margin-top: 25px; text-align: center;">
                 🔄 Güncelleme çalışmaları tamamlanmak üzere, sistem birazdan açılacaktır.
             </p>
             """
 
-        # Arşive özel şık ve ortalanmış bakım kutusu tasarımı
+        # Çakışmaları önlemek için CSS stil şablonu (Normal Markdown)
         st.markdown("""
             <style>
             .arsiv-bakim-kutusu {
@@ -342,20 +341,20 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             </style>
         """, unsafe_allow_html=True)
         
-        # HTML İçeriği ve Sayacın Birleştirilmesi
+        # Dinamik içeriklerin f-string birleştirmesi
         ana_kutu_html = f"""
         <div class="arsiv-bakim-kutusu">
             <h2>🔧 Arşiv Güncelleme Çalışması</h2>
-            <p style="font-size: 1.1rem; margin-top: 15px; color: #cbd5e1 !important;">
+            <p style="font-size: 1.1rem; margin-top: 15px; color: #cbd5e1 !important; text-align: center;">
                 Değerli öğrencimiz, sizlere daha güncel, eksiksiz ve güvenli bir ders notu arşivi sunabilmek adına <b>Ders Notları Arşivi</b> kısa süreliğine bakıma alınmıştır.
             </p>
             
             {sayaç_html}
             
-            <p style="color: #94a3b8 !important; font-size: 0.9rem; margin-top: 25px;">
+            <p style="color: #94a3b8 !important; font-size: 0.9rem; margin-top: 25px; text-align: center;">
                 Lineer Cebir ve Analiz notları güncellenmektedir. Anlayışınız için teşekkür ederiz.
             </p>
-            <div style="margin-top: 30px; border-top: 1px solid #334155; padding-top: 15px;">
+            <div style="margin-top: 30px; border-top: 1px solid #334155; padding-top: 15px; text-align: center;">
                 <p style="color: #FF4B4B !important; font-weight: bold; font-size: 1.1rem; margin-bottom: 5px;">
                     Muharrem CEYHAN
                 </p>
@@ -367,18 +366,17 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         """
         st.markdown(ana_kutu_html, unsafe_allow_html=True)
         
-        # Kullanıcının bakım modundayken de ana menüye dönebilmesi için şık bir buton ekliyoruz
+        # Ana Menüye Dönüş Butonu
         st.write("")
         c1, c2, c3 = st.columns([1.5, 1, 1.5])
         with c2:
             if st.button("⬅ Ana Menüye Dön", use_container_width=True):
                 ana_menuye_don()
                 
-        # Kodun altındaki ders notlarının yüklenmesini tamamen durduruyoruz
         st.stop()
 
     # -------------------------------------------------------------------------
-    # EĞER BAKIM MODU FALSE İSE KOD NORMAL ŞEKİLDE BURADAN ÇALIŞMAYA DEVAM EDER:
+    # EĞER BAKIM MODU FALSE İSE SİSTEM BURADAN İTİBAREN NORMAL ÇALIŞIR:
     # -------------------------------------------------------------------------
     with st.spinner("Matematik Portalı Hazırlanıyor..."):
         import time
