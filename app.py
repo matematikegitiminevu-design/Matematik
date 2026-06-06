@@ -2,7 +2,7 @@ import streamlit as st
 
 # ==========================================
 # 🛠️ BAKIM MODU AYARI (Açmak için True, kapatmak için False yapın)
-BAKIM_MODU = True
+BAKIM_MODU = False
 # ==========================================
 
 if BAKIM_MODU:
@@ -280,60 +280,81 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     with st.spinner("Matematik Portalı Hazırlanıyor..."):
         import time
         time.sleep(1)
-        
     # Sidebar (Yan Menü)
     with st.sidebar:
-        st.title(f"♾️ Hoş Geldin, {st.session_state['aktif_user'].capitalize()}!")
-        st.markdown("💡 *Bir sorun mu var? Aşağıdaki kanallardan bize hızlıca ulaşabilir veya yapay zeka asistanımıza danışabilirsin.*")
-        
-        st.markdown("""
-        <style>
-        .sidebar-custom-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
-            color: white !important;
-            padding: 12px 20px;
-            border-radius: 12px;
-            text-decoration: none !important;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.1);
-            margin-bottom: 15px;
-            width: 100%;
-        }
-        .sidebar-custom-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
-            text-decoration: none !important;
-            color: #ffffff !important;
-        }
-        </style>
-        
-        <a href="mailto:matematikegitiminevu@gmail.com" class="sidebar-custom-button">📩 İletişim Maili</a>
-        <a href="https://wa.me/905061905437?text=Merhaba..." target="_blank" class="sidebar-custom-button">📞 WhatsApp İletişim</a>
-        <a href="https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc" target="_blank" class="sidebar-custom-button">✨ cyhnAI'a Sor</a>
-        """, unsafe_allow_html=True)
+            st.title(f"♾️ Hoş Geldin, {st.session_state['aktif_user'].capitalize()}!")
+            st.markdown("💡 *Bir sorun mu var? Aşağıdaki kanallardan bize hızlıca ulaşabilir veya yapay zeka asistanımıza danışabilirsin.*")
+            # --- ÖZEL BUTON TASARIMLARI (CSS) ---
+            st.markdown("""
+            <style>
+            .sidebar-custom-button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+                color: white !important;
+                padding: 12px 20px;
+                border-radius: 12px;
+                text-decoration: none !important;
+                font-weight: bold;
+                transition: all 0.3s ease;
+                border: 1px solid rgba(255,255,255,0.1);
+                margin-bottom: 15px;
+                width: 100%;
+            }
+            .sidebar-custom-button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+                text-decoration: none !important;
+                color: #ffffff !important;
+            }
+            .ai-button {
+                text-decoration: none !important;
+            }
+            .ai-button:hover {
+                text-decoration: none !important;
+            }
+                /* WhatsApp için marka rengi gradyanı */
+            .wp-button {
+                text-decoration: none !important;
+            }
+            .wp-button:hover {
+                text-decoration: none !important;
+            }
+            </style>
+            
+            <!-- İletişim Butonu -->
+            <a href="mailto:matematikegitiminevu@gmail.com" class="sidebar-custom-button">
+                📩 İletişim Maili
+            </a>
+            <a href="https://wa.me/905061905437?text=Merhaba,%20CYHN%20Matematik%20Portalı%20üzerinden%20ulaşıyorum.%20Bir%20konu%20hakkında%20bilgi%20almak%20istiyorum.%0D%0AKonu:%20" target="_blank" class="sidebar-custom-button wp-button">
+                📞 WhatsApp İletişim
+            </a>
 
-        st.divider()
-        if st.button("🔐 Güvenli Çıkış"):
-            giris_yapan_user = st.session_state.get("aktif_user")
-            if giris_yapan_user and giris_yapan_user in GLOBAL_SESSIONS:
-                del GLOBAL_SESSIONS[giris_yapan_user]
-            st.session_state["aktif_user"] = None
-            ana_menuye_don()
+            <!-- Yapay Zeka Butonu (Aynı Tasarım) -->
+            <a href="https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc" target="_blank" class="sidebar-custom-button ai-button">
+                ✨ cyhnAI'a Sor
+            </a>
+            """, unsafe_allow_html=True)
+
+            st.divider()
+            if st.button("🔐 Güvenli Çıkış"):
+                    st.session_state["aktif_user"] = None
+                    ana_menuye_don()
             
     st.title("📚 Matematik Ders Notları ve PDF Arşivi")
     kullanici = st.session_state["aktif_user"].capitalize()
-    st.markdown(f"> **Hoş geldin {kullanici}!** Bu arşiv, akademik yolculuğunda sana rehberlik etmek için özenle hazırlanmıştır.")
+    # --- YENİ EKLENEN MESAJ ---
+    st.markdown(f"""
+    > **Hoş geldin {kullanici}!** Bu arşiv, akademik yolculuğunda sana rehberlik etmek için özenle hazırlanmıştır. 
+    > Aşağıdaki sekmeleri kullanarak ders notlarına erişebilir, çalışmalarını derinleştirebilirsin. 
+    > Bir sorun olduğunda yan menüde bulunan iletişim kanallarından bana ulaşabilirsin. **Başarılar.**
+       """)
+    # --------------------------
     st.markdown("---")
 
-    # Hangi PDF'in açık olduğunu hafızada tutmak için durum tanımı (Varsayılan olarak ilk not açık gelir)
-    if "secilen_pdf_id" not in st.session_state:
-        st.session_state["secilen_pdf_id"] = "1Dz9nJXinGmgUajJH4Ljov7sSpMQv89Pn" # Algoritmaya Giriş
 
     # Konulara göre sekmeler (Tablar)
     tab0, tab1, tab2, tab3, tab4, tab5 = st.tabs([
@@ -364,52 +385,33 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
 
     with tab1:
         st.subheader("Algoritma ve Programlama Ders Notu")
-        st.warning("❗Görüntülemek istediğiniz notun butonuna basarak aşağıda anında inceleyebilirsiniz.")
-        
-        # Sizin eski orijinal 6'lı sütun tasarımınız
+        st.warning("❗Algoritma dersinde kullanılmış olan notlar aşağıdadır.")
         col1, col2, col3, col4, col5, col6 = st.columns(6)
         with col1:
             with st.container(border=True):
                 st.markdown("**Algoritmaya Giriş**")
-                if st.button("👁️ PDF'i Göster", key="btn_alg", use_container_width=True):
-                    st.session_state["secilen_pdf_id"] = "1Dz9nJXinGmgUajJH4Ljov7sSpMQv89Pn"
-                    st.rerun()
+                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1Dz9nJXinGmgUajJH4Ljov7sSpMQv89Pn/view?usp=sharing", use_container_width=True)
         with col2:
             with st.container(border=True):
                 st.markdown("**Python 1.kısım**")
-                if st.button("👁️ PDF'i Göster", key="btn_py1", use_container_width=True):
-                    st.session_state["secilen_pdf_id"] = "1eQdLmcqXiTYdhQ-n53IJbj6DFgrlvpl5"
-                    st.rerun()
+                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1eQdLmcqXiTYdhQ-n53IJbj6DFgrlvpl5/view?usp=sharing", use_container_width=True)
         with col3:
             with st.container(border=True):
                 st.markdown("**Python 2.kısım**")
-                if st.button("👁️ PDF'i Göster", key="btn_py2", use_container_width=True):
-                    st.session_state["secilen_pdf_id"] = "1WUxVwNK4uvNj8k23yeZtfWEVyOwMQH9o"
-                    st.rerun()
+                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1WUxVwNK4uvNj8k23yeZtfWEVyOwMQH9o/view?usp=sharing", use_container_width=True)
         with col4:
             with st.container(border=True):
                 st.markdown("**Dosya İşlemleri**")
-                if st.button("👁️ PDF'i Göster", key="btn_dosya", use_container_width=True):
-                    st.session_state["secilen_pdf_id"] = "1JLnAzmiXzytjKCUzUheIFzhPcj8gODml"
-                    st.rerun()
+                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1JLnAzmiXzytjKCUzUheIFzhPcj8gODml/view?usp=sharing", use_container_width=True)
         with col5:
             with st.container(border=True):
-                st.markdown("**Python Toplu**")
-                if st.button("👁️ PDF'i Göster", key="btn_toplu", use_container_width=True):
-                    st.session_state["secilen_pdf_id"] = "1pv5oPwe81IOMzNBb12q-GaQVL-VEnD7y"
-                    st.rerun()
+                st.markdown("**Python Notları Toplu**")
+                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1pv5oPwe81IOMzNBb12q-GaQVL-VEnD7y/view?usp=sharing", use_container_width=True)
         with col6:
             with st.container(border=True):
-                st.markdown("**💻 Özel Notlar**")
-                if st.button("👁️ PDF'i Göster", key="btn_ozel", use_container_width=True):
-                    st.session_state["secilen_pdf_id"] = "1OUdyrIEHGOgsj-ltJBPb4u6KxPuWLjNF"
-                    st.rerun()
-        
-        st.divider()
-        # Üstteki butonlardan hangisine basılırsa onun PDF'i mat bir şekilde burada açılır
-        embed_url = f"https://drive.google.com/file/d/{st.session_state['secilen_pdf_id']}/preview"
-        st.components.v1.iframe(embed_url, height=750, scrolling=True)
-                    
+                st.markdown("**💻 Özel Notlar (M.C.)**")
+                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1OUdyrIEHGOgsj-ltJBPb4u6KxPuWLjNF/view?usp=sharing", use_container_width=True)
+    
     with tab2:
         st.subheader("Lineer Cebir Ders Notları")
         st.warning("❗Website bakımı nedeniyle bu bölümdeki dosyalar güncellenmektedir. Lineer Cebir 1 PDF dosyası henüz yüklenmemiştir!")
@@ -421,8 +423,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         with col2:
             with st.container(border=True):
                 st.markdown("**Lineer Cebir 2**")
-                embed_url_lineer = "https://drive.google.com/file/d/1yk5VmfUbipnQR8IK6gWVHW9LMibP-zVR/preview"
-                st.components.v1.iframe(embed_url_lineer, height=700, scrolling=True)
+                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1yk5VmfUbipnQR8IK6gWVHW9LMibP-zVR/view?usp=sharing", use_container_width=True)
     
     with tab3:
         st.subheader("Analiz 1 ve 2 Ders Notları")
@@ -435,20 +436,19 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         with col2:
             with st.container(border=True):
                 st.markdown("**Analiz 2**")
-                embed_url_analiz = "https://drive.google.com/file/d/1_v-11l519_-I8VD759O0-0Vwo6oasGHB/preview"
-                st.components.v1.iframe(embed_url_analiz, height=700, scrolling=True)
+                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1_v-11l519_-I8VD759O0-0Vwo6oasGHB/view?usp=sharing", use_container_width=True)
 
     with tab4:
         st.subheader("Soyut Matematik Ders Notu")
         st.warning("❗Soyut matematik dersinde kullanılmış olan notlar aşağıdadır.")
-        embed_url_soyut = "https://drive.google.com/file/d/1AFXcBbNphoZDs41NjH-ofDbkePWk3emL/preview"
-        st.components.v1.iframe(embed_url_soyut, height=700, scrolling=True)
+        st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1AFXcBbNphoZDs41NjH-ofDbkePWk3emL/view?usp=sharing", use_container_width=True)
 
     with tab5:
         st.subheader("Türk Dili 2 Videoları")
         st.warning("❗Türk Dili 2 dersine ait UBYS sisteminde de yüklü olan videolara aşağıdaki bağlantıdan tıklayarak ulaşabilirsiniz.")
         st.link_button("Videoları Görüntüle", "https://bulut.nevsehir.edu.tr/index.php/s/eMP56Ty6dfeCdFc", use_container_width=True)
-        
+    
+
     # Alt Bilgi
     st.markdown("---")
     st.caption("🚀 CYHN Matematik Geliştirme Platformu © 2026")
