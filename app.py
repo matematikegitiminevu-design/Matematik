@@ -24,38 +24,31 @@ USERS = {
 
 
 # =========================================================================
-# 🛠️ SİTE GENEL BAKIM MODU AYARI (Tüm siteyi kapatmak için True yapın)
-BAKIM_MODU = True  
+# 🛠️ BAKIM MODU AYARLARI
+# =========================================================================
+BAKIM_MODU = True           # Tüm siteyi kapatmak için True yapın
+ARSIV_BAKIM_MODU = True     # Sadece ders arşivini kapatmak için True yapın
 
-# 📅 BAKIMIN BİTECEĞİ HEDEF TARİH VE SAAT (Yıl-Ay-Gün Saat:Dakika:Saniye)
 HEDEF_ZAMAN_GENEL = "2026-06-07 10:00:00"
+HEDEF_ZAMAN_ARSIV = "2026-06-07 10:00:00"
 # =========================================================================
 
 # 🔐 GİZLI URL PARAMETRESİ KONTROLÜ (Adres çubuğunda ?mod=admin araması yapar)
-# .lower() ekledik ki tarayıcı harfleri büyütse bile (ADMIN, Admin) hata çıkmasın.
 gizli_yonetici_izni = str(st.query_params.get("mod")).lower() == "admin"
 
-# 🎯 DEĞİŞEN KRİTİK SATIR BURASI: Yönetici izni YOKSA bakım ekranına sok
-if BAKIM_MODU and not gizli_yonetici_izni:
-    # Sayfa ayarlarını bakım moduna uygun yapıyoruz
-    st.set_page_config(page_title="CYHN | Website Bakım Çalışması", page_icon="🔧", layout="centered")
-    
-    from datetime import datetime
-    from zoneinfo import ZoneInfo # Saat dilimi yönetimi için kütüphane
-    # 🌍 Türkiye saat dilimini (İstanbul) baz alarak anlık zamanı çekiyoruz
+
+# --- SÜRE HESAPLAMA MOTORU (HTML Şablonu İçin) ---
+def kalan_sure_html_hazirla(hedef_zaman_str):
     tr_saat_dilimi = ZoneInfo("Europe/Istanbul")
-    # Süre hesaplama motoru
     simdi = datetime.now(tr_saat_dilimi)
-    hedef = datetime.strptime(HEDEF_ZAMAN_GENEL, "%Y-%m-%d %H:%M:%S").replace(tzinfo=tr_saat_dilimi)
+    hedef = datetime.strptime(hedef_zaman_str, "%Y-%m-%d %H:%M:%S").replace(tzinfo=tr_saat_dilimi)
     kalan_sure = hedef - simdi
     
-    # Eğer süre henüz dolmadıysa kalan zamanı hesapla ve HTML olarak biçimlendir
     if kalan_sure.total_seconds() > 0:
         gun = kalan_sure.days
         saat, artan = divmod(kalan_sure.seconds, 3600)
         dakika, _ = divmod(artan, 60)
-        
-        sayaç_html = f"""
+        return f"""
         <div style="display: flex; justify-content: center; gap: 15px; margin-top: 25px; margin-bottom: 10px;">
             <div style="background: #ef4444; padding: 12px 20px; border-radius: 10px; min-width: 70px; text-align: center;">
                 <span style="font-size: 1.8rem; font-weight: bold; display: block; color: white !important;">{gun}</span>
@@ -72,41 +65,40 @@ if BAKIM_MODU and not gizli_yonetici_izni:
         </div>
         """
     else:
-        sayaç_html = """
+        return """
         <p style="color: #10b981 !important; font-weight: bold; font-size: 1.2rem; margin-top: 25px; text-align: center; font-family: sans-serif;">
             🔄 Çalışmalar tamamlandı, sistem çok kısa süre içinde aktif olacaktır.
         </p>
         """
 
-    # Tüm siteyi kaplayan şık bakım kutusu şablonu
+
+# =========================================================================
+# 🛑 1. EN BAŞTAKİ KONTROL: SİTE GENEL BAKIM MODU
+# =========================================================================
+if BAKIM_MODU and not gizli_yonetici_izni:
+    st.set_page_config(page_title="CYHN | Website Bakım Çalışması", page_icon="🔧", layout="centered")
+    
+    sayaç_html = kalan_sure_html_hazirla(HEDEF_ZAMAN_GENEL)
     tam_sayfa_html = f"""
     <div style="text-align: center; background-color: #1e293b; padding: 40px; border-radius: 16px; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.5); font-family: sans-serif; margin-top: 30px;">
         <h2 style="color: white !important; margin-bottom: 15px;">🚧 Sistem Genel Bakım Çalışması</h2>
         <p style="font-size: 1.1rem; margin-top: 15px; color: #cbd5e1 !important; text-align: center;">
             Sizlere daha hızlı, güvenli ve performanslı bir deneyim sunabilmek amacıyla <b>CYHN Matematik Portalı</b> genel bir güncelleme çalışmasındadır.
         </p>
-        
         {sayaç_html}
-        
         <p style="color: #94a3b8 !important; font-size: 0.9rem; margin-top: 25px; text-align: center;">
             Sistem genelinde altyapı, veritabanı ve ders notları optimizasyonları yapılmaktadır. Anlayışınız için teşekkür ederiz.
         </p>
         <div style="margin-top: 30px; border-top: 1px solid #334155; padding-top: 15px; text-align: center;">
-            <p style="color: #FF4B4B !important; font-weight: bold; font-size: 1.1rem; margin-bottom: 5px;">
-                Muharrem CEYHAN
-            </p>
-            <p style="color: #64748b !important; font-size: 0.85rem; letter-spacing: 1px;">
-                CYHN MATEMATİK GELİŞTİRME PLATFORMU
-            </p>
+            <p style="color: #FF4B4B !important; font-weight: bold; font-size: 1.1rem; margin-bottom: 5px;">Muharrem CEYHAN</p>
+            <p style="color: #64748b !important; font-size: 0.85rem; letter-spacing: 1px;">CYHN MATEMATİK GELİŞTİRME PLATFORMU</p>
         </div>
     </div>
     """
-    
-    # Saf HTML olarak ekrana yansıtma (Çakışmaları önler)
     st.components.v1.html(tam_sayfa_html, height=520, scrolling=False)
-    
-    # Kodun geri kalanının çalışmasını tamamen durduruyoruz
     st.stop()
+
+
 #---SAYFA AYARLARI ---
 st.set_page_config(
     page_title="CYHN | Matematik Portalı", 
@@ -313,92 +305,6 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
 
 # --- 3. AŞAMA: DERS NOTLARI VE PDF ARŞİVİ ---
 elif st.session_state["sayfa"] == "notlar_arsivi":
-   # =========================================================================
-    # 🛠️ ARŞİV İÇİN BAKIM MODU AYARI (Açmak için True, kapatmak için False yapın)
-    ARSIV_BAKIM_MODU = True  
-    
-    # 📅 BAKIMIN BİTECEĞİ HEDEF TARİH VE SAAT (Yıl-Ay-Gün Saat:Dakika:Saniye)
-    HEDEF_ZAMAN = "2026-06-07 10:00:00"
-    # =========================================================================
-
-    if ARSIV_BAKIM_MODU:
-        from datetime import datetime
-        from zoneinfo import ZoneInfo # Saat dilimi yönetimi için kütüphane
-        # 🌍 Türkiye saat dilimini (İstanbul) tanımlıyoruz
-        tr_saat_dilimi = ZoneInfo("Europe/Istanbul")
-        # Süre hesaplama motoru
-        simdi = datetime.now(tr_saat_dilimi)
-        hedef = datetime.strptime(HEDEF_ZAMAN, "%Y-%m-%d %H:%M:%S").replace(tzinfo=tr_saat_dilimi)
-        kalan_sure = hedef - simdi
-        
-        # Eğer süre henüz dolmadıysa kalan zamanı hesapla ve HTML olarak biçimlendir
-        if kalan_sure.total_seconds() > 0:
-            gun = kalan_sure.days
-            saat, artan = divmod(kalan_sure.seconds, 3600)
-            dakika, _ = divmod(artan, 60)
-            
-            sayaç_html = f"""
-            <div style="display: flex; justify-content: center; gap: 15px; margin-top: 25px; margin-bottom: 10px;">
-                <div style="background: #ef4444; padding: 12px 20px; border-radius: 10px; min-width: 70px; text-align: center;">
-                    <span style="font-size: 1.8rem; font-weight: bold; display: block; color: white !important;">{gun}</span>
-                    <span style="font-size: 0.8rem; color: #fee2e2 !important; text-transform: uppercase; font-family: sans-serif;">Gün</span>
-                </div>
-                <div style="background: #3b82f6; padding: 12px 20px; border-radius: 10px; min-width: 70px; text-align: center;">
-                    <span style="font-size: 1.8rem; font-weight: bold; display: block; color: white !important;">{saat}</span>
-                    <span style="font-size: 0.8rem; color: #dbeafe !important; text-transform: uppercase; font-family: sans-serif;">Saat</span>
-                </div>
-                <div style="background: #10b981; padding: 12px 20px; border-radius: 10px; min-width: 70px; text-align: center;">
-                    <span style="font-size: 1.8rem; font-weight: bold; display: block; color: white !important;">{dakika}</span>
-                    <span style="font-size: 0.8rem; color: #d1fae5 !important; text-transform: uppercase; font-family: sans-serif;">Dk</span>
-                </div>
-            </div>
-            """
-        else:
-            sayaç_html = """
-            <p style="color: #10b981 !important; font-weight: bold; font-size: 1.2rem; margin-top: 25px; text-align: center; font-family: sans-serif;">
-                🔄 Güncelleme çalışmaları tamamlanmak üzere, sistem birazdan açılacaktır.
-            </p>
-            """
-
-        # 🛠️ TÜM BLOK TEK BİR HTML METNİ OLARAK BİRLEŞTİRİLİYOR (Hiçbir çakışma riski yok)
-        tam_sayfa_html = f"""
-        <div style="text-align: center; background-color: #1e293b; padding: 40px; border-radius: 16px; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.5); font-family: sans-serif;">
-            <h2 style="color: white !important; margin-bottom: 15px;">🔧 Arşiv Güncelleme Çalışması</h2>
-            <p style="font-size: 1.1rem; margin-top: 15px; color: #cbd5e1 !important; text-align: center;">
-                Değerli öğrencimiz, sizlere daha güncel, eksiksiz ve güvenli bir ders notu arşivi sunabilmek adına <b>Ders Notları Arşivi</b> kısa süreliğine bakıma alınmıştır.
-            </p>
-            
-            {sayaç_html}
-            
-            <p style="color: #94a3b8 !important; font-size: 0.9rem; margin-top: 25px; text-align: center;">
-                Lineer Cebir ve Analiz notları güncellenmektedir. Anlayışınız için teşekkür ederiz.
-            </p>
-            <div style="margin-top: 30px; border-top: 1px solid #334155; padding-top: 15px; text-align: center;">
-                <p style="color: #FF4B4B !important; font-weight: bold; font-size: 1.1rem; margin-bottom: 5px;">
-                    Muharrem CEYHAN
-                </p>
-                <p style="color: #64748b !important; font-size: 0.85rem; letter-spacing: 1px;">
-                    CYHN MATEMATİK GELİŞTİRME PLATFORMU
-                </p>
-            </div>
-        </div>
-        """
-        
-        # Streamlit'in ham HTML oynatıcısını çağırıyoruz (Yükseklik 480px tam oturacaktır)
-        st.components.v1.html(tam_sayfa_html, height=480, scrolling=False)
-        
-        # Ana Menüye Dönüş Butonu
-        st.write("")
-        c1, c2, c3 = st.columns([1.5, 1, 1.5])
-        with c2:
-            if st.button("⬅ Ana Menüye Dön", use_container_width=True):
-                ana_menuye_don()
-                
-        st.stop()
-
-    # -------------------------------------------------------------------------
-    # EĞER BAKIM MODU FALSE İSE SİSTEM BURADAN İTİBAREN NORMAL ÇALIŞIR:
-    # -------------------------------------------------------------------------
     with st.spinner("Matematik Portalı Hazırlanıyor..."):
         import time
         time.sleep(1)
