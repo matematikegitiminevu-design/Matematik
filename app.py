@@ -279,16 +279,57 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
 
 # --- 3. AŞAMA: DERS NOTLARI VE PDF ARŞİVİ ---
 elif st.session_state["sayfa"] == "notlar_arsivi":
-    # =========================================================================
+   # =========================================================================
     # 🛠️ ARŞİV İÇİN BAKIM MODU AYARI (Açmak için True, kapatmak için False yapın)
     ARSIV_BAKIM_MODU = True  
+    
+    # 📅 BAKIMIN BİTECEĞİ HEDEF TARİH VE SAAT (Yıl, Ay, Gün, Saat, Dakika)
+    # Örnek: 10 Haziran 2026, Saat 18:00'e kadar geri sayım yapar.
+    HEDEF_ZAMAN = "2026-06-10 18:00:00"
     # =========================================================================
 
     if ARSIV_BAKIM_MODU:
-        # Arşive özel şık ve ortalanmış bir bakım kutusu tasarımı
-        st.markdown("""
+        from datetime import datetime
+        
+        # Süre hesaplama mantığı
+        simdi = datetime.now()
+        hedef = datetime.strptime(HEDEF_ZAMAN, "%Y-%m-%d %H:%M:%00")
+        kalan_sure = hedef - simdi
+        
+        # Eğer süre henüz dolmadıysa kalan zamanı hesapla
+        if kalan_sure.total_seconds() > 0:
+            gun = kalan_sure.days
+            saat, artan = divmod(kalan_sure.seconds, 3600)
+            dakika, _ = divmod(artan, 60)
+            
+            sayaç_html = f"""
+            <div style="display: flex; justify-content: center; gap: 15px; margin-top: 25px; margin-bottom: 10px;">
+                <div style="background: #ef4444; padding: 12px 20px; border-radius: 10px; min-width: 70px;">
+                    <span style="font-size: 1.8rem; font-weight: bold; display: block; color: white !important;">{gun}</span>
+                    <span style="font-size: 0.8rem; color: #fee2e2 !important; text-transform: uppercase;">Gün</span>
+                </div>
+                <div style="background: #3b82f6; padding: 12px 20px; border-radius: 10px; min-width: 70px;">
+                    <span style="font-size: 1.8rem; font-weight: bold; display: block; color: white !important;">{saat}</span>
+                    <span style="font-size: 0.8rem; color: #dbeafe !important; text-transform: uppercase;">Saat</span>
+                </div>
+                <div style="background: #10b981; padding: 12px 20px; border-radius: 10px; min-width: 70px;">
+                    <span style="font-size: 1.8rem; font-weight: bold; display: block; color: white !important;">{dakika}</span>
+                    <span style="font-size: 0.8rem; color: #d1fae5 !important; text-transform: uppercase;">Dk</span>
+                </div>
+            </div>
+            """
+        else:
+            # Süre dolmuşsa ama bakım modu hala True unutulmuşsa görünecek yazı
+            sayaç_html = """
+            <p style="color: #10b981 !important; font-weight: bold; font-size: 1.2rem; margin-top: 25px;">
+                🔄 Güncelleme çalışmaları tamamlanmak üzere, sistem birazdan açılacaktır.
+            </p>
+            """
+
+        # Arşive özel şık ve ortalanmış bakım kutusu tasarımı
+        st.markdown(f"""
             <style>
-            .arsiv-bakim-kutusu {
+            .arsiv-bakim-kutusu {{
                 text-align: center;
                 background-color: #1e293b;
                 padding: 40px;
@@ -296,8 +337,8 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 border: 1px solid #334155;
                 box-shadow: 0 10px 25px rgba(0,0,0,0.5);
                 margin-top: 50px;
-            }
-            h2, p { color: white !important; }
+            }}
+            h2, p {{ color: white !important; }}
             </style>
             
             <div class="arsiv-bakim-kutusu">
@@ -305,7 +346,10 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 <p style="font-size: 1.1rem; margin-top: 15px; color: #cbd5e1 !important;">
                     Değerli öğrencimiz, sizlere daha güncel, eksiksiz ve güvenli bir ders notu arşivi sunabilmek adına <b>Ders Notları Arşivi</b> kısa süreliğine bakıma alınmıştır.
                 </p>
-                <p style="color: #94a3b8 !important; font-size: 0.9rem; margin-top: 20px;">
+                
+                {sayaç_html}
+                
+                <p style="color: #94a3b8 !important; font-size: 0.9rem; margin-top: 25px;">
                     Lineer Cebir ve Analiz notları güncellenmektedir. Anlayışınız için teşekkür ederiz.
                 </p>
                 <div style="margin-top: 30px; border-top: 1px solid #334155; padding-top: 15px;">
