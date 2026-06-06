@@ -27,7 +27,7 @@ USERS = {
 # =========================================================================
 # 🛠️ BAKIM MODU AYARLARI
 # =========================================================================
-BAKIM_MODU = True           # Tüm siteyi kapatmak için True yapın
+BAKIM_MODU = False           # Tüm siteyi kapatmak için True yapın
 ARSIV_BAKIM_MODU = True     # Sadece ders arşivini kapatmak için True yapın
 
 HEDEF_ZAMAN_GENEL = "2026-06-07 10:00:00"
