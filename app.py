@@ -71,12 +71,12 @@ USERS = {
     
 }
 
-# 🛠️ 1. EKLEME: GLOBAL OTURUM KİLİT SİSTEMİ (USERS altına gelecek)
-if "global_aktif_oturumlar" not in st.runtime.scriptrunner.script_run_context.get_script_run_context().__dict__:
-    import sys
-    this = sys.modules[__name__]
-    if not hasattr(this, 'GLOBAL_SESSIONS'):
-        this.GLOBAL_SESSIONS = {}    
+# 🛠️ 1. DÜZELTME: HATA VERMEYEN GLOBAL OTURUM SİSTEMİ
+@st.cache_resource
+def get_global_sessions():
+    return {}
+
+GLOBAL_SESSIONS = get_global_sessions()   
 
 
 #---SAYFA AYARLARI ---
@@ -253,22 +253,22 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 
                 # 2. Kontrol: Kullanıcı adı ve Şifre eşleşmesi (YENİ VE DÜZELTİLEN KISIM BURASI)
                 elif kullanici_adi in USERS and USERS[kullanici_adi] == sifre:
-                    import sys
-                    this = sys.modules[__name__]
+                    # Bu tarayıcının benzersiz sistem kimliğini alıyoruz
+                    try:
+                        ctx = st.runtime.scriptrunner.script_run_context.get_script_run_context()
+                        mevcut_cihaz_id = ctx.session_id
+                    except:
+                        mevcut_cihaz_id = "default_session"
                     
-                    # Bu tarayıcının benzersiz sistem kimliğini (Session ID) alıyoruz
-                    ctx = st.runtime.scriptrunner.script_run_context.get_script_run_context()
-                    mevcut_cihaz_id = ctx.session_id
-                    
-                    # Eğer bu kullanıcı adı için hafızada kayıtlı başka bir cihaz varsa engelle
-                    if kullanici_adi in this.GLOBAL_SESSIONS:
-                        kayitli_cihaz_id = this.GLOBAL_SESSIONS[kullanici_adi]
+                    # Eğer bu kullanıcı adı için havızada kayıtlı başka bir cihaz varsa engelle
+                    if kullanici_adi in GLOBAL_SESSIONS:
+                        kayitli_cihaz_id = GLOBAL_SESSIONS[kullanici_adi]
                         if kayitli_cihaz_id != mevcut_cihaz_id:
                             st.error("❌ Bu hesap şu anda başka bir cihazda aktif! Aynı anda tek bir cihazdan giriş yapabilirsiniz.")
                             st.stop()
 
-                    # Oda boşsa veya giren kişi zaten kilidi elinde tutan kişiyse mühürle
-                    this.GLOBAL_SESSIONS[kullanici_adi] = mevcut_cihaz_id
+                    # Oda boşsa mühürle
+                    GLOBAL_SESSIONS[kullanici_adi] = mevcut_cihaz_id
                     
                     # Başarılı giriş popup mesajı (Ekranın sağ altında görünür)
                     st.toast(f"🔑 Giriş Başarılı! Hoş geldin {kullanici_adi.capitalize()}.🚀", icon="🎉")
@@ -366,13 +366,11 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
 
             st.divider()
             if st.button("🔐 Güvenli Çıkış"):
-                    import sys
-                    this = sys.modules[__name__]
                     giris_yapan_user = st.session_state.get("aktif_user")
                 
                     # Çıkış yaparken kullanıcının mühürünü sunucudan siliyoruz
-                    if giris_yapan_user and giris_yapan_user in this.GLOBAL_SESSIONS:
-                        del this.GLOBAL_SESSIONS[giriş_yapan_user]
+                    if giris_yapan_user and giris_yapan_user in GLOBAL_SESSIONS:
+                        del GLOBAL_SESSIONS[giris_yapan_user]
                     st.session_state["aktif_user"] = None
                     ana_menuye_don()
             
