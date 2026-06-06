@@ -17,7 +17,7 @@ if BAKIM_MODU:
     # 🌍 Türkiye saat dilimini (İstanbul) baz alarak anlık zamanı çekiyoruz
     tr_saat_dilimi = ZoneInfo("Europe/Istanbul")
     # Süre hesaplama motoru
-    simdi = datetime.now()
+    simdi = datetime.now(tr_saat_dilimi)
     hedef = datetime.strptime(HEDEF_ZAMAN_GENEL, "%Y-%m-%d %H:%M:%S")
     kalan_sure = hedef - simdi
     
