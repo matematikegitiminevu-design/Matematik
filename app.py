@@ -311,7 +311,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
 elif st.session_state["sayfa"] == "notlar_arsivi":
    # =========================================================================
     # 🛠️ ARŞİV İÇİN BAKIM MODU AYARI (Açmak için True, kapatmak için False yapın)
-    ARSIV_BAKIM_MODU = True  
+    ARSIV_BAKIM_MODU = False  
     
     # 📅 BAKIMIN BİTECEĞİ HEDEF TARİH VE SAAT (Yıl-Ay-Gün Saat:Dakika:Saniye)
     HEDEF_ZAMAN = "2026-06-07 10:00:00"
