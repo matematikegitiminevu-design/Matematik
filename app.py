@@ -1,6 +1,7 @@
 import streamlit as st
 from datetime import datetime
 from zoneinfo import ZoneInfo
+import time
 
 #---KULLANICI İSİMLERİ VE ŞİFRELERİ ---
 USERS = {
@@ -306,6 +307,30 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
 
 # --- 3. AŞAMA: DERS NOTLARI VE PDF ARŞİVİ ---
 elif st.session_state["sayfa"] == "notlar_arsivi":
+    # 🌟 BURADAN: (BAKIM MODU KONTROLÜ)
+    if ARSIV_BAKIM_MODU and not gizli_yonetici_izni:
+        with st.sidebar:
+            if st.button("⬅ Ana Menüye Dön / Çıkış"):
+                st.session_state["aktif_user"] = None
+                ana_menuye_don()
+                
+        sayaç_arsiv_html = kalan_sure_html_hazirla(HEDEF_ZAMAN_ARSIV)
+        tam_sayfa_arsiv_html = f"""
+        <div style="text-align: center; background-color: #1e293b; padding: 40px; border-radius: 16px; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.5); font-family: sans-serif; margin-top: 30px;">
+            <h2 style="color: white !important; margin-bottom: 15px;">🚧 Ders Notları Arşivi Bakımda</h2>
+            <p style="font-size: 1.1rem; margin-top: 15px; color: #cbd5e1 !important; text-align: center;">
+                Ders notları, PDF dokümanları ve haftalık programlar optimize edilmektedir. Arşivimiz kısa süre sonra erişime açılacaktır.
+            </p>
+            {sayaç_arsiv_html}
+            <div style="margin-top: 30px; border-top: 1px solid #334155; padding-top: 15px; text-align: center;">
+                <p style="color: #FF4B4B !important; font-weight: bold; font-size: 1.1rem; margin-bottom: 5px;">Muharrem CEYHAN</p>
+                <p style="color: #64748b !important; font-size: 0.85rem; letter-spacing: 1px;">CYHN MATEMATİK GELİŞTİRME PLATFORMU</p>
+            </div>
+        </div>
+        """
+        st.components.v1.html(tam_sayfa_arsiv_html, height=450, scrolling=False)
+        st.stop()
+        
     with st.spinner("Matematik Portalı Hazırlanıyor..."):
         import time
         time.sleep(1)
