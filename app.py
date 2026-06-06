@@ -67,6 +67,8 @@ USERS = {
     "gülsüm": "keve26",
     "seyit": "seyitcantör26",
     "hicran": "hicranünal26",
+    "duygu": "duyguongeli26",
+    "admin3": "adminşifre3",
     "admin3": "adminşifre3"
     
 }
