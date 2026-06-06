@@ -25,10 +25,10 @@ USERS = {
 
 # =========================================================================
 # 🛠️ SİTE GENEL BAKIM MODU AYARI (Tüm siteyi kapatmak için True yapın)
-BAKIM_MODU = False  
+BAKIM_MODU = True  
 
 # 📅 BAKIMIN BİTECEĞİ HEDEF TARİH VE SAAT (Yıl-Ay-Gün Saat:Dakika:Saniye)
-HEDEF_ZAMAN_GENEL = "2026-06-06 23:49:00"
+HEDEF_ZAMAN_GENEL = "2026-06-07 10:00:00"
 # =========================================================================
 # 🔐 GİZLI URL PARAMETRESİ KONTROLÜ (Adres çubuğunda ?mod=admin araması yapar)
 gizli_yonetici_izni = st.query_params.get("mod") == "admin"
