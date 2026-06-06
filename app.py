@@ -317,10 +317,12 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
 
     if ARSIV_BAKIM_MODU:
         from datetime import datetime
-        
+        from zoneinfo import ZoneInfo # Saat dilimi yönetimi için kütüphane
+        # 🌍 Türkiye saat dilimini (İstanbul) tanımlıyoruz
+        tr_saat_dilimi = ZoneInfo("Europe/Istanbul")
         # Süre hesaplama motoru
-        simdi = datetime.now()
-        hedef = datetime.strptime(HEDEF_ZAMAN, "%Y-%m-%d %H:%M:%S")
+        simdi = datetime.now(tr_saat_dilimi)
+        hedef = datetime.strptime(HEDEF_ZAMAN_GENEL, "%Y-%m-%d %H:%M:%S").replace(tzinfo=tr_saat_dilimi)
         kalan_sure = hedef - simdi
         
         # Eğer süre henüz dolmadıysa kalan zamanı hesapla ve HTML olarak biçimlendir
