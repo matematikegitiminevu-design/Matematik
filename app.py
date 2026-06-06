@@ -2,7 +2,7 @@ import streamlit as st
 
 # =========================================================================
 # 🛠️ SİTE GENEL BAKIM MODU AYARI (Tüm siteyi kapatmak için True yapın)
-BAKIM_MODU = True  
+BAKIM_MODU = False  
 
 # 📅 BAKIMIN BİTECEĞİ HEDEF TARİH VE SAAT (Yıl-Ay-Gün Saat:Dakika:Saniye)
 HEDEF_ZAMAN_GENEL = "2026-06-06 23:49:00"
