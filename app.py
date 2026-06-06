@@ -312,7 +312,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     ARSIV_BAKIM_MODU = True  
     
     # 📅 BAKIMIN BİTECEĞİ HEDEF TARİH VE SAAT (Yıl-Ay-Gün Saat:Dakika:Saniye)
-    HEDEF_ZAMAN = "2026-06-06 23:54:00"
+    HEDEF_ZAMAN = "2026-06-07 10:00:00"
     # =========================================================================
 
     if ARSIV_BAKIM_MODU:
