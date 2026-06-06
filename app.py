@@ -327,9 +327,9 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             """
 
         # Arşive özel şık ve ortalanmış bakım kutusu tasarımı
-        st.markdown(f"""
+        st.markdown("""
             <style>
-            .arsiv-bakim-kutusu {{
+            .arsiv-bakim-kutusu {
                 text-align: center;
                 background-color: #1e293b;
                 padding: 40px;
@@ -337,31 +337,35 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 border: 1px solid #334155;
                 box-shadow: 0 10px 25px rgba(0,0,0,0.5);
                 margin-top: 50px;
-            }}
-            h2, p {{ color: white !important; }}
+            }
+            .arsiv-bakim-kutusu h2, .arsiv-bakim-kutusu p { color: white !important; }
             </style>
-            
-            <div class="arsiv-bakim-kutusu">
-                <h2>🔧 Arşiv Güncelleme Çalışması</h2>
-                <p style="font-size: 1.1rem; margin-top: 15px; color: #cbd5e1 !important;">
-                    Değerli öğrencimiz, sizlere daha güncel, eksiksiz ve güvenli bir ders notu arşivi sunabilmek adına <b>Ders Notları Arşivi</b> kısa süreliğine bakıma alınmıştır.
-                </p>
-                
-                {sayaç_html}
-                
-                <p style="color: #94a3b8 !important; font-size: 0.9rem; margin-top: 25px;">
-                    Lineer Cebir ve Analiz notları güncellenmektedir. Anlayışınız için teşekkür ederiz.
-                </p>
-                <div style="margin-top: 30px; border-top: 1px solid #334155; padding-top: 15px;">
-                    <p style="color: #FF4B4B !important; font-weight: bold; font-size: 1.1rem; margin-bottom: 5px;">
-                        Muharrem CEYHAN
-                    </p>
-                    <p style="color: #64748b !important; font-size: 0.85rem; letter-spacing: 1px;">
-                        CYHN MATEMATİK GELİŞTİRME PLATFORMU
-                    </p>
-                </div>
-            </div>
         """, unsafe_allow_html=True)
+        
+        # HTML İçeriği ve Sayacın Birleştirilmesi
+        ana_kutu_html = f"""
+        <div class="arsiv-bakim-kutusu">
+            <h2>🔧 Arşiv Güncelleme Çalışması</h2>
+            <p style="font-size: 1.1rem; margin-top: 15px; color: #cbd5e1 !important;">
+                Değerli öğrencimiz, sizlere daha güncel, eksiksiz ve güvenli bir ders notu arşivi sunabilmek adına <b>Ders Notları Arşivi</b> kısa süreliğine bakıma alınmıştır.
+            </p>
+            
+            {sayaç_html}
+            
+            <p style="color: #94a3b8 !important; font-size: 0.9rem; margin-top: 25px;">
+                Lineer Cebir ve Analiz notları güncellenmektedir. Anlayışınız için teşekkür ederiz.
+            </p>
+            <div style="margin-top: 30px; border-top: 1px solid #334155; padding-top: 15px;">
+                <p style="color: #FF4B4B !important; font-weight: bold; font-size: 1.1rem; margin-bottom: 5px;">
+                    Muharrem CEYHAN
+                </p>
+                <p style="color: #64748b !important; font-size: 0.85rem; letter-spacing: 1px;">
+                    CYHN MATEMATİK GELİŞTİRME PLATFORMU
+                </p>
+            </div>
+        </div>
+        """
+        st.markdown(ana_kutu_html, unsafe_allow_html=True)
         
         # Kullanıcının bakım modundayken de ana menüye dönebilmesi için şık bir buton ekliyoruz
         st.write("")
