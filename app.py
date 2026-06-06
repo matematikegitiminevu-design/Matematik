@@ -5,7 +5,7 @@ import streamlit as st
 BAKIM_MODU = True  
 
 # 📅 BAKIMIN BİTECEĞİ HEDEF TARİH VE SAAT (Yıl-Ay-Gün Saat:Dakika:Saniye)
-HEDEF_ZAMAN_GENEL = "2026-06-06 23:00:00"
+HEDEF_ZAMAN_GENEL = "2026-06-06 21:00:00"
 # =========================================================================
 
 if BAKIM_MODU:
