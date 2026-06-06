@@ -13,7 +13,9 @@ if BAKIM_MODU:
     st.set_page_config(page_title="CYHN | Website Bakım Çalışması", page_icon="🔧", layout="centered")
     
     from datetime import datetime
-    
+    from zoneinfo import ZoneInfo # Saat dilimi yönetimi için kütüphane
+    # 🌍 Türkiye saat dilimini (İstanbul) baz alarak anlık zamanı çekiyoruz
+    tr_saat_dilimi = ZoneInfo("Europe/Istanbul")
     # Süre hesaplama motoru
     simdi = datetime.now()
     hedef = datetime.strptime(HEDEF_ZAMAN_GENEL, "%Y-%m-%d %H:%M:%S")
