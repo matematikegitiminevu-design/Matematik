@@ -277,6 +277,59 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
 
 # --- 3. AŞAMA: DERS NOTLARI VE PDF ARŞİVİ ---
 elif st.session_state["sayfa"] == "notlar_arsivi":
+    # =========================================================================
+    # 🛠️ ARŞİV İÇİN BAKIM MODU AYARI (Açmak için True, kapatmak için False yapın)
+    ARSIV_BAKIM_MODU = True  
+    # =========================================================================
+
+    if ARSIV_BAKIM_MODU:
+        # Arşive özel şık ve ortalanmış bir bakım kutusu tasarımı
+        st.markdown("""
+            <style>
+            .arsiv-bakim-kutusu {
+                text-align: center;
+                background-color: #1e293b;
+                padding: 40px;
+                border-radius: 16px;
+                border: 1px solid #334155;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+                margin-top: 50px;
+            }
+            h2, p { color: white !important; }
+            </style>
+            
+            <div class="arsiv-bakim-kutusu">
+                <h2>🔧 Arşiv Güncelleme Çalışması</h2>
+                <p style="font-size: 1.1rem; margin-top: 15px; color: #cbd5e1 !important;">
+                    Değerli öğrencimiz, sizlere daha güncel, eksiksiz ve güvenli bir ders notu arşivi sunabilmek adına <b>Ders Notları Arşivi</b> kısa süreliğine bakıma alınmıştır.
+                </p>
+                <p style="color: #94a3b8 !important; font-size: 0.9rem; margin-top: 20px;">
+                    Lineer Cebir ve Analiz notları güncellenmektedir. Anlayışınız için teşekkür ederiz.
+                </p>
+                <div style="margin-top: 30px; border-top: 1px solid #334155; padding-top: 15px;">
+                    <p style="color: #FF4B4B !important; font-weight: bold; font-size: 1.1rem; margin-bottom: 5px;">
+                        Muharrem CEYHAN
+                    </p>
+                    <p style="color: #64748b !important; font-size: 0.85rem; letter-spacing: 1px;">
+                        CYHN MATEMATİK GELİŞTİRME PLATFORMU
+                    </p>
+                </div>
+            </div>
+        """, unsafe_allow_html=True)
+        
+        # Kullanıcının bakım modundayken de ana menüye dönebilmesi için şık bir buton ekliyoruz
+        st.write("")
+        c1, c2, c3 = st.columns([1.5, 1, 1.5])
+        with c2:
+            if st.button("⬅ Ana Menüye Dön", use_container_width=True):
+                ana_menuye_don()
+                
+        # Kodun altındaki ders notlarının yüklenmesini tamamen durduruyoruz
+        st.stop()
+
+    # -------------------------------------------------------------------------
+    # EĞER BAKIM MODU FALSE İSE KOD NORMAL ŞEKİLDE BURADAN ÇALIŞMAYA DEVAM EDER:
+    # -------------------------------------------------------------------------
     with st.spinner("Matematik Portalı Hazırlanıyor..."):
         import time
         time.sleep(1)
