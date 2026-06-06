@@ -30,7 +30,8 @@ BAKIM_MODU = False
 # 📅 BAKIMIN BİTECEĞİ HEDEF TARİH VE SAAT (Yıl-Ay-Gün Saat:Dakika:Saniye)
 HEDEF_ZAMAN_GENEL = "2026-06-06 23:49:00"
 # =========================================================================
-
+# 🔐 GİZLI URL PARAMETRESİ KONTROLÜ (Adres çubuğunda ?mod=admin araması yapar)
+gizli_yonetici_izni = st.query_params.get("mod") == "admin"
 if BAKIM_MODU:
     # Sayfa ayarlarını bakım moduna uygun yapıyoruz
     st.set_page_config(page_title="CYHN | Website Bakım Çalışması", page_icon="🔧", layout="centered")
