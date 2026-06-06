@@ -30,9 +30,13 @@ BAKIM_MODU = True
 # 📅 BAKIMIN BİTECEĞİ HEDEF TARİH VE SAAT (Yıl-Ay-Gün Saat:Dakika:Saniye)
 HEDEF_ZAMAN_GENEL = "2026-06-07 10:00:00"
 # =========================================================================
+
 # 🔐 GİZLI URL PARAMETRESİ KONTROLÜ (Adres çubuğunda ?mod=admin araması yapar)
-gizli_yonetici_izni = st.query_params.get("mod") == "admin"
-if BAKIM_MODU:
+# .lower() ekledik ki tarayıcı harfleri büyütse bile (ADMIN, Admin) hata çıkmasın.
+gizli_yonetici_izni = str(st.query_params.get("mod")).lower() == "admin"
+
+# 🎯 DEĞİŞEN KRİTİK SATIR BURASI: Yönetici izni YOKSA bakım ekranına sok
+if BAKIM_MODU and not gizli_yonetici_izni:
     # Sayfa ayarlarını bakım moduna uygun yapıyoruz
     st.set_page_config(page_title="CYHN | Website Bakım Çalışması", page_icon="🔧", layout="centered")
     
@@ -79,7 +83,7 @@ if BAKIM_MODU:
     <div style="text-align: center; background-color: #1e293b; padding: 40px; border-radius: 16px; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.5); font-family: sans-serif; margin-top: 30px;">
         <h2 style="color: white !important; margin-bottom: 15px;">🚧 Sistem Genel Bakım Çalışması</h2>
         <p style="font-size: 1.1rem; margin-top: 15px; color: #cbd5e1 !important; text-align: center;">
-            Sizlere daha hızlı, güvenli ve performanslı bir deneyim sunabilmek amacıyla <b>CYHN Matematik Portalı</b> genel bir güncelleme çalışmasındadır.
+            Sizlere daha hızlı, güvenli Navy ve performanslı bir deneyim sunabilmek amacıyla <b>CYHN Matematik Portalı</b> genel bir güncelleme çalışmasındadır.
         </p>
         
         {sayaç_html}
@@ -103,7 +107,6 @@ if BAKIM_MODU:
     
     # Kodun geri kalanının çalışmasını tamamen durduruyoruz
     st.stop()
-
 #---SAYFA AYARLARI ---
 st.set_page_config(
     page_title="CYHN | Matematik Portalı", 
