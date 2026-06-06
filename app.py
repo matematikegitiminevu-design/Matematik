@@ -260,15 +260,12 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                     except:
                         mevcut_cihaz_id = "default_session"
                     
-                    # Eğer bu kullanıcı adı için havızada kayıtlı başka bir cihaz varsa engelle
-                    if kullanici_adi in GLOBAL_SESSIONS:
-                        kayitli_cihaz_id = GLOBAL_SESSIONS[kullanici_adi]
-                        if kayitli_cihaz_id != mevcut_cihaz_id:
-                            st.error("❌ Bu hesap şu anda başka bir cihazda aktif! Aynı anda tek bir cihazdan giriş yapabilirsiniz.")
-                            st.stop()
-
-                    # Oda boşsa mühürle
-                    GLOBAL_SESSIONS[kullanici_adi] = mevcut_cihaz_id
+                    # --- BAŞKASI GİRMİŞ Mİ KONTROLÜ ---
+                    if kullanici_adi in GLOBAL_SESSIONS and GLOBAL_SESSIONS[kullanici_adi] != mevcut_cihaz_id:
+                        st.error("❌ Bu hesap şu anda başka bir cihazda aktif! Aynı anda tek bir cihazdan giriş yapabilirsiniz.")
+                    else:
+                        # Eğer oda boşsa veya giren kişi zaten bu cihazsa mühürle ve içeri al
+                        GLOBAL_SESSIONS[kullanici_adi] = mevcut_cihaz_id
                     
                     # Başarılı giriş popup mesajı (Ekranın sağ altında görünür)
                     st.toast(f"🔑 Giriş Başarılı! Hoş geldin {kullanici_adi.capitalize()}.🚀", icon="🎉")
