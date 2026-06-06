@@ -2,7 +2,7 @@ import streamlit as st
 
 # ==========================================
 # 🛠️ BAKIM MODU AYARI (Açmak için True, kapatmak için False yapın)
-BAKIM_MODU = True
+BAKIM_MODU = False
 # ==========================================
 
 if BAKIM_MODU:
@@ -70,14 +70,6 @@ USERS = {
     "admin3": "adminşifre3"
     
 }
-
-# 🛠️ 1. DÜZELTME: HATA VERMEYEN GLOBAL OTURUM SİSTEMİ
-@st.cache_resource
-def get_global_sessions():
-    return {}
-
-GLOBAL_SESSIONS = get_global_sessions()   
-
 
 #---SAYFA AYARLARI ---
 st.set_page_config(
@@ -253,20 +245,6 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 
                 # 2. Kontrol: Kullanıcı adı ve Şifre eşleşmesi (YENİ VE DÜZELTİLEN KISIM BURASI)
                 elif kullanici_adi in USERS and USERS[kullanici_adi] == sifre:
-                    # Bu tarayıcının benzersiz sistem kimliğini alıyoruz
-                    try:
-                        ctx = st.runtime.scriptrunner.script_run_context.get_script_run_context()
-                        mevcut_cihaz_id = ctx.session_id
-                    except:
-                        mevcut_cihaz_id = "default_session"
-                    
-                    # --- BAŞKASI GİRMİŞ Mİ KONTROLÜ ---
-                    if kullanici_adi in GLOBAL_SESSIONS and GLOBAL_SESSIONS[kullanici_adi] != mevcut_cihaz_id:
-                        st.error("❌ Bu hesap şu anda başka bir cihazda aktif! Aynı anda tek bir cihazdan giriş yapabilirsiniz.")
-                    else:
-                        # Eğer oda boşsa veya giren kişi zaten bu cihazsa mühürle ve içeri al
-                        GLOBAL_SESSIONS[kullanici_adi] = mevcut_cihaz_id
-                    
                     # Başarılı giriş popup mesajı (Ekranın sağ altında görünür)
                     st.toast(f"🔑 Giriş Başarılı! Hoş geldin {kullanici_adi.capitalize()}.🚀", icon="🎉")
                     # Havai fişek/balon efekti
