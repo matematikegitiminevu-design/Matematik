@@ -181,7 +181,10 @@ def pdf_popup_ac(drive_id):
     kullanici = st.session_state.get("aktif_user", "Bilinmeyen Kullanıcı").upper()
     su_an = datetime.now().strftime("%d.%m.%Y")
 
-    # Tüm koruma katmanlarını ve PDF'i tek bir HTML içinde birleştiriyoruz
+    # 1. Filigranı Görüntüleme Alanından Çıkarıp Başlığın Altına "Alt Yazı" Olarak Ekliyoruz
+    st.caption(f"🔒 Bu döküman {kullanici} adına lisanslanmıştır. • {su_an}")
+
+    # 2. Görüntülenen alanın içindeki filigranı tamamen sildik, sadece kalkan ve PDF kaldı
     tam_html = f"""
     <div style="position: relative; width: 100%; height: 650px; overflow: hidden; border-radius: 8px; background-color: #1e1e1e;">
         
@@ -196,27 +199,6 @@ def pdf_popup_ac(drive_id):
             cursor: default;
         "></div>
         
-        <div style="
-            position: absolute;
-            top: 60px; /* Üst siyah barın hemen altına hizalar */
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 1rem;
-            color: rgba(239, 68, 68, 0.35); /* Görünürlüğü bir tık artırdık, yukarıda çok asil duracak */
-            font-weight: bold;
-            text-align: center;
-            z-index: 9998;
-            pointer-events: none;
-            white-space: nowrap;
-            font-family: sans-serif;
-            letter-spacing: 0.5px;
-            background-color: rgba(30, 30, 30, 0.85); /* Arkadaki yazılarla karışmasın diye hafif gölgeli arka plan */
-            padding: 4px 15px;
-            border-radius: 20px;
-        ">
-            🔒 BU DÖKÜMAN {kullanici} ADINA LİSANSLANMIŞTIR • {su_an}
-        </div>
-        
         <iframe src="{embed_link}#toolbar=0&navpanes=0" 
                 width="100%" 
                 height="100%" 
@@ -229,7 +211,6 @@ def pdf_popup_ac(drive_id):
 
     # Hepsini tek seferde Streamlit bileşeni olarak ekrana basıyoruz
     st.components.v1.html(tam_html, height=660)
-
 # --- 1. AŞAMA: ANA KARŞILAMA MENÜSÜ ---
 if st.session_state["sayfa"] == "ana_menu":
     col1, col2, col3 = st.columns([0.5, 3, 0.5])
