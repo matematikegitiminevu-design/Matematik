@@ -181,18 +181,37 @@ def ana_menuye_don():
 # --- POPUP İÇİNDE GÜVENLİ PDF GÖSTERME MOTORU ---
 @st.dialog("📄 CYHN Portal | Ders Notu Önizleme", width="large")
 def pdf_popup_ac(drive_id):
-    # 'preview' yerine 'viewer' kullanarak mobil cihazlarda yakınlaştırmayı (zoom) aktif ediyoruz.
-    # Bu yöntem sağ üstteki harici açma butonunu da kendiliğinden gizler.
-    embed_link = f"https://drive.google.com/file/d/{drive_id}/viewer?rm=minimal"
+    # Kesin çalışan orijinal önizleme link yapısına geri dönüyoruz
+    embed_link = f"https://drive.google.com/file/d/{drive_id}/preview?hl=tr"
     
     kullanici = st.session_state.get("aktif_user", "Bilinmeyen Kullanıcı").upper()
     su_an = datetime.now().strftime("%d.%m.%Y")
 
-    # Tüm koruma katmanlarını ve PDF'i tek bir HTML içinde birleştiriyoruz
+    # Mobil dokunmatik hareketleri (zoom) iframe içine geçiren gelişmiş HTML yapısı
     tam_html = f"""
-    <div style="position: relative; width: 100%; height: 650px; overflow: hidden; border-radius: 8px;">
+    <div style="
+        position: relative; 
+        width: 100%; 
+        height: 650px; 
+        overflow: hidden; 
+        border-radius: 8px;
+        touch-action: auto; /* Mobil cihazlarda çift parmak hareketini serbest bırakır */
+        -webkit-overflow-scrolling: touch; /* iOS cihazlarda akıcı kaydırma sağlar */
+    ">
         
-        <!-- TAM ORTADA DURAN SÜSLÜ FİLİGRAN -->
+        <!-- ÜST SAĞ KÖŞEDEKİ HARİCİ AÇMA BUTONUNU KİLİTLEYEN GÖRÜNMEZ KALKAN -->
+        <div style="
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 55px;
+            background-color: rgba(0, 0, 0, 0);
+            z-index: 99999;
+            cursor: default;
+        "></div>
+        
+        <!-- TAM ORTADA DURAN SÜSLÜ VE ŞEFFAF FİLİGRAN -->
         <div style="
             position: absolute;
             top: 50%;
@@ -213,8 +232,8 @@ def pdf_popup_ac(drive_id):
             {su_an}
         </div>
         
-        <!-- ARKA PLANDAKİ GOOGLE DRIVE PDF IFRAME'İ (Viewer Modunda) -->
-        <iframe src="{embed_link}" 
+        <!-- ARKA PLANDAKİ SORUNSUZ ÇALIŞAN GOOGLE DRIVE PDF IFRAME'İ -->
+        <iframe src="{embed_link}#toolbar=0&navpanes=0" 
                 width="100%" 
                 height="100%" 
                 style="border: none;" 
