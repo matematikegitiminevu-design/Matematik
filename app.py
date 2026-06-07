@@ -208,7 +208,7 @@ def pdf_popup_ac(drive_id):
             left: 50%;
             transform: translate(-50%, -50%) rotate(-25deg);
             font-size: 2rem;
-            color: rgba(239, 68, 68, 1.30);
+            color: rgba(239, 68, 68, 0.07);
             font-weight: bold;
             text-align: center;
             z-index: 9998;
