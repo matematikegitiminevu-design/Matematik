@@ -186,38 +186,36 @@ def pdf_popup_ac(drive_id):
     kullanici = st.session_state.get("aktif_user", "Bilinmeyen Kullanıcı").upper()
     su_an = datetime.now().strftime("%d.%m.%Y")
 
-    # Hem bilgisayarda hem telefonda milimetrik esneyen CSS ve HTML yapısı
+    # Yanlardaki gri şerit kirliliğini çözen pürüzsüz HTML yapısı
     tam_html = f"""
     <div style="
         position: relative; 
         width: 100%; 
-        height: 75vh; /* Sabit piksel yerine telefon ekran boyuna göre esner */
+        height: 75vh; 
         overflow: hidden; 
         border-radius: 8px;
-        background-color: #000;
+        background-color: #1e1e1e; /* Gri şeritlerle rengi eşitleyerek kirliliği yok ediyoruz */
     ">
         
-        <!-- TELEFON VE BİLGİSAYARDA BUTONU ASLA KAÇIRMAYAN ESNEK KALKAN -->
         <div style="
             position: absolute;
             top: 0;
             right: 0;
-            width: 25%;       /* Ekranın sağ çeyreğini tamamen kaplar */
-            height: 12%;      /* Üst bar yüksekliğine göre esner */
+            width: 25%;       
+            height: 12%;      
             background-color: rgba(0, 0, 0, 0);
             z-index: 99999;
             cursor: default;
         "></div>
         
-        <!-- MOBİL UYUMLU, TAM ORTALANMIŞ ESNEK FİLİGRAN -->
         <div style="
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) rotate(-25deg);
-            font-size: 5vw; /* Yazı boyutu ekran genişliğine göre büyür/küçülür */
+            font-size: 5vw; 
             max-font-size: 2rem;
-            color: rgba(239, 68, 68, 0.07);
+            color: rgba(239, 68, 68, 0.08); /* Filigran belirginliği tatlı bir tonda tutuldu */
             font-weight: bold;
             text-align: center;
             z-index: 9998;
@@ -232,18 +230,16 @@ def pdf_popup_ac(drive_id):
             {su_an}
         </div>
         
-        <!-- ARKA PLANDAKİ GOOGLE DRIVE PDF IFRAME'I -->
         <iframe src="{embed_link}" 
                 width="100%" 
                 height="100%" 
-                style="border: none;" 
+                style="border: none; margin: 0; padding: 0; display: block;" 
                 allow="autoplay">
         </iframe>
         
     </div>
     """
 
-    # Streamlit bileşenini de dikey ekrana göre esnetiyoruz
     st.components.v1.html(tam_html, height=710)
     
 
