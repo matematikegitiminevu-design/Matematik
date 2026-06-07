@@ -506,7 +506,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 st.markdown("**💻 Özel Notlar (M.C.)**")
                 if st.button("👁️ Notu Aç", key="alg6", use_container_width=True):
                     pdf_popup_ac("1OUdyrIEHGOgsj-ltJBPb4u6KxPuWLjNF")
-    with tab1:
+    with tab2:
         st.subheader("Lineer Cebir Ders Notları")
         st.warning("❗Website bakımı nedeniyle bu bölümdeki dosyalar güncellenmektedir. Lineer Cebir 1 PDF dosyası henüz yüklenmemiştir!")
         col1, col2 = st.columns(2)
@@ -519,7 +519,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 st.markdown("**Lineer Cebir 2**")
                 if st.button("👁️ Notu Aç", key="lin2", use_container_width=True):
                     pdf_popup_ac("1yk5VmfUbipnQR8IK6gWVHW9LMibP-zVR")
-    with tab2:
+    with tab3:
         st.subheader("Analiz 1 ve 2 Ders Notları")
         st.warning("❗Website bakımı nedeniyle bu bölümdeki dosyalar güncellenmektedir. Analiz 1 PDF dosyası henüz yüklenmemiştir!")
         col1, col2 = st.columns(2)
@@ -532,7 +532,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 st.markdown("**Analiz 2**")
                 if st.button("👁️ Notu Aç", key="anlz2", use_container_width=True):
                     pdf_popup_ac("1_v-11l519_-I8VD759O0-0Vwo6oasGHB")
-    with tab3:
+    with tab4:
         st.subheader("Soyut Matematik Ders Notu")
         st.warning("❗Soyut matematik dersinde kullanılmış olan notlar aşağıdadır.")
         if st.button("👁️ Notu Aç", key="soyut1", use_container_width=True):
