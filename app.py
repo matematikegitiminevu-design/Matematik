@@ -182,8 +182,7 @@ def pdf_popup_ac(drive_id):
     su_an = datetime.now().strftime("%d.%m.%Y")
 
     # 1. Filigranı Görüntüleme Alanından Çıkarıp Başlığın Altına "Alt Yazı" Olarak Ekliyoruz
-    st.caption(f"🔒 Bu döküman {kullanici} adına lisanslanmıştır. • {su_an}")
-
+    st.caption(f"⚠️ DİKKAT: MUHARREM CEYHAN'a ait bu döküman {kullanici} adına izlenebilir filigran içermektedir. • {su_an}")
     # 2. Görüntülenen alanın içindeki filigranı tamamen sildik, sadece kalkan ve PDF kaldı
     tam_html = f"""
     <div style="position: relative; width: 100%; height: 650px; overflow: hidden; border-radius: 8px; background-color: #1e1e1e;">
