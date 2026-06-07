@@ -181,23 +181,15 @@ def ana_menuye_don():
 # --- POPUP İÇİNDE GÜVENLİ PDF GÖSTERME MOTORU ---
 @st.dialog("📄 CYHN Portal | Ders Notu Önizleme", width="large")
 def pdf_popup_ac(drive_id):
-    # Kesin çalışan orijinal önizleme link yapısına geri dönüyoruz
+    # Parametreleri temizledik, böylece Google Drive'ın kendi Zoom (+ / -) butonları dökümanın altında belirecek
     embed_link = f"https://drive.google.com/file/d/{drive_id}/preview?hl=tr"
     
     kullanici = st.session_state.get("aktif_user", "Bilinmeyen Kullanıcı").upper()
     su_an = datetime.now().strftime("%d.%m.%Y")
 
-    # Mobil dokunmatik hareketleri (zoom) iframe içine geçiren gelişmiş HTML yapısı
+    # Hem kalkanı koruyan hem de Drive araç çubuğuna izin veren HTML yapısı
     tam_html = f"""
-    <div style="
-        position: relative; 
-        width: 100%; 
-        height: 650px; 
-        overflow: hidden; 
-        border-radius: 8px;
-        touch-action: auto; /* Mobil cihazlarda çift parmak hareketini serbest bırakır */
-        -webkit-overflow-scrolling: touch; /* iOS cihazlarda akıcı kaydırma sağlar */
-    ">
+    <div style="position: relative; width: 100%; height: 650px; overflow: hidden; border-radius: 8px;">
         
         <!-- ÜST SAĞ KÖŞEDEKİ HARİCİ AÇMA BUTONUNU KİLİTLEYEN GÖRÜNMEZ KALKAN -->
         <div style="
@@ -232,8 +224,8 @@ def pdf_popup_ac(drive_id):
             {su_an}
         </div>
         
-        <!-- ARKA PLANDAKİ SORUNSUZ ÇALIŞAN GOOGLE DRIVE PDF IFRAME'İ -->
-        <iframe src="{embed_link}#toolbar=0&navpanes=0" 
+        <!-- ARKA PLANDAKİ GOOGLE DRIVE PDF IFRAME'İ (Zoom butonları aktif) -->
+        <iframe src="{embed_link}" 
                 width="100%" 
                 height="100%" 
                 style="border: none;" 
