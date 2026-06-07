@@ -174,6 +174,48 @@ if "sayfa" not in st.session_state:
 
 # --- FONKSİYONLAR ---
 def ana_menuye_don():
+    # --- POPUP İÇİNDE GÜVENLİ PDF GÖSTERME MOTORU ---
+@st.dialog("📄 CYHN Portal | Ders Notu Önizleme", width="large")
+def pdf_popup_ac(drive_id):
+    # Drive ID'sini alıp indirme/yazdırma araçlarını gizleyen 'preview' linkine dönüştürüyoruz
+    embed_link = f"https://drive.google.com/file/d/{drive_id}/preview?hl=tr"
+    
+    kullanici = st.session_state.get("aktif_user", "Bilinmeyen Kullanıcı").upper()
+    su_an = datetime.now().strftime("%d.%m.%Y")
+
+    # Filigran (Watermark) ve Sağ Tık Engeli CSS'i
+    st.markdown(f"""
+    <style>
+    .popup-konteyner {{
+        position: relative;
+        width: 100%;
+        height: 650px;
+    }}
+    .popup-filigran {{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-25deg);
+        font-size: 1.8rem;
+        color: rgba(239, 68, 68, 0.15) !important; /* %15 şeffaf kırmızı */
+        font-weight: bold;
+        text-align: center;
+        z-index: 9999;
+        pointer-events: none; /* Alttaki PDF'i kaydırmaya engel olmaz */
+        white-space: nowrap;
+        font-family: sans-serif;
+    }}
+    </style>
+    <div class="popup-konteyner">
+        <div class="popup-filigran">KULLANICI: {kullanici}<br>CYHN PORTAL LİSANSLI DÖKÜMAN<br>{su_an}</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Iframe ile Drive PDF'ini popup içine gömüyoruz
+    st.components.v1.html(
+        f'<iframe src="{embed_link}#toolbar=0&navpanes=0" width="100%" height="640" style="border:none; border-radius:8px;"></iframe>',
+        height=650
+    )
     st.session_state["sayfa"] = "ana_menu"
     st.rerun()
     
@@ -440,32 +482,44 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     with tab1:
         st.subheader("Algoritma ve Programlama Ders Notu")
         st.warning("❗Algoritma dersinde kullanılmış olan notlar aşağıdadır.")
+        
         col1, col2, col3, col4, col5, col6 = st.columns(6)
+        
         with col1:
             with st.container(border=True):
                 st.markdown("**Algoritmaya Giriş**")
-                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1Dz9nJXinGmgUajJH4Ljov7sSpMQv89Pn/view?usp=sharing", use_container_width=True)
+                if st.button("👁️ Notu Aç", key="alg1", use_container_width=True):
+                    pdf_popup_ac("1Dz9nJXinGmgUajJH4Ljov7sSpMQv89Pn")
+                    
         with col2:
             with st.container(border=True):
                 st.markdown("**Python 1.kısım**")
-                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1eQdLmcqXiTYdhQ-n53IJbj6DFgrlvpl5/view?usp=sharing", use_container_width=True)
+                if st.button("👁️ Notu Aç", key="alg2", use_container_width=True):
+                    pdf_popup_ac("1eQdLmcqXiTYdhQ-n53IJbj6DFgrlvpl5")
+                    
         with col3:
             with st.container(border=True):
                 st.markdown("**Python 2.kısım**")
-                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1WUxVwNK4uvNj8k23yeZtfWEVyOwMQH9o/view?usp=sharing", use_container_width=True)
+                if st.button("👁️ Notu Aç", key="alg3", use_container_width=True):
+                    pdf_popup_ac("1WUxVwNK4uvNj8k23yeZtfWEVyOwMQH9o")
+                    
         with col4:
             with st.container(border=True):
                 st.markdown("**Dosya İşlemleri**")
-                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1JLnAzmiXzytjKCUzUheIFzhPcj8gODml/view?usp=sharing", use_container_width=True)
+                if st.button("👁️ Notu Aç", key="alg4", use_container_width=True):
+                    pdf_popup_ac("1JLnAzmiXzytjKCUzUheIFzhPcj8gODml")
+                    
         with col5:
             with st.container(border=True):
                 st.markdown("**Python Notları Toplu**")
-                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1pv5oPwe81IOMzNBb12q-GaQVL-VEnD7y/view?usp=sharing", use_container_width=True)
+                if st.button("👁️ Notu Aç", key="alg5", use_container_width=True):
+                    pdf_popup_ac("1pv5oPwe81IOMzNBb12q-GaQVL-VEnD7y")
+                    
         with col6:
             with st.container(border=True):
                 st.markdown("**💻 Özel Notlar (M.C.)**")
-                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1OUdyrIEHGOgsj-ltJBPb4u6KxPuWLjNF/view?usp=sharing", use_container_width=True)
-    
+                if st.button("👁️ Notu Aç", key="alg6", use_container_width=True):
+                    pdf_popup_ac("1OUdyrIEHGOgsj-ltJBPb4u6KxPuWLjNF")
     with tab2:
         st.subheader("Lineer Cebir Ders Notları")
         st.warning("❗Website bakımı nedeniyle bu bölümdeki dosyalar güncellenmektedir. Lineer Cebir 1 PDF dosyası henüz yüklenmemiştir!")
@@ -477,8 +531,8 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         with col2:
             with st.container(border=True):
                 st.markdown("**Lineer Cebir 2**")
-                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1yk5VmfUbipnQR8IK6gWVHW9LMibP-zVR/view?usp=sharing", use_container_width=True)
-    
+                if st.button("👁️ Notu Aç", key="lin2", use_container_width=True):
+                    pdf_popup_ac("1yk5VmfUbipnQR8IK6gWVHW9LMibP-zVR")
     with tab3:
         st.subheader("Analiz 1 ve 2 Ders Notları")
         st.warning("❗Website bakımı nedeniyle bu bölümdeki dosyalar güncellenmektedir. Analiz 1 PDF dosyası henüz yüklenmemiştir!")
@@ -490,13 +544,14 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         with col2:
             with st.container(border=True):
                 st.markdown("**Analiz 2**")
-                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1_v-11l519_-I8VD759O0-0Vwo6oasGHB/view?usp=sharing", use_container_width=True)
-
+                if st.button("👁️ Notu Aç", key="anlz2", use_container_width=True):
+                    pdf_popup_ac("1_v-11l519_-I8VD759O0-0Vwo6oasGHB")
     with tab4:
         st.subheader("Soyut Matematik Ders Notu")
         st.warning("❗Soyut matematik dersinde kullanılmış olan notlar aşağıdadır.")
-        st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1AFXcBbNphoZDs41NjH-ofDbkePWk3emL/view?usp=sharing", use_container_width=True)
-
+        if st.button("👁️ Notu Aç", key="soyut1", use_container_width=True):
+            pdf_popup_ac("1AFXcBbNphoZDs41NjH-ofDbkePWk3emL")
+            
     with tab5:
         st.subheader("Türk Dili 2 Videoları")
         st.warning("❗Türk Dili 2 dersine ait UBYS sisteminde de yüklü olan videolara aşağıdaki bağlantıdan tıklayarak ulaşabilirsiniz.")
