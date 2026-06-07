@@ -181,41 +181,36 @@ def ana_menuye_don():
 # --- POPUP İÇİNDE GÜVENLİ PDF GÖSTERME MOTORU ---
 @st.dialog("📄 CYHN Portal | Ders Notu Önizleme", width="large")
 def pdf_popup_ac(drive_id):
+    # Drive ID'sini alıp indirme/yazdırma araçlarını gizleyen 'preview' linkine dönüştürüyoruz
     embed_link = f"https://drive.google.com/file/d/{drive_id}/preview?hl=tr"
     
     kullanici = st.session_state.get("aktif_user", "Bilinmeyen Kullanıcı").upper()
     su_an = datetime.now().strftime("%d.%m.%Y")
 
-    # Yanlardaki gri şerit kirliliğini çözen pürüzsüz HTML yapısı
+    # Tüm koruma katmanlarını ve PDF'i tek bir HTML içinde birleştiriyoruz
     tam_html = f"""
-    <div style="
-        position: relative; 
-        width: 100%; 
-        height: 75vh; 
-        overflow: hidden; 
-        border-radius: 8px;
-        background-color: #1e1e1e; /* Gri şeritlerle rengi eşitleyerek kirliliği yok ediyoruz */
-    ">
+    <div style="position: relative; width: 100%; height: 650px; overflow: hidden; border-radius: 8px;">
         
+        <!-- ÜST SAĞ KÖŞEDEKİ BUTONU KİLİTLEYEN GÖRÜNMEZ KALKAN -->
         <div style="
             position: absolute;
             top: 0;
             right: 0;
-            width: 25%;       
-            height: 12%;      
+            width: 150px;
+            height: 55px;
             background-color: rgba(0, 0, 0, 0);
             z-index: 99999;
             cursor: default;
         "></div>
         
+        <!-- TAM ORTADA DURAN DAHA ŞEFFAF SÜSLÜ FİLİGRAN -->
         <div style="
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) rotate(-25deg);
-            font-size: 5vw; 
-            max-font-size: 2rem;
-            color: rgba(239, 68, 68, 0.08); /* Filigran belirginliği tatlı bir tonda tutuldu */
+            font-size: 2rem;
+            color: rgba(239, 68, 68, 0.07); /* Şeffaflık %14'ten %7'ye düşürüldü (Çok daha hafif) */
             font-weight: bold;
             text-align: center;
             z-index: 9998;
@@ -223,24 +218,25 @@ def pdf_popup_ac(drive_id):
             white-space: nowrap;
             font-family: sans-serif;
             line-height: 1.4;
-            width: 90%;
         ">
             KULLANICI: {kullanici}<br>
             CYHN PORTAL LİSANSLI DÖKÜMAN<br>
             {su_an}
         </div>
         
-        <iframe src="{embed_link}" 
+        <!-- ARKA PLANDAKİ GOOGLE DRIVE PDF IFRAME'İ -->
+        <iframe src="{embed_link}#toolbar=0&navpanes=0" 
                 width="100%" 
                 height="100%" 
-                style="border: none; margin: 0; padding: 0; display: block;" 
+                style="border: none;" 
                 allow="autoplay">
         </iframe>
         
     </div>
     """
 
-    st.components.v1.html(tam_html, height=710)
+    # Hepsini tek seferde Streamlit bileşeni olarak ekrana basıyoruz
+    st.components.v1.html(tam_html, height=660)
     
 
 # --- 1. AŞAMA: ANA KARŞILAMA MENÜSÜ ---
