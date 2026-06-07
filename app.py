@@ -470,43 +470,8 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 st.markdown("**Ders Programı**")
                 st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln3")
         
+
     with tab1:
-        st.subheader("Algoritma ve Programlama Ders Notu")
-        st.warning("❗Algoritma dersinde kullanılmış olan notlar aşağıdadır.")
-        
-        col1, col2, col3, col4, col5, col6 = st.columns(6)
-        
-        with col1:
-            with st.container(border=True):
-                st.markdown("**Algoritmaya Giriş**")
-                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1Dz9nJXinGmgUajJH4Ljov7sSpMQv89Pn/view?usp=sharing", use_container_width=True)
-                    
-        with col2:
-            with st.container(border=True):
-                st.markdown("**Python 1.kısım**")
-                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1eQdLmcqXiTYdhQ-n53IJbj6DFgrlvpl5/view?usp=sharing", use_container_width=True)
-                    
-        with col3:
-            with st.container(border=True):
-                st.markdown("**Python 2.kısım**")
-                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1WUxVwNK4uvNj8k23yeZtfWEVyOwMQH9o/view?usp=sharing", use_container_width=True)
-                    
-        with col4:
-            with st.container(border=True):
-                st.markdown("**Dosya İşlemleri**")
-                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1JLnAzmiXzytjKCUzUheIFzhPcj8gODml/view?usp=sharing", use_container_width=True)
-                    
-        with col5:
-            with st.container(border=True):
-                st.markdown("**Python Notları Toplu**")
-                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1pv5oPwe81IOMzNBb12q-GaQVL-VEnD7y/view?usp=sharing", use_container_width=True)
-                    
-        with col6:
-            with st.container(border=True):
-                st.markdown("**💻 Özel Notlar (M.C.)**")
-                if st.button("👁️ Notu Aç", key="alg6", use_container_width=True):
-                    pdf_popup_ac("1OUdyrIEHGOgsj-ltJBPb4u6KxPuWLjNF")
-    with tab2:
         st.subheader("Lineer Cebir Ders Notları")
         st.warning("❗Website bakımı nedeniyle bu bölümdeki dosyalar güncellenmektedir. Lineer Cebir 1 PDF dosyası henüz yüklenmemiştir!")
         col1, col2 = st.columns(2)
@@ -519,7 +484,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 st.markdown("**Lineer Cebir 2**")
                 if st.button("👁️ Notu Aç", key="lin2", use_container_width=True):
                     pdf_popup_ac("1yk5VmfUbipnQR8IK6gWVHW9LMibP-zVR")
-    with tab3:
+    with tab2:
         st.subheader("Analiz 1 ve 2 Ders Notları")
         st.warning("❗Website bakımı nedeniyle bu bölümdeki dosyalar güncellenmektedir. Analiz 1 PDF dosyası henüz yüklenmemiştir!")
         col1, col2 = st.columns(2)
@@ -532,7 +497,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 st.markdown("**Analiz 2**")
                 if st.button("👁️ Notu Aç", key="anlz2", use_container_width=True):
                     pdf_popup_ac("1_v-11l519_-I8VD759O0-0Vwo6oasGHB")
-    with tab4:
+    with tab3:
         st.subheader("Soyut Matematik Ders Notu")
         st.warning("❗Soyut matematik dersinde kullanılmış olan notlar aşağıdadır.")
         if st.button("👁️ Notu Aç", key="soyut1", use_container_width=True):
