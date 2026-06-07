@@ -187,7 +187,7 @@ def pdf_popup_ac(drive_id):
     kullanici = st.session_state.get("aktif_user", "Bilinmeyen Kullanıcı").upper()
     su_an = datetime.now().strftime("%d.%m.%Y")
 
-    # Filigran (Watermark) ve Sağ Tık Engeli CSS'i
+    # Gelişmiş Güvenlik, Filigran ve Tıklama Kalkanı CSS'i
     st.markdown(f"""
     <style>
     .popup-konteyner {{
@@ -195,6 +195,19 @@ def pdf_popup_ac(drive_id):
         width: 100%;
         height: 650px;
     }}
+    
+    /* Pop-out (Drive'da Aç) butonunu kilitleyen görünmez kalkan */
+    .drive-tıklama-kalkani {{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 120px;       /* Butonun olduğu alanı genişçe kaplar */
+        height: 60px;       /* Üst bar yüksekliği kadar yer kaplar */
+        background-color: rgba(0, 0, 0, 0); /* Tamamen şeffaf / görünmez */
+        z-index: 99999;     /* En üst katmanda durur */
+        cursor: default;    /* Üzerine gelince tıklama işareti çıkmaz */
+    }}
+    
     .popup-filigran {{
         position: absolute;
         top: 50%;
@@ -204,13 +217,16 @@ def pdf_popup_ac(drive_id):
         color: rgba(239, 68, 68, 0.15) !important; /* %15 şeffaf kırmızı */
         font-weight: bold;
         text-align: center;
-        z-index: 9999;
-        pointer-events: none; /* Alttaki PDF'i kaydırmaya engel olmaz */
+        z-index: 9998;     /* Filigran kalkanın bir tık altında kalabilir */
+        pointer-events: none;
         white-space: nowrap;
         font-family: sans-serif;
     }}
     </style>
+    
     <div class="popup-konteyner">
+        <div class="drive-tıklama-kalkani"></div>
+        
         <div class="popup-filigran">KULLANICI: {kullanici}<br>CYHN PORTAL LİSANSLI DÖKÜMAN<br>{su_an}</div>
     </div>
     """, unsafe_allow_html=True)
