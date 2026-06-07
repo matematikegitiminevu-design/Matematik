@@ -172,12 +172,6 @@ st.sidebar.markdown("---")
 if "sayfa" not in st.session_state:
     st.session_state["sayfa"] = "ana_menu" # İlk açılışta ana menü görünsün
 
-# --- FONKSİYONLAR ---
-
-def ana_menuye_don():
-    st.session_state["sayfa"] = "ana_menu"
-    st.rerun()
-
 # --- POPUP İÇİNDE GÜVENLİ PDF GÖSTERME MOTORU ---
 @st.dialog("📄 CYHN Portal | Ders Notu Önizleme", width="large")
 def pdf_popup_ac(drive_id):
@@ -204,13 +198,11 @@ def pdf_popup_ac(drive_id):
         
         <div style="
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(-25deg);
-            font-size: 2rem;
-            color: rgba(239, 68, 68, 0.07); /* Şeffaflık %14'ten %7'ye düşürüldü (Çok daha hafif) */
+            bottom: 20px;
+            left: 20px;
+            font-size: 1.1rem;
+            color: rgba(239, 68, 68, 0.12); /* Köşede okunaklı ama göz yormayan soft kırmızı */
             font-weight: bold;
-            text-align: center;
             z-index: 9998;
             pointer-events: none;
             white-space: nowrap;
@@ -234,7 +226,6 @@ def pdf_popup_ac(drive_id):
 
     # Hepsini tek seferde Streamlit bileşeni olarak ekrana basıyoruz
     st.components.v1.html(tam_html, height=660)
-    
 
 # --- 1. AŞAMA: ANA KARŞILAMA MENÜSÜ ---
 if st.session_state["sayfa"] == "ana_menu":
