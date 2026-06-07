@@ -473,7 +473,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
 
     with tab1:
         st.subheader("Lineer Cebir Ders Notları")
-        st.warning("❗Website bakımı nedeniyle bu bölümdeki dosyalar güncellenmektedir. Lineer Cebir 1 PDF dosyası henüz yüklenmemiştir!")
+        st.warning("❗Lineer Cebir 1 PDF dosyası henüz yüklenmemiştir!")
         col1, col2 = st.columns(2)
         with col1:
             with st.container(border=True):
@@ -486,7 +486,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                     pdf_popup_ac("1yk5VmfUbipnQR8IK6gWVHW9LMibP-zVR")
     with tab2:
         st.subheader("Analiz 1 ve 2 Ders Notları")
-        st.warning("❗Website bakımı nedeniyle bu bölümdeki dosyalar güncellenmektedir. Analiz 1 PDF dosyası henüz yüklenmemiştir!")
+        st.warning("❗Analiz 1 PDF dosyası henüz yüklenmemiştir!")
         col1, col2 = st.columns(2)
         with col1:
             with st.container(border=True):
