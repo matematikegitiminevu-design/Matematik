@@ -482,7 +482,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         with col2:
             with st.container(border=True):
                 st.markdown("**Lineer Cebir 2**")
-                if st.button("👁️ Notu Aç", key="lin2", use_container_width=True):
+                if st.button("📝 Ders Notunu Aç", key="lin2", use_container_width=True):
                     pdf_popup_ac("1yk5VmfUbipnQR8IK6gWVHW9LMibP-zVR")
     with tab2:
         st.subheader("Analiz 1 ve 2 Ders Notları")
@@ -495,12 +495,12 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         with col2:
             with st.container(border=True):
                 st.markdown("**Analiz 2**")
-                if st.button("👁️ Notu Aç", key="anlz2", use_container_width=True):
+                if st.button("📝 Ders Notunu Aç", key="anlz2", use_container_width=True):
                     pdf_popup_ac("1_v-11l519_-I8VD759O0-0Vwo6oasGHB")
     with tab3:
         st.subheader("Soyut Matematik Ders Notu")
         st.warning("❗Soyut matematik dersinde kullanılmış olan notlar aşağıdadır.")
-        if st.button("👁️ Notu Aç", key="soyut1", use_container_width=True):
+        if st.button("📝 Ders Notunu Aç", key="soyut1", use_container_width=True):
             pdf_popup_ac("1AFXcBbNphoZDs41NjH-ofDbkePWk3emL")
 
     with tab4:
@@ -537,7 +537,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         with col6:
             with st.container(border=True):
                 st.markdown("**💻 Özel Notlar (M.C.)**")
-                if st.button("👁️ Notu Aç", key="alg6", use_container_width=True):
+                if st.button("📝 Ders Notunu Aç", key="alg6", use_container_width=True):
                     pdf_popup_ac("1OUdyrIEHGOgsj-ltJBPb4u6KxPuWLjNF")
                     
     with tab5:
