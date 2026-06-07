@@ -504,32 +504,27 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         with col1:
             with st.container(border=True):
                 st.markdown("**Algoritmaya Giriş**")
-                if st.button("👁️ Notu Aç", key="alg1", use_container_width=True):
-                    pdf_popup_ac("1Dz9nJXinGmgUajJH4Ljov7sSpMQv89Pn")
+                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1Dz9nJXinGmgUajJH4Ljov7sSpMQv89Pn/view?usp=sharing", use_container_width=True)
                     
         with col2:
             with st.container(border=True):
                 st.markdown("**Python 1.kısım**")
-                if st.button("👁️ Notu Aç", key="alg2", use_container_width=True):
-                    pdf_popup_ac("1eQdLmcqXiTYdhQ-n53IJbj6DFgrlvpl5")
+                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1eQdLmcqXiTYdhQ-n53IJbj6DFgrlvpl5/view?usp=sharing", use_container_width=True)
                     
         with col3:
             with st.container(border=True):
                 st.markdown("**Python 2.kısım**")
-                if st.button("👁️ Notu Aç", key="alg3", use_container_width=True):
-                    pdf_popup_ac("1WUxVwNK4uvNj8k23yeZtfWEVyOwMQH9o")
+                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1WUxVwNK4uvNj8k23yeZtfWEVyOwMQH9o/view?usp=sharing", use_container_width=True)
                     
         with col4:
             with st.container(border=True):
                 st.markdown("**Dosya İşlemleri**")
-                if st.button("👁️ Notu Aç", key="alg4", use_container_width=True):
-                    pdf_popup_ac("1JLnAzmiXzytjKCUzUheIFzhPcj8gODml")
+                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1JLnAzmiXzytjKCUzUheIFzhPcj8gODml/view?usp=sharing", use_container_width=True)
                     
         with col5:
             with st.container(border=True):
                 st.markdown("**Python Notları Toplu**")
-                if st.button("👁️ Notu Aç", key="alg5", use_container_width=True):
-                    pdf_popup_ac("1pv5oPwe81IOMzNBb12q-GaQVL-VEnD7y")
+                st.link_button("PDF'i Görüntüle", "https://drive.google.com/file/d/1pv5oPwe81IOMzNBb12q-GaQVL-VEnD7y/view?usp=sharing", use_container_width=True)
                     
         with col6:
             with st.container(border=True):
