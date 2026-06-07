@@ -173,8 +173,12 @@ if "sayfa" not in st.session_state:
     st.session_state["sayfa"] = "ana_menu" # İlk açılışta ana menü görünsün
 
 # --- FONKSİYONLAR ---
+
 def ana_menuye_don():
-    # --- POPUP İÇİNDE GÜVENLİ PDF GÖSTERME MOTORU ---
+    st.session_state["sayfa"] = "ana_menu"
+    st.rerun()
+
+# --- POPUP İÇİNDE GÜVENLİ PDF GÖSTERME MOTORU ---
 @st.dialog("📄 CYHN Portal | Ders Notu Önizleme", width="large")
 def pdf_popup_ac(drive_id):
     # Drive ID'sini alıp indirme/yazdırma araçlarını gizleyen 'preview' linkine dönüştürüyoruz
@@ -216,8 +220,6 @@ def pdf_popup_ac(drive_id):
         f'<iframe src="{embed_link}#toolbar=0&navpanes=0" width="100%" height="640" style="border:none; border-radius:8px;"></iframe>',
         height=650
     )
-    st.session_state["sayfa"] = "ana_menu"
-    st.rerun()
     
 
 # --- 1. AŞAMA: ANA KARŞILAMA MENÜSÜ ---
