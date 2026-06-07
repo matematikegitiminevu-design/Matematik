@@ -189,9 +189,8 @@ def pdf_popup_ac(drive_id):
 
     # Tüm koruma katmanlarını ve PDF'i tek bir HTML içinde birleştiriyoruz
     tam_html = f"""
-    <div style="position: relative; width: 100%; height: 650px; overflow: hidden; border-radius: 8px;">
+    <div style="position: relative; width: 100%; height: 650px; overflow: hidden; border-radius: 8px; background-color: #1e1e1e;">
         
-        <!-- ÜST SAĞ KÖŞEDEKİ BUTONU KİLİTLEYEN GÖRÜNMEZ KALKAN -->
         <div style="
             position: absolute;
             top: 0;
@@ -203,7 +202,6 @@ def pdf_popup_ac(drive_id):
             cursor: default;
         "></div>
         
-        <!-- TAM ORTADA DURAN DAHA ŞEFFAF SÜSLÜ FİLİGRAN -->
         <div style="
             position: absolute;
             top: 50%;
@@ -224,7 +222,6 @@ def pdf_popup_ac(drive_id):
             {su_an}
         </div>
         
-        <!-- ARKA PLANDAKİ GOOGLE DRIVE PDF IFRAME'İ -->
         <iframe src="{embed_link}#toolbar=0&navpanes=0" 
                 width="100%" 
                 height="100%" 
