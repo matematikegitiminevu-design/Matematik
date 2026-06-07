@@ -181,35 +181,42 @@ def ana_menuye_don():
 # --- POPUP İÇİNDE GÜVENLİ PDF GÖSTERME MOTORU ---
 @st.dialog("📄 CYHN Portal | Ders Notu Önizleme", width="large")
 def pdf_popup_ac(drive_id):
-    # Parametreleri temizledik, böylece Google Drive'ın kendi Zoom (+ / -) butonları dökümanın altında belirecek
     embed_link = f"https://drive.google.com/file/d/{drive_id}/preview?hl=tr"
     
     kullanici = st.session_state.get("aktif_user", "Bilinmeyen Kullanıcı").upper()
     su_an = datetime.now().strftime("%d.%m.%Y")
 
-    # Hem kalkanı koruyan hem de Drive araç çubuğuna izin veren HTML yapısı
+    # Hem bilgisayarda hem telefonda milimetrik esneyen CSS ve HTML yapısı
     tam_html = f"""
-    <div style="position: relative; width: 100%; height: 650px; overflow: hidden; border-radius: 8px;">
+    <div style="
+        position: relative; 
+        width: 100%; 
+        height: 75vh; /* Sabit piksel yerine telefon ekran boyuna göre esner */
+        overflow: hidden; 
+        border-radius: 8px;
+        background-color: #000;
+    ">
         
-        <!-- ÜST SAĞ KÖŞEDEKİ HARİCİ AÇMA BUTONUNU KİLİTLEYEN GÖRÜNMEZ KALKAN -->
+        <!-- TELEFON VE BİLGİSAYARDA BUTONU ASLA KAÇIRMAYAN ESNEK KALKAN -->
         <div style="
             position: absolute;
             top: 0;
             right: 0;
-            width: 150px;
-            height: 55px;
+            width: 25%;       /* Ekranın sağ çeyreğini tamamen kaplar */
+            height: 12%;      /* Üst bar yüksekliğine göre esner */
             background-color: rgba(0, 0, 0, 0);
             z-index: 99999;
             cursor: default;
         "></div>
         
-        <!-- TAM ORTADA DURAN SÜSLÜ VE ŞEFFAF FİLİGRAN -->
+        <!-- MOBİL UYUMLU, TAM ORTALANMIŞ ESNEK FİLİGRAN -->
         <div style="
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) rotate(-25deg);
-            font-size: 2rem;
+            font-size: 5vw; /* Yazı boyutu ekran genişliğine göre büyür/küçülür */
+            max-font-size: 2rem;
             color: rgba(239, 68, 68, 0.07);
             font-weight: bold;
             text-align: center;
@@ -218,13 +225,14 @@ def pdf_popup_ac(drive_id):
             white-space: nowrap;
             font-family: sans-serif;
             line-height: 1.4;
+            width: 90%;
         ">
             KULLANICI: {kullanici}<br>
             CYHN PORTAL LİSANSLI DÖKÜMAN<br>
             {su_an}
         </div>
         
-        <!-- ARKA PLANDAKİ GOOGLE DRIVE PDF IFRAME'İ (Zoom butonları aktif) -->
+        <!-- ARKA PLANDAKİ GOOGLE DRIVE PDF IFRAME'I -->
         <iframe src="{embed_link}" 
                 width="100%" 
                 height="100%" 
@@ -235,8 +243,8 @@ def pdf_popup_ac(drive_id):
     </div>
     """
 
-    # Hepsini tek seferde Streamlit bileşeni olarak ekrana basıyoruz
-    st.components.v1.html(tam_html, height=660)
+    # Streamlit bileşenini de dikey ekrana göre esnetiyoruz
+    st.components.v1.html(tam_html, height=710)
     
 
 # --- 1. AŞAMA: ANA KARŞILAMA MENÜSÜ ---
