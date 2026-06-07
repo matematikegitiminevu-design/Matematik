@@ -187,55 +187,53 @@ def pdf_popup_ac(drive_id):
     kullanici = st.session_state.get("aktif_user", "Bilinmeyen Kullanıcı").upper()
     su_an = datetime.now().strftime("%d.%m.%Y")
 
-    # Gelişmiş Güvenlik, Filigran ve Tıklama Kalkanı CSS'i
-    st.markdown(f"""
-    <style>
-    .popup-konteyner {{
-        position: relative;
-        width: 100%;
-        height: 650px;
-    }}
-    
-    /* Pop-out (Drive'da Aç) butonunu kilitleyen görünmez kalkan */
-    .drive-tıklama-kalkani {{
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 120px;       /* Butonun olduğu alanı genişçe kaplar */
-        height: 60px;       /* Üst bar yüksekliği kadar yer kaplar */
-        background-color: rgba(0, 0, 0, 0); /* Tamamen şeffaf / görünmez */
-        z-index: 99999;     /* En üst katmanda durur */
-        cursor: default;    /* Üzerine gelince tıklama işareti çıkmaz */
-    }}
-    
-    .popup-filigran {{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) rotate(-25deg);
-        font-size: 1.8rem;
-        color: rgba(239, 68, 68, 0.15) !important; /* %15 şeffaf kırmızı */
-        font-weight: bold;
-        text-align: center;
-        z-index: 9998;     /* Filigran kalkanın bir tık altında kalabilir */
-        pointer-events: none;
-        white-space: nowrap;
-        font-family: sans-serif;
-    }}
-    </style>
-    
-    <div class="popup-konteyner">
-        <div class="drive-tıklama-kalkani"></div>
+    # Tüm koruma katmanlarını ve PDF'i tek bir HTML içinde birleştiriyoruz
+    tam_html = f"""
+    <div style="position: relative; width: 100%; height: 650px; overflow: hidden; border-radius: 8px;">
         
-        <div class="popup-filigran">KULLANICI: {kullanici}<br>CYHN PORTAL LİSANSLI DÖKÜMAN<br>{su_an}</div>
+        <div style="
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 55px;
+            background-color: rgba(0, 0, 0, 0);
+            z-index: 99999;
+            cursor: default;
+        "></div>
+        
+        <div style="
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-25deg);
+            font-size: 2rem;
+            color: rgba(239, 68, 68, 0.14);
+            font-weight: bold;
+            text-align: center;
+            z-index: 9998;
+            pointer-events: none;
+            white-space: nowrap;
+            font-family: sans-serif;
+            line-height: 1.4;
+        ">
+            KULLANICI: {kullanici}<br>
+            CYHN PORTAL LİSANSLI DÖKÜMAN<br>
+            {su_an}
+        </div>
+        
+        <iframe src="{embed_link}#toolbar=0&navpanes=0" 
+                width="100%" 
+                height="100%" 
+                style="border: none;" 
+                allow="autoplay">
+        </iframe>
+        
     </div>
-    """, unsafe_allow_html=True)
+    """
 
-    # Iframe ile Drive PDF'ini popup içine gömüyoruz
-    st.components.v1.html(
-        f'<iframe src="{embed_link}#toolbar=0&navpanes=0" width="100%" height="640" style="border:none; border-radius:8px;"></iframe>',
-        height=650
-    )
+    # Hepsini tek seferde Streamlit bileşeni olarak ekrana basıyoruz
+    st.components.v1.html(tam_html, height=660)
     
 
 # --- 1. AŞAMA: ANA KARŞILAMA MENÜSÜ ---
