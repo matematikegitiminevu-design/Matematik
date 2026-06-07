@@ -463,7 +463,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 st.link_button("🌐 MAFET Resmî Web Sitesi", "https://mafet.nevsehir.edu.tr/", use_container_width=True)
         with col2:
             with st.container(border=True):
-                st.markdown("** Bütünleme Sınav Takvimi **")
+                st.markdown("**Bütünleme Sınav Takvimi**")
                 st.link_button("📝 Bütünleme Sınav Takvimi (PDF)", "https://dosyalar.nevsehir.edu.tr/78816a5e3b323ca077fa388d5a7bbcdc/matematik-egitimi-2025-2026-bahar-donemi-butunleme-programi-1.pdf", use_container_width=True)
         with col3:
             with st.container(border=True):
