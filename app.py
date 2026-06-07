@@ -463,13 +463,13 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 st.link_button("🌐 MAFET Resmî Web Sitesi", "https://mafet.nevsehir.edu.tr/", use_container_width=True)
         with col2:
             with st.container(border=True):
-                st.markdown("**Ders Programı**")
-                st.link_button("📅 Haftalık Ders Programı (PDF)", "https://dosyalar.nevsehir.edu.tr/6667946ceeefe0f7a69e00d88e9e25d7/matematik-egitimi-2025-2026-bahar-donemi-haftalik-program_final-hali-4.pdf", use_container_width=True)
+                st.markdown("** Bütünleme Sınav Takvimi**")
+                st.link_button("📝 Bütünleme Sınav Takvimi (PDF)", "https://dosyalar.nevsehir.edu.tr/78816a5e3b323ca077fa388d5a7bbcdc/matematik-egitimi-2025-2026-bahar-donemi-butunleme-programi-1.pdf", use_container_width=True)
         with col3:
             with st.container(border=True):
-                st.markdown("**Sınav Takvimi**")
-                st.link_button("📝 Dönem İçi Sınav Takvimi (PDF)", "https://dosyalar.nevsehir.edu.tr/27b9857ff2d7c3247d597c4ca999de35/matematik-egitimi-2025-2026-bahar-donemi-final-programi.pdf", use_container_width=True)
-
+                st.markdown("**Ders Programı**")
+                st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln3")
+        
     with tab1:
         st.subheader("Algoritma ve Programlama Ders Notu")
         st.warning("❗Algoritma dersinde kullanılmış olan notlar aşağıdadır.")
