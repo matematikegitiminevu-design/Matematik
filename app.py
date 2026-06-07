@@ -198,20 +198,23 @@ def pdf_popup_ac(drive_id):
         
         <div style="
             position: absolute;
-            bottom: 20px;
-            left: 20px;
-            font-size: 1.1rem;
-            color: rgba(239, 68, 68, 0.12); /* Köşede okunaklı ama göz yormayan soft kırmızı */
+            top: 60px; /* Üst siyah barın hemen altına hizalar */
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1rem;
+            color: rgba(239, 68, 68, 0.35); /* Görünürlüğü bir tık artırdık, yukarıda çok asil duracak */
             font-weight: bold;
+            text-align: center;
             z-index: 9998;
             pointer-events: none;
             white-space: nowrap;
             font-family: sans-serif;
-            line-height: 1.4;
+            letter-spacing: 0.5px;
+            background-color: rgba(30, 30, 30, 0.85); /* Arkadaki yazılarla karışmasın diye hafif gölgeli arka plan */
+            padding: 4px 15px;
+            border-radius: 20px;
         ">
-            KULLANICI: {kullanici}<br>
-            CYHN PORTAL LİSANSLI DÖKÜMAN<br>
-            {su_an}
+            🔒 BU DÖKÜMAN {kullanici} ADINA LİSANSLANMIŞTIR • {su_an}
         </div>
         
         <iframe src="{embed_link}#toolbar=0&navpanes=0" 
