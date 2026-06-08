@@ -441,7 +441,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
             """, 
             unsafe_allow_html=True
         )
-        onay = st.checkbox("Okudum, kuralları kabul ediyorum.")
+        onay = st.checkbox("Okudum, şartları kabul ediyorum.")
         
     st.markdown("<div style='height: 15px;'></div>", unsafe_allow_html=True)
     
