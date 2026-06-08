@@ -483,10 +483,11 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 st.markdown("**Lineer Cebir 2**")
                 if st.button("📝 Ders Notunu Aç", key="lin2", use_container_width=True):
                     pdf_popup_ac("1yk5VmfUbipnQR8IK6gWVHW9LMibP-zVR")
+                    
     with tab2:
-        st.subheader("Analiz 1 ve 2 Ders Notları")
+        st.subheader("Analiz Dersi Ders Notları")
         st.warning("❗Analiz 1 PDF dosyası henüz yüklenmemiştir!")
-        col1, col2 = st.columns(2)
+        col1, col2, col3 = st.columns(3)
         with col1:
             with st.container(border=True):
                 st.markdown("**Analiz 1**")
