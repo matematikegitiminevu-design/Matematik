@@ -106,7 +106,7 @@ st.set_page_config(
     page_title="CYHN | Matematik Portalı", 
     page_icon="mc.png", 
     layout="wide",
-    initial_sidebar_state="expanded" 
+    initial_sidebar_state="collapsed" 
 )
 
 
@@ -142,30 +142,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-# --- LOGOYU YAN MENÜYE EKLEME ---
-st.sidebar.image("mc250.png") 
 
-# Logonun altına ince bir ayırıcı çizgi ve başlık 
-st.sidebar.markdown("---")
-st.sidebar.write("### CYHN Matematik Portalı")
-# İmza tarzı, ince yazı tasarımı
-st.sidebar.markdown(
-    """
-    <style>
-    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap');
-    .signature {
-        font-family: 'Dancing Script', cursive;
-        font-size: 24px;
-        font-weight: 400;
-        color: #555555;
-        margin-top: -10px;
-    }
-    </style>
-    <p class="signature">Muharrem Ceyhan</p>
-    """, 
-    unsafe_allow_html=True
-)
-st.sidebar.markdown("---")
 
 
 # --- DURUM YÖNETİMİ (Session State) ---
@@ -275,6 +252,8 @@ if st.session_state["sayfa"] == "ana_menu":
 elif st.session_state["sayfa"] == "sifre_kontrol":
     col1, col2, col3 = st.columns([1,2,1])
     with col2:
+        # BURAYA EKLEDİK:
+        st.image("mc250.png", use_container_width=True)
         st.subheader("🔒 Özel Arşiv Erişimi")
         st.write("Bu alan sadece yetkilendirilmiş kullanıcılara özeldir.")
         
@@ -368,6 +347,28 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         time.sleep(1)
     # Sidebar (Yan Menü)
     with st.sidebar:
+            # 📌 ADIM 4 BURAYA EKLENDİ: Sildiğin logo ve imza artık burada başlıyor
+            st.image("mc250.png") 
+            st.markdown("---")
+            st.write("### CYHN Matematik Portalı")
+            st.markdown(
+                """
+                <style>
+                @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap');
+                .signature {
+                    font-family: 'Dancing Script', cursive;
+                    font-size: 24px;
+                    font-weight: 400;
+                    color: white !important; /* Arka plan koyu olduğu için rengini beyaz yaptık */
+                    margin-top: -10px;
+                }
+                </style>
+                <p class="signature">Muharrem Ceyhan</p>
+                """, 
+                unsafe_allow_html=True
+            )
+            st.markdown("---")
+            # 📌 ADIM 4 EKLEME ALANI BURADA BİTTİ
             st.title(f"♾️ Hoş Geldin, {st.session_state['aktif_user'].capitalize()}!")
             st.markdown("💡 *Bir sorun mu var? Aşağıdaki kanallardan bize hızlıca ulaşabilir veya yapay zeka asistanımıza danışabilirsin.*")
             # --- ÖZEL BUTON TASARIMLARI (CSS) ---
