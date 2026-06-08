@@ -272,71 +272,164 @@ if st.session_state["sayfa"] == "ana_menu":
                 unsafe_allow_html=True
             )
 
-# --- 2. AŞAMA: ŞİFRE KONTROL EKRANI ---
+# =========================================================================
+# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (CYHN UBYS TASARIMI)
+# =========================================================================
 elif st.session_state["sayfa"] == "sifre_kontrol":
-    col1, col2, col3 = st.columns([1,2,1])
+    
+    # 🎨 Beyaz Zemin ve Yazı Renkleri İçin Özel CSS Ayarları
+    st.markdown(
+        """
+        <style>
+        /* UBYS Tarzı Kalın Başlıklar */
+        .ubys-label {
+            font-family: 'Arial', sans-serif;
+            font-weight: 700;
+            color: #1e3a8a !important;
+            text-align: left;
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+        
+        /* Kutuların altındaki kırmızı uyarı yazıları */
+        .ubys-warning-text {
+            color: #dc2626 !important;
+            font-size: 0.8rem;
+            text-align: left;
+            margin-top: -12px;
+            margin-bottom: 15px;
+            font-family: sans-serif;
+        }
+        
+        /* Input alanlarını beyaz zeminle uyumlu yapma (Yazılar siyah olacak) */
+        .stTextInput input {
+            color: #0f172a !important;
+            background-color: #ffffff !important;
+            border: 1px solid #cbd5e1 !important;
+            border-radius: 6px !important;
+            padding: 10px !important;
+        }
+        .stTextInput input:focus {
+            border-color: #1e40af !important;
+            box-shadow: 0 0 0 2px rgba(30, 64, 175, 0.2) !important;
+        }
+        
+        /* Expander içindeki metinlerin beyaz zeminde net okunması için */
+        .stExpander p, .stExpander span, .stExpander label {
+            color: #334155 !important;
+        }
+        </style>
+        """, 
+        unsafe_allow_html=True
+    )
+    
+    # Ekranı dikeyde ortalamak için üst boşluk
+    st.markdown("<div style='height: 30px;'></div>", unsafe_allow_html=True)
+    
+    # Ekranı yatayda ortalamak için 3 kolon (Ortadaki sütun UBYS kartı olacak)
+    col1, col2, col3 = st.columns([0.7, 1.4, 0.7])
+    
     with col2:
-        st.subheader("🔒 Özel Arşiv Erişimi")
-        st.write("Bu alan sadece yetkilendirilmiş kullanıcılara özeldir.")
+        # Bembeyaz UBYS Giriş Kartı Başlangıcı
+        st.markdown(
+            """
+            <div style="
+                background-color: #ffffff; 
+                padding: 40px 45px; 
+                border-radius: 8px; 
+                box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+                border: 1px solid #e2e8f0;
+                text-align: center;
+            ">
+            """, 
+            unsafe_allow_html=True
+        )
         
-        # --- TELİF HAKKI UYARISI ---
-        # expanded=True yaparak kutunun otomatik açık gelmesini sağladık
+        # 🏛️ 1. LOGO (Kartın en üstünde tam ortada)
+        st.image("mc250.png", width=140)
+        st.markdown("<div style='height: 15px;'></div>", unsafe_allow_html=True)
+        
+        # 📜 2. TELİF HAKKI VE KULLANIM ŞARTLAR (Senin orijinal metnin)
         with st.expander("⚠️ Telif Hakkı ve Kullanım Şartları", expanded=True):
-            st.warning("""
-                **Yasal Uyarı:** 
-                Bu platformda paylaşılan tüm ders PDF notlarının telif hakları doğrudan **Muharrem CEYHAN**'a aittir. 
-    Tüm hakları saklıdır.    
-    İçeriklerin tamamının veya bir kısmının, yazarın yazılı izni olmaksızın kopyalanması, çoğaltılması, işlenmesi veya herhangi bir dijital/basılı mecrada paylaşılması **kesinlikle yasaktır**.
-    Sadece kişisel eğitim amaçlıdır..!
-    (© 2026)
-            """)
-            # Onay kutucuğu
+            st.markdown(
+                """
+                <p style="color: #dc2626 !important; font-weight: bold; text-align: left; margin-bottom: 5px;">Yasal Uyarı:</p>
+                <p style="color: #334155 !important; text-align: left; font-size: 0.85rem;">
+                Bu platformda paylaşılan tüm ders PDF notlarının telif hakları doğrudan <b>Muharrem CEYHAN</b>'a aittir. 
+                Tüm hakları saklıdır. İçeriklerin tamamının veya bir kısmının, yazarın yazılı izni olmaksızın kopyalanması, 
+                çoğaltılması veya paylaştırılması <b>kesinlikle yasaktır</b>. Sadece kişisel eğitim amaçlıdır..! (© 2026)
+                </p>
+                """, 
+                unsafe_allow_html=True
+            )
             onay = st.checkbox("Okudum, anladım ve kullanım şartlarını kabul ediyorum.")
+            
+        st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
         
-        st.divider()
+        # 👤 3. KULLANICI ADI ALANI (UBYS Modeli)
+        st.markdown("<p class='ubys-label'>Kullanıcı Adı</p>", unsafe_allow_html=True)
+        kullanici_adi = st.text_input("Kullanıcı Adı Giriniz", label_visibility="collapsed", placeholder="Kullanıcı adınızı yazınız...").strip().lower()
+        st.markdown("<p class='ubys-warning-text'>Lütfen Kullanıcı Adı giriniz.</p>", unsafe_allow_html=True)
         
-        # --- KULLANICI ADI VE ŞİFRE GİRİŞİ ---
-        kullanici_adi = st.text_input("Kullanıcı Adı:")
-        sifre = st.text_input("Portal Erişim Şifresi:", type="password")
+        # 🔑 4. PAROLA ALANI (UBYS Modeli)
+        st.markdown("<p class='ubys-label'>Parola</p>", unsafe_allow_html=True)
+        sifre = st.text_input("Parola Giriniz", type="password", label_visibility="collapsed", placeholder="Şifrenizi yazınız...")
+        st.markdown("<p class='ubys-warning-text'>Lütfen Parola giriniz.</p>", unsafe_allow_html=True)
         
-        c1, c2, c3 = st.columns(3)
+        st.markdown("<div style='height: 15px;'></div>", unsafe_allow_html=True)
+        
+        # 🖲️ 5. İŞLEM BUTONLARI (Giriş ve Şifre İste Yan Yana)
+        c1, c2 = st.columns(2)
+        
         with c1:
             if st.button("🔒 Güvenli Giriş", use_container_width=True):
-                # 1. Kontrol: Onay kutusu
                 if not onay:
                     st.error("Lütfen önce kullanım şartlarını onaylayınız!")
-                
-                # 2. Kontrol: Kullanıcı adı ve Şifre eşleşmesi (YENİ VE DÜZELTİLEN KISIM BURASI)
                 elif kullanici_adi in USERS and USERS[kullanici_adi] == sifre:
-                    # Başarılı giriş popup mesajı (Ekranın sağ altında görünür)
                     st.toast(f"🔑 Giriş Başarılı! Hoş geldin {kullanici_adi.capitalize()}.🚀", icon="🎉")
-                    # Havai fişek/balon efekti
                     st.balloons() 
                     
-                    # Kullanıcı mesajı görsün diye 2 saniye bekletiyoruz
                     import time
                     time.sleep(2) 
                     
-                    # Bilgileri kaydedip sayfayı yönlendiriyoruz
                     st.session_state["aktif_user"] = kullanici_adi 
                     st.session_state["sayfa"] = "notlar_arsivi"    
                     st.rerun()
-                
-                # 3. Kontrol: Hatalı bilgiler
                 else:
                     st.error("Kullanıcı adı veya şifre hatalı!")
-
+                    
         with c2:
             mail_konu = "CYHN%20Portal%20Eri%C5%9Fim%20Talebi"
             mail_icerik = "Merhaba,%0D%0ACYHN%20Matematik%20Portalı%20için%20kullanıcı%20adı%20ve%20şifre%20talep%20ediyorum.%0D%0A%0D%0AAdım%20Soyadım:%20"
             mail_link = f"mailto:matematikegitiminevu@gmail.com?subject={mail_konu}&body={mail_icerik}"
-             
-            # Şifre Al butonu
             st.link_button("📩 Şifre İste", mail_link, use_container_width=True)
+            
+        # 🌐 6. SOSYAL MEDYA VE GİRİŞ YARDIMI (Kutunun En Altı)
+        st.markdown(
+            """
+            <p style="margin-top: 25px; margin-bottom: 15px;">
+                <a href="mailto:matematikegitiminevu@gmail.com" style="color: #3b82f6 !important; text-decoration: none; font-size: 0.9rem; font-weight: 500;">
+                    Giriş yapamıyor musunuz?
+                </a>
+            </p>
+            <hr style="border-top: 1px solid #e2e8f0; margin-bottom: 20px;">
+            <div style="display: flex; justify-content: center; gap: 25px; font-size: 1.4rem;">
+                <a href="https://mafet.nevsehir.edu.tr/" target="_blank" title="NEVÜ MAFET" style="text-decoration: none;">🌐</a>
+                <a href="https://wa.me/905061905437" target="_blank" title="WhatsApp Destek" style="text-decoration: none;">💬</a>
+                <a href="mailto:matematikegitiminevu@gmail.com" title="E-Posta" style="text-decoration: none;">✉️</a>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
         
-        with c3:
-             if st.button("⬅ Ana Menüye Dön", use_container_width=True):
-                ana_menuye_don()
+        # Beyaz Kutunun Kapanışı
+        st.markdown("</div>", unsafe_allow_html=True)
+        
+        # ⬅️ 7. ANA MENÜYE DÖNÜŞ (Kutunun dışında, en altta kurumsal ve temiz duruş)
+        st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
+        if st.button("⬅ Ana Menüye Dön", use_container_width=True):
+            st.session_state["sayfa"] = "ana_menu"
+            st.rerun()
 
 # --- 3. AŞAMA: DERS NOTLARI VE PDF ARŞİVİ ---
 elif st.session_state["sayfa"] == "notlar_arsivi":
