@@ -273,20 +273,27 @@ if st.session_state["sayfa"] == "ana_menu":
             )
 
 # =========================================================================
-# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (DÜZGÜN OKUNAN PÜRÜZSÜZ UBYS MODELİ)
+# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (PREMIUM PREMIUM GLASSMORPHISM)
 # =========================================================================
 elif st.session_state["sayfa"] == "sifre_kontrol":
     
-    # 🎨 Streamlit'in Çirkin İç Gölgelerini ve Sütun Yapılarını Tamamen Devre Dışı Bırakan CSS
+    # 🎨 Tamamen Özgün "Mathematical Night" Tasarım CSS Enjeksiyonu
     st.markdown(
         """
         <style>
-            /* 1. Sol menüyü (Sidebar) giriş ekranında gizle */
+            /* 1. Sol menüyü (Sidebar) giriş ekranında tamamen gizle */
             [data-testid="stSidebar"], [data-testid="stSidebarCollapseButton"] {
                 display: none !important;
             }
             
-            /* 2. Streamlit'in kendi eleman bloklarındaki arka plan ve gölgeleri sıfırla */
+            /* 2. Arka Plan: Derin ve modern akıcı kuantum gradyanı */
+            .stApp {
+                background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #2e1065 70%, #064e3b 100%) !important;
+                background-size: cover !important;
+                background-attachment: fixed !important;
+            }
+            
+            /* Streamlit'in kendi katman gölgelerini tamamen nötrle */
             [data-testid="element-container"], 
             [data-testid="stVerticalBlockBorderWrapper"], 
             [data-testid="stVerticalBlock"] {
@@ -295,137 +302,187 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 border: none !important;
             }
 
-            /* 3. Özel UBYS Kartı Kapsayıcısı */
-            .ubys-kapsayici-kart {
-                background-color: #ffffff !important;
-                max-width: 450px; /* UBYS gibi kompakt dikey kutu genişliği */
-                margin: 40px auto !important; /* Ekranı ortala */
-                padding: 35px 30px !important;
-                border-radius: 4px !important; /* Keskin köşeler */
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
-                border: 1px solid #cbd5e1 !important;
+            /* 3. ÖZGÜN KART: Premium Buzlu Cam (Glassmorphism) Efekti */
+            .cyhn-glass-card {
+                background: rgba(255, 255, 255, 0.04) !important;
+                backdrop-filter: blur(16px) saturate(120%) !important;
+                -webkit-backdrop-filter: blur(16px) saturate(120%) !important;
+                max-width: 460px;
+                margin: 50px auto !important;
+                padding: 40px 35px !important;
+                border-radius: 16px !important; /* Modern oval köşeler */
+                border: 1px solid rgba(255, 255, 255, 0.1) !important;
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
                 text-align: center;
             }
 
-            /* 4. Yazı Okunurluğu İyileştirmeleri */
-            .ubys-ana-baslik {
-                color: #1e3a8a !important;
-                font-weight: bold !important;
-                font-size: 1.3rem !important;
-                margin-top: 10px;
+            /* 4. Tipografi ve Kusursuz Okunurluk */
+            .cyhn-title {
+                color: #ffffff !important;
+                font-family: 'Inter', 'Segoe UI', sans-serif;
+                font-weight: 800 !important;
+                font-size: 1.5rem !important;
+                letter-spacing: 1px;
+                margin-top: 15px;
                 margin-bottom: 2px;
+                background: linear-gradient(to right, #ffffff, #cbd5e1);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
             }
-            .ubys-alt-baslik {
-                color: #64748b !important;
+            .cyhn-subtitle {
+                color: #94a3b8 !important;
                 font-size: 0.85rem !important;
-                margin-bottom: 20px;
+                font-weight: 500;
+                margin-bottom: 25px;
+                letter-spacing: 0.5px;
             }
-            .ubys-label {
-                font-weight: 700 !important;
-                color: #334155 !important;
+            .cyhn-label {
+                font-weight: 600 !important;
+                color: #e2e8f0 !important;
                 text-align: left;
-                margin-bottom: 5px;
-                font-size: 0.9rem;
+                margin-bottom: 6px;
+                font-size: 0.85rem;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
                 display: block;
             }
-            .ubys-warning {
-                color: #b91c1c !important;
-                font-size: 0.8rem;
+            .cyhn-warning {
+                color: #fda4af !important; /* Yumuşak neon mercan uyarısı */
+                font-size: 0.75rem;
                 text-align: left;
-                margin-top: 2px;
+                margin-top: 4px;
                 margin-bottom: 15px;
                 display: block;
+                font-weight: 500;
             }
 
-            /* 5. Expander İçin Özel Okunabilir Renk Tanımı */
+            /* 5. Şartlar Kutusu (Expander) Yeniden Yorumlandı */
             .stExpander {
-                background-color: #f8fafc !important;
-                border: 1px solid #e2e8f0 !important;
-                border-radius: 4px !important;
+                background: rgba(15, 23, 42, 0.6) !important;
+                border: 1px solid rgba(255, 255, 255, 0.08) !important;
+                border-radius: 8px !important;
                 text-align: left;
             }
-            /* Expander başlığının görünmeyen rengini koyu lacivert yaparak düzeltiyoruz */
-            .stExpander summary span, .stExpander p {
-                color: #1e3a8a !important;
+            /* Expander başlığı cam üzerinde parlayan net beyaz yapıldı */
+            .stExpander summary span {
+                color: #ffffff !important;
                 font-weight: 600 !important;
+                font-size: 0.85rem !important;
+            }
+            .stExpander p {
+                color: #cbd5e1 !important;
             }
             
-            /* 6. Giriş Alanı Tasarımı */
+            /* Checkbox rengi ve metni */
+            .stCheckbox label span p {
+                color: #e2e8f0 !important;
+                font-size: 0.85rem !important;
+            }
+            
+            /* 6. Giriş Kutuları (Inputs) */
             .stTextInput input {
-                color: #0f172a !important;
-                background-color: #ffffff !important;
-                border: 1px solid #cbd5e1 !important;
-                border-radius: 4px !important;
-                padding: 10px !important;
+                color: #ffffff !important;
+                background-color: rgba(15, 23, 42, 0.4) !important;
+                border: 1px solid rgba(255, 255, 255, 0.15) !important;
+                border-radius: 8px !important;
+                padding: 10px 12px !important;
+            }
+            .stTextInput input:focus {
+                border-color: #818cf8 !important; /* Odaklanınca indigo parlaması */
+                box-shadow: 0 0 0 2px rgba(129, 140, 248, 0.2) !important;
             }
 
-            /* 7. Butonları UBYS Standartlarına Eşitle */
+            /* 7. Butonlar: Premium Akıllı Tasarım */
             div.stButton > button:first-child {
-                background: #418bca !important; /* UBYS Buton Mavisi */
-                color: white !important;
-                border: none !important;
-                border-radius: 4px !important;
-                font-weight: bold !important;
+                background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%) !important; /* Safir İndigo Gradyan */
+                color: #ffffff !important;
+                border: 1px solid rgba(255, 255, 255, 0.1) !important;
+                border-radius: 8px !important;
+                font-weight: 600 !important;
                 padding: 10px 0 !important;
-                box-shadow: none !important;
+                letter-spacing: 0.5px;
+                transition: all 0.3s ease !important;
+                box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3) !important;
             }
             div.stButton > button:first-child:hover {
-                background: #3276b1 !important;
+                background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
+                transform: translateY(-1px);
+                box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4) !important;
             }
 
-            /* Alt çizgiler ve linkler */
-            .ubys-line {
-                border-top: 1px solid #e2e8f0;
-                margin: 20px 0;
+            /* Alt tasarım çizgileri */
+            .cyhn-line {
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                margin: 22px 0;
             }
-            .ubys-footer-link {
-                color: #418bca !important;
+            .cyhn-footer-link {
+                color: #a5b4fc !important;
                 text-decoration: none;
                 font-size: 0.85rem;
-                font-weight: bold;
+                font-weight: 500;
+                transition: color 0.2s;
+            }
+            .cyhn-footer-link:hover {
+                color: #c7d2fe !important;
+            }
+            .cyhn-icon {
+                color: #94a3b8 !important;
+                text-decoration: none;
+                font-size: 1.3rem;
+                transition: color 0.2s;
+            }
+            .cyhn-icon:hover {
+                color: #ffffff !important;
             }
         </style>
         """, 
         unsafe_allow_html=True
     )
 
-    # 🏛️ HTML ile Kartın Dış Çerçevesini Başlatıyoruz (Sırıtma ve Dağılma Yapmaz)
-    st.markdown('<div class="ubys-kapsayici-kart">', unsafe_allow_html=True)
+    # Dengeli üst boşluk
+    st.markdown("<div style='height: 30px;'></div>", unsafe_allow_html=True)
     
-    # Logo ve Başlıklar
-    st.image("mc250.png", width=105)
-    st.markdown('<p class="ubys-ana-baslik">CYHN MATEMATİK PORTALI</p>', unsafe_allow_html=True)
-    st.markdown('<p class="ubys-alt-baslik">Özel Ders Notları Arşivi Doğrulama</p>', unsafe_allow_html=True)
+    # 🏛️ HTML ile Premium Cam Kartı Başlatıyoruz
+    st.markdown('<div class="cyhn-glass-card">', unsafe_allow_html=True)
     
-    # 📜 Yasal Uyarı ve Expander Alanı
-    with st.expander("⚠️ Telif Hakkı ve Kullanım Şartları", expanded=True):
+    # Logo Tasarımı (Görselin etrafına hafif bir parıltı efekti verdik)
+    st.markdown('<div style="display: flex; justify-content: center; filter: drop-shadow(0 0 12px rgba(255,255,255,0.15));">', unsafe_allow_html=True)
+    st.image("mc250.png", width=100)
+    st.markdown('</div>', unsafe_allow_html=True)
+    
+    # Başlıklar
+    st.markdown('<p class="cyhn-title">CYHN MATEMATİK PORTALI</p>', unsafe_allow_html=True)
+    st.markdown('<p class="cyhn-subtitle">Özel Ders Notları Arşivi Doğrulama</p>', unsafe_allow_html=True)
+    
+    # 📜 Yasal Uyarı ve Şartlar (Cam üzerinde harika okunan siyah/koyu gri panel)
+    with st.expander("🔒 Telif Hakkı ve Kullanım Şartları", expanded=True):
         st.markdown(
             """
-            <p style="color: #b91c1c !important; font-weight: bold; margin-bottom: 4px; font-size: 0.85rem;">Yasal Uyarı:</p>
-            <p style="color: #475569 !important; font-size: 0.8rem; line-height: 1.4; font-weight: normal !important;">
-            Bu platformda paylaşılan tüm ders PDF notlarının telif hakları doğrudan <b>Muharrem CEYHAN</b>'a aittir. Paylaşılması <b>kesinlikle yasaktır</b>. (© 2026)
+            <p style="color: #fca5a5 !important; font-weight: bold; margin-bottom: 4px; font-size: 0.85rem;">Yasal Uyarı:</p>
+            <p style="color: #cbd5e1 !important; font-size: 0.8rem; line-height: 1.45; font-weight: normal !important;">
+            Bu platformda paylaşılan tüm ders PDF notlarının telif hakları doğrudan <b>Muharrem CEYHAN</b>'a aittir. İzinsiz paylaşılması <b>kesinlikle yasaktır</b>. (© 2026)
             </p>
             """, 
             unsafe_allow_html=True
         )
-        onay = st.checkbox("Okudum, kabul ediyorum.")
+        onay = st.checkbox("Okudum, kuralları kabul ediyorum.")
         
-    st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='height: 12px;'></div>", unsafe_allow_html=True)
     
     # 👤 Kullanıcı Adı Girişi
-    st.markdown('<span class="ubys-label">Kullanıcı Adı</span>', unsafe_allow_html=True)
-    kullanici_adi = st.text_input("Kullanıcı Adı Alanı", label_visibility="collapsed", placeholder="Kullanıcı adınızı yazınız...").strip().lower()
-    st.markdown('<span class="ubys-warning">Lütfen Kullanıcı Adı giriniz.</span>', unsafe_allow_html=True)
+    st.markdown('<span class="cyhn-label">Kullanıcı Adı</span>', unsafe_allow_html=True)
+    kullanici_adi = st.text_input("Kullanıcı Adı Giriş Paneli", label_visibility="collapsed", placeholder="Kullanıcı adınız...").strip().lower()
+    st.markdown('<span class="cyhn-warning">Lütfen Kullanıcı Adı giriniz.</span>', unsafe_allow_html=True)
     
     # 🔑 Parola Girişi
-    st.markdown('<span class="ubys-label">Parola</span>', unsafe_allow_html=True)
-    sifre = st.text_input("Parola Alanı", type="password", label_visibility="collapsed", placeholder="Şifrenizi yazınız...")
-    st.markdown('<span class="ubys-warning">Lütfen Parola giriniz.</span>', unsafe_allow_html=True)
+    st.markdown('<span class="cyhn-label">Parola</span>', unsafe_allow_html=True)
+    sifre = st.text_input("Parola Giriş Paneli", type="password", label_visibility="collapsed", placeholder="Şifreniz...")
+    st.markdown('<span class="cyhn-warning">Lütfen Parola giriniz.</span>', unsafe_allow_html=True)
     
-    # 🖲️ Butonlar (Yan yana düzgün durması için kontrollü alt sütun)
+    # 🖲️ Butonlar (Modern Grid Düzeni)
     btn_c1, btn_c2 = st.columns(2)
     with btn_c1:
-        if st.button("Giriş", use_container_width=True):
+        if st.button("Giriş Yap", use_container_width=True):
             if not onay:
                 st.error("Lütfen önce şartları onaylayınız!")
             elif kullanici_adi in USERS and USERS[kullanici_adi] == sifre:
@@ -445,28 +502,29 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
         mail_link = f"mailto:matematikegitiminevu@gmail.com?subject={mail_konu}&body={mail_icerik}"
         st.link_button("📩 Şifre İste", mail_link, use_container_width=True)
         
-    # 🌐 Alt İletişim Alanı
+    # 🌐 Alt İletişim ve Sosyal İkonlar
     st.markdown(
         """
-        <p style="margin-top: 15px; margin-bottom: 5px;">
-            <a href="mailto:matematikegitiminevu@gmail.com" class="ubys-footer-link">Giriş yapamıyor musunuz?</a>
+        <p style="margin-top: 18px; margin-bottom: 5px;">
+            <a href="mailto:matematikegitiminevu@gmail.com" class="cyhn-footer-link">Giriş yapamıyor musunuz?</a>
         </p>
-        <div class="ubys-line"></div>
-        <div style="display: flex; justify-content: center; gap: 25px; font-size: 1.3rem;">
-            <a href="https://mafet.nevsehir.edu.tr/" target="_blank" style="text-decoration: none;">🌐</a>
-            <a href="https://wa.me/905061905437" target="_blank" style="text-decoration: none;">💬</a>
-            <a href="mailto:matematikegitiminevu@gmail.com" style="text-decoration: none;">✉️</a>
+        <div class="cyhn-line"></div>
+        <div style="display: flex; justify-content: center; gap: 30px;">
+            <a href="https://mafet.nevsehir.edu.tr/" target="_blank" class="cyhn-icon" title="NEVÜ MAFET">🌐</a>
+            <a href="https://wa.me/905061905437" target="_blank" class="cyhn-icon" title="WhatsApp Destek">💬</a>
+            <a href="mailto:matematikegitiminevu@gmail.com" class="cyhn-icon" title="E-Posta">✉️</a>
         </div>
         """, 
         unsafe_allow_html=True
     )
     
-    # HTML Kart Kapsayıcısını Kapatıyoruz
+    # Cam Kartı Kapatıyoruz
     st.markdown('</div>', unsafe_allow_html=True)
 
-    # ⬅️ PORTAL ANA MENÜSÜNE DÖNÜŞ (Beyaz kartın tamamen dışındaki transparan buton)
+    # ⬅️ PORTAL ANA MENÜSÜNE DÖNÜŞ (Kartın dışında duran estetik transparan buton)
     _, ana_btn_col, _ = st.columns([0.3, 0.4, 0.3])
     with ana_btn_col:
+        # Cam tasarıma uyum sağlaması için bu butona da dokunduk, harika arka plan önünde çok şık duracak
         if st.button("⬅ Portal Ana Menüsüne Dön", use_container_width=True):
             st.session_state["sayfa"] = "ana_menu"
             st.rerun()
