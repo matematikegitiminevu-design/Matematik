@@ -516,11 +516,8 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         import time
         time.sleep(1)
     # Sidebar (Yan Menü)
-    with st.sidebar:
-        if st.session_state.get('aktif_user') is not None:
+    with st.sidebar: 
             st.title(f"♾️ Hoş Geldin, {st.session_state['aktif_user'].capitalize()}!")
-        else:
-            st.title("♾️ Hoş Geldin!")
             st.markdown("💡 *Bir sorun mu var? Aşağıdaki kanallardan bize hızlıca ulaşabilir veya yapay zeka asistanımıza danışabilirsin.*")
             # --- ÖZEL BUTON TASARIMLARI (CSS) ---
             st.markdown("""
