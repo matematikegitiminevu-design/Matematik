@@ -430,9 +430,13 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
     with st.expander("🔒 Telif Hakkı ve Kullanım Şartları", expanded=True):
         st.markdown(
             """
-            <p style="color: #fca5a5 !important; font-weight: bold; margin-bottom: 4px; font-size: 0.85rem;">Yasal Uyarı:</p>
-            <p style="color: #cbd5e1 !important; font-size: 0.8rem; line-height: 1.45; font-weight: normal !important;">
-            Bu platformda paylaşılan tüm ders PDF notlarının telif hakları doğrudan <b>Muharrem CEYHAN</b>'a aittir. İzinsiz paylaşılması <b>kesinlikle yasaktır</b>. (© 2026)
+            <p style="color: #fca5a5 !important; font-weight: bold; margin-bottom: 6px; font-size: 0.85rem;">Yasal Uyarı:</p>
+            <p style="color: #cbd5e1 !important; font-size: 0.82rem; line-height: 1.5; font-weight: normal !important; text-align: left;">
+            Bu platformda paylaşılan tüm ders PDF notlarının telif hakları doğrudan <b>Muharrem CEYHAN</b>'a aittir. <br>
+            Tüm hakları saklıdır. <br><br>
+            İçeriklerin tamamının veya bir kısmının, yazarın yazılı izni olmaksızın kopyalanması, çoğaltılması, işlenmesi veya herhangi bir dijital/basılı mecrada paylaşılması <b>kesinlikle yasaktır</b>. <br><br>
+            Sadece kişisel eğitim amaçlıdır..! <br>
+            <span style="color: #94a3b8 !important; font-size: 0.75rem; display: block; margin-top: 6px;">(© 2026)</span>
             </p>
             """, 
             unsafe_allow_html=True
