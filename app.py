@@ -273,11 +273,11 @@ if st.session_state["sayfa"] == "ana_menu":
             )
 
 # =========================================================================
-# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (POPUP / MODAL KONSEPTİ - TEMİZ SADE)
+# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (TEMİZ VE SADE POPUP / MODAL KONSEPTİ)
 # =========================================================================
 elif st.session_state["sayfa"] == "sifre_kontrol":
     
-    # 🎨 Geliştirilmiş Popup Efekti ve CSS Temizliği
+    # 🎨 Geliştirilmiş Popup Efekti ve CSS
     st.markdown(
         """
         <style>
@@ -304,18 +304,18 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
 
             /* 3. POPUP KART: Ekranda Yüzen Pencere (Modal) Efekti */
             .cyhn-popup-card {
-                background: rgba(23, 23, 37, 0.6) !important; /* Popup içi daha tok ve odaklı bir koyulukta */
+                background: rgba(23, 23, 37, 0.6) !important; /* Popup içi tok ve odaklı bir koyulukta */
                 backdrop-filter: blur(20px) saturate(140%) !important;
                 -webkit-backdrop-filter: blur(20px) saturate(140%) !important;
                 max-width: 440px;
-                margin: 70px auto !important; /* Yukarıdan daha dengeli popup boşluğu */
+                margin: 70px auto !important; /* Yukarıdan dengeli popup boşluğu */
                 padding: 40px 35px !important;
-                border-radius: 20px !important; /* Tam bir popup gibi daha yumuşak oval köşeler */
+                border-radius: 20px !important; /* Yumuşak popup oval köşeleri */
                 border: 1px solid rgba(255, 255, 255, 0.12) !important;
                 /* Güçlü popup gölgesi ile derinlik hissi */
                 box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.7), 0 0 50px rgba(129, 140, 248, 0.05) !important;
                 text-align: center;
-                animation: popupShow 0.4s ease-out; /* Sayfa açılışında hafif büyüme efekti */
+                animation: popupShow 0.4s ease-out; /* Açılışta hafif büyüme efekti */
             }
 
             /* Popup Açılış Animasyonu */
@@ -347,20 +347,12 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 font-weight: 600 !important;
                 color: #cbd5e1 !important;
                 text-align: left;
-                margin-bottom: 6px;
+                margin-top: 5px;
+                margin-bottom: 8px;
                 font-size: 0.85rem;
                 text-transform: uppercase;
                 letter-spacing: 0.5px;
                 display: block;
-            }
-            .cyhn-warning {
-                color: #fda4af !important; /* Yumuşak neon mercan uyarısı */
-                font-size: 0.75rem;
-                text-align: left;
-                margin-top: 4px;
-                margin-bottom: 15px;
-                display: block;
-                font-weight: 500;
             }
 
             /* 5. Şartlar Kutusu (Expander) Yeniden Yorumlandı */
@@ -447,17 +439,19 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
         )
         onay = st.checkbox("Okudum, kuralları kabul ediyorum.")
         
-    st.markdown("<div style='height: 12px;'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='height: 15px;'></div>", unsafe_allow_html=True)
     
     # 👤 Kullanıcı Adı Girişi
     st.markdown('<span class="cyhn-label">Kullanıcı Adı</span>', unsafe_allow_html=True)
     kullanici_adi = st.text_input("Kullanıcı Adı Giriş Paneli", label_visibility="collapsed", placeholder="Kullanıcı adınız...").strip().lower()
-    st.markdown('<span class="cyhn-warning">Lütfen Kullanıcı Adı giriniz.</span>', unsafe_allow_html=True)
+    
+    st.markdown("<div style='height: 15px;'></div>", unsafe_allow_html=True)
     
     # 🔑 Parola Girişi
     st.markdown('<span class="cyhn-label">Parola</span>', unsafe_allow_html=True)
-    sifre = st.text_input("Parola Giriş Paneli", type="password", label_visibility="collapsed", placeholder="Şifreniz...")
-    st.markdown('<span class="cyhn-warning">Lütfen Parola giriniz.</span>', unsafe_allow_html=True)
+    sifre = st.text_input("Parola Giriş Paneli", type="password", label_visibility="collapsed", placeholder="Şifrenizi yazınız...")
+    
+    st.markdown("<div style='height: 25px;'></div>", unsafe_allow_html=True)
     
     # 🖲️ Butonlar (Modern Grid Düzeni)
     btn_c1, btn_c2 = st.columns(2)
@@ -482,10 +476,10 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
         mail_link = f"mailto:matematikegitiminevu@gmail.com?subject={mail_konu}&body={mail_icerik}"
         st.link_button("📩 Şifre İste", mail_link, use_container_width=True)
     
-    # Popup Kartı Kapatıyoruz (İletişim linkleri tamamen kaldırıldı)
+    # Popup Kartı Kapatıyoruz
     st.markdown('</div>', unsafe_allow_html=True)
 
-    # ⬅️ PORTAL ANA MENÜSÜNE DÖNÜŞ (Popup dışında kalan temiz transparan buton)
+    # ⬅️ PORTAL ANA MENÜSÜNE DÖNÜŞ (Popup dışında kalan transparan buton)
     _, ana_btn_col, _ = st.columns([0.3, 0.4, 0.3])
     with ana_btn_col:
         if st.button("⬅ Portal Ana Menüsüne Dön", use_container_width=True):
