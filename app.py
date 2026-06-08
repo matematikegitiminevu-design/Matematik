@@ -374,14 +374,14 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
             st.markdown("<div style='height: 15px;'></div>", unsafe_allow_html=True)
             
             # 👤 3. KULLANICI ADI GİRİŞİ
-            st.markdown("<span class="ubys-girdi-etiket">Kullanıcı Adı</span>", unsafe_allow_html=True)
+            st.markdown('<span class="ubys-girdi-etiket">Kullanıcı Adı</span>', unsafe_allow_html=True)
             kullanici_adi = st.text_input("Kullanıcı Adı Giriş Alanı", label_visibility="collapsed", placeholder="Kullanıcı adınızı yazınız...").strip().lower()
-            st.markdown("<span class="ubys-kirmizi-uyari">Lütfen Kullanıcı Adı giriniz.</span>", unsafe_allow_html=True)
+            st.markdown('<span class="ubys-kirmizi-uyari">Lütfen Kullanıcı Adı giriniz.</span>', unsafe_allow_html=True)
             
             # 🔑 4. PAROLA GİRİŞİ
-            st.markdown("<span class="ubys-girdi-etiket">Parola</span>", unsafe_allow_html=True)
+            st.markdown('<span class="ubys-girdi-etiket">Parola</span>', unsafe_allow_html=True)
             sifre = st.text_input("Parola Giriş Alanı", type="password", label_visibility="collapsed", placeholder="Şifrenizi yazınız...")
-            st.markdown("<span class="ubys-kirmizi-uyari">Lütfen Parola giriniz.</span>", unsafe_allow_html=True)
+            st.markdown('<span class="ubys-kirmizi-uyari">Lütfen Parola giriniz.</span>', unsafe_allow_html=True)
             
             st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
             
