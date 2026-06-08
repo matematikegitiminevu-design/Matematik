@@ -496,6 +496,11 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 st.markdown("**Analiz 2**")
                 if st.button("📝 Ders Notunu Aç", key="anlz2", use_container_width=True):
                     pdf_popup_ac("1_v-11l519_-I8VD759O0-0Vwo6oasGHB")
+        with col3:
+            with st.container(border=True):
+                st.markdown("**Analiz 3**")
+                st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln4")
+                
     with tab3:
         st.subheader("Soyut Matematik Ders Notu")
         st.warning("❗Soyut matematik dersinde kullanılmış olan notlar aşağıdadır.")
