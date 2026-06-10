@@ -28,7 +28,7 @@ USERS = {
 # =========================================================================
 # 🛠️ BAKIM MODU AYARLARI
 # =========================================================================
-BAKIM_MODU = True          # Tüm siteyi kapatmak için True yapın
+BAKIM_MODU = False          # Tüm siteyi kapatmak için True yapın
 ARSIV_BAKIM_MODU = False     # Sadece ders arşivini kapatmak için True yapın
 
 HEDEF_ZAMAN_GENEL = "2026-06-09 00:00:00"
@@ -272,201 +272,223 @@ if st.session_state["sayfa"] == "ana_menu":
                 unsafe_allow_html=True
             )
 
-
 # =========================================================================
-# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (BİREBİR GÖRSEL TASARIMI + URL HATASI ÇÖZÜMÜ)
+# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (TEMİZ VE SADE POPUP / MODAL KONSEPTİ)
 # =========================================================================
 elif st.session_state["sayfa"] == "sifre_kontrol":
     
-    # 🔮 1. ADIM: Streamlit Alanını İzole Eden ve Arka Planı Ayarlayan CSS
+    # 🎨 Geliştirilmiş Popup Efekti ve CSS
     st.markdown(
         """
         <style>
-            /* Streamlit üst bar, sidebar ve alt bilgileri tamamen kapat */
-            [data-testid="stSidebar"], [data-testid="stSidebarCollapseButton"], 
-            [data-testid="stHeader"], footer {
+            /* 1. Sol menüyü (Sidebar) giriş ekranında tamamen gizle */
+            [data-testid="stSidebar"], [data-testid="stSidebarCollapseButton"] {
                 display: none !important;
             }
             
-            /* Sayfa container boşluklarını sıfırla ve dikey/yatay ortala */
-            .main .block-container {
-                max-width: 100% !important;
-                padding: 0px !important;
-            }
-            
-            /* ARKA PLAN: Görseldeki pembe-mor dokulu kozmik nebula atmosferi */
+            /* 2. Arka Plan: Derin ve modern akıcı kuantum gradyanı */
             .stApp {
-                background: linear-gradient(135deg, #2b0833 0%, #630b4f 40%, #1a083a 80%, #0b051c 100%) !important;
+                background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #2e1065 70%, #064e3b 100%) !important;
                 background-size: cover !important;
                 background-attachment: fixed !important;
-                min-height: 100vh !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
             }
-
-            /* Streamlit'in görünmez container arka planlarını şeffaflaştır */
-            [data-testid="element-container"], [data-testid="stVerticalBlock"], 
-            [data-testid="stVerticalBlockBorderWrapper"], [data-testid="stForm"] {
+            
+            /* Streamlit'in kendi katman gölgelerini tamamen nötrle */
+            [data-testid="element-container"], 
+            [data-testid="stVerticalBlockBorderWrapper"], 
+            [data-testid="stVerticalBlock"] {
                 background-color: transparent !important;
                 box-shadow: none !important;
                 border: none !important;
-                padding: 0 !important;
+            }
+
+            /* 3. POPUP KART: Ekranda Yüzen Pencere (Modal) Efekti */
+            .cyhn-popup-card {
+                background: rgba(23, 23, 37, 0.6) !important; /* Popup içi tok ve odaklı bir koyulukta */
+                backdrop-filter: blur(20px) saturate(140%) !important;
+                -webkit-backdrop-filter: blur(20px) saturate(140%) !important;
+                max-width: 440px;
+                margin: 70px auto !important; /* Yukarıdan dengeli popup boşluğu */
+                padding: 40px 35px !important;
+                border-radius: 20px !important; /* Yumuşak popup oval köşeleri */
+                border: 1px solid rgba(255, 255, 255, 0.12) !important;
+                /* Güçlü popup gölgesi ile derinlik hissi */
+                box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.7), 0 0 50px rgba(129, 140, 248, 0.05) !important;
+                text-align: center;
+                animation: popupShow 0.4s ease-out; /* Açılışta hafif büyüme efekti */
+            }
+
+            /* Popup Açılış Animasyonu */
+            @keyframes popupShow {
+                from { transform: scale(0.96); opacity: 0; }
+                to { transform: scale(1); opacity: 1; }
+            }
+
+            /* 4. Tipografi ve Kusursuz Okunurluk */
+            .cyhn-title {
+                color: #ffffff !important;
+                font-family: 'Inter', 'Segoe UI', sans-serif;
+                font-weight: 800 !important;
+                font-size: 1.45rem !important;
+                letter-spacing: 0.5px;
+                margin-top: 15px;
+                margin-bottom: 2px;
+                background: linear-gradient(to right, #ffffff, #e2e8f0);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            .cyhn-subtitle {
+                color: #94a3b8 !important;
+                font-size: 0.85rem !important;
+                font-weight: 500;
+                margin-bottom: 25px;
+            }
+            .cyhn-label {
+                font-weight: 600 !important;
+                color: #cbd5e1 !important;
+                text-align: left;
+                margin-top: 5px;
+                margin-bottom: 8px;
+                font-size: 0.85rem;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                display: block;
+            }
+
+            /* 5. Şartlar Kutusu (Expander) Yeniden Yorumlandı */
+            .stExpander {
+                background: rgba(15, 23, 42, 0.7) !important;
+                border: 1px solid rgba(255, 255, 255, 0.08) !important;
+                border-radius: 10px !important;
+                text-align: left;
+            }
+            .stExpander summary span {
+                color: #ffffff !important;
+                font-weight: 600 !important;
+                font-size: 0.85rem !important;
+            }
+            .stExpander p {
+                color: #cbd5e1 !important;
             }
             
-            /* Streamlit Input Alanlarını Görseldeki Gibi Transparan Yapma */
-            .stTextInput input, .stSelectbox div[data-baseweb="select"] {
-                background-color: rgba(255, 255, 255, 0.03) !important;
+            /* Checkbox metni */
+            .stCheckbox label span p {
+                color: #cbd5e1 !important;
+                font-size: 0.85rem !important;
+            }
+            
+            /* 6. Giriş Kutuları (Inputs) */
+            .stTextInput input {
+                color: #ffffff !important;
+                background-color: rgba(15, 23, 42, 0.5) !important;
                 border: 1px solid rgba(255, 255, 255, 0.15) !important;
-                border-radius: 12px !important;
-                color: white !important;
-                padding: 10px 14px !important;
+                border-radius: 10px !important;
+                padding: 11px 14px !important;
             }
             .stTextInput input:focus {
-                border-color: #ec4899 !important;
-                box-shadow: 0 0 0 1px #ec4899 !important;
+                border-color: #818cf8 !important;
+                box-shadow: 0 0 0 2px rgba(129, 140, 248, 0.25) !important;
             }
-            
-            /* Label (Başlık) yazılarını gizle veya küçült (Tasarım birebir olsun diye) */
-            .stTextInput label p, .stSelectbox label p, .stCheckbox label p {
-                color: rgba(255, 255, 255, 0.6) !important;
-                font-size: 0.8rem !important;
-                margin-bottom: 2px !important;
-            }
-            
-            /* Giriş Yap Butonu Tasarımı */
-            div.stButton > button {
-                background: linear-gradient(90deg, #7c3aed 0%, #e11d48 100%) !important;
-                color: white !important;
-                border: none !important;
-                border-radius: 12px !important;
-                padding: 14px 0 !important;
-                font-size: 1rem !important;
+
+            /* 7. Butonlar */
+            div.stButton > button:first-child {
+                background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%) !important;
+                color: #ffffff !important;
+                border: 1px solid rgba(255, 255, 255, 0.1) !important;
+                border-radius: 10px !important;
                 font-weight: 600 !important;
-                width: 100% !important;
-                box-shadow: 0 10px 20px rgba(225, 29, 72, 0.3) !important;
-                transition: all 0.2s ease !important;
+                padding: 10px 0 !important;
+                transition: all 0.3s ease !important;
+                box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3) !important;
             }
-            div.stButton > button:hover {
-                opacity: 0.9 !important;
+            div.stButton > button:first-child:hover {
+                background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
                 transform: translateY(-1px);
-            }
-            
-            /* Şeffaf Dönüş Butonu */
-            .back-btn-container button {
-                background: transparent !important;
-                color: rgba(255, 255, 255, 0.4) !important;
-                border: none !important;
-                box-shadow: none !important;
-            }
-            .back-btn-container button:hover {
-                color: white !important;
+                box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4) !important;
             }
         </style>
         """, 
         unsafe_allow_html=True
     )
 
-    # 🔮 2. ADIM: Kartın Dış Kılıfı ve Başlıklar (HTML Başlangıcı)
-    st.markdown(
-        """
-        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100vw; font-family: 'Inter', system-ui, sans-serif;">
-            <div style="
-                background: rgba(30, 24, 38, 0.65);
-                backdrop-filter: blur(30px) saturate(180%);
-                -webkit-backdrop-filter: blur(30px) saturate(180%);
-                width: 390px;
-                padding: 40px 30px 60px 30px;
-                border-radius: 28px;
-                border: 1px solid rgba(255, 255, 255, 0.08);
-                box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7);
-                box-sizing: border-box;
-                position: relative;
-            ">
-                <h2 style="color: #ffffff; text-align: center; margin: 0 0 6px 0; font-size: 1.6rem; font-weight: 600; letter-spacing: -0.5px;">Welcome back!</h2>
-                <p style="color: rgba(255, 255, 255, 0.5); text-align: center; margin: 0 0 25px 0; font-size: 0.88rem;">Let's get you signed up.</p>
-            </div>
-        </div>
-        """, 
-        unsafe_allow_html=True
-    )
-
-    # 🔮 3. ADIM: Tasarımın İçine Konumlandırılan Güvenli Streamlit Form Mekanizması
-    # Kartın tam üzerine oturması için negatif margin uyguluyoruz
-    st.markdown('<div style="width: 330px; margin: -510px auto 0 auto; position: relative; z-index: 1000;">', unsafe_allow_html=True)
+    # Dengeli üst boşluk
+    st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
     
-    with st.form("güvenli_giriş_formu", clear_on_submit=False):
-        
-        # 1. Sıra: Yan Yana Duran First Name ve Last Name
-        col1, col2 = st.columns(2)
-        with col1:
-            html_firstname = st.text_input("First Name", placeholder="First Name", label_visibility="collapsed")
-        with col2:
-            html_lastname = st.text_input("Last Name", placeholder="Last Name", label_visibility="collapsed")
-            
-        # 2. Sıra: Kullanıcı Adı
-        html_username = st.text_input("Kullanıcı Adı", placeholder="Kullanıcı Adı", label_visibility="collapsed")
-        
-        # 3. Sıra: Parola
-        html_password = st.text_input("Password", type="password", placeholder="Password", label_visibility="collapsed")
-        
-        # 4. Sıra: Ülke / Portal Seçimi
-        portal_secim = st.selectbox("Region", ["Turkey (CYHN Portal)", "United States"], label_visibility="collapsed")
-        
-        # 5. Sıra: Telif Hakkı Checkbox
-        sozlesme_onay = st.checkbox("Telif haklarını kabul ediyorum, dökümanları izinsiz paylaşmayacağım.")
-        
-        st.write("")
-        
-        # 6. Sıra: Giriş Yap Butonu
-        giriş_tetiklendi = st.form_submit_button("Sign Up / Giriş Yap", use_container_width=True)
-        
+    # 🏛️ HTML ile Popup Kartı Başlatıyoruz
+    st.markdown('<div class="cyhn-popup-card">', unsafe_allow_html=True)
+    
+    # Logo Tasarımı (Hafif parıltılı)
+    st.markdown('<div style="display: flex; justify-content: center; filter: drop-shadow(0 0 15px rgba(255,255,255,0.1));">', unsafe_allow_html=True)
+    st.image("mc250.png", width=95)
     st.markdown('</div>', unsafe_allow_html=True)
-
-    # 🔮 4. ADIM: Kartın Altından Taşan Yuvarlak Sosyal Medya İkonları (HTML)
-    st.markdown(
-        """
-        <div style="width: 100vw; display: flex; justify-content: center; margin-top: -30px; position: relative; z-index: 1001;">
-            <div style="width: 390px; position: relative;">
-                <div style="position: absolute; bottom: -22px; left: 50%; transform: translateX(-50%); display: flex; gap: 14px;">
-                    <a href="#" style="width: 44px; height: 44px; background: #14121e; border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 20px rgba(0,0,0,0.5); text-decoration: none;">
-                        <img src="https://img.icons8.com/ios-filled/50/ffffff/mac-os.png" width="18"/>
-                    </a>
-                    <a href="mailto:matematikegitiminevu@gmail.com" style="width: 44px; height: 44px; background: #14121e; border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 20px rgba(0,0,0,0.5); text-decoration: none;">
-                        <img src="https://img.icons8.com/color/48/000000/google-logo.png" width="18"/>
-                    </a>
-                    <a href="#" style="width: 44px; height: 44px; background: #14121e; border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 20px rgba(0,0,0,0.5); text-decoration: none;">
-                        <img src="https://img.icons8.com/ios-filled/50/1877f2/facebook-new.png" width="20"/>
-                    </a>
-                </div>
-            </div>
-        </div>
-        """, 
-        unsafe_allow_html=True
-    )
-
-    # 🔮 5. ADIM: Form Gönderildiğinde Çalışacak Temiz Python Doğrulama Motoru
-    if giriş_tetiklendi:
-        if not sozlesme_onay:
-            st.error("Devam etmek için telif hakları sözleşmesini onaylamalısınız!")
-        else:
-            temiz_user = html_username.strip().lower()
-            if temiz_user in USERS and USERS[temiz_user] == html_password:
-                st.toast("🔑 Giriş Başarılı!", icon="🎉")
+    
+    # Başlıklar
+    st.markdown('<p class="cyhn-title">CYHN MATEMATİK PORTALI</p>', unsafe_allow_html=True)
+    st.markdown('<p class="cyhn-subtitle">Özel Ders Notları Arşivi Doğrulama</p>', unsafe_allow_html=True)
+    
+    # 📜 Yasal Uyarı ve Şartlar
+    with st.expander("🔒 Telif Hakkı ve Kullanım Şartları", expanded=True):
+        st.markdown(
+            """
+            <p style="color: #fca5a5 !important; font-weight: bold; margin-bottom: 6px; font-size: 0.85rem;">Yasal Uyarı:</p>
+            <p style="color: #cbd5e1 !important; font-size: 0.82rem; line-height: 1.5; font-weight: normal !important; text-align: left;">
+            Bu platformda paylaşılan tüm ders PDF notlarının telif hakları doğrudan <b>Muharrem CEYHAN</b>'a aittir. <br>
+            Tüm hakları saklıdır. <br><br>
+            İçeriklerin tamamının veya bir kısmının, yazarın yazılı izni olmaksızın kopyalanması, çoğaltılması, işlenmesi veya herhangi bir dijital/basılı mecrada paylaşılması <b>kesinlikle yasaktır</b>. <br><br>
+            Sadece kişisel eğitim amaçlıdır..! <br>
+            <span style="color: #94a3b8 !important; font-size: 0.75rem; display: block; margin-top: 6px;">(© 2026)</span>
+            </p>
+            """, 
+            unsafe_allow_html=True
+        )
+        onay = st.checkbox("Okudum, şartları kabul ediyorum.")
+        
+    st.markdown("<div style='height: 15px;'></div>", unsafe_allow_html=True)
+    
+    # 👤 Kullanıcı Adı Girişi
+    st.markdown('<span class="cyhn-label">Kullanıcı Adı</span>', unsafe_allow_html=True)
+    kullanici_adi = st.text_input("Kullanıcı Adı Giriş Paneli", label_visibility="collapsed", placeholder="Kullanıcı adınız...").strip().lower()
+    
+    st.markdown("<div style='height: 15px;'></div>", unsafe_allow_html=True)
+    
+    # 🔑 Parola Girişi
+    st.markdown('<span class="cyhn-label">Parola</span>', unsafe_allow_html=True)
+    sifre = st.text_input("Parola Giriş Paneli", type="password", label_visibility="collapsed", placeholder="Şifrenizi yazınız...")
+    
+    st.markdown("<div style='height: 25px;'></div>", unsafe_allow_html=True)
+    
+    # 🖲️ Butonlar (Modern Grid Düzeni)
+    btn_c1, btn_c2 = st.columns(2)
+    with btn_c1:
+        if st.button("Giriş Yap", use_container_width=True):
+            if not onay:
+                st.error("Lütfen önce şartları onaylayınız!")
+            elif kullanici_adi in USERS and USERS[kullanici_adi] == sifre:
+                st.toast(f"🔑 Giriş Başarılı! Hoş geldin {kullanici_adi.capitalize()}.", icon="🎉")
                 st.balloons()
-                st.session_state["aktif_user"] = temiz_user
+                import time
+                time.sleep(1.5)
+                st.session_state["aktif_user"] = kullanici_adi
                 st.session_state["sayfa"] = "notlar_arsivi"
                 st.rerun()
             else:
-                st.error("Kullanıcı adı veya şifre hatalı. Lütfen tekrar deneyin!")
-
-    # 🔮 6. ADIM: En Alttaki Portal Ana Menüsüne Dönüş Alanı
-    st.markdown('<div class="back-btn-container" style="display: flex; justify-content: center; margin-top: 60px;">', unsafe_allow_html=True)
-    if st.button("⬅ Portal Ana Menüsüne Dön", key="back_to_menu_key"):
-        st.session_state["sayfa"] = "ana_menu"
-        st.rerun()
+                st.error("Kullanıcı adı veya şifre hatalı!")
+                
+    with btn_c2:
+        mail_konu = "CYHN%20Portal%20Eri%C5%9Fim%20Talebi"
+        mail_icerik = "Merhaba,%0D%0ACYHN%20Matematik%20Portalı%20için%20kullanıcı%20adı%20ve%20şifre%20talep%20ediyorum.%0D%0A%0D%0AAdım%20Soyadım:%20"
+        mail_link = f"mailto:matematikegitiminevu@gmail.com?subject={mail_konu}&body={mail_icerik}"
+        st.link_button("📩 Şifre İste", mail_link, use_container_width=True)
+    
+    # Popup Kartı Kapatıyoruz
     st.markdown('</div>', unsafe_allow_html=True)
-            
+
+    # ⬅️ PORTAL ANA MENÜSÜNE DÖNÜŞ (Popup dışında kalan transparan buton)
+    _, ana_btn_col, _ = st.columns([0.3, 0.4, 0.3])
+    with ana_btn_col:
+        if st.button("⬅ Portal Ana Menüsüne Dön", use_container_width=True):
+            st.session_state["sayfa"] = "ana_menu"
+            st.rerun()
             
 # --- 3. AŞAMA: DERS NOTLARI VE PDF ARŞİVİ ---
 elif st.session_state["sayfa"] == "notlar_arsivi":
