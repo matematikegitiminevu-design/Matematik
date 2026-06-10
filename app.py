@@ -501,70 +501,78 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     with st.spinner("Matematik Portalı Hazırlanıyor..."):
         import time
         time.sleep(1)
-    # Sidebar (Yan Menü)
-    with st.sidebar: 
-            st.title(f"♾️ Hoş Geldin, {st.session_state['aktif_user'].capitalize()}!")
-            st.markdown("💡 *Bir sorun mu var? Aşağıdaki kanallardan bize hızlıca ulaşabilir veya yapay zeka asistanımıza danışabilirsin.*")
-            # --- ÖZEL BUTON TASARIMLARI (CSS) ---
-            st.markdown("""
+    # --- YENİ SİDEBAR (SOL KATEGORİ MENÜSÜ) ---
+    with st.sidebar:
+        # Profil Alanı (Yeni Tasarım)
+        st.markdown(
+            """
+            <div style="text-align: center; margin-bottom: 25px;">
+                <img src="https://raw.githubusercontent.com/muharremceyhan/cyhn-portal/main/assets/mc_logo.png" 
+                     style="border-radius: 50%; width: 110px; height: 110px; border: 3px solid #1e40af; box-shadow: 0 4px 15px rgba(0,0,0,0.3); object-fit: cover;">
+                <h3 style="color: white; margin-top: 15px; margin-bottom: 2px; font-family: 'Poppins', sans-serif;">CYHN Matematik Portalı</h3>
+                <p style="color: #8b949e; font-style: italic; font-size: 0.9rem; margin-top: 0;">Muharrem Ceyhan</p>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
+        
+        st.markdown("### 📋 Kategoriler")
+        
+        # Tasarımdaki Kategori Arama Çubuğu
+        arama_sorgusu = st.text_input("Kategoriler", placeholder="Matematik konusu ara...", label_visibility="collapsed")
+        
+        # Yeni Tasarım dikey menü butonları (Aktif sayfayı takip etmek için)
+        if "sidebar_sekme" not in st.session_state:
+            st.session_state["sidebar_sekme"] = "Ders Notları"
+            
+        if st.button("📁 Ders Notları", use_container_width=True, type="primary" if st.session_state["sidebar_sekme"] == "Ders Notları" else "secondary"):
+            st.session_state["sidebar_sekme"] = "Ders Notları"
+        if st.button("🎥 Videolar", use_container_width=True, type="primary" if st.session_state["sidebar_sekme"] == "Videolar" else "secondary"):
+            st.session_state["sidebar_sekme"] = "Videolar"
+        if st.button("📝 Soru Bankası", use_container_width=True, type="primary" if st.session_state["sidebar_sekme"] == "Soru Bankası" else "secondary"):
+            st.session_state["sidebar_sekme"] = "Soru Bankası"
+        if st.button("📢 Duyurular", use_container_width=True, type="primary" if st.session_state["sidebar_sekme"] == "Duyurular" else "secondary"):
+            st.session_state["sidebar_sekme"] = "Duyurular"
+        if st.button("👤 Profilim", use_container_width=True, type="primary" if st.session_state["sidebar_sekme"] == "Profilim" else "secondary"):
+            st.session_state["sidebar_sekme"] = "Profilim"
+
+        st.markdown("---")
+        
+        # İletişim ve Destek Linkleri (Yeni Tasarım Buton Stilleri ile)
+        st.markdown("""
             <style>
-            .sidebar-custom-button {
+            .sidebar-action-btn {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                gap: 10px;
-                background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
-                color: white !important;
-                padding: 12px 20px;
-                border-radius: 12px;
+                background: #21262d;
+                color: #c9d1d9 !important;
+                padding: 10px;
+                border-radius: 8px;
                 text-decoration: none !important;
-                font-weight: bold;
-                transition: all 0.3s ease;
-                border: 1px solid rgba(255,255,255,0.1);
-                margin-bottom: 15px;
-                width: 100%;
+                font-weight: 500;
+                font-size: 0.9rem;
+                margin-bottom: 10px;
+                border: 1px solid #30363d;
+                transition: background 0.2s;
             }
-            .sidebar-custom-button:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-                background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
-                text-decoration: none !important;
+            .sidebar-action-btn:hover {
+                background: #30363d;
                 color: #ffffff !important;
-            }
-            .ai-button {
-                text-decoration: none !important;
-            }
-            .ai-button:hover {
-                text-decoration: none !important;
-            }
-                /* WhatsApp için marka rengi gradyanı */
-            .wp-button {
-                text-decoration: none !important;
-            }
-            .wp-button:hover {
-                text-decoration: none !important;
             }
             </style>
             
-            <!-- İletişim Butonu -->
-            <a href="mailto:matematikegitiminevu@gmail.com" class="sidebar-custom-button">
-                📩 İletişim Maili
-            </a>
-            <a href="https://wa.me/905061905437?text=Merhaba,%20CYHN%20Matematik%20Portalı%20üzerinden%20ulaşıyorum.%20Bir%20konu%20hakkında%20bilgi%20almak%20istiyorum.%0D%0AKonu:%20" target="_blank" class="sidebar-custom-button wp-button">
-                📞 WhatsApp İletişim
-            </a>
-
-            <!-- Yapay Zeka Butonu (Aynı Tasarım) -->
-            <a href="https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc" target="_blank" class="sidebar-custom-button ai-button">
-                ✨ cyhnAI'a Sor
-            </a>
-            """, unsafe_allow_html=True)
-
-            st.divider()
-            if st.button("🔐 Güvenli Çıkış"):
-                    st.session_state["aktif_user"] = None
-                    st.session_state["sayfa"] = "ana_menu"
-                    st.rerun()
+            <a href="mailto:matematikegitiminevu@gmail.com" class="sidebar-action-btn">📩 İletişim Maili</a>
+            <a href="https://wa.me/905061905437" target="_blank" class="sidebar-action-btn">📞 WhatsApp İletişim</a>
+            <a href="https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc" target="_blank" class="sidebar-action-btn">✨ cyhnAI'a Sor</a>
+        """, unsafe_allow_html=True)
+        
+        # Güvenli Çıkış Alt Alanı
+        st.markdown(f"<p style='color:#8b949e; font-size:0.85rem; text-align:center;'>👤 Oturum: {st.session_state['aktif_user'].capitalize()}</p>", unsafe_allow_html=True)
+        if st.button("🔐 Güvenli Çıkış", use_container_width=True):
+            st.session_state["aktif_user"] = None
+            st.session_state["sayfa"] = "ana_menu"
+            st.rerun()
             
     st.title("📚 Matematik Ders Notları ve PDF Arşivi")
     kullanici = st.session_state["aktif_user"].capitalize()
