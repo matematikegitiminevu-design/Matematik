@@ -588,6 +588,51 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         unsafe_allow_html=True
     )
 
+    # Her sekmenin içeriğini doldurmaya başlıyoruz
+    with secilen_sekme[0]: # 📁 Ders Notları Sekmesi
+        
+        # Öne Çıkan Modern Banner (HTML + CSS)
+        st.markdown(
+            """
+            <div style="
+                background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+                border-radius: 16px;
+                padding: 30px;
+                margin-bottom: 30px;
+                border: 1px solid #374151;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                overflow: hidden;
+                position: relative;
+            ">
+                <div style="max-width: 60%; z-index: 2;">
+                    <h2 style="color: #ffffff; font-family: 'Poppins', sans-serif; font-size: 1.8rem; font-weight: 700; margin-bottom: 10px;">
+                        Matematik Yolculuğuna Başla!
+                    </h2>
+                    <p style="color: #9ca3af; font-size: 1rem; line-height: 1.5; margin-bottom: 20px;">
+                        Şimdi çok gıcık onikilik serimizin videolarında kendinizi dinleyecek Matematik Yolculuğuna Başla!
+                    </p>
+                    <a href="#" style="
+                        background-color: #2563eb;
+                        color: white !important;
+                        padding: 10px 24px;
+                        border-radius: 8px;
+                        text-decoration: none !important;
+                        font-weight: 600;
+                        display: inline-block;
+                        transition: background 0.2s;
+                    " onmouseover="this.style.backgroundColor='#1d4ed8'" onmouseout="this.style.backgroundColor='#2563eb'">
+                        Butona Başla
+                    </a>
+                </div>
+                <div style="position: absolute; right: 0; top: 0; bottom: 0; width: 40%; background-image: url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=600'); background-size: cover; background-position: center; opacity: 0.8; mask-image: linear-gradient(to left, rgba(0,0,0,1) 70%, rgba(0,0,0,0)); -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 70%, rgba(0,0,0,0));">
+                </div>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
+        
     # --- ÜST YATAY MENÜ SEKMELERİ ---
     sekme_isimleri = ["📁 Ders Notları", "🎥 Videolar", "📝 Soru Bankası", "📢 Duyurular", "👤 Profilim"]
     secilen_sekme = st.tabs(sekme_isimleri)
