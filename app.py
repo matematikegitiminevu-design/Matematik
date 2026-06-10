@@ -277,181 +277,192 @@ if st.session_state["sayfa"] == "ana_menu":
 # =========================================================================
 elif st.session_state["sayfa"] == "sifre_kontrol":
     
-    # 🎨 image_72e900.jpg Görselindeki Birebir Kozmik & Glassmorphic Tasarım (CSS)
+    # 🔮 Streamlit Sınırlarını Kıran ve Görseldeki Atmosferi Birebir Yansıtan CSS Inject
     st.markdown(
         """
         <style>
-            /* 1. Giriş ekranında sidebar'ı gizle */
-            [data-testid="stSidebar"], [data-testid="stSidebarCollapseButton"] {
+            /* 1. Sol menüyü ve Streamlit'in tüm varsayılan üst boşluk/header elemanlarını tamamen yok et */
+            [data-testid="stSidebar"], [data-testid="stSidebarCollapseButton"], 
+            [data-testid="stHeader"], footer {
                 display: none !important;
             }
             
-            /* 2. ARKA PLAN: Görseldeki mor, pembe ve lacivert kuantum nebula gradyanı */
-            .stApp {
-                background: linear-gradient(135deg, #090d1a 0%, #1a103c 35%, #4a154b 70%, #63104c 100%) !important;
-                background-size: cover !important;
-                background-attachment: fixed !important;
+            /* 2. Streamlit'in Sayfa Sınırlarını Sıfırla (Kutuyu Patlatma Alanı) */
+            .main .block-container {
+                max-width: 100% !important;
+                padding-top: 0px !important;
+                padding-left: 0px !important;
+                padding-right: 0px !important;
+                padding-bottom: 0px !important;
             }
             
-            /* Streamlit katmanlarını sıfırla */
+            /* 3. TAM EKRAN ARKA PLAN: Görseldeki mor, pembe, lacivert derin kozmik nebula */
+            .stApp {
+                background: linear-gradient(135deg, #060814 0%, #11092b 30%, #320b36 65%, #4c053a 100%) !important;
+                background-size: cover !important;
+                background-attachment: fixed !important;
+                min-height: 100vh !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+            
+            /* Streamlit'in ürettiği tüm ara div katmanlarının arka planlarını transparan yap */
             [data-testid="element-container"], 
             [data-testid="stVerticalBlockBorderWrapper"], 
-            [data-testid="stVerticalBlock"] {
+            [data-testid="stVerticalBlock"],
+            div[data-baseweb="base-input"] {
                 background-color: transparent !important;
                 box-shadow: none !important;
                 border: none !important;
             }
 
-            /* 3. SAF CAM PANEL: Görseldeki ortalanmış, keskin ve yüksek blur efektli kart */
-            .cyhn-advanced-card {
-                background: rgba(20, 16, 35, 0.45) !important;
-                backdrop-filter: blur(30px) saturate(180%) !important;
-                -webkit-backdrop-filter: blur(30px) saturate(180%) !important;
-                max-width: 460px;
-                margin: 50px auto !important;
-                padding: 40px 35px !important;
-                border-radius: 20px !important;
-                border: 1px solid rgba(255, 255, 255, 0.08) !important;
-                box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.9), 0 0 40px rgba(139, 92, 246, 0.15) !important;
+            /* 4. SAF BENTO CAM PANEL (Görselde İşaretlediğin Tam Ortadaki Kart) */
+            .cyhn-perfect-card {
+                background: rgba(14, 11, 26, 0.4) !important;
+                backdrop-filter: blur(35px) saturate(200%) !important;
+                -webkit-backdrop-filter: blur(35px) saturate(200%) !important;
+                width: 100%;
+                max-width: 440px;
+                margin: 40px auto !important;
+                padding: 45px 35px !important;
+                border-radius: 24px !important;
+                border: 1px solid rgba(255, 255, 255, 0.09) !important;
+                /* Derin boşluk hissi veren gölge alanı */
+                box-shadow: 0 40px 90px -15px rgba(0, 0, 0, 0.85), 
+                            0 0 50px rgba(168, 85, 247, 0.1) !important;
                 text-align: center;
-                animation: cardFadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+                box-sizing: border-box;
             }
 
-            @keyframes cardFadeIn {
-                from { transform: scale(0.95); opacity: 0; }
-                to { transform: scale(1); opacity: 1; }
-            }
-
-            /* 4. Tipografi */
+            /* 5. Yazı Tipleri ve Renk Kalibreleri */
             .cyhn-title {
                 color: #ffffff !important;
-                font-family: 'Inter', 'Segoe UI', sans-serif;
+                font-family: 'Inter', sans-serif;
                 font-weight: 700 !important;
-                font-size: 1.6rem !important;
-                margin-top: 10px;
-                margin-bottom: 5px;
+                font-size: 1.7rem !important;
+                margin-top: 15px;
+                margin-bottom: 4px;
                 letter-spacing: -0.5px;
             }
             .cyhn-subtitle {
-                color: rgba(255, 255, 255, 0.6) !important;
-                font-size: 0.85rem !important;
-                font-weight: 400;
+                color: rgba(255, 255, 255, 0.55) !important;
+                font-size: 0.88rem !important;
                 margin-bottom: 30px;
             }
             .cyhn-label {
                 font-weight: 500 !important;
-                color: rgba(255, 255, 255, 0.7) !important;
+                color: rgba(255, 255, 255, 0.75) !important;
                 text-align: left;
-                margin-top: 5px;
+                margin-top: 8px;
                 margin-bottom: 6px;
-                font-size: 0.8rem;
+                font-size: 0.82rem;
                 display: block;
             }
 
-            /* 5. Şartlar ve Checkbox */
+            /* 6. Şartlar Kutusu Modernizasyonu */
             .stExpander {
-                background: rgba(0, 0, 0, 0.2) !important;
-                border: 1px solid rgba(255, 255, 255, 0.05) !important;
-                border-radius: 10px !important;
+                background: rgba(0, 0, 0, 0.25) !important;
+                border: 1px solid rgba(255, 255, 255, 0.06) !important;
+                border-radius: 12px !important;
                 text-align: left;
             }
             .stExpander summary span {
-                color: rgba(255, 255, 255, 0.9) !important;
-                font-size: 0.85rem !important;
+                color: rgba(255, 255, 255, 0.85) !important;
+                font-size: 0.82rem !important;
             }
             .stCheckbox label span p {
-                color: rgba(255, 255, 255, 0.8) !important;
-                font-size: 0.85rem !important;
+                color: rgba(255, 255, 255, 0.75) !important;
+                font-size: 0.82rem !important;
             }
             
-            /* 6. Giriş Kutuları (Form Alanları) */
+            /* 7. Giriş Kutuları (Inputs) - Görseldeki Gibi İnce ve Şık çizgi */
             .stTextInput input {
                 color: #ffffff !important;
-                background-color: rgba(255, 255, 255, 0.05) !important;
-                border: 1px solid rgba(255, 255, 255, 0.1) !important;
-                border-radius: 10px !important;
+                background-color: rgba(255, 255, 255, 0.04) !important;
+                border: 1px solid rgba(255, 255, 255, 0.12) !important;
+                border-radius: 12px !important;
                 padding: 12px 14px !important;
                 font-size: 0.9rem !important;
+                transition: all 0.25s ease !important;
             }
             .stTextInput input:focus {
-                border-color: #d946ef !important; /* Odaklanınca pembe parlaması */
-                box-shadow: 0 0 0 3px rgba(217, 70, 239, 0.25) !important;
-                background-color: rgba(255, 255, 255, 0.08) !important;
+                border-color: #ec4899 !important; /* Odaklanınca magenta parlaması */
+                box-shadow: 0 0 12px rgba(236, 72, 153, 0.3) !important;
+                background-color: rgba(255, 255, 255, 0.07) !important;
             }
 
-            /* 7. BUTON: Görseldeki pembe-kırmızı gradyanlı (Sign Up) Buton Tasarımı */
+            /* 8. BUTON: Görseldeki pembe-kırmızı akıcı gradyanlı buton */
             div.stButton > button:first-child {
-                background: linear-gradient(90deg, #a855f7 0%, #ec4899 50%, #ef4444 100%) !important;
+                background: linear-gradient(90deg, #a855f7 0%, #ec4899 50%, #f43f5e 100%) !important;
                 color: #ffffff !important;
                 border: none !important;
-                border-radius: 10px !important;
+                border-radius: 12px !important;
                 font-weight: 600 !important;
                 padding: 12px 0 !important;
                 font-size: 0.95rem !important;
-                transition: all 0.3s ease !important;
-                box-shadow: 0 8px 20px -6px rgba(236, 72, 153, 0.5) !important;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                box-shadow: 0 8px 20px -4px rgba(236, 72, 153, 0.45) !important;
             }
             div.stButton > button:first-child:hover {
-                transform: translateY(-2px) scale(1.01);
-                box-shadow: 0 12px 25px -4px rgba(236, 72, 153, 0.65) !important;
-                filter: brightness(1.1);
+                transform: translateY(-2px);
+                box-shadow: 0 12px 28px -4px rgba(236, 72, 153, 0.6) !important;
+                filter: brightness(1.15);
             }
         </style>
         """, 
         unsafe_allow_html=True
     )
 
-    st.markdown("<div style='height: 15px;'></div>", unsafe_allow_html=True)
+    # 🏛️ Saf Cam Kart Düzeni Başlangıcı
+    st.markdown('<div class="cyhn-perfect-card">', unsafe_allow_html=True)
     
-    # 🏛️ Gelişmiş Cam Kart Başlangıcı
-    st.markdown('<div class="cyhn-advanced-card">', unsafe_allow_html=True)
-    
-    # Profil / Logo Alanı (Dairesel ve parıltılı)
-    st.markdown('<div style="display: flex; justify-content: center; filter: drop-shadow(0 0 15px rgba(236,72,153,0.3));">', unsafe_allow_html=True)
-    st.image("mc250.png", width=90)
+    # Merkez Logo
+    st.markdown('<div style="display: flex; justify-content: center; filter: drop-shadow(0 0 20px rgba(236,72,153,0.25));">', unsafe_allow_html=True)
+    st.image("mc250.png", width=85)
     st.markdown('</div>', unsafe_allow_html=True)
     
-    # Karşılama Başlıkları
+    # Başlıklar
     st.markdown('<p class="cyhn-title">Tekrar Hoş Geldiniz</p>', unsafe_allow_html=True)
     st.markdown('<p class="cyhn-subtitle">Lütfen erişim bilgilerinizi doğrulayın.</p>', unsafe_allow_html=True)
     
-    # 📜 Sözleşme ve Onay Alanı
-    with st.expander("🔒 Telif Hakkı ve Kullanım Şartları", expanded=False):
+    # 📜 Yasal Haklar ve Şartlar Bölümü
+    with st.expander("🔒 Kullanım Şartları ve Telif Bilgisi", expanded=False):
         st.markdown(
             """
-            <p style="color: #fca5a5 !important; font-weight: bold; margin-bottom: 4px; font-size: 0.8rem; text-align: left;">Yasal Uyarı:</p>
-            <p style="color: rgba(255,255,255,0.8) !important; font-size: 0.8rem; line-height: 1.5; text-align: left;">
-                Bu platformda paylaşılan tüm dökümanların telif hakları <b>Muharrem CEYHAN</b>'a aittir. 
-                İzinsiz kopyalanması veya paylaşılması kesinlikle yasaktır.
+            <p style="color: #fca5a5 !important; font-weight: bold; margin-bottom: 4px; font-size: 0.8rem;">Yasal Uyarı:</p>
+            <p style="color: rgba(255,255,255,0.75) !important; font-size: 0.78rem; line-height: 1.5; text-align: left;">
+                Bu platformda yer alan tüm ders notlarının telif hakları doğrudan <b>Muharrem CEYHAN</b>'a aittir. 
+                Materyallerin izinsiz dağıtılması veya üçüncü şahıslarla paylaşılması kesinlikle yasaktır.
             </p>
             """, 
             unsafe_allow_html=True
         )
-        onay = st.checkbox("Şartları okudum ve onaylıyorum.", key="adv_login_onay")
+        onay = st.checkbox("Şartları kabul ediyorum.", key="perfect_login_onay")
         
     st.markdown("<div style='height: 15px;'></div>", unsafe_allow_html=True)
     
-    # Form Alanları
+    # Form Veri Girişleri
     st.markdown('<span class="cyhn-label">Kullanıcı Adı</span>', unsafe_allow_html=True)
-    kullanici_adi = st.text_input("Kullanıcı Adı", label_visibility="collapsed", placeholder="Kullanıcı adınızı yazın...").strip().lower()
+    kullanici_adi = st.text_input("Kullanıcı Adı Alanı", label_visibility="collapsed", placeholder="Kullanıcı adınızı girin...").strip().lower()
     
-    st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='height: 8px;'></div>", unsafe_allow_html=True)
     
     st.markdown('<span class="cyhn-label">Parola</span>', unsafe_allow_html=True)
-    sifre = st.text_input("Parola", type="password", label_visibility="collapsed", placeholder="••••••••")
+    sifre = st.text_input("Parola Alanı", type="password", label_visibility="collapsed", placeholder="••••••••")
     
     st.markdown("<div style='height: 25px;'></div>", unsafe_allow_html=True)
     
-    # Butonlar Grid Düzeni
+    # Buton Yerleşimi
     btn_c1, btn_c2 = st.columns(2)
     with btn_c1:
-        if st.button("Giriş Yap", use_container_width=True, key="btn_adv_login"):
+        if st.button("Giriş Yap", use_container_width=True, key="btn_perf_login"):
             if not onay:
                 st.error("Lütfen önce şartları onaylayınız!")
             elif kullanici_adi in USERS and USERS[kullanici_adi] == sifre:
-                st.toast(f"Giriş Başarılı! Hoş geldin {kullanici_adi.capitalize()}.", icon="🎉")
+                st.toast(f"🔑 Doğrulama Başarılı!", icon="🎉")
                 st.balloons()
-                time.sleep(1.2)
+                time.sleep(1)
                 st.session_state["aktif_user"] = kullanici_adi
                 st.session_state["sayfa"] = "notlar_arsivi"
                 st.rerun()
@@ -460,14 +471,14 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 
     with btn_c2:
         mail_konu = "CYHN%20Portal%20Eri%C5%9Fim%20Talebi"
-        mail_icerik = "Merhaba,%0D%0ACYHN%20Matematik%20Portalı%20için%20erişim%20izni%20talep%20ediyorum.%0D%0A%0D%0AAdım%20Soyadım:%20"
+        mail_icerik = "Merhaba,%0D%0ACYHN%20Matematik%20Portalı%20için%20erişim%20izni%20istiyorum.%0D%0A%0D%0AAdım%20Soyadım:%20"
         mail_link = f"mailto:matematikegitiminevu@gmail.com?subject={mail_konu}&body={mail_icerik}"
         st.link_button("📩 Şifre İste", mail_link, use_container_width=True)
     
-    # Gelişmiş Cam Kart Kapanışı
+    # Saf Cam Kart Kapanışı
     st.markdown('</div>', unsafe_allow_html=True)
 
-    # Menüye Dönüş Linki
+    # Geri Dönüş Linki
     _, ana_btn_col, _ = st.columns([0.3, 0.4, 0.3])
     with ana_btn_col:
         st.markdown(
@@ -475,18 +486,17 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
             <style>
                 div[data-testid="stBlock"] button {
                     background: transparent !important;
-                    color: rgba(255, 255, 255, 0.5) !important;
+                    color: rgba(255, 255, 255, 0.4) !important;
                     border: none !important;
                     font-size: 0.85rem !important;
                 }
                 div[data-testid="stBlock"] button:hover {
                     color: #ffffff !important;
-                    background: transparent !important;
                 }
             </style>
             """, unsafe_allow_html=True
         )
-        if st.button("⬅ Ana Menüye Dön", use_container_width=True, key="btn_adv_back"):
+        if st.button("⬅ Ana Menüye Dön", use_container_width=True, key="btn_perf_back"):
             st.session_state["sayfa"] = "ana_menu"
             st.rerun()
             
