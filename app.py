@@ -588,10 +588,12 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         unsafe_allow_html=True
     )
 
-    # Her sekmenin içeriğini doldurmaya başlıyoruz
-    with secilen_sekme[0]: # 📁 Ders Notları Sekmesi
-        
-        # Öne Çıkan Modern Banner (HTML + CSS)
+    # --- ÜST YATAY MENÜ SEKMELERİ ---
+    sekme_isimleri = ["📁 Ders Notları", "🎥 Videolar", "📝 Soru Bankası", "📢 Duyurular", "👤 Profilim"]
+    secilen_sekme = st.tabs(sekme_isimleri)
+
+    # --- BANNER ALANI (Hemen altına yapışık) ---
+    with secilen_sekme[0]:
         st.markdown(
             """
             <div style="
@@ -632,10 +634,6 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             """, 
             unsafe_allow_html=True
         )
-        
-    # --- ÜST YATAY MENÜ SEKMELERİ ---
-    sekme_isimleri = ["📁 Ders Notları", "🎥 Videolar", "📝 Soru Bankası", "📢 Duyurular", "👤 Profilim"]
-    secilen_sekme = st.tabs(sekme_isimleri)
 
 
     # Konulara göre sekmeler (Tablar)
