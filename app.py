@@ -28,16 +28,15 @@ USERS = {
 # =========================================================================
 # 🛠️ BAKIM MODU AYARLARI
 # =========================================================================
-BAKIM_MODU = True          # Tüm siteyi kapatmak için True yapın
+BAKIM_MODU = False          # Tüm siteyi kapatmak için True yapın
 ARSIV_BAKIM_MODU = False     # Sadece ders arşivini kapatmak için True yapın
 
 HEDEF_ZAMAN_GENEL = "2026-06-09 00:00:00"
 HEDEF_ZAMAN_ARSIV = "2026-06-08 00:00:00"
 # =========================================================================
 
-# 🔐 GİZLI URL PARAMETRESİ KONTROLÜ (Adres çubuğunda ?mod=admin araması yapar)
+# 🔐 GİZLİ URL PARAMETRESİ KONTROLÜ
 gizli_yonetici_izni = str(st.query_params.get("mod")).lower() == "admin"
-
 
 # --- SÜRE HESAPLAMA MOTORU (HTML Şablonu İçin) ---
 def kalan_sure_html_hazirla(hedef_zaman_str):
@@ -73,9 +72,8 @@ def kalan_sure_html_hazirla(hedef_zaman_str):
         </p>
         """
 
-
 # =========================================================================
-# 🛑 1. EN BAŞTAKİ KONTROL: SİTE GENEL BAKIM MODU
+# 🛑 1. SİTE GENEL BAKIM MODU KONTROLÜ
 # =========================================================================
 if BAKIM_MODU and not gizli_yonetici_izni:
     st.set_page_config(page_title="CYHN | Website Bakım Çalışması", page_icon="🔧", layout="centered")
@@ -93,353 +91,177 @@ if BAKIM_MODU and not gizli_yonetici_izni:
         </p>
         <div style="margin-top: 30px; border-top: 1px solid #334155; padding-top: 15px; text-align: center;">
             <p style="color: #FF4B4B !important; font-weight: bold; font-size: 1.1rem; margin-bottom: 5px;">Muharrem CEYHAN</p>
-            <p style="color: #64748b !important; font-size: 0.85rem; letter-spacing: 1px;">CYHN MATEMATİK GELİŞTİRME PLATFORMU</p>
+            <p style="color: #64748b !important; font-size: 0.85rem; letter-spacing: 1px;">CYHN MATEMATİK EĞİTİM PORTALI</p>
         </div>
     </div>
     """
     st.components.v1.html(tam_sayfa_html, height=520, scrolling=False)
     st.stop()
 
-
-# Sayfa ayarlarını geniş mod ve başlık olarak ayarlayalım
+# --- STANDART SAYFA AYARLARI ---
 st.set_page_config(
     page_title="CYHN Matematik Eğitim Portalı",
     page_icon="♾️",
-    layout="wide", # Yeni tasarımdaki geniş yerleşim için şart
+    layout="wide",
     initial_sidebar_state="expanded"
 )
 
 # Genel Tema ve Arka Plan için CSS yapısı
 st.markdown("""
     <style>
-    /* Ana arka planı ve yazı rengini ayarlayalım */
     .stApp {
         background-color: #0d1117;
         color: #c9d1d9;
         font-family: 'Inter', sans-serif;
     }
-    
-    /* Streamlit'in varsayılan üst beyaz çizgisini gizleyelim */
     header {visibility: hidden;}
     footer {visibility: hidden;}
     </style>
 """, unsafe_allow_html=True)
 
-# --- LOGOYU YAN MENÜYE EKLEME ---
-st.sidebar.image("mc250.png") 
-
-# Logonun altına ince bir ayırıcı çizgi ve başlık 
-st.sidebar.markdown("---")
-st.sidebar.write("### CYHN Matematik Portalı")
-# İmza tarzı, ince yazı tasarımı
-st.sidebar.markdown(
-    """
-    <style>
-    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap');
-    .signature {
-        font-family: 'Dancing Script', cursive;
-        font-size: 24px;
-        font-weight: 400;
-        color: #555555;
-        margin-top: -10px;
-    }
-    </style>
-    <p class="signature">Muharrem Ceyhan</p>
-    """, 
-    unsafe_allow_html=True
-)
-st.sidebar.markdown("---")
-
-
 # --- DURUM YÖNETİMİ (Session State) ---
 if "sayfa" not in st.session_state:
-    st.session_state["sayfa"] = "ana_menu" # İlk açılışta ana menü görünsün
+    st.session_state["sayfa"] = "ana_menu"
+if "aktif_user" not in st.session_state:
+    st.session_state["aktif_user"] = None
 
 # --- POPUP İÇİNDE GÜVENLİ PDF GÖSTERME MOTORU ---
 @st.dialog("📄 CYHN Portal | Ders Notu Önizleme", width="large")
 def pdf_popup_ac(drive_id):
-    # Drive ID'sini alıp indirme/yazdırma araçlarını gizleyen 'preview' linkine dönüştürüyoruz
     embed_link = f"https://drive.google.com/file/d/{drive_id}/preview?hl=tr"
-    
     kullanici = st.session_state.get("aktif_user", "Bilinmeyen Kullanıcı").upper()
     su_an = datetime.now().strftime("%d.%m.%Y")
 
-    # 1. Filigranı Görüntüleme Alanından Çıkarıp Başlığın Altına "Alt Yazı" Olarak Ekliyoruz
     st.caption(f"🛡️ Telif Hakkı: MUHARREM CEYHAN | Bu döküman {kullanici} adına kişiselleştirilmiştir. • {su_an}")
-    # 2. Görüntülenen alanın içindeki filigranı tamamen sildik, sadece kalkan ve PDF kaldı
     tam_html = f"""
     <div style="position: relative; width: 100%; height: 650px; overflow: hidden; border-radius: 8px; background-color: #1e1e1e;">
-        
-        <div style="
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 150px;
-            height: 55px;
-            background-color: rgba(0, 0, 0, 0);
-            z-index: 99999;
-            cursor: default;
-        "></div>
-        
-        <iframe src="{embed_link}#toolbar=0&navpanes=0" 
-                width="100%" 
-                height="100%" 
-                style="border: none;" 
-                allow="autoplay">
-        </iframe>
-        
+        <div style="position: absolute; top: 0; right: 0; width: 150px; height: 55px; background-color: rgba(0, 0, 0, 0); z-index: 99999; cursor: default;"></div>
+        <iframe src="{embed_link}#toolbar=0&navpanes=0" width="100%" height="100%" style="border: none;" allow="autoplay"></iframe>
     </div>
     """
-
-    # Hepsini tek seferde Streamlit bileşeni olarak ekrana basıyoruz
     st.components.v1.html(tam_html, height=660)
-# --- 1. AŞAMA: ANA KARŞILAMA MENÜSÜ ---
+
+# =========================================================================
+# 🏛️ 1. AŞAMA: ANA KARŞILAMA MENÜSÜ
+# =========================================================================
 if st.session_state["sayfa"] == "ana_menu":
-    col1, col2, col3 = st.columns([0.5, 3, 0.5])
+    # Sol menüyü giriş ekranlarında gizle
+    st.markdown("""<style>[data-testid="stSidebar"], [data-testid="stSidebarCollapseButton"] {display: none !important;}</style>""", unsafe_allow_html=True)
     
+    col1, col2, col3 = st.columns([0.5, 3, 0.5])
     with col2:
-        st.title("CYHN Matematik Portalı")
         st.markdown(
             """
-            *“Matematik, evrenin dilidir.”*  
-            Bilgiye açılan kapıya hoş geldiniz..! Akademik ders notları arşivimize ulaşmak veya yapay zeka asistanımızdan destek almak için lütfen bir işlem seçiniz.
-            """
+            <div style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
+                <h1 style="font-family: 'Poppins', sans-serif; font-size: 3.5rem; font-weight: 800; color: #ffffff;">
+                    <span style="color: #00bcd4;">♾️</span> CYHN
+                </h1>
+                <p style="color: #8b949e; font-size: 1.2rem; margin-top: -10px;">Matematik Eğitim Portalı</p>
+            </div>
+            """, unsafe_allow_html=True
         )
+        st.markdown("<p style='text-align:center; font-style:italic;'>“Matematik, evrenin dilidir.”</p>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align:center;'>Bilgiye açılan kapıya hoş geldiniz..! Akademik ders notları arşivimize ulaşmak veya yapay zeka asistanımızdan destek almak için lütfen bir işlem seçiniz.</p>", unsafe_allow_html=True)
         st.divider()
-        
 
-        # İki büyük seçenek butonu
         c1, c2 = st.columns(2)
-        
         with c1:
-            # Ders Notları Kartı
             with st.container(border=True):
                 st.markdown("### 📚 Ders Notları Arşivi")
-                st.write("Akademik ders notlarının yanı sıra; haftalık ders programları, güncel sınav takvimleri ve bölüm duyurularına tek tıkla erişin.")
-                st.write("") # Küçük bir boşluk
-                # type="primary" butonu sitenizin ana rengine (genelde kırmızı/turuncu/mavi) boyar
+                st.write("Akademik ders notlarının yanı sıra; haftalık ders programları, sınav takvimleri ve bölüm duyurularına tek tıkla erişin.")
+                st.write("")
                 if st.button("Arşivi Görüntüle", use_container_width=True):
                     st.session_state["sayfa"] = "sifre_kontrol"
                     st.rerun()
                     
         with c2:
-            # cyhnAI Destek Kartı
             with st.container(border=True):
                 st.markdown("### ✨ cyhnAI Destek")
                 st.write("Matematik sorularınıza, formüllere ve takıldığınız tüm konularda yapay zeka desteğimiz ile anında çözüm bulun.")
-                st.write("") # Küçük bir boşluk
-                # link_button zaten varsayılan olarak şık durur
+                st.write("")
                 st.link_button("Yapay Zekayı Başlat", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc", use_container_width=True)
         
         st.divider()
-
-# Alt Bilgi (Footer) Tasarımı
         c_left, c_right = st.columns(2)
         with c_left:
-            st.markdown(
-                """
-                <p style='text-align: left; color: gray; font-size: 0.8rem;'>
-                    🚀 CYHN Matematik Geliştirme Platformu © 2026
-                </p>
-                """, 
-                unsafe_allow_html=True
-            )
+            st.markdown("<p style='text-align: left; color: gray; font-size: 0.8rem;'>🚀 CYHN Matematik Eğitim Portalı © 2026</p>", unsafe_allow_html=True)
         with c_right:
-            st.markdown(
-                """
-                <p style='text-align: right; color: gray; font-size: 0.8rem;'>
-                    Developed with by 🇹🇷 <span style='color: #FF4B4B; font-weight: bold;'>CYHN</span>
-                </p>
-                """, 
-                unsafe_allow_html=True
-            )
+            st.markdown("<p style='text-align: right; color: gray; font-size: 0.8rem;'>Developed with by 🇹🇷 <span style='color: #FF4B4B; font-weight: bold;'>CYHN</span></p>", unsafe_allow_html=True)
 
 # =========================================================================
-# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (TEMİZ VE SADE POPUP / MODAL KONSEPTİ)
+# 🔒 2. AŞAMA: KUANTUM ŞİFRE KONTROL EKRANI
 # =========================================================================
 elif st.session_state["sayfa"] == "sifre_kontrol":
-    
-    # 🎨 Geliştirilmiş Popup Efekti ve CSS
     st.markdown(
         """
         <style>
-            /* 1. Sol menüyü (Sidebar) giriş ekranında tamamen gizle */
-            [data-testid="stSidebar"], [data-testid="stSidebarCollapseButton"] {
-                display: none !important;
-            }
-            
-            /* 2. Arka Plan: Derin ve modern akıcı kuantum gradyanı */
+            [data-testid="stSidebar"], [data-testid="stSidebarCollapseButton"] { display: none !important; }
             .stApp {
                 background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #2e1065 70%, #064e3b 100%) !important;
                 background-size: cover !important;
                 background-attachment: fixed !important;
             }
-            
-            /* Streamlit'in kendi katman gölgelerini tamamen nötrle */
-            [data-testid="element-container"], 
-            [data-testid="stVerticalBlockBorderWrapper"], 
-            [data-testid="stVerticalBlock"] {
-                background-color: transparent !important;
-                box-shadow: none !important;
-                border: none !important;
+            [data-testid="element-container"], [data-testid="stVerticalBlockBorderWrapper"], [data-testid="stVerticalBlock"] {
+                background-color: transparent !important; box-shadow: none !important; border: none !important;
             }
-
-            /* 3. POPUP KART: Ekranda Yüzen Pencere (Modal) Efekti */
             .cyhn-popup-card {
-                background: rgba(23, 23, 37, 0.6) !important; /* Popup içi tok ve odaklı bir koyulukta */
+                background: rgba(23, 23, 37, 0.6) !important;
                 backdrop-filter: blur(20px) saturate(140%) !important;
                 -webkit-backdrop-filter: blur(20px) saturate(140%) !important;
-                max-width: 440px;
-                margin: 70px auto !important; /* Yukarıdan dengeli popup boşluğu */
-                padding: 40px 35px !important;
-                border-radius: 20px !important; /* Yumuşak popup oval köşeleri */
-                border: 1px solid rgba(255, 255, 255, 0.12) !important;
-                /* Güçlü popup gölgesi ile derinlik hissi */
+                max-width: 440px; margin: 50px auto !important; padding: 35px 35px !important;
+                border-radius: 20px !important; border: 1px solid rgba(255, 255, 255, 0.12) !important;
                 box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.7), 0 0 50px rgba(129, 140, 248, 0.05) !important;
-                text-align: center;
-                animation: popupShow 0.4s ease-out; /* Açılışta hafif büyüme efekti */
+                text-align: center; animation: popupShow 0.4s ease-out;
             }
-
-            /* Popup Açılış Animasyonu */
-            @keyframes popupShow {
-                from { transform: scale(0.96); opacity: 0; }
-                to { transform: scale(1); opacity: 1; }
-            }
-
-            /* 4. Tipografi ve Kusursuz Okunurluk */
+            @keyframes popupShow { from { transform: scale(0.96); opacity: 0; } to { transform: scale(1); opacity: 1; } }
             .cyhn-title {
-                color: #ffffff !important;
-                font-family: 'Inter', 'Segoe UI', sans-serif;
-                font-weight: 800 !important;
-                font-size: 1.45rem !important;
-                letter-spacing: 0.5px;
-                margin-top: 15px;
-                margin-bottom: 2px;
-                background: linear-gradient(to right, #ffffff, #e2e8f0);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
+                color: #ffffff !important; font-family: 'Poppins', sans-serif; font-weight: 800 !important;
+                font-size: 1.45rem !important; letter-spacing: 0.5px; margin-top: 15px; margin-bottom: 2px;
+                background: linear-gradient(to right, #ffffff, #e2e8f0); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             }
-            .cyhn-subtitle {
-                color: #94a3b8 !important;
-                font-size: 0.85rem !important;
-                font-weight: 500;
-                margin-bottom: 25px;
-            }
-            .cyhn-label {
-                font-weight: 600 !important;
-                color: #cbd5e1 !important;
-                text-align: left;
-                margin-top: 5px;
-                margin-bottom: 8px;
-                font-size: 0.85rem;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-                display: block;
-            }
-
-            /* 5. Şartlar Kutusu (Expander) Yeniden Yorumlandı */
-            .stExpander {
-                background: rgba(15, 23, 42, 0.7) !important;
-                border: 1px solid rgba(255, 255, 255, 0.08) !important;
-                border-radius: 10px !important;
-                text-align: left;
-            }
-            .stExpander summary span {
-                color: #ffffff !important;
-                font-weight: 600 !important;
-                font-size: 0.85rem !important;
-            }
-            .stExpander p {
-                color: #cbd5e1 !important;
-            }
-            
-            /* Checkbox metni */
-            .stCheckbox label span p {
-                color: #cbd5e1 !important;
-                font-size: 0.85rem !important;
-            }
-            
-            /* 6. Giriş Kutuları (Inputs) */
-            .stTextInput input {
-                color: #ffffff !important;
-                background-color: rgba(15, 23, 42, 0.5) !important;
-                border: 1px solid rgba(255, 255, 255, 0.15) !important;
-                border-radius: 10px !important;
-                padding: 11px 14px !important;
-            }
-            .stTextInput input:focus {
-                border-color: #818cf8 !important;
-                box-shadow: 0 0 0 2px rgba(129, 140, 248, 0.25) !important;
-            }
-
-            /* 7. Butonlar */
+            .cyhn-subtitle { color: #94a3b8 !important; font-size: 0.85rem !important; font-weight: 500; margin-bottom: 25px; }
+            .cyhn-label { font-weight: 600 !important; color: #cbd5e1 !important; text-align: left; margin-top: 5px; margin-bottom: 8px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; display: block; }
+            .stExpander { background: rgba(15, 23, 42, 0.7) !important; border: 1px solid rgba(255, 255, 255, 0.08) !important; border-radius: 10px !important; text-align: left; }
+            .stExpander summary span { color: #ffffff !important; font-weight: 600 !important; font-size: 0.85rem !important; }
+            .stTextInput input { color: #ffffff !important; background-color: rgba(15, 23, 42, 0.5) !important; border: 1px solid rgba(255, 255, 255, 0.15) !important; border-radius: 10px !important; padding: 11px 14px !important; }
+            .stTextInput input:focus { border-color: #818cf8 !important; box-shadow: 0 0 0 2px rgba(129, 140, 248, 0.25) !important; }
             div.stButton > button:first-child {
-                background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%) !important;
-                color: #ffffff !important;
-                border: 1px solid rgba(255, 255, 255, 0.1) !important;
-                border-radius: 10px !important;
-                font-weight: 600 !important;
-                padding: 10px 0 !important;
-                transition: all 0.3s ease !important;
+                background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%) !important; color: #ffffff !important;
+                border: 1px solid rgba(255, 255, 255, 0.1) !important; border-radius: 10px !important;
+                font-weight: 600 !important; padding: 10px 0 !important; transition: all 0.3s ease !important;
                 box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3) !important;
             }
-            div.stButton > button:first-child:hover {
-                background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
-                transform: translateY(-1px);
-                box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4) !important;
-            }
+            div.stButton > button:first-child:hover { background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4) !important; }
         </style>
-        """, 
-        unsafe_allow_html=True
+        """, unsafe_allow_html=True
     )
 
-    # Dengeli üst boşluk
-    st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
-    
-    # 🏛️ HTML ile Popup Kartı Başlatıyoruz
     st.markdown('<div class="cyhn-popup-card">', unsafe_allow_html=True)
-    
-    # Logo Tasarımı (Hafif parıltılı)
-    st.markdown('<div style="display: flex; justify-content: center; filter: drop-shadow(0 0 15px rgba(255,255,255,0.1));">', unsafe_allow_html=True)
-    st.image("mc250.png", width=95)
-    st.markdown('</div>', unsafe_allow_html=True)
-    
-    # Başlıklar
     st.markdown('<p class="cyhn-title">CYHN MATEMATİK PORTALI</p>', unsafe_allow_html=True)
     st.markdown('<p class="cyhn-subtitle">Özel Ders Notları Arşivi Doğrulama</p>', unsafe_allow_html=True)
     
-    # 📜 Yasal Uyarı ve Şartlar
     with st.expander("🔒 Telif Hakkı ve Kullanım Şartları", expanded=True):
         st.markdown(
             """
             <p style="color: #fca5a5 !important; font-weight: bold; margin-bottom: 6px; font-size: 0.85rem;">Yasal Uyarı:</p>
-            <p style="color: #cbd5e1 !important; font-size: 0.82rem; line-height: 1.5; font-weight: normal !important; text-align: left;">
-            Bu platformda paylaşılan tüm ders PDF notlarının telif hakları doğrudan <b>Muharrem CEYHAN</b>'a aittir. <br>
-            Tüm hakları saklıdır. <br><br>
-            İçeriklerin tamamının veya bir kısmının, yazarın yazılı izni olmaksızın kopyalanması, çoğaltılması, işlenmesi veya herhangi bir dijital/basılı mecrada paylaşılması <b>kesinlikle yasaktır</b>. <br><br>
-            Sadece kişisel eğitim amaçlıdır..! <br>
-            <span style="color: #94a3b8 !important; font-size: 0.75rem; display: block; margin-top: 6px;">(© 2026)</span>
+            <p style="color: #cbd5e1 !important; font-size: 0.82rem; line-height: 1.5; text-align: left;">
+            Bu platformda paylaşılan tüm ders PDF notlarının telif hakları doğrudan <b>Muharrem CEYHAN</b>'a aittir. Tüm hakları saklıdır. <br><br>
+            İçeriklerin tamamının veya bir kısmının, yazarın yazılı izni olmaksızın kopyalanması, çoğaltılması veya herhangi bir mecrada paylaşılması <b>kesinlikle yasaktır</b>. <br><br>
+            Sadece kişisel eğitim amaçlıdır..!
             </p>
-            """, 
-            unsafe_allow_html=True
+            """, unsafe_allow_html=True
         )
         onay = st.checkbox("Okudum, şartları kabul ediyorum.")
         
-    st.markdown("<div style='height: 15px;'></div>", unsafe_allow_html=True)
-    
-    # 👤 Kullanıcı Adı Girişi
+    st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
     st.markdown('<span class="cyhn-label">Kullanıcı Adı</span>', unsafe_allow_html=True)
     kullanici_adi = st.text_input("Kullanıcı Adı Giriş Paneli", label_visibility="collapsed", placeholder="Kullanıcı adınız...").strip().lower()
     
-    st.markdown("<div style='height: 15px;'></div>", unsafe_allow_html=True)
-    
-    # 🔑 Parola Girişi
     st.markdown('<span class="cyhn-label">Parola</span>', unsafe_allow_html=True)
     sifre = st.text_input("Parola Giriş Paneli", type="password", label_visibility="collapsed", placeholder="Şifrenizi yazınız...")
     
-    st.markdown("<div style='height: 25px;'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='height: 15px;'></div>", unsafe_allow_html=True)
     
-    # 🖲️ Butonlar (Modern Grid Düzeni)
     btn_c1, btn_c2 = st.columns(2)
     with btn_c1:
         if st.button("Giriş Yap", use_container_width=True):
@@ -448,8 +270,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
             elif kullanici_adi in USERS and USERS[kullanici_adi] == sifre:
                 st.toast(f"🔑 Giriş Başarılı! Hoş geldin {kullanici_adi.capitalize()}.", icon="🎉")
                 st.balloons()
-                import time
-                time.sleep(1.5)
+                time.sleep(1)
                 st.session_state["aktif_user"] = kullanici_adi
                 st.session_state["sayfa"] = "notlar_arsivi"
                 st.rerun()
@@ -457,75 +278,56 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 st.error("Kullanıcı adı veya şifre hatalı!")
                 
     with btn_c2:
-        mail_konu = "CYHN%20Portal%20Eri%C5%9Fim%20Talebi"
-        mail_icerik = "Merhaba,%0D%0ACYHN%20Matematik%20Portalı%20için%20kullanıcı%20adı%20ve%20şifre%20talep%20ediyorum.%0D%0A%0D%0AAdım%20Soyadım:%20"
-        mail_link = f"mailto:matematikegitiminevu@gmail.com?subject={mail_konu}&body={mail_icerik}"
+        mail_link = "mailto:matematikegitiminevu@gmail.com?subject=CYHN%20Portal%20Eri%C5%9Fim%20Talebi&body=Merhaba,%20Kullanıcı%20adı%20ve%20şifre%20talep%20ediyorum."
         st.link_button("📩 Şifre İste", mail_link, use_container_width=True)
     
-    # Popup Kartı Kapatıyoruz
     st.markdown('</div>', unsafe_allow_html=True)
 
-    # ⬅️ PORTAL ANA MENÜSÜNE DÖNÜŞ (Popup dışında kalan transparan buton)
     _, ana_btn_col, _ = st.columns([0.3, 0.4, 0.3])
     with ana_btn_col:
         if st.button("⬅ Portal Ana Menüsüne Dön", use_container_width=True):
             st.session_state["sayfa"] = "ana_menu"
             st.rerun()
-            
-# --- 3. AŞAMA: DERS NOTLARI VE PDF ARŞİVİ ---
+
+# =========================================================================
+# 📚 3. AŞAMA: DERS NOTLARI VE MODERN PORTAL ARDIL EKRANI
+# =========================================================================
 elif st.session_state["sayfa"] == "notlar_arsivi":
-    # 🌟 BURADAN: (BAKIM MODU KONTROLÜ)
     if ARSIV_BAKIM_MODU and not gizli_yonetici_izni:
         with st.sidebar:
             if st.button("⬅ Ana Menüye Dön / Çıkış"):
                 st.session_state["aktif_user"] = None
-                ana_menuye_don()
+                st.session_state["sayfa"] = "ana_menu"
+                st.rerun()
                 
         sayaç_arsiv_html = kalan_sure_html_hazirla(HEDEF_ZAMAN_ARSIV)
         tam_sayfa_arsiv_html = f"""
         <div style="text-align: center; background-color: #1e293b; padding: 40px; border-radius: 16px; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.5); font-family: sans-serif; margin-top: 30px;">
             <h2 style="color: white !important; margin-bottom: 15px;">🚧 Ders Notları Arşivi Bakımda</h2>
             <p style="font-size: 1.1rem; margin-top: 15px; color: #cbd5e1 !important; text-align: center;">
-                Ders notları, PDF dokümanları ve haftalık programlar optimize edilmektedir. Arşivimiz kısa süre sonra erişime açılacaktır.
+                Ders notları optimize edilmektedir. Arşivimiz kısa süre sonra erişime açılacaktır.
             </p>
             {sayaç_arsiv_html}
             <div style="margin-top: 30px; border-top: 1px solid #334155; padding-top: 15px; text-align: center;">
                 <p style="color: #FF4B4B !important; font-weight: bold; font-size: 1.1rem; margin-bottom: 5px;">Muharrem CEYHAN</p>
-                <p style="color: #64748b !important; font-size: 0.85rem; letter-spacing: 1px;">CYHN MATEMATİK GELİŞTİRME PLATFORMU</p>
+                <p style="color: #64748b !important; font-size: 0.85rem; letter-spacing: 1px;">CYHN MATEMATİK EĞİTİM PORTALI</p>
             </div>
         </div>
         """
         st.components.v1.html(tam_sayfa_arsiv_html, height=450, scrolling=False)
         st.stop()
-        
-    with st.spinner("Matematik Portalı Hazırlanıyor..."):
-        import time
-        time.sleep(1)
+
     # --- YENİ SİDEBAR (SOL KATEGORİ MENÜSÜ) ---
     with st.sidebar:
-        st.markdown(
-            """
-            <div style="margin-bottom: 20px;">
-                <h3 style="color: #ffffff; font-family: 'Poppins', sans-serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 10px;">
-                    Kategoriler
-                </h3>
-            </div>
-            """, 
-            unsafe_allow_html=True
-        )
-        
-        # Tasarımdaki Kategori Arama Çubuğu
+        st.markdown("""<div style="margin-bottom: 20px;"><h3 style="color: #ffffff; font-family: 'Poppins', sans-serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 10px;">Kategoriler</h3></div>""", unsafe_allow_html=True)
         arama_sorgusu = st.text_input("Kategoriler", placeholder="Matematik konusu ara...", label_visibility="collapsed")
         
-        # Kategori dikey menü butonları
         if "sidebar_sekme" not in st.session_state:
             st.session_state["sidebar_sekme"] = "Ders Notları"
             
         st.markdown('<div style="margin-top: 10px; margin-bottom: 20px;">', unsafe_allow_html=True)
         if st.button("› Ders Notları", use_container_width=True, type="primary" if st.session_state["sidebar_sekme"] == "Ders Notları" else "secondary"):
             st.session_state["sidebar_sekme"] = "Ders Notları"
-        if st.button("› Ders Notu", use_container_width=True, type="primary" if st.session_state["sidebar_sekme"] == "Ders Notu" else "secondary"):
-            st.session_state["sidebar_sekme"] = "Ders Notu"
         if st.button("› Videolar", use_container_width=True, type="primary" if st.session_state["sidebar_sekme"] == "Videolar" else "secondary"):
             st.session_state["sidebar_sekme"] = "Videolar"
         if st.button("› Soru Bankası", use_container_width=True, type="primary" if st.session_state["sidebar_sekme"] == "Soru Bankası" else "secondary"):
@@ -536,45 +338,18 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             st.session_state["sidebar_sekme"] = "Profilim"
         st.markdown('</div>', unsafe_allow_html=True)
 
-        # İletişim Hızlı Linkleri
         st.markdown("""
             <style>
-            .sidebar-link-btn {
-                display: block;
-                background: #21262d;
-                color: #c9d1d9 !important;
-                padding: 8px;
-                border-radius: 6px;
-                text-decoration: none !important;
-                text-align: center;
-                font-size: 0.85rem;
-                margin-bottom: 8px;
-                border: 1px solid #30363d;
-            }
-            .sidebar-link-btn:hover {
-                background: #30363d;
-                color: #ffffff !important;
-            }
+            .sidebar-link-btn { display: block; background: #21262d; color: #c9d1d9 !important; padding: 8px; border-radius: 6px; text-decoration: none !important; text-align: center; font-size: 0.85rem; margin-bottom: 8px; border: 1px solid #30363d; }
+            .sidebar-link-btn:hover { background: #30363d; color: #ffffff !important; }
             </style>
             <a href="https://wa.me/905061905437" target="_blank" class="sidebar-link-btn">📞 WhatsApp Destek</a>
             <a href="https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc" target="_blank" class="sidebar-link-btn">✨ cyhnAI Asistan</a>
         """, unsafe_allow_html=True)
 
-        st.spacer = st.empty() # Butonlar ile profil arasını açmak için boşluk
-
-        # Görseldeki En Alttaki Şık "Ceyhan - Profil" Alanı
         st.markdown(
             f"""
-            <div style="
-                background-color: #161b22; 
-                border: 1px solid #30363d; 
-                border-radius: 10px; 
-                padding: 12px; 
-                display: flex; 
-                align-items: center; 
-                justify-content: space-between;
-                margin-top: 30px;
-            ">
+            <div style="background-color: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 12px; display: flex; align-items: center; justify-content: space-between; margin-top: 30px;">
                 <div style="display: flex; align-items: center; gap: 10px;">
                     <div style="background-color: #30363d; color: #ffffff; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem;">
                         {st.session_state['aktif_user'][0].upper() if st.session_state['aktif_user'] else 'C'}
@@ -586,18 +361,15 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 </div>
                 <span style="color: #8b949e; font-size: 0.8rem;">▼</span>
             </div>
-            """, 
-            unsafe_allow_html=True
+            """, unsafe_allow_html=True
         )
         
-        # Profil alanının hemen altına küçük bir çıkış butonu
         if st.button("🔐 Güvenli Çıkış", use_container_width=True):
             st.session_state["aktif_user"] = None
             st.session_state["sayfa"] = "ana_menu"
             st.rerun()
-            
-    st.title("📚 Matematik Ders Notları ve PDF Arşivi")
-    kullanici = st.session_state["aktif_user"].capitalize()
+
+    # --- ÜST LOGO ALANI ---
     st.markdown(
         """
         <div style="text-align: center; margin-top: -30px; margin-bottom: 35px;">
@@ -606,156 +378,54 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             </h1>
             <p style="color: #8b949e; font-size: 1.1rem; margin-top: -5px; letter-spacing: 1px;">Matematik Eğitim Portalı</p>
         </div>
-        """, 
-        unsafe_allow_html=True
+        """, unsafe_allow_html=True
     )
 
     # --- ÜST YATAY MENÜ SEKMELERİ ---
     sekme_isimleri = ["📁 Ders Notları", "🎥 Videolar", "📝 Soru Bankası", "📢 Duyurular", "👤 Profilim"]
     secilen_sekme = st.tabs(sekme_isimleri)
 
-    # --- BANNER VE MATERYAL KARTLARI (İLK SEKME İÇERİĞİ) ---
+    # --- BANNER VE MATERYAL KARTLARI ---
     with secilen_sekme[0]:
-        # Öne Çıkan Modern Banner
         st.markdown(
             """
-            <div style="
-                background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
-                border-radius: 16px;
-                padding: 30px;
-                margin-bottom: 30px;
-                border: 1px solid #374151;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                overflow: hidden;
-                position: relative;
-            ">
+            <div style="background: linear-gradient(135deg, #1f2937 0%, #111827 100%); border-radius: 16px; padding: 30px; margin-bottom: 30px; border: 1px solid #374151; display: flex; justify-content: space-between; align-items: center; overflow: hidden; position: relative;">
                 <div style="max-width: 60%; z-index: 2;">
-                    <h2 style="color: #ffffff; font-family: 'Poppins', sans-serif; font-size: 1.8rem; font-weight: 700; margin-bottom: 10px;">
-                        Matematik Yolculuğuna Başla!
-                    </h2>
-                    <p style="color: #9ca3af; font-size: 1rem; line-height: 1.5; margin-bottom: 20px;">
-                        Şimdi çok gıcık onikilik serimizin videolarında kendinizi dinleyecek Matematik Yolculuğuna Başla!
-                    </p>
-                    <a href="#" style="
-                        background-color: #2563eb;
-                        color: white !important;
-                        padding: 10px 24px;
-                        border-radius: 8px;
-                        text-decoration: none !important;
-                        font-weight: 600;
-                        display: inline-block;
-                        transition: background 0.2s;
-                    " onmouseover="this.style.backgroundColor='#1d4ed8'" onmouseout="this.style.backgroundColor='#2563eb'">
-                        Butona Başla
-                    </a>
+                    <h2 style="color: #ffffff; font-family: 'Poppins', sans-serif; font-size: 1.8rem; font-weight: 700; margin-bottom: 10px;">Matematik Yolculuğuna Başla!</h2>
+                    <p style="color: #9ca3af; font-size: 1rem; line-height: 1.5; margin-bottom: 20px;">Şimdi çok gıcık onikilik serimizin videolarında kendinizi dinleyecek Matematik Yolculuğuna Başla!</p>
+                    <a href="#" style="background-color: #2563eb; color: white !important; padding: 10px 24px; border-radius: 8px; text-decoration: none !important; font-weight: 600; display: inline-block; transition: background 0.2s;">Butona Başla</a>
                 </div>
-                <div style="position: absolute; right: 0; top: 0; bottom: 0; width: 40%; background-image: url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=600'); background-size: cover; background-position: center; opacity: 0.8; mask-image: linear-gradient(to left, rgba(0,0,0,1) 70%, rgba(0,0,0,0)); -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 70%, rgba(0,0,0,0));">
-                </div>
+                <div style="position: absolute; right: 0; top: 0; bottom: 0; width: 40%; background-image: url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=600'); background-size: cover; background-position: center; opacity: 0.8; mask-image: linear-gradient(to left, rgba(0,0,0,1) 70%, rgba(0,0,0,0)); -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 70%, rgba(0,0,0,0));"></div>
             </div>
-            """, 
-            unsafe_allow_html=True
+            """, unsafe_allow_html=True
         )
 
-        # --- DERSTİM MATERLERİ BAŞLIĞI ---
-        st.markdown(
-            """
-            <h3 style="color: #ffffff; font-family: 'Poppins', sans-serif; font-size: 1.3rem; font-weight: 600; margin-top: 25px; margin-bottom: 15px;">
-                Derstim Materleri
-            </h3>
-            """, 
-            unsafe_allow_html=True
-        )
+        st.markdown("""<h3 style="color: #ffffff; font-family: 'Poppins', sans-serif; font-size: 1.3rem; font-weight: 600; margin-top: 25px; margin-bottom: 15px;">Derstim Materleri</h3>""", unsafe_allow_html=True)
         
-        # Kartlar için Ortak CSS Yapısı
         st.markdown(
             """
             <style>
-            .materyal-kart {
-                background-color: #161b22;
-                border: 1px solid #30363d;
-                border-radius: 12px;
-                padding: 15px;
-                display: flex;
-                align-items: center;
-                gap: 15px;
-                margin-bottom: 15px;
-                transition: transform 0.2s, border-color 0.2s;
-            }
-            .materyal-kart:hover {
-                transform: translateY(-2px);
-                border-color: #58a6ff;
-            }
-            .kart-ikon-pdf {
-                background-color: rgba(248, 81, 73, 0.1);
-                color: #f85149;
-                padding: 12px;
-                border-radius: 10px;
-                font-size: 1.5rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            .kart-ikon-video {
-                background-color: rgba(56, 139, 253, 0.1);
-                color: #388bfd;
-                padding: 12px;
-                border-radius: 10px;
-                font-size: 1.5rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            .kart-icerik h4 {
-                color: #ffffff !important;
-                margin: 0 0 4px 0 !important;
-                font-size: 1rem !important;
-                font-weight: 600 !important;
-            }
-            .kart-icerik p {
-                color: #8b949e !important;
-                margin: 0 !important;
-                font-size: 0.85rem !important;
-            }
+            .materyal-kart { background-color: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 15px; display: flex; align-items: center; gap: 15px; margin-bottom: 15px; transition: transform 0.2s, border-color 0.2s; cursor: pointer; }
+            .materyal-kart:hover { transform: translateY(-2px); border-color: #58a6ff; }
+            .kart-ikon-pdf { background-color: rgba(248, 81, 73, 0.1); color: #f85149; padding: 12px; border-radius: 10px; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; }
+            .kart-ikon-video { background-color: rgba(56, 139, 253, 0.1); color: #388bfd; padding: 12px; border-radius: 10px; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; }
+            .kart-icerik h4 { color: #ffffff !important; margin: 0 0 4px 0 !important; font-size: 1rem !important; font-weight: 600 !important; }
+            .kart-icerik p { color: #8b949e !important; margin: 0 !important; font-size: 0.85rem !important; }
             </style>
-            """, 
-            unsafe_allow_html=True
+            """, unsafe_allow_html=True
         )
 
-        # 1. SATIR KARTLARI (Yan yana 2 adet)
+        # 1. SATIR KARTLARI
         kolon1, kolon2 = st.columns(2)
-        
         with kolon1:
-            st.markdown(
-                """
-                <div class="materyal-kart">
-                    <div class="kart-ikon-pdf">📄</div>
-                    <div class="kart-icerik">
-                        <h4>Analiz I - Limitler</h4>
-                        <p>PDF Dokümanı</p>
-                        <p style="color: #58a6ff !important; font-size: 0.75rem !important; margin-top: 3px !important;">9 Nisan 2026</p>
-                    </div>
-                </div>
-                """, 
-                unsafe_allow_html=True
-            )
-            
+            st.markdown("""<div class="materyal-kart"><div class="kart-ikon-pdf">📄</div><div class="kart-icerik"><h4>Analiz I - Limitler</h4><p>PDF Dokümanı</p><p style="color: #58a6ff !important; font-size: 0.75rem !important; margin-top: 3px !important;">9 Nisan 2026</p></div></div>""", unsafe_allow_html=True)
+            if st.button("📄 Aç: Analiz I", use_container_width=True):
+                pdf_popup_ac("1_DRIVE_ID_BURAYA_GELECEK") # Örnek tetikleyici
+                
         with kolon2:
-            st.markdown(
-                """
-                <div class="materyal-kart">
-                    <div class="kart-ikon-video">🎬</div>
-                    <div class="kart-icerik">
-                        <h4>Lineer Cebir - Matrisler</h4>
-                        <p>Ders Videosu</p>
-                        <p style="color: #58a6ff !important; font-size: 0.75rem !important; margin-top: 3px !important;">5 Saat Önce</p>
-                    </div>
-                </div>
-                """, 
-                unsafe_allow_html=True
-            )
-
+            st.markdown("""<div class="materyal-kart"><div class="kart-ikon-video">🎬</div><div class="kart-icerik"><h4>Lineer Cebir - Matrisler</h4><p>Ders Videosu</p><p style="color: #58a6ff !important; font-size: 0.75rem !important; margin-top: 3px !important;">5 Saat Önce</p></div></div>""", unsafe_allow_html=True)
+            if st.button("🎬 İzle: Lineer Cebir", use_container_width=True):
+                st.info("Video oynatıcı entegrasyonu aşamasına geçildiğinde burası bağlanacaktır.")
         # 2. SATIR KARTLARI (Yan yana 2 adet)
         kolon3, kolon4 = st.columns(2)
 
