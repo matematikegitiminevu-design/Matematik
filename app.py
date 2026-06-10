@@ -277,17 +277,17 @@ if st.session_state["sayfa"] == "ana_menu":
 # =========================================================================
 elif st.session_state["sayfa"] == "sifre_kontrol":
     
-    # 🔮 KRİTİK DÜZELTME: Tüm elemanları kutu içine alan ve hizalayan CSS
+    # 🔮 1. ADIM: Sayfa Genişliğini Sıfırlayan ve Arka Planı Ayarlayan CSS
     st.markdown(
         """
         <style>
-            /* 1. Sayfa Sınırlarını ve Sidebar'ı Sıfırla */
+            /* Streamlit üst bar, sidebar ve alt bilgileri gizle */
             [data-testid="stSidebar"], [data-testid="stSidebarCollapseButton"], 
             [data-testid="stHeader"], footer {
                 display: none !important;
             }
             
-            /* Sayfayı tam ekran yap ve içeriği merkeze odakla */
+            /* Sayfa container'ını serbest bırak ve dikey/yatay ortala */
             .main .block-container {
                 max-width: 100% !important;
                 padding: 0 !important;
@@ -297,53 +297,23 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 min-height: 100vh !important;
             }
 
-            /* 2. ARKA PLAN: Derin Nebula */
+            /* Derin Kozmik Nebula Arka Planı */
             .stApp {
                 background: linear-gradient(135deg, #050714 0%, #12092e 35%, #380b3c 70%, #52043d 100%) !important;
                 background-size: cover !important;
                 background-attachment: fixed !important;
             }
 
-            /* 3. DİKDÖRTGEN KUTU TASARIMI (Streamlit Konteynerini Hedef Alır) */
-            /* Bu kısım tüm yazıların ve kutuların içinde duracağı ana cam tabakadır */
-            [data-testid="stVerticalBlockBorderWrapper"] > div {
-                background: rgba(22, 18, 38, 0.5) !important;
-                backdrop-filter: blur(40px) saturate(210%) !important;
-                -webkit-backdrop-filter: blur(40px) saturate(210%) !important;
-                border-radius: 24px !important;
-                border: 1px solid rgba(255, 255, 255, 0.1) !important;
-                padding: 40px !important;
-                width: 440px !important; /* Kutu genişliği sabitlendi */
-                margin: auto !important;
-                box-shadow: 0 40px 100px -10px rgba(0, 0, 0, 0.9) !important;
-            }
-
-            /* Widget'ların (input, buton vb.) kendi arka planlarını sıfırla */
-            [data-testid="stVerticalBlock"] {
+            /* Streamlit elemanlarının arka plan çakışmalarını sıfırla */
+            [data-testid="element-container"], [data-testid="stVerticalBlock"],
+            [data-testid="stVerticalBlockBorderWrapper"] {
                 background: transparent !important;
+                background-color: transparent !important;
+                box-shadow: none !important;
+                border: none !important;
             }
-
-            /* Yazı Renkleri ve Hizalama */
-            h1, h2, h3, p, label {
-                text-align: center !important;
-                color: white !important;
-            }
-
-            .stTextInput label p {
-                text-align: left !important; /* Input başlıkları sola yaslı kalsın */
-                color: rgba(255,255,255,0.7) !important;
-                font-size: 0.85rem !important;
-            }
-
-            /* Giriş Kutuları */
-            .stTextInput input {
-                background-color: rgba(255, 255, 255, 0.05) !important;
-                border: 1px solid rgba(255, 255, 255, 0.1) !important;
-                border-radius: 12px !important;
-                color: white !important;
-            }
-
-            /* BUTON: Pembe-Kırmızı Gradyan */
+            
+            /* BUTON: Pembe-Kırmızı Geçişli Akıcı Tasarım */
             div.stButton > button:first-child {
                 background: linear-gradient(90deg, #a855f7 0%, #ec4899 50%, #f43f5e 100%) !important;
                 border: none !important;
@@ -351,95 +321,127 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 color: white !important;
                 font-weight: 600 !important;
                 padding: 12px 0 !important;
-                margin-top: 10px !important;
                 box-shadow: 0 10px 20px -5px rgba(236, 72, 153, 0.4) !important;
+                transition: all 0.3s ease !important;
+            }
+            div.stButton > button:first-child:hover {
+                transform: translateY(-1px) !important;
+                filter: brightness(1.1) !important;
             }
 
-            /* SOSYAL LOGOLAR (Alt Kısım) */
-            .social-icons {
-                display: flex;
-                justify-content: center;
-                gap: 15px;
-                margin-top: 25px;
+            /* Form Elemanları Şıklaştırma */
+            .stTextInput input {
+                background-color: rgba(255, 255, 255, 0.05) !important;
+                border: 1px solid rgba(255, 255, 255, 0.1) !important;
+                border-radius: 12px !important;
+                color: white !important;
             }
-            .icon-btn {
-                width: 40px;
-                height: 40px;
-                background: rgba(255,255,255,0.1);
-                border: 1px solid rgba(255,255,255,0.2);
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: white;
-                text-decoration: none;
-                font-size: 1.2rem;
-                transition: 0.3s;
+            .stTextInput label p {
+                color: rgba(255, 255, 255, 0.7) !important;
+                font-size: 0.85rem !important;
             }
-            .icon-btn:hover {
-                background: rgba(255,255,255,0.2);
-                transform: scale(1.1);
+            .stExpander {
+                background: rgba(0, 0, 0, 0.2) !important;
+                border: 1px solid rgba(255, 255, 255, 0.08) !important;
+                border-radius: 12px !important;
             }
         </style>
         """, 
         unsafe_allow_html=True
     )
 
-    # --- KUTU İÇERİĞİ BURADAN BAŞLIYOR ---
-    # st.container(border=True) kullanarak CSS'in bu alanı yakalamasını sağlıyoruz
-    with st.container(border=True):
+    # 🔮 2. ADIM: Görseldeki Birebir Sabit Dikdörtgen Kutu Kılıfı (HTML Başlangıcı)
+    st.markdown(
+        """
+        <div style="display: flex; justify-content: center; align-items: center; width: 100%; padding: 20px; box-sizing: border-box;">
+            <div style="
+                background: rgba(22, 18, 38, 0.45) !important;
+                backdrop-filter: blur(40px) saturate(210%) !important;
+                -webkit-backdrop-filter: blur(40px) saturate(210%) !important;
+                border-radius: 24px !important;
+                border: 1px solid rgba(255, 255, 255, 0.1) !important;
+                padding: 40px 35px !important;
+                width: 420px !important;
+                max-width: 420px !important;
+                box-shadow: 0 40px 100px -10px rgba(0, 0, 0, 0.9) !important;
+                box-sizing: border-box !important;
+            ">
+        """, 
+        unsafe_allow_html=True
+    )
+
+    # --- KUTUNUN İÇİNDEKİ STREAMLIT ELEMANLARI ---
+    
+    # Merkez Logo
+    st.image("mc250.png", width=90)
+    
+    # Başlıklar
+    st.markdown("<h2 style='text-align: center; color: white; margin-top: 10px; font-weight: 700;'>Welcome back!</h2>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; color: rgba(255,255,255,0.45); font-size: 0.9rem; margin-top: -10px; margin-bottom: 25px;'>Let's get you signed up.</p>", unsafe_allow_html=True)
+    
+    # Giriş Kutuları
+    kullanici_adi = st.text_input("Kullanıcı Adı", placeholder="Kullanıcı adınız...")
+    sifre = st.text_input("Parola", type="password", placeholder="••••••••")
+    
+    st.write("") 
+    
+    # Yasal Şartlar Paneli
+    with st.expander("🔒 Telif Hakkı ve Sözleşme"):
+        st.caption("Bu portalda sunulan tüm materyallerin telif hakları Muharrem CEYHAN'a aittir. İzinsiz paylaşılması veya çoğaltılması yasaktır.")
+        onay = st.checkbox("Onaylıyorum", key="onay_check")
+    
+    st.write("")
+
+    # Giriş ve Şifre İsteme Butonları
+    col_btn1, col_btn2 = st.columns(2)
+    with col_btn1:
+        if st.button("Giriş Yap", use_container_width=True):
+            if not onay:
+                st.error("Şartları onaylayın!")
+            elif kullanici_adi in USERS and USERS[kullanici_adi] == sifre:
+                st.session_state["aktif_user"] = kullanici_adi
+                st.session_state["sayfa"] = "notlar_arsivi"
+                st.rerun()
+            else:
+                st.error("Hatalı giriş!")
+                
+    with col_btn2:
+        st.link_button("📩 Şifre İste", "mailto:matematikegitiminevu@gmail.com", use_container_width=True)
         
-        # Logo
-        st.image("mc250.png", width=90) # CSS ile otomatik ortalanacak
-        
-        # Başlıklar
-        st.markdown("<h2 style='margin-top:-10px;'>Welcome back!</h2>", unsafe_allow_html=True)
-        st.markdown("<p style='color:gray; font-size:0.9rem; margin-top:-15px;'>Let's get you signed up.</p>", unsafe_allow_html=True)
-        
-        # Giriş Alanları
-        kullanici_adi = st.text_input("Kullanıcı Adı", placeholder="Kullanıcı adınız...")
-        sifre = st.text_input("Parola", type="password", placeholder="••••••••")
-        
-        st.write("") # Boşluk
-        
-        # Şartlar Expander
-        with st.expander("🔒 Telif Hakkı ve Sözleşme"):
-            st.caption("Bu dökümanların tüm hakları Muharrem Ceyhan'a aittir.")
-            onay = st.checkbox("Onaylıyorum", key="onay_check")
-        
-        # Butonlar
-        col_btn1, col_btn2 = st.columns(2)
-        with col_btn1:
-            if st.button("Giriş Yap", use_container_width=True):
-                if not onay:
-                    st.error("Şartları onaylayın!")
-                elif kullanici_adi in USERS and USERS[kullanici_adi] == sifre:
-                    st.session_state["aktif_user"] = kullanici_adi
-                    st.session_state["sayfa"] = "notlar_arsivi"
-                    st.rerun()
-                else:
-                    st.error("Hatalı giriş!")
-        
-        with col_btn2:
-            st.link_button("📩 Şifre İste", "mailto:matematikegitiminevu@gmail.com", use_container_width=True)
-            
-        # Alt Kısımdaki 3 Logo (Sosyal İkonlar)
+    # Alt Kısımdaki Yatay 3 Logo / Sosyal İkon Alanı
+    st.markdown(
+        """
+                <div style="display: flex; justify-content: center; gap: 18px; margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 25px;">
+                    <a href="#" style="width: 40px; height: 40px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 1.1rem; transition: 0.2s;">🍏</a>
+                    <a href="#" style="width: 40px; height: 40px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 1rem; font-weight: bold; transition: 0.2s;">G</a>
+                    <a href="#" style="width: 40px; height: 40px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 1.1rem; font-family: sans-serif; transition: 0.2s;">f</a>
+                </div>
+            </div>
+        </div>
+        """, 
+        unsafe_allow_html=True
+    )
+
+    # Portal Ana Menüye Dönüş (Kutunun dışında, sayfanın en altında bağımsız durur)
+    st.write("")
+    _, center_col, _ = st.columns([0.3, 0.4, 0.3])
+    with center_col:
         st.markdown(
             """
-            <div class="social-icons">
-                <a href="#" class="icon-btn">🍏</a>
-                <a href="#" class="icon-btn">G</a>
-                <a href="#" class="icon-btn">f</a>
-            </div>
-            """, 
-            unsafe_allow_html=True
+            <style>
+                div[data-testid="stBlock"] button {
+                    background: transparent !important;
+                    color: rgba(255, 255, 255, 0.4) !important;
+                    border: none !important;
+                    box-shadow: none !important;
+                }
+                div[data-testid="stBlock"] button:hover { color: white !important; }
+            </style>
+            """, unsafe_allow_html=True
         )
-
-    # Portal Ana Menüye Dönüş (Kutunun dışında, sayfanın en altında durur)
-    st.write("")
-    if st.button("⬅ Portal Ana Menüsüne Dön", key="back_btn"):
-        st.session_state["sayfa"] = "ana_menu"
-        st.rerun()
+        if st.button("⬅ Portal Ana Menüsüne Dön", key="back_btn"):
+            st.session_state["sayfa"] = "ana_menu"
+            st.rerun()
             
             
 # --- 3. AŞAMA: DERS NOTLARI VE PDF ARŞİVİ ---
