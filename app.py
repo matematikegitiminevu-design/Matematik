@@ -503,72 +503,94 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         time.sleep(1)
     # --- YENİ SİDEBAR (SOL KATEGORİ MENÜSÜ) ---
     with st.sidebar:
-        # Profil Alanı (Yeni Tasarım)
         st.markdown(
             """
-            <div style="text-align: center; margin-bottom: 25px;">
-                <img src="https://raw.githubusercontent.com/muharremceyhan/cyhn-portal/main/assets/mc_logo.png" 
-                     style="border-radius: 50%; width: 110px; height: 110px; border: 3px solid #1e40af; box-shadow: 0 4px 15px rgba(0,0,0,0.3); object-fit: cover;">
-                <h3 style="color: white; margin-top: 15px; margin-bottom: 2px; font-family: 'Poppins', sans-serif;">CYHN Matematik Portalı</h3>
-                <p style="color: #8b949e; font-style: italic; font-size: 0.9rem; margin-top: 0;">Muharrem Ceyhan</p>
+            <div style="margin-bottom: 20px;">
+                <h3 style="color: #ffffff; font-family: 'Poppins', sans-serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 10px;">
+                    Kategoriler
+                </h3>
             </div>
             """, 
             unsafe_allow_html=True
         )
         
-        st.markdown("### 📋 Kategoriler")
-        
         # Tasarımdaki Kategori Arama Çubuğu
         arama_sorgusu = st.text_input("Kategoriler", placeholder="Matematik konusu ara...", label_visibility="collapsed")
         
-        # Yeni Tasarım dikey menü butonları (Aktif sayfayı takip etmek için)
+        # Kategori dikey menü butonları
         if "sidebar_sekme" not in st.session_state:
             st.session_state["sidebar_sekme"] = "Ders Notları"
             
-        if st.button("📁 Ders Notları", use_container_width=True, type="primary" if st.session_state["sidebar_sekme"] == "Ders Notları" else "secondary"):
+        st.markdown('<div style="margin-top: 10px; margin-bottom: 20px;">', unsafe_allow_html=True)
+        if st.button("› Ders Notları", use_container_width=True, type="primary" if st.session_state["sidebar_sekme"] == "Ders Notları" else "secondary"):
             st.session_state["sidebar_sekme"] = "Ders Notları"
-        if st.button("🎥 Videolar", use_container_width=True, type="primary" if st.session_state["sidebar_sekme"] == "Videolar" else "secondary"):
+        if st.button("› Ders Notu", use_container_width=True, type="primary" if st.session_state["sidebar_sekme"] == "Ders Notu" else "secondary"):
+            st.session_state["sidebar_sekme"] = "Ders Notu"
+        if st.button("› Videolar", use_container_width=True, type="primary" if st.session_state["sidebar_sekme"] == "Videolar" else "secondary"):
             st.session_state["sidebar_sekme"] = "Videolar"
-        if st.button("📝 Soru Bankası", use_container_width=True, type="primary" if st.session_state["sidebar_sekme"] == "Soru Bankası" else "secondary"):
+        if st.button("› Soru Bankası", use_container_width=True, type="primary" if st.session_state["sidebar_sekme"] == "Soru Bankası" else "secondary"):
             st.session_state["sidebar_sekme"] = "Soru Bankası"
-        if st.button("📢 Duyurular", use_container_width=True, type="primary" if st.session_state["sidebar_sekme"] == "Duyurular" else "secondary"):
+        if st.button("› Duyurular", use_container_width=True, type="primary" if st.session_state["sidebar_sekme"] == "Duyurular" else "secondary"):
             st.session_state["sidebar_sekme"] = "Duyurular"
-        if st.button("👤 Profilim", use_container_width=True, type="primary" if st.session_state["sidebar_sekme"] == "Profilim" else "secondary"):
+        if st.button("› Profilim", use_container_width=True, type="primary" if st.session_state["sidebar_sekme"] == "Profilim" else "secondary"):
             st.session_state["sidebar_sekme"] = "Profilim"
+        st.markdown('</div>', unsafe_allow_html=True)
 
-        st.markdown("---")
-        
-        # İletişim ve Destek Linkleri (Yeni Tasarım Buton Stilleri ile)
+        # İletişim Hızlı Linkleri
         st.markdown("""
             <style>
-            .sidebar-action-btn {
-                display: flex;
-                align-items: center;
-                justify-content: center;
+            .sidebar-link-btn {
+                display: block;
                 background: #21262d;
                 color: #c9d1d9 !important;
-                padding: 10px;
-                border-radius: 8px;
+                padding: 8px;
+                border-radius: 6px;
                 text-decoration: none !important;
-                font-weight: 500;
-                font-size: 0.9rem;
-                margin-bottom: 10px;
+                text-align: center;
+                font-size: 0.85rem;
+                margin-bottom: 8px;
                 border: 1px solid #30363d;
-                transition: background 0.2s;
             }
-            .sidebar-action-btn:hover {
+            .sidebar-link-btn:hover {
                 background: #30363d;
                 color: #ffffff !important;
             }
             </style>
-            
-            <a href="mailto:matematikegitiminevu@gmail.com" class="sidebar-action-btn">📩 İletişim Maili</a>
-            <a href="https://wa.me/905061905437" target="_blank" class="sidebar-action-btn">📞 WhatsApp İletişim</a>
-            <a href="https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc" target="_blank" class="sidebar-action-btn">✨ cyhnAI'a Sor</a>
+            <a href="https://wa.me/905061905437" target="_blank" class="sidebar-link-btn">📞 WhatsApp Destek</a>
+            <a href="https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc" target="_blank" class="sidebar-link-btn">✨ cyhnAI Asistan</a>
         """, unsafe_allow_html=True)
+
+        st.spacer = st.empty() # Butonlar ile profil arasını açmak için boşluk
+
+        # Görseldeki En Alttaki Şık "Ceyhan - Profil" Alanı
+        st.markdown(
+            f"""
+            <div style="
+                background-color: #161b22; 
+                border: 1px solid #30363d; 
+                border-radius: 10px; 
+                padding: 12px; 
+                display: flex; 
+                align-items: center; 
+                justify-content: space-between;
+                margin-top: 30px;
+            ">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="background-color: #30363d; color: #ffffff; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem;">
+                        {st.session_state['aktif_user'][0].upper() if st.session_state['aktif_user'] else 'C'}
+                    </div>
+                    <div>
+                        <p style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">{st.session_state['aktif_user'].capitalize()}</p>
+                        <p style="color: #8b949e; margin: 0; font-size: 0.75rem;">Profil</p>
+                    </div>
+                </div>
+                <span style="color: #8b949e; font-size: 0.8rem;">▼</span>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
         
-        # Güvenli Çıkış Alt Alanı
-        st.markdown(f"<p style='color:#8b949e; font-size:0.85rem; text-align:center;'>👤 Oturum: {st.session_state['aktif_user'].capitalize()}</p>", unsafe_allow_html=True)
+        # Profil alanının hemen altına küçük bir çıkış butonu
         if st.button("🔐 Güvenli Çıkış", use_container_width=True):
             st.session_state["aktif_user"] = None
             st.session_state["sayfa"] = "ana_menu"
