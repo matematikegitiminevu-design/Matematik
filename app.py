@@ -277,23 +277,23 @@ if st.session_state["sayfa"] == "ana_menu":
 # =========================================================================
 elif st.session_state["sayfa"] == "sifre_kontrol":
     
-    # 🎨 Geliştirilmiş Modern Kuantum Giriş Paneli Tasarımı (CSS)
+    # 🎨 image_72e900.jpg Görselindeki Birebir Kozmik & Glassmorphic Tasarım (CSS)
     st.markdown(
         """
         <style>
-            /* 1. Sol menüyü (Sidebar) giriş ekranında temiz bir görünüm için tamamen gizle */
+            /* 1. Giriş ekranında sidebar'ı gizle */
             [data-testid="stSidebar"], [data-testid="stSidebarCollapseButton"] {
                 display: none !important;
             }
             
-            /* 2. Arka Plan: Derin ve modern akıcı kuantum gradyanı */
+            /* 2. ARKA PLAN: Görseldeki mor, pembe ve lacivert kuantum nebula gradyanı */
             .stApp {
-                background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #2e1065 70%, #022c22 100%) !important;
+                background: linear-gradient(135deg, #090d1a 0%, #1a103c 35%, #4a154b 70%, #63104c 100%) !important;
                 background-size: cover !important;
                 background-attachment: fixed !important;
             }
             
-            /* Streamlit'in kendi katman gölgelerini tamamen nötrle */
+            /* Streamlit katmanlarını sıfırla */
             [data-testid="element-container"], 
             [data-testid="stVerticalBlockBorderWrapper"], 
             [data-testid="stVerticalBlock"] {
@@ -302,185 +302,172 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 border: none !important;
             }
 
-            /* 3. MODERN GİRİŞ KARTI: Ekranda Yüzen Pencere (Modal) Efekti */
-            .cyhn-login-card {
-                background: rgba(15, 23, 42, 0.45) !important; /* Arka planı hafif geçiren tok koyuluk */
-                backdrop-filter: blur(24px) saturate(160%) !important;
-                -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
-                max-width: 450px;
-                margin: 60px auto !important; /* Yukarıdan dengeli popup boşluğu */
-                padding: 45px 35px !important;
-                border-radius: 24px !important; /* Yumuşak modern oval köşeler */
-                border: 1px solid rgba(255, 255, 255, 0.12) !important;
-                /* Güçlü popup gölgesi ile derinlik hissi */
-                box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), 0 0 50px rgba(99, 102, 241, 0.1) !important;
+            /* 3. SAF CAM PANEL: Görseldeki ortalanmış, keskin ve yüksek blur efektli kart */
+            .cyhn-advanced-card {
+                background: rgba(20, 16, 35, 0.45) !important;
+                backdrop-filter: blur(30px) saturate(180%) !important;
+                -webkit-backdrop-filter: blur(30px) saturate(180%) !important;
+                max-width: 460px;
+                margin: 50px auto !important;
+                padding: 40px 35px !important;
+                border-radius: 20px !important;
+                border: 1px solid rgba(255, 255, 255, 0.08) !important;
+                box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.9), 0 0 40px rgba(139, 92, 246, 0.15) !important;
                 text-align: center;
-                animation: popupShow 0.5s cubic-bezier(0.16, 1, 0.3, 1); /* Yumuşak açılış efekti */
+                animation: cardFadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1);
             }
 
-            /* Popup Açılış Animasyonu */
-            @keyframes popupShow {
-                from { transform: translateY(20px); opacity: 0; }
-                to { transform: translateY(0); opacity: 1; }
+            @keyframes cardFadeIn {
+                from { transform: scale(0.95); opacity: 0; }
+                to { transform: scale(1); opacity: 1; }
             }
 
-            /* 4. Tipografi ve Metin Renkleri */
+            /* 4. Tipografi */
             .cyhn-title {
                 color: #ffffff !important;
                 font-family: 'Inter', 'Segoe UI', sans-serif;
-                font-weight: 800 !important;
+                font-weight: 700 !important;
                 font-size: 1.6rem !important;
-                letter-spacing: 0.7px;
-                margin-top: 15px;
-                margin-bottom: 2px;
-                background: linear-gradient(to right, #ffffff, #818cf8);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
+                margin-top: 10px;
+                margin-bottom: 5px;
+                letter-spacing: -0.5px;
             }
             .cyhn-subtitle {
-                color: #94a3b8 !important;
-                font-size: 0.88rem !important;
-                font-weight: 500;
+                color: rgba(255, 255, 255, 0.6) !important;
+                font-size: 0.85rem !important;
+                font-weight: 400;
                 margin-bottom: 30px;
-                letter-spacing: 0.5px;
             }
             .cyhn-label {
-                font-weight: 600 !important;
-                color: #94a3b8 !important;
+                font-weight: 500 !important;
+                color: rgba(255, 255, 255, 0.7) !important;
                 text-align: left;
                 margin-top: 5px;
-                margin-bottom: 8px;
+                margin-bottom: 6px;
                 font-size: 0.8rem;
-                text-transform: uppercase;
-                letter-spacing: 1px;
                 display: block;
             }
 
-            /* 5. Şartlar Kutusu (Expander) Modernizasyonu */
+            /* 5. Şartlar ve Checkbox */
             .stExpander {
-                background: rgba(15, 23, 42, 0.6) !important;
-                border: 1px solid rgba(255, 255, 255, 0.08) !important;
-                border-radius: 12px !important;
+                background: rgba(0, 0, 0, 0.2) !important;
+                border: 1px solid rgba(255, 255, 255, 0.05) !important;
+                border-radius: 10px !important;
                 text-align: left;
             }
             .stExpander summary span {
-                color: #e2e8f0 !important;
-                font-weight: 600 !important;
+                color: rgba(255, 255, 255, 0.9) !important;
                 font-size: 0.85rem !important;
             }
-            
-            /* Checkbox metni */
             .stCheckbox label span p {
-                color: #cbd5e1 !important;
+                color: rgba(255, 255, 255, 0.8) !important;
                 font-size: 0.85rem !important;
             }
             
-            /* 6. Giriş Kutuları (Inputs) */
+            /* 6. Giriş Kutuları (Form Alanları) */
             .stTextInput input {
                 color: #ffffff !important;
-                background-color: rgba(15, 23, 42, 0.7) !important;
-                border: 1px solid rgba(255, 255, 255, 0.15) !important;
-                border-radius: 12px !important;
-                padding: 12px 16px !important;
-                font-size: 0.95rem !important;
+                background-color: rgba(255, 255, 255, 0.05) !important;
+                border: 1px solid rgba(255, 255, 255, 0.1) !important;
+                border-radius: 10px !important;
+                padding: 12px 14px !important;
+                font-size: 0.9rem !important;
             }
             .stTextInput input:focus {
-                border-color: #6366f1 !important;
-                box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3) !important;
+                border-color: #d946ef !important; /* Odaklanınca pembe parlaması */
+                box-shadow: 0 0 0 3px rgba(217, 70, 239, 0.25) !important;
+                background-color: rgba(255, 255, 255, 0.08) !important;
             }
 
-            /* 7. Butonlar */
+            /* 7. BUTON: Görseldeki pembe-kırmızı gradyanlı (Sign Up) Buton Tasarımı */
             div.stButton > button:first-child {
-                background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%) !important;
+                background: linear-gradient(90deg, #a855f7 0%, #ec4899 50%, #ef4444 100%) !important;
                 color: #ffffff !important;
-                border: 1px solid rgba(255, 255, 255, 0.1) !important;
-                border-radius: 12px !important;
+                border: none !important;
+                border-radius: 10px !important;
                 font-weight: 600 !important;
                 padding: 12px 0 !important;
-                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-                box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3) !important;
+                font-size: 0.95rem !important;
+                transition: all 0.3s ease !important;
+                box-shadow: 0 8px 20px -6px rgba(236, 72, 153, 0.5) !important;
             }
             div.stButton > button:first-child:hover {
-                background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
-                transform: translateY(-2px);
-                box-shadow: 0 6px 20px rgba(79, 70, 229, 0.45) !important;
+                transform: translateY(-2px) scale(1.01);
+                box-shadow: 0 12px 25px -4px rgba(236, 72, 153, 0.65) !important;
+                filter: brightness(1.1);
             }
         </style>
         """, 
         unsafe_allow_html=True
     )
 
-    # Dengeli üst boşluk ayarı
-    st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='height: 15px;'></div>", unsafe_allow_html=True)
     
-    # 🏛️ HTML Giriş Kartı Başlangıcı
-    st.markdown('<div class="cyhn-login-card">', unsafe_allow_html=True)
+    # 🏛️ Gelişmiş Cam Kart Başlangıcı
+    st.markdown('<div class="cyhn-advanced-card">', unsafe_allow_html=True)
     
-    # Logo Alanı (Hafif neon parıltı efektli)
-    st.markdown('<div style="display: flex; justify-content: center; filter: drop-shadow(0 0 20px rgba(99,102,241,0.25));">', unsafe_allow_html=True)
-    st.image("mc250.png", width=100)
+    # Profil / Logo Alanı (Dairesel ve parıltılı)
+    st.markdown('<div style="display: flex; justify-content: center; filter: drop-shadow(0 0 15px rgba(236,72,153,0.3));">', unsafe_allow_html=True)
+    st.image("mc250.png", width=90)
     st.markdown('</div>', unsafe_allow_html=True)
     
-    # Başlık Alanları
-    st.markdown('<p class="cyhn-title">CYHN MATEMATİK PORTALI</p>', unsafe_allow_html=True)
-    st.markdown('<p class="cyhn-subtitle">Özel Ders Notları Arşivi Doğrulama</p>', unsafe_allow_html=True)
+    # Karşılama Başlıkları
+    st.markdown('<p class="cyhn-title">Tekrar Hoş Geldiniz</p>', unsafe_allow_html=True)
+    st.markdown('<p class="cyhn-subtitle">Lütfen erişim bilgilerinizi doğrulayın.</p>', unsafe_allow_html=True)
     
-    # 📜 Telif Hakkı ve Sözleşme Alanı
+    # 📜 Sözleşme ve Onay Alanı
     with st.expander("🔒 Telif Hakkı ve Kullanım Şartları", expanded=False):
         st.markdown(
             """
-            <p style="color: #fca5a5 !important; font-weight: bold; margin-bottom: 6px; font-size: 0.85rem;">Yasal Uyarı:</p>
-            <p style="color: #cbd5e1 !important; font-size: 0.82rem; line-height: 1.6; text-align: left;">
-                Bu platformda paylaşılan tüm ders PDF notlarının telif hakları doğrudan <b>Muharrem CEYHAN</b>'a aittir. <br>
-                Tüm hakları saklıdır. <br><br>
-                İçeriklerin tamamının veya bir kısmının, yazarın yazılı izni olmaksızın kopyalanması, çoğaltılması, işlenmesi veya herhangi bir dijital/basılı mecrada paylaşılması <b>kesinlikle yasaktır</b>. <br><br>
-                Sadece kişisel eğitim amaçlıdır.
-                <span style="color: #64748b !important; font-size: 0.75rem; display: block; margin-top: 8px; text-align: center;">(© 2026)</span>
+            <p style="color: #fca5a5 !important; font-weight: bold; margin-bottom: 4px; font-size: 0.8rem; text-align: left;">Yasal Uyarı:</p>
+            <p style="color: rgba(255,255,255,0.8) !important; font-size: 0.8rem; line-height: 1.5; text-align: left;">
+                Bu platformda paylaşılan tüm dökümanların telif hakları <b>Muharrem CEYHAN</b>'a aittir. 
+                İzinsiz kopyalanması veya paylaşılması kesinlikle yasaktır.
             </p>
             """, 
             unsafe_allow_html=True
         )
-        onay = st.checkbox("Okudum, şartları kabul ediyorum.", key="login_onay")
+        onay = st.checkbox("Şartları okudum ve onaylıyorum.", key="adv_login_onay")
         
-    st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
-    
-    # 👤 Kullanıcı Giriş Alanları
-    st.markdown('<span class="cyhn-label">Kullanıcı Adı</span>', unsafe_allow_html=True)
-    kullanici_adi = st.text_input("Kullanıcı Adı Giriş Paneli", label_visibility="collapsed", placeholder="Kullanıcı adınız...").strip().lower()
-    
     st.markdown("<div style='height: 15px;'></div>", unsafe_allow_html=True)
     
+    # Form Alanları
+    st.markdown('<span class="cyhn-label">Kullanıcı Adı</span>', unsafe_allow_html=True)
+    kullanici_adi = st.text_input("Kullanıcı Adı", label_visibility="collapsed", placeholder="Kullanıcı adınızı yazın...").strip().lower()
+    
+    st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
+    
     st.markdown('<span class="cyhn-label">Parola</span>', unsafe_allow_html=True)
-    sifre = st.text_input("Parola Giriş Paneli", type="password", label_visibility="collapsed", placeholder="Şifrenizi yazınız...")
+    sifre = st.text_input("Parola", type="password", label_visibility="collapsed", placeholder="••••••••")
     
     st.markdown("<div style='height: 25px;'></div>", unsafe_allow_html=True)
     
-    # 🖲️ Butonlar Gird Düzeni
+    # Butonlar Grid Düzeni
     btn_c1, btn_c2 = st.columns(2)
     with btn_c1:
-        if st.button("Giriş Yap", use_container_width=True, key="btn_login"):
+        if st.button("Giriş Yap", use_container_width=True, key="btn_adv_login"):
             if not onay:
                 st.error("Lütfen önce şartları onaylayınız!")
             elif kullanici_adi in USERS and USERS[kullanici_adi] == sifre:
-                st.toast(f"🔑 Giriş Başarılı! Hoş geldin {kullanici_adi.capitalize()}.", icon="🎉")
+                st.toast(f"Giriş Başarılı! Hoş geldin {kullanici_adi.capitalize()}.", icon="🎉")
                 st.balloons()
                 time.sleep(1.2)
                 st.session_state["aktif_user"] = kullanici_adi
                 st.session_state["sayfa"] = "notlar_arsivi"
                 st.rerun()
             else:
-                st.error("Kullanıcı adı veya şifre hatalı!")
+                st.error("Hatalı kullanıcı adı veya şifre!")
                 
     with btn_c2:
         mail_konu = "CYHN%20Portal%20Eri%C5%9Fim%20Talebi"
-        mail_icerik = "Merhaba,%0D%0ACYHN%20Matematik%20Portalı%20için%20kullanıcı%20adı%20ve%20şifre%20talep%20ediyorum.%0D%0A%0D%0AAdım%20Soyadım:%20"
+        mail_icerik = "Merhaba,%0D%0ACYHN%20Matematik%20Portalı%20için%20erişim%20izni%20talep%20ediyorum.%0D%0A%0D%0AAdım%20Soyadım:%20"
         mail_link = f"mailto:matematikegitiminevu@gmail.com?subject={mail_konu}&body={mail_icerik}"
         st.link_button("📩 Şifre İste", mail_link, use_container_width=True)
     
-    # HTML Giriş Kartı Kapanışı
+    # Gelişmiş Cam Kart Kapanışı
     st.markdown('</div>', unsafe_allow_html=True)
 
-    # ⬅️ Ana Menüye Dönüş Linki (Kartın altında sade durması için)
+    # Menüye Dönüş Linki
     _, ana_btn_col, _ = st.columns([0.3, 0.4, 0.3])
     with ana_btn_col:
         st.markdown(
@@ -488,9 +475,9 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
             <style>
                 div[data-testid="stBlock"] button {
                     background: transparent !important;
-                    color: #94a3b8 !important;
+                    color: rgba(255, 255, 255, 0.5) !important;
                     border: none !important;
-                    font-size: 0.9rem !important;
+                    font-size: 0.85rem !important;
                 }
                 div[data-testid="stBlock"] button:hover {
                     color: #ffffff !important;
@@ -499,7 +486,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
             </style>
             """, unsafe_allow_html=True
         )
-        if st.button("⬅ Portal Ana Menüsüne Dön", use_container_width=True, key="btn_back_main"):
+        if st.button("⬅ Ana Menüye Dön", use_container_width=True, key="btn_adv_back"):
             st.session_state["sayfa"] = "ana_menu"
             st.rerun()
             
