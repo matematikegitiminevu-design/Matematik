@@ -272,13 +272,7 @@ if st.session_state["sayfa"] == "ana_menu":
                 unsafe_allow_html=True
             )
 
-Muharrem, aldığın hatanın sebebi çok net: Kodun en üstünde CSS stil kodlarını (<style>...</style>) eklerken, yazdığın CSS kuralları kazara alt taraftaki HTML form yapısını da ezmiş ve Streamlit'in kendi iç mekanizmasıyla çakışmış. Ayrıca st.query_params temizleme işlemi form ilk gönderildiğinde tetikleyicileri sildiği için sonsuz bir yenilenme veya çökme hatası (Rerun error) yaratıyor.
 
-Hiç merak etme; hem görseldeki o jilet gibi kutu tasarımını, yan yana duran First Name/Last Name inputlarını ve en alttan taşan 3 logoyu koruyan, hem de Streamlit altyapında kesinlikle hata vermeden tıkır tıkır çalışan tamamen temizlenmiş, optimize edilmiş kodu hazırladım.
-
-Mevcut projedeki o hatalı elif st.session_state["sayfa"] == "sifre_kontrol": bloğunu en altındaki ders arşivi başlangıcına kadar tamamen sil ve yerine doğrudan bu nokta atışı çalışan yapıyı yapıştır:
-
-Python
 # =========================================================================
 # 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (KESİN ÇÖZÜM - SIFIR HATA + BİREBİR TASARIM)
 # =========================================================================
