@@ -274,21 +274,21 @@ if st.session_state["sayfa"] == "ana_menu":
 
 
 # =========================================================================
-# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (KESİN ÇÖZÜM - SIFIR HATA + BİREBİR TASARIM)
+# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (BİREBİR GÖRSEL TASARIMI + URL HATASI ÇÖZÜMÜ)
 # =========================================================================
 elif st.session_state["sayfa"] == "sifre_kontrol":
     
-    # 🔮 1. ADIM: Streamlit Alanını Temizleyen ve Çakışmaları Önleyen İzole CSS
+    # 🔮 1. ADIM: Streamlit Alanını İzole Eden ve Arka Planı Ayarlayan CSS
     st.markdown(
         """
         <style>
-            /* Streamlit varsayılan üst bar, sidebar ve alt bilgileri tamamen kapat */
+            /* Streamlit üst bar, sidebar ve alt bilgileri tamamen kapat */
             [data-testid="stSidebar"], [data-testid="stSidebarCollapseButton"], 
             [data-testid="stHeader"], footer {
                 display: none !important;
             }
             
-            /* Sayfa container sınırlarını sıfırla */
+            /* Sayfa container boşluklarını sıfırla ve dikey/yatay ortala */
             .main .block-container {
                 max-width: 100% !important;
                 padding: 0px !important;
@@ -307,185 +307,128 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
 
             /* Streamlit'in görünmez container arka planlarını şeffaflaştır */
             [data-testid="element-container"], [data-testid="stVerticalBlock"], 
-            [data-testid="stVerticalBlockBorderWrapper"] {
+            [data-testid="stVerticalBlockBorderWrapper"], [data-testid="stForm"] {
                 background-color: transparent !important;
                 box-shadow: none !important;
                 border: none !important;
+                padding: 0 !important;
             }
             
-            /* Hata mesajı paneli tasarımı */
-            .cyhn-error-box {
-                background-color: rgba(220, 38, 38, 0.25);
-                color: #fca5a5;
-                border: 1px solid rgba(220, 38, 38, 0.4);
-                border-radius: 12px;
-                width: 380px;
-                padding: 12px;
-                margin: 15px auto 0 auto;
-                text-align: center;
-                font-size: 0.85rem;
-                font-family: sans-serif;
+            /* Streamlit Input Alanlarını Görseldeki Gibi Transparan Yapma */
+            .stTextInput input, .stSelectbox div[data-baseweb="select"] {
+                background-color: rgba(255, 255, 255, 0.03) !important;
+                border: 1px solid rgba(255, 255, 255, 0.15) !important;
+                border-radius: 12px !important;
+                color: white !important;
+                padding: 10px 14px !important;
+            }
+            .stTextInput input:focus {
+                border-color: #ec4899 !important;
+                box-shadow: 0 0 0 1px #ec4899 !important;
+            }
+            
+            /* Label (Başlık) yazılarını gizle veya küçült (Tasarım birebir olsun diye) */
+            .stTextInput label p, .stSelectbox label p, .stCheckbox label p {
+                color: rgba(255, 255, 255, 0.6) !important;
+                font-size: 0.8rem !important;
+                margin-bottom: 2px !important;
+            }
+            
+            /* Giriş Yap Butonu Tasarımı */
+            div.stButton > button {
+                background: linear-gradient(90deg, #7c3aed 0%, #e11d48 100%) !important;
+                color: white !important;
+                border: none !important;
+                border-radius: 12px !important;
+                padding: 14px 0 !important;
+                font-size: 1rem !important;
+                font-weight: 600 !important;
+                width: 100% !important;
+                box-shadow: 0 10px 20px rgba(225, 29, 72, 0.3) !important;
+                transition: all 0.2s ease !important;
+            }
+            div.stButton > button:hover {
+                opacity: 0.9 !important;
+                transform: translateY(-1px);
+            }
+            
+            /* Şeffaf Dönüş Butonu */
+            .back-btn-container button {
+                background: transparent !important;
+                color: rgba(255, 255, 255, 0.4) !important;
+                border: none !important;
+                box-shadow: none !important;
+            }
+            .back-btn-container button:hover {
+                color: white !important;
             }
         </style>
         """, 
         unsafe_allow_html=True
     )
 
-    # Arka planda hata yönetimi için değişken kontrolü
-    hata_mesaji = ""
-
-    # 🔮 2. ADIM: Form Girdilerini İşleyen Güvenli Python Motoru
-    params = st.query_params
-    
-    # Ana menüye dönüş kontrolü
-    if "back_to_menu" in params:
-        st.session_state["sayfa"] = "ana_menu"
-        st.query_params.clear()
-        st.rerun()
-        
-    # Giriş yap kontrolü
-    if "form_submitted" in params:
-        html_user = params.get("html_username", "").strip().lower()
-        html_pass = params.get("html_password", "")
-        
-        # Kullanıcı Adı ve Şifre Doğrulama
-        if html_user in USERS and USERS[html_user] == html_pass:
-            st.toast("🔑 Giriş Başarılı!", icon="🎉")
-            st.balloons()
-            st.session_state["aktif_user"] = html_user
-            st.session_state["sayfa"] = "notlar_arsivi"
-            st.query_params.clear()
-            st.rerun()
-        else:
-            hata_mesaji = "Kullanıcı adı veya şifre hatalı. Lütfen tekrar deneyin!"
-
-    # 🔮 3. ADIM: image_72785e.png Görselindeki Arayüzün Birebir HTML Yapısı
+    # 🔮 2. ADIM: Kartın Dış Kılıfı ve Başlıklar (HTML Başlangıcı)
     st.markdown(
         """
-        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100vw; min-height: 100vh; font-family: 'Inter', system-ui, -apple-system, sans-serif; box-sizing: border-box;">
-            
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100vw; font-family: 'Inter', system-ui, sans-serif;">
             <div style="
                 background: rgba(30, 24, 38, 0.65);
                 backdrop-filter: blur(30px) saturate(180%);
                 -webkit-backdrop-filter: blur(30px) saturate(180%);
-                width: 380px;
-                padding: 40px 30px 50px 30px;
+                width: 390px;
+                padding: 40px 30px 60px 30px;
                 border-radius: 28px;
                 border: 1px solid rgba(255, 255, 255, 0.08);
                 box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7);
                 box-sizing: border-box;
                 position: relative;
             ">
-                
-                <h2 style="color: #ffffff; text-align: center; margin: 0 0 6px 0; font-size: 1.6rem; font-weight: 600; letter-spacing: -0.5px; background: none; -webkit-text-fill-color: initial;">Welcome back!</h2>
-                <p style="color: rgba(255, 255, 255, 0.5); text-align: center; margin: 0 0 30px 0; font-size: 0.88rem;">Let's get you signed up.</p>
-                
-                <form method="get" action="/" style="display: flex; flex-direction: column;">
-                    <input type="hidden" name="form_submitted" value="true">
-                    
-                    <div style="display: flex; gap: 12px; margin-bottom: 14px;">
-                        <input type="text" name="html_firstname" placeholder="First Name" required style="
-                            width: 50%;
-                            background: rgba(255, 255, 255, 0.03);
-                            border: 1px solid rgba(255, 255, 255, 0.15);
-                            border-radius: 12px;
-                            padding: 12px 14px;
-                            color: #ffffff;
-                            font-size: 0.9rem;
-                            outline: none;
-                            box-sizing: border-box;
-                        ">
-                        <input type="text" name="html_lastname" placeholder="Last Name" required style="
-                            width: 50%;
-                            background: rgba(255, 255, 255, 0.03);
-                            border: 1px solid rgba(255, 255, 255, 0.15);
-                            border-radius: 12px;
-                            padding: 12px 14px;
-                            color: #ffffff;
-                            font-size: 0.9rem;
-                            outline: none;
-                            box-sizing: border-box;
-                        ">
-                    </div>
-                    
-                    <input type="text" name="html_username" placeholder="Kullanıcı Adı" required style="
-                        background: rgba(255, 255, 255, 0.03);
-                        border: 1px solid rgba(255, 255, 255, 0.15);
-                        border-radius: 12px;
-                        padding: 13px 14px;
-                        color: #ffffff;
-                        font-size: 0.9rem;
-                        margin-bottom: 14px;
-                        outline: none;
-                        width: 100%;
-                        box-sizing: border-box;
-                    ">
-                    
-                    <div style="position: relative; margin-bottom: 14px; width: 100%; box-sizing: border-box;">
-                        <input type="password" name="html_password" placeholder="Password" required style="
-                            width: 100%;
-                            background: rgba(255, 255, 255, 0.03);
-                            border: 1px solid rgba(255, 255, 255, 0.15);
-                            border-radius: 12px;
-                            padding: 13px 14px;
-                            color: #ffffff;
-                            font-size: 0.9rem;
-                            outline: none;
-                            box-sizing: border-box;
-                        ">
-                        <span style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,0.3); font-size: 0.9rem; cursor: pointer;">👁</span>
-                    </div>
-                    
-                    <select style="
-                        background: rgba(30, 24, 38, 0.95);
-                        border: 1px solid rgba(255, 255, 255, 0.15);
-                        border-radius: 12px;
-                        padding: 13px 14px;
-                        color: rgba(255, 255, 255, 0.7);
-                        font-size: 0.9rem;
-                        margin-bottom: 20px;
-                        outline: none;
-                        cursor: pointer;
-                        width: 100%;
-                        box-sizing: border-box;
-                    ">
-                        <option>Turkey (CYHN Portal)</option>
-                        <option>United States</option>
-                    </select>
-                    
-                    <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 25px; padding: 0 4px;">
-                        <input type="checkbox" id="legal_agree" name="html_agree" value="yes" required style="margin-top: 2px; accent-color: #ec4899; cursor: pointer; width: 15px; height: 15px;">
-                        <label for="legal_agree" style="color: rgba(255,255,255,0.5); font-size: 0.72rem; line-height: 1.4; cursor: pointer; user-select: none;">
-                            Telif haklarını kabul ediyorum, dökümanları izinsiz paylaşmayacağım. <a href="#" style="color: #38bdf8; text-decoration: none;">Sözleşme Detayları</a>
-                        </label>
-                    </div>
-                    
-                    <button type="submit" style="
-                        background: linear-gradient(90deg, #7c3aed 0%, #e11d48 100%);
-                        color: #ffffff;
-                        border: none;
-                        border-radius: 12px;
-                        padding: 14px 0;
-                        font-size: 1rem;
-                        font-weight: 600;
-                        cursor: pointer;
-                        transition: opacity 0.2s;
-                        width: 100%;
-                        box-sizing: border-box;
-                    " onmouseover="this.style.opacity='0.9';" onmouseout="this.style.opacity='1';">
-                        Sign Up / Giriş Yap
-                    </button>
-                </form>
-                
-                <div style="
-                    position: absolute;
-                    bottom: -22px;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    display: flex;
-                    gap: 14px;
-                    z-index: 999;
-                ">
+                <h2 style="color: #ffffff; text-align: center; margin: 0 0 6px 0; font-size: 1.6rem; font-weight: 600; letter-spacing: -0.5px;">Welcome back!</h2>
+                <p style="color: rgba(255, 255, 255, 0.5); text-align: center; margin: 0 0 25px 0; font-size: 0.88rem;">Let's get you signed up.</p>
+            </div>
+        </div>
+        """, 
+        unsafe_allow_html=True
+    )
+
+    # 🔮 3. ADIM: Tasarımın İçine Konumlandırılan Güvenli Streamlit Form Mekanizması
+    # Kartın tam üzerine oturması için negatif margin uyguluyoruz
+    st.markdown('<div style="width: 330px; margin: -510px auto 0 auto; position: relative; z-index: 1000;">', unsafe_allow_html=True)
+    
+    with st.form("güvenli_giriş_formu", clear_on_submit=False):
+        
+        # 1. Sıra: Yan Yana Duran First Name ve Last Name
+        col1, col2 = st.columns(2)
+        with col1:
+            html_firstname = st.text_input("First Name", placeholder="First Name", label_visibility="collapsed")
+        with col2:
+            html_lastname = st.text_input("Last Name", placeholder="Last Name", label_visibility="collapsed")
+            
+        # 2. Sıra: Kullanıcı Adı
+        html_username = st.text_input("Kullanıcı Adı", placeholder="Kullanıcı Adı", label_visibility="collapsed")
+        
+        # 3. Sıra: Parola
+        html_password = st.text_input("Password", type="password", placeholder="Password", label_visibility="collapsed")
+        
+        # 4. Sıra: Ülke / Portal Seçimi
+        portal_secim = st.selectbox("Region", ["Turkey (CYHN Portal)", "United States"], label_visibility="collapsed")
+        
+        # 5. Sıra: Telif Hakkı Checkbox
+        sozlesme_onay = st.checkbox("Telif haklarını kabul ediyorum, dökümanları izinsiz paylaşmayacağım.")
+        
+        st.write("")
+        
+        # 6. Sıra: Giriş Yap Butonu
+        giriş_tetiklendi = st.form_submit_button("Sign Up / Giriş Yap", use_container_width=True)
+        
+    st.markdown('</div>', unsafe_allow_html=True)
+
+    # 🔮 4. ADIM: Kartın Altından Taşan Yuvarlak Sosyal Medya İkonları (HTML)
+    st.markdown(
+        """
+        <div style="width: 100vw; display: flex; justify-content: center; margin-top: -30px; position: relative; z-index: 1001;">
+            <div style="width: 390px; position: relative;">
+                <div style="position: absolute; bottom: -22px; left: 50%; transform: translateX(-50%); display: flex; gap: 14px;">
                     <a href="#" style="width: 44px; height: 44px; background: #14121e; border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 20px rgba(0,0,0,0.5); text-decoration: none;">
                         <img src="https://img.icons8.com/ios-filled/50/ffffff/mac-os.png" width="18"/>
                     </a>
@@ -496,31 +439,33 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                         <img src="https://img.icons8.com/ios-filled/50/1877f2/facebook-new.png" width="20"/>
                     </a>
                 </div>
-                
             </div>
-
-            <form method="get" action="/" style="margin-top: 50px;">
-                <input type="hidden" name="back_to_menu" value="true">
-                <button type="submit" style="
-                    background: transparent;
-                    color: rgba(255, 255, 255, 0.4);
-                    border: none;
-                    cursor: pointer;
-                    font-size: 0.9rem;
-                    transition: color 0.2s;
-                " onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='rgba(255, 255, 255, 0.4)';">
-                    育 Portal Ana Menüsüne Dön
-                </button>
-            </form>
-
         </div>
         """, 
         unsafe_allow_html=True
     )
 
-    # 🔮 4. ADIM: Hata Oluştuysa Kartın Altında Güvenli Biçimde Göster
-    if hata_mesaji:
-        st.markdown(f'<div class="cyhn-error-box">⚠️ {hata_mesaji}</div>', unsafe_allow_html=True)
+    # 🔮 5. ADIM: Form Gönderildiğinde Çalışacak Temiz Python Doğrulama Motoru
+    if giriş_tetiklendi:
+        if not sozlesme_onay:
+            st.error("Devam etmek için telif hakları sözleşmesini onaylamalısınız!")
+        else:
+            temiz_user = html_username.strip().lower()
+            if temiz_user in USERS and USERS[temiz_user] == html_password:
+                st.toast("🔑 Giriş Başarılı!", icon="🎉")
+                st.balloons()
+                st.session_state["aktif_user"] = temiz_user
+                st.session_state["sayfa"] = "notlar_arsivi"
+                st.rerun()
+            else:
+                st.error("Kullanıcı adı veya şifre hatalı. Lütfen tekrar deneyin!")
+
+    # 🔮 6. ADIM: En Alttaki Portal Ana Menüsüne Dönüş Alanı
+    st.markdown('<div class="back-btn-container" style="display: flex; justify-content: center; margin-top: 60px;">', unsafe_allow_html=True)
+    if st.button("⬅ Portal Ana Menüsüne Dön", key="back_to_menu_key"):
+        st.session_state["sayfa"] = "ana_menu"
+        st.rerun()
+    st.markdown('</div>', unsafe_allow_html=True)
             
             
 # --- 3. AŞAMA: DERS NOTLARI VE PDF ARŞİVİ ---
