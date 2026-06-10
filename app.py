@@ -592,8 +592,9 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     sekme_isimleri = ["📁 Ders Notları", "🎥 Videolar", "📝 Soru Bankası", "📢 Duyurular", "👤 Profilim"]
     secilen_sekme = st.tabs(sekme_isimleri)
 
-    # --- BANNER ALANI (Hemen altına yapışık) ---
+    # --- BANNER VE MATERYAL KARTLARI (İLK SEKME İÇERİĞİ) ---
     with secilen_sekme[0]:
+        # Öne Çıkan Modern Banner
         st.markdown(
             """
             <div style="
@@ -635,6 +636,136 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             unsafe_allow_html=True
         )
 
+        # --- DERSTİM MATERLERİ BAŞLIĞI ---
+        st.markdown(
+            """
+            <h3 style="color: #ffffff; font-family: 'Poppins', sans-serif; font-size: 1.3rem; font-weight: 600; margin-top: 25px; margin-bottom: 15px;">
+                Derstim Materleri
+            </h3>
+            """, 
+            unsafe_allow_html=True
+        )
+        
+        # Kartlar için Ortak CSS Yapısı
+        st.markdown(
+            """
+            <style>
+            .materyal-kart {
+                background-color: #161b22;
+                border: 1px solid #30363d;
+                border-radius: 12px;
+                padding: 15px;
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                margin-bottom: 15px;
+                transition: transform 0.2s, border-color 0.2s;
+            }
+            .materyal-kart:hover {
+                transform: translateY(-2px);
+                border-color: #58a6ff;
+            }
+            .kart-ikon-pdf {
+                background-color: rgba(248, 81, 73, 0.1);
+                color: #f85149;
+                padding: 12px;
+                border-radius: 10px;
+                font-size: 1.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .kart-ikon-video {
+                background-color: rgba(56, 139, 253, 0.1);
+                color: #388bfd;
+                padding: 12px;
+                border-radius: 10px;
+                font-size: 1.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .kart-icerik h4 {
+                color: #ffffff !important;
+                margin: 0 0 4px 0 !important;
+                font-size: 1rem !important;
+                font-weight: 600 !important;
+            }
+            .kart-icerik p {
+                color: #8b949e !important;
+                margin: 0 !important;
+                font-size: 0.85rem !important;
+            }
+            </style>
+            """, 
+            unsafe_allow_html=True
+        )
+
+        # 1. SATIR KARTLARI (Yan yana 2 adet)
+        kolon1, kolon2 = st.columns(2)
+        
+        with kolon1:
+            st.markdown(
+                """
+                <div class="materyal-kart">
+                    <div class="kart-ikon-pdf">📄</div>
+                    <div class="kart-icerik">
+                        <h4>Analiz I - Limitler</h4>
+                        <p>PDF Dokümanı</p>
+                        <p style="color: #58a6ff !important; font-size: 0.75rem !important; margin-top: 3px !important;">9 Nisan 2026</p>
+                    </div>
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
+            
+        with kolon2:
+            st.markdown(
+                """
+                <div class="materyal-kart">
+                    <div class="kart-ikon-video">🎬</div>
+                    <div class="kart-icerik">
+                        <h4>Lineer Cebir - Matrisler</h4>
+                        <p>Ders Videosu</p>
+                        <p style="color: #58a6ff !important; font-size: 0.75rem !important; margin-top: 3px !important;">5 Saat Önce</p>
+                    </div>
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
+
+        # 2. SATIR KARTLARI (Yan yana 2 adet)
+        kolon3, kolon4 = st.columns(2)
+
+        with kolon3:
+            st.markdown(
+                """
+                <div class="materyal-kart">
+                    <div class="kart-ikon-pdf">📄</div>
+                    <div class="kart-icerik">
+                        <h4>Soyut Matematik - Önermeler</h4>
+                        <p>PDF Dokümanı</p>
+                        <p style="color: #58a6ff !important; font-size: 0.75rem !important; margin-top: 3px !important;">Dün Yüklendi</p>
+                    </div>
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
+
+        with kolon4:
+            st.markdown(
+                """
+                <div class="materyal-kart">
+                    <div class="kart-ikon-video">🎬</div>
+                    <div class="kart-icerik">
+                        <h4>Algoritma ve Programlama - Giriş</h4>
+                        <p>Ders Videosu</p>
+                        <p style="color: #58a6ff !important; font-size: 0.75rem !important; margin-top: 3px !important;">2 Gün Önce</p>
+                    </div>
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
 
     # Konulara göre sekmeler (Tablar)
     tab0, tab1, tab2, tab3, tab4, tab5 = st.tabs([
