@@ -576,14 +576,21 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             
     st.title("📚 Matematik Ders Notları ve PDF Arşivi")
     kullanici = st.session_state["aktif_user"].capitalize()
-    # --- YENİ EKLENEN MESAJ ---
-    st.markdown(f"""
-    > **Hoş geldin {kullanici}!** Bu arşiv, akademik yolculuğunda sana rehberlik etmek için özenle hazırlanmıştır. 
-    > Aşağıdaki sekmeleri kullanarak ders notlarına erişebilir, çalışmalarını derinleştirebilirsin. 
-    > Bir sorun olduğunda yan menüde bulunan iletişim kanallarından bana ulaşabilirsin. **Başarılar.**
-       """)
-    # --------------------------
-    st.markdown("---")
+    st.markdown(
+        """
+        <div style="text-align: center; margin-top: -30px; margin-bottom: 35px;">
+            <h1 style="font-family: 'Poppins', sans-serif; font-size: 4rem; font-weight: 800; color: #ffffff; margin-bottom: 0; letter-spacing: 2px;">
+                <span style="color: #00bcd4;">♾️</span> CYHN
+            </h1>
+            <p style="color: #8b949e; font-size: 1.1rem; margin-top: -5px; letter-spacing: 1px;">Matematik Eğitim Portalı</p>
+        </div>
+        """, 
+        unsafe_allow_html=True
+    )
+
+    # --- ÜST YATAY MENÜ SEKMELERİ ---
+    sekme_isimleri = ["📁 Ders Notları", "🎥 Videolar", "📝 Soru Bankası", "📢 Duyurular", "👤 Profilim"]
+    secilen_sekme = st.tabs(sekme_isimleri)
 
 
     # Konulara göre sekmeler (Tablar)
