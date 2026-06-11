@@ -273,7 +273,7 @@ if st.session_state["sayfa"] == "ana_menu":
             )
 
 # =========================================================================
-# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (DOĞAL DOSYA YOLLU & ORTALANMIŞ KÜÇÜK LOGO)
+# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (KOLON YÖNTEMİYLE KESİN ORTALANMIŞ LOGO)
 # =========================================================================
 elif st.session_state["sayfa"] == "sifre_kontrol":
     
@@ -318,20 +318,8 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 to { transform: translateY(0); opacity: 1; }
             }
 
-            /* 🎯 AGRESİF ST.IMAGE ORTALAMA VE BOYUT KİLİTLEME */
-            /* Streamlit'in iç içe ürettiği tüm resim div'lerini 65px genişliğe mühürler ve ortalar */
-            div[data-testid="element-container"]has(> div[data-testid="stImage"]),
-            div[data-testid="stImage"] {
-                width: 65px !important;       /* İstediğin narin küçük boyut */
-                max-width: 65px !important;
-                margin: 0 auto !important;    /* Sağa sola esnemeyi tamamen kapatıp ortalar */
-                display: block !important;
-            }
-            
+            /* 🎯 DOĞAL LOGO YUVARLAKLIĞI VE GÖLGESİ */
             div[data-testid="stImage"] img {
-                width: 65px !important;
-                height: 65px !important;
-                object-fit: cover !important;
                 border-radius: 50% !important;
                 filter: drop-shadow(0 6px 12px rgba(99, 102, 241, 0.35)) !important;
                 border: 1.5px solid rgba(255, 255, 255, 0.15) !important;
@@ -452,8 +440,11 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
     
     with orta_kart_alani:
         
-        # 🎯 LOGO ALANI: Bir önceki çalışan temiz st.image metoduna geri döndük
-        st.image("mc250.png", use_container_width=True)
+        # 🎯 LOGO İÇİN ALT SÜTUN MOTORU: Geniş CSS kodları yerine Streamlit'in kendi düzeniyle
+        # logoyu tam ortadaki narin alana (0.7) sıkıştırarak doğal bir şekilde ortalıyoruz.
+        logo_sol, logo_merkez, logo_sag = st.columns([1.5, 0.7, 1.5])
+        with logo_merkez:
+            st.image("mc250.png", use_container_width=True)
         
         # Başlıklar
         st.markdown('<p class="cyhn-title">CYHN MATEMATİK PORTALI</p>', unsafe_allow_html=True)
