@@ -273,7 +273,7 @@ if st.session_state["sayfa"] == "ana_menu":
             )
 
 # =========================================================================
-# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (MUKAVEMETLİ MOBİL VE PC SÜRÜMÜ)
+# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (TAM ORTALANMIŞ LOGO & SABİT TASARIM)
 # =========================================================================
 elif st.session_state["sayfa"] == "sifre_kontrol":
     
@@ -318,15 +318,17 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 to { transform: translateY(0); opacity: 1; }
             }
 
-            /* 🎯 LOGO BOYUTU KİLİTLEME MOTORU (Kritik Alan) */
-            /* Streamlit'in yerel resim kutusunun telefonda devasa olmasını engeller, 70px'e kilitler */
+            /* 🎯 LOGOYU KESİN ORTALAMA VE BOYUTLANDIRMA MOTORU */
             div[data-testid="stImage"] {
-                max-width: 70px !important;
+                max-width: 110px !important; /* İdeal narin logo boyutu */
                 margin: 0 auto !important;
-                display: flex !important;
-                justify-content: center !important;
+                display: block !important;
             }
-            div[data-testid="stImage"] img {
+            div[data-testid="stImage"] > img {
+                width: 100% !important;
+                height: auto !important;
+                margin: 0 auto !important;
+                display: block !important;
                 border-radius: 50% !important;
                 filter: drop-shadow(0 6px 12px rgba(99, 102, 241, 0.25)) !important;
             }
@@ -446,7 +448,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
     
     with orta_kart_alani:
         
-        # 🎯 LOGO ALANI: Yerel st.image kullanıyoruz ama CSS ile max-width kuralına bağladık
+        # 🎯 LOGO ALANI: Yerel st.image'ı CSS seçicileriyle zorla tam ortaladık
         st.image("mc250.png", use_container_width=True)
         
         # Başlıklar
@@ -503,7 +505,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
 
         st.markdown("<div style='height: 5px;'></div>", unsafe_allow_html=True)
 
-        # ⬅️ ANA MENÜYE DÖNÜŞ BUTONU (Kartın içinde, tam genişlikte ve premium mavi renkte)
+        # ⬅️ ANA MENÜYE DÖNÜŞ BUTONU (Kartın içinde, tam genişlikte ve premium yapıda)
         st.markdown('<div class="back-container-fixed">', unsafe_allow_html=True)
         if st.button("← Portal Ana Menüsüne Dön", use_container_width=True, key="back_to_main_final_secured"):
             st.session_state["sayfa"] = "ana_menu"
