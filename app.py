@@ -273,7 +273,7 @@ if st.session_state["sayfa"] == "ana_menu":
             )
 
 # =========================================================================
-# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (TAM ORTALANMIŞ LOGO & SABİT TASARIM)
+# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (MİLMETRİK ORTALANMIŞ & KÜÇÜK LOGOLU SÜRÜM)
 # =========================================================================
 elif st.session_state["sayfa"] == "sifre_kontrol":
     
@@ -293,7 +293,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 background-attachment: fixed !important;
             }
 
-            /* 3. ULTRA MODERN CARD MOTORU: Sütunun kendisini bizzat cam karta dönüştürüyoruz */
+            /* 3. ULTRA MODERN CARD MOTORU: Sütunun bizzat kendisini cam karta dönüştürüyoruz */
             div[data-testid="column"]:nth-of-type(2) {
                 background: rgba(15, 23, 42, 0.45) !important;
                 backdrop-filter: blur(25px) saturate(160%) !important;
@@ -318,17 +318,21 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 to { transform: translateY(0); opacity: 1; }
             }
 
-            /* 🎯 LOGOYU KESİN ORTALAMA VE BOYUTLANDIRMA MOTORU */
-            div[data-testid="stImage"] {
-                max-width: 110px !important; /* İdeal narin logo boyutu */
-                margin: 0 auto !important;
-                display: block !important;
-            }
-            div[data-testid="stImage"] > img {
+            /* 🎯 LOGO MERKEZLEME VE BOYUT KİLİTLEME MOTORU */
+            /* Streamlit'in resmi sola yaslama eğilimini bu kapsayıcı ile %100 kırıyoruz */
+            .cyhn-logo-wrapper {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
                 width: 100% !important;
-                height: auto !important;
+                margin-bottom: 10px !important;
+            }
+            .cyhn-logo-wrapper div[data-testid="stImage"] {
+                width: 65px !important; /* İstediğin bir önceki ideal narin boyut */
+                max-width: 65px !important;
                 margin: 0 auto !important;
-                display: block !important;
+            }
+            .cyhn-logo-wrapper div[data-testid="stImage"] img {
                 border-radius: 50% !important;
                 filter: drop-shadow(0 6px 12px rgba(99, 102, 241, 0.25)) !important;
             }
@@ -448,8 +452,10 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
     
     with orta_kart_alani:
         
-        # 🎯 LOGO ALANI: Yerel st.image'ı CSS seçicileriyle zorla tam ortaladık
+        # 🎯 LOGO ALANI: Logoyu HTML "flex center" sarmalına alarak tam ortaya çiviledik
+        st.markdown('<div class="cyhn-logo-wrapper">', unsafe_allow_html=True)
         st.image("mc250.png", use_container_width=True)
+        st.markdown('</div>', unsafe_allow_html=True)
         
         # Başlıklar
         st.markdown('<p class="cyhn-title">CYHN MATEMATİK PORTALI</p>', unsafe_allow_html=True)
@@ -505,7 +511,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
 
         st.markdown("<div style='height: 5px;'></div>", unsafe_allow_html=True)
 
-        # ⬅️ ANA MENÜYE DÖNÜŞ BUTONU (Kartın içinde, tam genişlikte ve premium yapıda)
+        # ⬅️ ANA MENÜYE DÖNÜŞ BUTONU
         st.markdown('<div class="back-container-fixed">', unsafe_allow_html=True)
         if st.button("← Portal Ana Menüsüne Dön", use_container_width=True, key="back_to_main_final_secured"):
             st.session_state["sayfa"] = "ana_menu"
