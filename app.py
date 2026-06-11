@@ -273,7 +273,7 @@ if st.session_state["sayfa"] == "ana_menu":
             )
 
 # =========================================================================
-# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (%100 SABİTLENMİŞ VE ORTALANMIŞ LOGO)
+# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (HEM MOBİL HEM MASAÜSTÜ UYUMLU SÜRÜM)
 # =========================================================================
 elif st.session_state["sayfa"] == "sifre_kontrol":
     
@@ -318,8 +318,21 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 to { transform: translateY(0); opacity: 1; }
             }
 
-            /* 🎯 RESMİN ESTETİK YUVARLAKLIĞI VE GLOW (GÖLGE) EFEKTİ */
+            /* 🎯 MOBİL VE MASAÜSTÜ RESMİ SABİTLEME MOTORU */
+            div[data-testid="stImage"] {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                margin: 0 auto 10px auto !important;
+                width: 100% !important;
+            }
+            
+            /* max-width ve max-height ekleyerek telefonda devasa büyümesini engelledik */
             div[data-testid="stImage"] img {
+                width: 65px !important;
+                height: 65px !important;
+                max-width: 65px !important;
+                max-height: 65px !important;
                 border-radius: 50% !important;
                 object-fit: cover !important;
                 filter: drop-shadow(0 6px 14px rgba(99, 102, 241, 0.45)) !important;
@@ -441,9 +454,8 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
     
     with orta_kart_alani:
         
-        # 🎯 KESİN ÇÖZÜM GRID DÜZENİ:
-        # st.image'ın sola yaslanma huyunu, onu tam merkeze alan 3 küçük alt sütunla çözüyoruz.
-        # Genişlik parametresi vermediğimiz ve sütun genişliğine uy dediğimiz için tam ortada milimetrik 85px kalır!
+        # 🎯 SÜTUN MOTORU + CSS MAX-WIDTH SINIRI
+        # Hem kolonlarla yerel hizalama yapıyor hem de CSS üst sınırıyla telefonda küçücük kalıyor.
         sub_sol, sub_merkez, sub_sag = st.columns([1.6, 0.8, 1.6])
         with sub_merkez:
             st.image("mc250.png", use_container_width=True)
