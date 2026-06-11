@@ -273,7 +273,7 @@ if st.session_state["sayfa"] == "ana_menu":
             )
 
 # =========================================================================
-# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (LOGONUN KÜÇÜLTÜLMÜŞ & BUTONLARIN EŞİTLENMİŞ HALİ)
+# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (MOBİL UYUMLU & TAM EŞİTLENMİŞ NİHAİ SÜRÜM)
 # =========================================================================
 elif st.session_state["sayfa"] == "sifre_kontrol":
     
@@ -286,14 +286,14 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 display: none !important;
             }
             
-            /* 2. Arka Plan: Akıcı Derin Galaksi Gradyanı */
+            /* 2. Arka Plan: Akıcı Derin Galaxie Gradyanı */
             .stApp {
                 background: linear-gradient(135deg, #020617 0%, #0f172a 30%, #1e1b4b 70%, #030712 100%) !important;
                 background-size: cover !important;
                 background-attachment: fixed !important;
             }
 
-            /* 3. ULTRA MODERN CARD MOTORU: Ortadaki sütun alanını cam karta dönüştürüyoruz */
+            /* 3. ULTRA MODERN CARD MOTORU: Sütun alanını şık bir cam karta dönüştürür */
             div[data-testid="column"]:nth-of-type(2) {
                 background: rgba(15, 23, 42, 0.45) !important;
                 backdrop-filter: blur(25px) saturate(160%) !important;
@@ -316,6 +316,14 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
             @keyframes popupShow {
                 from { transform: translateY(15px); opacity: 0; }
                 to { transform: translateY(0); opacity: 1; }
+            }
+
+            /* 📱 MOBİL VE PC LOGO AYARI: Logonun her cihazda narin ve sabit kalmasını sağlar */
+            .cyhn-logo-container img {
+                width: 65px !important;
+                height: auto !important;
+                margin: 0 auto !important;
+                display: block !important;
             }
 
             /* 4. Tipografi ve Başlıklar */
@@ -401,7 +409,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 box-shadow: 0 6px 20px rgba(79, 70, 229, 0.35) !important;
             }
             
-            /* İkincil Buton Modeli (Şifre İste Butonu İçin Özel Ayar) */
+            /* İkincil Buton Modeli (Şifre İste Butonu) */
             div[data-testid="column"] div[data-testid="column"]:nth-of-type(2) div.stButton > button:first-child,
             div[data-testid="column"] div[data-testid="column"]:nth-of-type(2) a {
                 background: rgba(255, 255, 255, 0.03) !important;
@@ -415,7 +423,6 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 margin-top: 15px;
                 width: 100% !important;
             }
-            /* Geri dönüş butonunun rengini Giriş Yap butonuyla aynı tona çektik */
             .back-container-fixed button {
                 background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%) !important;
                 color: #ffffff !important;
@@ -429,17 +436,20 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
     # Üst boşluk ayarı
     st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
     
-    # 🎛️ COLS MOTORU: Giriş alanını kusursuz merkezleyen ana grid yapısı
+    # 🎛️ COLS MOTORU: Giriş alanını masaüstünde kusursuz merkezleyen ana grid yapısı
     sol_bosluk, orta_kart_alani, sag_bosluk = st.columns([1.1, 1.3, 1.1])
     
     with orta_kart_alani:
         
-        # 🎯 LOGO BOYUTLANDIRMA MOTORU (Daha narin ve kibar olması için oranlar küçültüldü)
-        logo_sol, logo_orta, logo_sag = st.columns([1.3, 1, 1.3])
-        with logo_orta:
-            st.markdown('<div style="filter: drop-shadow(0 6px 12px rgba(99, 102, 241, 0.2)); margin-bottom: 2px;">', unsafe_allow_html=True)
-            st.image("mc250.png", use_container_width=True)
-            st.markdown('</div>', unsafe_allow_html=True)
+        # 🎯 SABİT VE ORTALI LOGO (HTML sarmallı saf CSS gücü)
+        st.markdown(
+            '''
+            <div class="cyhn-logo-container" style="display: flex; justify-content: center; filter: drop-shadow(0 6px 12px rgba(99, 102, 241, 0.2)); margin-bottom: 5px;">
+            ''', 
+            unsafe_allow_html=True
+        )
+        st.image("mc250.png")
+        st.markdown('</div>', unsafe_allow_html=True)
         
         # Başlıklar
         st.markdown('<p class="cyhn-title">CYHN MATEMATİK PORTALI</p>', unsafe_allow_html=True)
@@ -495,9 +505,9 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
 
         st.markdown("<div style='height: 5px;'></div>", unsafe_allow_html=True)
 
-        # ⬅️ ANA MENÜYE DÖNÜŞ BUTONU (Kartın içinde, tam genişlikte ve premium yapıda)
+        # ⬅️ ANA MENÜYE DÖNÜŞ BUTONU (Tam genişlikte premium buton)
         st.markdown('<div class="back-container-fixed">', unsafe_allow_html=True)
-        if st.button("← Portal Ana Menüsüne Dön", use_container_width=True, key="back_to_main_ultimate"):
+        if st.button("← Portal Ana Menüsüne Dön", use_container_width=True, key="back_to_main_ultimate_fixed"):
             st.session_state["sayfa"] = "ana_menu"
             st.rerun()
         st.markdown('</div>', unsafe_allow_html=True)
