@@ -273,15 +273,15 @@ if st.session_state["sayfa"] == "ana_menu":
             )
 
 # =========================================================================
-# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (PREMIUM GLASSMORPHISM KONSEPTİ)
+# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (TAM ORTALANMIŞ PREMIUM KONSEPT)
 # =========================================================================
 elif st.session_state["sayfa"] == "sifre_kontrol":
     
-    # 🎨 Ultra Modern UI/UX Tasarım CSS Yapısı
+    # 🎨 Geliştirilmiş UI/UX Tasarım CSS Yapısı
     st.markdown(
         """
         <style>
-            /* 1. Yan Menüyü Tamamen İzole Et */
+            /* 1. Yan Menüyü Giriş Ekranında Tamamen Gizle */
             [data-testid="stSidebar"], [data-testid="stSidebarCollapseButton"] {
                 display: none !important;
             }
@@ -293,7 +293,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 background-attachment: fixed !important;
             }
             
-            /* Gereksiz Streamlit boşluklarını ve sınırlarını sıfırla */
+            /* Sola hizalamayı ve geniş yayılımı engellemek için Streamlit bloklarını nötrle */
             [data-testid="element-container"], 
             [data-testid="stVerticalBlockBorderWrapper"], 
             [data-testid="stVerticalBlock"] {
@@ -302,17 +302,17 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 border: none !important;
             }
 
-            /* 3. PREMIUM POPUP KART: Geliştirilmiş Cam Efekti */
+            /* 3. PREMIUM POPUP KART: Maksimum genişlik sınırlandı ve ortalandı */
             .cyhn-popup-card {
                 background: rgba(15, 23, 42, 0.45) !important;
                 backdrop-filter: blur(25px) saturate(160%) !important;
                 -webkit-backdrop-filter: blur(25px) saturate(160%) !important;
-                max-width: 450px;
-                margin: 50px auto !important;
-                padding: 45px 40px !important;
+                width: 100% !important;
+                max-width: 460px !important;
+                margin: 40px auto !important;
+                padding: 40px 35px !important;
                 border-radius: 24px !important;
                 border: 1px solid rgba(255, 255, 255, 0.08) !important;
-                /* İç parıltı ve dış derin gölge */
                 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4),
                             0 30px 60px -15px rgba(0, 0, 0, 0.8),
                             inset 0 1px 1px rgba(255, 255, 255, 0.1) !important;
@@ -321,7 +321,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
             }
 
             @keyframes popupShow {
-                from { transform: translateY(20px); opacity: 0; }
+                from { transform: translateY(15px); opacity: 0; }
                 to { transform: translateY(0); opacity: 1; }
             }
 
@@ -330,9 +330,9 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 color: #ffffff !important;
                 font-family: 'Inter', sans-serif;
                 font-weight: 900 !important;
-                font-size: 1.6rem !important;
-                letter-spacing: 1px;
-                margin-top: 18px;
+                font-size: 1.5rem !important;
+                letter-spacing: 0.5px;
+                margin-top: 15px;
                 margin-bottom: 2px;
                 background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
                 -webkit-background-clip: text;
@@ -340,21 +340,22 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
             }
             .cyhn-subtitle {
                 color: #64748b !important;
-                font-size: 0.85rem !important;
+                font-size: 0.8rem !important;
                 font-weight: 600;
                 text-transform: uppercase;
-                letter-spacing: 1.5px;
-                margin-bottom: 30px;
+                letter-spacing: 1px;
+                margin-bottom: 25px;
+                text-align: center;
             }
             .cyhn-label {
                 font-weight: 600 !important;
                 color: #94a3b8 !important;
                 text-align: left;
-                margin-top: 5px;
+                margin-top: 10px;
                 margin-bottom: 6px;
                 font-size: 0.75rem;
                 text-transform: uppercase;
-                letter-spacing: 1px;
+                letter-spacing: 0.5px;
                 display: block;
             }
 
@@ -371,47 +372,43 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 font-size: 0.8rem !important;
             }
             
-            /* Onay Kutusu İyileştirmesi */
             .stCheckbox label span p {
                 color: #cbd5e1 !important;
                 font-size: 0.8rem !important;
-                font-weight: 500;
             }
             
-            /* 6. Mat ve Net Giriş Alanları (Inputs) */
+            /* 6. Giriş Alanları (Inputs) */
             .stTextInput input {
                 color: #ffffff !important;
                 background-color: rgba(2, 6, 23, 0.6) !important;
                 border: 1px solid rgba(255, 255, 255, 0.1) !important;
                 border-radius: 12px !important;
-                padding: 12px 16px !important;
-                font-size: 0.95rem !important;
+                padding: 10px 14px !important;
+                font-size: 0.9rem !important;
             }
             .stTextInput input:focus {
-                border-color: #6366f1 !important;
-                box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2) !important;
-                background-color: rgba(2, 6, 23, 0.8) !important;
+                border-color: #4f46e5 !important;
+                box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.25) !important;
             }
 
-            /* 7. Giriş Butonu: Neon Parıltılı Efekt */
+            /* 7. Butonlar */
             div.stButton > button:first-child {
                 background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%) !important;
                 color: #ffffff !important;
                 border: none !important;
                 border-radius: 12px !important;
                 font-weight: 600 !important;
-                padding: 12px 0 !important;
-                transition: all 0.25s ease !important;
-                box-shadow: 0 4px 20px rgba(79, 70, 229, 0.25) !important;
-                font-size: 0.95rem !important;
+                padding: 10px 0 !important;
+                font-size: 0.9rem !important;
+                box-shadow: 0 4px 15px rgba(79, 70, 229, 0.2) !important;
             }
             div.stButton > button:first-child:hover {
                 background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
                 transform: translateY(-1px);
-                box-shadow: 0 6px 24px rgba(79, 70, 229, 0.45) !important;
+                box-shadow: 0 6px 20px rgba(79, 70, 229, 0.35) !important;
             }
             
-            /* Şifre İste Butonu: Minimal ve Uyumlu */
+            /* Şifre İste Butonu */
             div[data-testid="column"] + div[data-testid="column"] div.stButton > button:first-child,
             div[data-testid="column"] + div[data-testid="column"] a {
                 background: rgba(255, 255, 255, 0.03) !important;
@@ -419,87 +416,80 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 border: 1px solid rgba(255, 255, 255, 0.08) !important;
                 box-shadow: none !important;
             }
-            div[data-testid="column"] + div[data-testid="column"] a:hover {
-                background: rgba(255, 255, 255, 0.08) !important;
-                border-color: rgba(255, 255, 255, 0.15) !important;
-            }
         </style>
         """, 
         unsafe_allow_html=True
     )
 
-    # Üst denge boşluğu
-    st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
+    # 🎛️ EKRANI ORTALAMA MOTORU (Wide modu sabote etmek için 3 sütunlu yapı)
+    # Giriş paneli tam ortadaki 'orta_sutun' içine kurulacak
+    sol_bosluk, orta_sutun, sag_bosluk = st.columns([1, 1.4, 1])
     
-    # 🏛️ HTML Kart Başlangıcı
-    st.markdown('<div class="cyhn-popup-card">', unsafe_allow_html=True)
-    
-    # Logo Geliştirilmiş Shadow
-    st.markdown('<div style="display: flex; justify-content: center; filter: drop-shadow(0 8px 20px rgba(99, 102, 241, 0.15));">', unsafe_allow_html=True)
-    st.image("mc250.png", width=90)
-    st.markdown('</div>', unsafe_allow_html=True)
-    
-    # Metin Alanları
-    st.markdown('<p class="cyhn-title">CYHN MATEMATİK PORTALI</p>', unsafe_allow_html=True)
-    st.markdown('<p class="cyhn-subtitle">Ders Notları Doğrulama Sistemi</p>', unsafe_allow_html=True)
-    
-    # 📜 Yasal Uyarı Kutusu
-    with st.expander("🔐 Lisans ve Kullanım Sözleşmesi", expanded=False):
-        st.markdown(
-            """
-            <p style="color: #ef4444 !important; font-weight: 600; margin-bottom: 6px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px;">Telif Hakkı Bildirimi:</p>
-            <p style="color: #94a3b8 !important; font-size: 0.8rem; line-height: 1.5; text-align: left; font-weight: normal !important;">
-            Bu portalda sunulan tüm akademik PDF dokümanlarının mülkiyet ve telif hakları doğrudan <b>Muharrem CEYHAN</b>'a aittir.<br><br>
-            İçeriklerin yazarın yazılı onayı olmaksızın üçüncü şahıslarla paylaşılması, ticari amaçla kullanılması veya kopyalanması <b>5846 sayılı FSEK</b> gereğince yasaktır.
-            </p>
-            """, 
-            unsafe_allow_html=True
-        )
-        st.markdown("<div style='height: 8px;'></div>", unsafe_allow_html=True)
-        onay = st.checkbox("Kullanım şartlarını okudum ve kabul ediyorum.")
+    with orta_sutun:
+        # HTML Kart Başlangıcı
+        st.markdown('<div class="cyhn-popup-card">', unsafe_allow_html=True)
         
-    st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
-    
-    # 👤 Kullanıcı Adı Girişi (İkon Desteğiyle)
-    st.markdown('<span class="cyhn-label">👤 Kullanıcı Adı</span>', unsafe_allow_html=True)
-    kullanici_adi = st.text_input("Kullanıcı Adı Giriş Paneli", label_visibility="collapsed", placeholder="Kullanıcı adınızı giriniz...").strip().lower()
-    
-    st.markdown("<div style='height: 12px;'></div>", unsafe_allow_html=True)
-    
-    # 🔑 Parola Girişi (İkon Desteğiyle)
-    st.markdown('<span class="cyhn-label">🔑 Parola</span>', unsafe_allow_html=True)
-    sifre = st.text_input("Parola Giriş Paneli", type="password", label_visibility="collapsed", placeholder="••••••••")
-    
-    st.markdown("<div style='height: 28px;'></div>", unsafe_allow_html=True)
-    
-    # 🖲️ Aksiyon Butonları
-    btn_c1, btn_c2 = st.columns(2)
-    with btn_c1:
-        if st.button("Giriş Yap", use_container_width=True):
-            if not onay:
-                st.error("Lütfen önce şartları onaylayınız!")
-            elif kullanici_adi in USERS and USERS[kullanici_adi] == sifre:
-                st.toast(f"Giriş başarılı! Sistem yükleniyor...", icon="🚀")
-                st.balloons()
-                time.sleep(1.2)
-                st.session_state["aktif_user"] = kullanici_adi
-                st.session_state["sayfa"] = "notlar_arsivi"
-                st.rerun()
-            else:
-                st.error("Hatalı kimlik bilgileri!")
-                
-    with btn_c2:
-        mail_konu = "CYHN%20Portal%20Eri%C5%9Fim%20Talebi"
-        mail_icerik = "Merhaba,%0D%0ACYHN%20Matematik%20Portalı%20için%20erişim%20bilgileri%20talep%20ediyorum.%0D%0A%0D%0AAdım%20Soyadım:%20"
-        mail_link = f"mailto:matematikegitiminevu@gmail.com?subject={mail_konu}&body={mail_icerik}"
-        st.link_button("🔑 Şifre İste", mail_link, use_container_width=True)
-    
-    # HTML Kart Kapanışı
-    st.markdown('</div>', unsafe_allow_html=True)
+        # Logo
+        st.markdown('<div style="display: flex; justify-content: center; filter: drop-shadow(0 8px 15px rgba(99, 102, 241, 0.15));">', unsafe_allow_html=True)
+        st.image("mc250.png", width=85)
+        st.markdown('</div>', unsafe_allow_html=True)
+        
+        # Başlıklar
+        st.markdown('<p class="cyhn-title">CYHN MATEMATİK PORTALI</p>', unsafe_allow_html=True)
+        st.markdown('<p class="cyhn-subtitle">Ders Notları Doğrulama Sistemi</p>', unsafe_allow_html=True)
+        
+        # 📜 Sözleşme
+        with st.expander("🔐 Lisans ve Kullanım Sözleşmesi", expanded=False):
+            st.markdown(
+                """
+                <p style="color: #ef4444 !important; font-weight: 600; margin-bottom: 4px; font-size: 0.8rem; text-transform: uppercase;">Telif Hakkı Bildirimi:</p>
+                <p style="color: #94a3b8 !important; font-size: 0.78rem; line-height: 1.4; text-align: left;">
+                Bu portalda sunulan tüm akademik PDF dokümanlarının mülkiyet ve telif hakları doğrudan <b>Muharrem CEYHAN</b>'a aittir.<br><br>
+                İçeriklerin izinsiz paylaşılması veya kopyalanması yasal işleme tabidir.
+                </p>
+                """, 
+                unsafe_allow_html=True
+            )
+            st.markdown("<div style='height: 5px;'></div>", unsafe_allow_html=True)
+            onay = st.checkbox("Şartları kabul ediyorum.")
+            
+        st.markdown("<div style='height: 15px;'></div>", unsafe_allow_html=True)
+        
+        # Giriş Alanları
+        st.markdown('<span class="cyhn-label">👤 Kullanıcı Adı</span>', unsafe_allow_html=True)
+        kullanici_adi = st.text_input("Kullanıcı Adı Giriş Paneli", label_visibility="collapsed", placeholder="Kullanıcı adınız...").strip().lower()
+        
+        st.markdown('<span class="cyhn-label">🔑 Parola</span>', unsafe_allow_html=True)
+        sifre = st.text_input("Parola Giriş Paneli", type="password", label_visibility="collapsed", placeholder="••••••••")
+        
+        st.markdown("<div style='height: 25px;'></div>", unsafe_allow_html=True)
+        
+        # Butonlar Grid Düzeni (Kartın içinde kalması için)
+        btn_c1, btn_c2 = st.columns(2)
+        with btn_c1:
+            if st.button("Giriş Yap", use_container_width=True):
+                if not onay:
+                    st.error("Lütfen önce şartları onaylayınız!")
+                elif kullanici_adi in USERS and USERS[kullanici_adi] == sifre:
+                    st.toast(f"Giriş başarılı! Yönlendiriliyorsunuz...", icon="🚀")
+                    st.balloons()
+                    time.sleep(1.2)
+                    st.session_state["aktif_user"] = kullanici_adi
+                    st.session_state["sayfa"] = "notlar_arsivi"
+                    st.rerun()
+                else:
+                    st.error("Hatalı kimlik bilgileri!")
+                    
+        with btn_c2:
+            mail_konu = "CYHN%20Portal%20Eri%C5%9Fim%20Talebi"
+            mail_icerik = "Merhaba,%0D%0ACYHN%20Matematik%20Portalı%20için%20erişim%20bilgileri%20talep%20ediyorum.%0D%0A%0D%0AAdım%20Soyadım:%20"
+            mail_link = f"mailto:matematikegitiminevu@gmail.com?subject={mail_konu}&body={mail_icerik}"
+            st.link_button("📩 Şifre İste", mail_link, use_container_width=True)
+        
+        # HTML Kart Kapanışı
+        st.markdown('</div>', unsafe_allow_html=True)
 
-    # ⬅️ ANA MENÜYE DÖNÜŞ BUTONU (Kartın altında, transparan ve temiz)
-    _, ana_btn_col, _ = st.columns([0.3, 0.4, 0.3])
-    with ana_btn_col:
+        # ⬅️ ANA MENÜYE DÖNÜŞ BUTONU (Kartın altında narin duruş)
         st.markdown(
             """
             <style>
@@ -508,8 +498,8 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 border: none !important;
                 color: #64748b !important;
                 font-size: 0.85rem !important;
-                font-weight: 500 !important;
                 transition: color 0.2s ease !important;
+                margin-top: 10px;
             }
             .back-to-portal-btn button:hover {
                 color: #ffffff !important;
