@@ -273,7 +273,7 @@ if st.session_state["sayfa"] == "ana_menu":
             )
 
 # =========================================================================
-# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (MİLİMETRİK ORTALI & KÜÇÜK LOGOLU NİHAİ SÜRÜM)
+# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (DOĞAL DOSYA YOLLU & ORTALANMIŞ KÜÇÜK LOGO)
 # =========================================================================
 elif st.session_state["sayfa"] == "sifre_kontrol":
     
@@ -318,20 +318,23 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 to { transform: translateY(0); opacity: 1; }
             }
 
-            /* 🎯 SAF HTML LOGO STİLİ: Boyutu 65px değerine tamamen kilitler */
-            .cyhn-html-logo-container {
-                display: flex !important;
-                justify-content: center !important;
-                align-items: center !important;
-                width: 100% !important;
-                margin-bottom: 15px !important;
+            /* 🎯 AGRESİF ST.IMAGE ORTALAMA VE BOYUT KİLİTLEME */
+            /* Streamlit'in iç içe ürettiği tüm resim div'lerini 65px genişliğe mühürler ve ortalar */
+            div[data-testid="element-container"]has(> div[data-testid="stImage"]),
+            div[data-testid="stImage"] {
+                width: 65px !important;       /* İstediğin narin küçük boyut */
+                max-width: 65px !important;
+                margin: 0 auto !important;    /* Sağa sola esnemeyi tamamen kapatıp ortalar */
+                display: block !important;
             }
-            .cyhn-html-logo-container img {
-                width: 65px !important;        /* İstediğin narin küçük boyut */
-                height: 65px !important;       /* Kare oran koruması */
-                object-fit: contain !important;
+            
+            div[data-testid="stImage"] img {
+                width: 65px !important;
+                height: 65px !important;
+                object-fit: cover !important;
                 border-radius: 50% !important;
-                filter: drop-shadow(0 6px 12px rgba(99, 102, 241, 0.25)) !important;
+                filter: drop-shadow(0 6px 12px rgba(99, 102, 241, 0.35)) !important;
+                border: 1.5px solid rgba(255, 255, 255, 0.15) !important;
             }
 
             /* 4. Tipografi ve Başlıklar */
@@ -341,7 +344,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 font-weight: 900 !important;
                 font-size: 1.5rem !important;
                 letter-spacing: 0.5px;
-                margin-top: 5px;
+                margin-top: 15px;
                 margin-bottom: 2px;
                 text-align: center;
                 background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
@@ -449,15 +452,8 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
     
     with orta_kart_alani:
         
-        # 🎯 MUTLAK SAF HTML LOGO: Streamlit engelini aşarak milimetrik ortalar ve 65px yapar
-        st.markdown(
-            '''
-            <div class="cyhn-html-logo-container">
-                <img src="app/static/mc250.png" onerror="this.src='https://raw.githubusercontent.com/muharremceyhan/cyhn-matematik/main/mc250.png';">
-            </div>
-            ''', 
-            unsafe_allow_html=True
-        )
+        # 🎯 LOGO ALANI: Bir önceki çalışan temiz st.image metoduna geri döndük
+        st.image("mc250.png", use_container_width=True)
         
         # Başlıklar
         st.markdown('<p class="cyhn-title">CYHN MATEMATİK PORTALI</p>', unsafe_allow_html=True)
