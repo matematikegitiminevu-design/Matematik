@@ -114,99 +114,123 @@ st.set_page_config(
 st.markdown(
     """  
     <style> 
-    /* 1. Tüm Sitenin Arka Plan Devamlılığı */
+    /* 1. İç Açıcı, Canlı ve Derin Gece Mavisi Akıcı Gradyan */
     .stApp {
-        background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 80%, #030712 100%) !important;
+        background: linear-gradient(135deg, #0b1528 0%, #0f2347 30%, #1e1b4b 65%, #0d3b36 100%) !important;
+        background-size: 140% 140% !important;
         background-attachment: fixed !important;
     }
     
-    /* Yazıların Okunurluk Koruması */
+    /* Yazıların Okunurluk Koruması ve Gölgeleri */
     h1, h2, h3, h4, h5, h6, p, span, label {
         color: white !important;
-        text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
 
     /* 2. SOL MENÜ (SIDEBAR) MODERNİZASYONU */
     [data-testid="stSidebar"] {
-        background: rgba(15, 23, 42, 0.55) !important;
-        backdrop-filter: blur(20px) !important;
-        -webkit-backdrop-filter: blur(20px) !important;
-        border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+        background: rgba(11, 21, 40, 0.65) !important;
+        backdrop-filter: blur(25px) !important;
+        -webkit-backdrop-filter: blur(25px) !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
     }
     [data-testid="stSidebar"] h1, [data-testid="stSidebar"] h3 {
-        background: linear-gradient(135deg, #ffffff 40%, #94a3b8 100%);
+        background: linear-gradient(135deg, #ffffff 40%, #a5b4fc 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
 
-    /* 3. ULTRA MODERN CAM KART MOTORU (st.container Yapıları İçin) */
+    /* 3. NEON PARILTILI CAM KART MOTORU (st.container Yapıları İçin) */
     div[data-testid="stVerticalBlockBorderWrapper"] {
-        background: rgba(30, 41, 59, 0.4) !important;
-        backdrop-filter: blur(12px) !important;
-        -webkit-backdrop-filter: blur(12px) !important;
-        border: 1px solid rgba(255, 255, 255, 0.06) !important;
-        border-radius: 16px !important;
-        padding: 22px !important;
-        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5) !important;
-        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        background: rgba(255, 255, 255, 0.04) !important;
+        backdrop-filter: blur(16px) !important;
+        -webkit-backdrop-filter: blur(16px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 20px !important; /* Daha oval, modern köşeler */
+        padding: 24px !important;
+        box-shadow: 0 10px 40px -15px rgba(0, 0, 0, 0.4),
+                    inset 0 1px 0px rgba(255, 255, 255, 0.1) !important;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
     }
-    /* Kartların üzerine gelince parıldama ve hafif yukarı esneme efekti */
+    /* Kartların üzerine gelince parıldama ve estetik ışık efekti */
     div[data-testid="stVerticalBlockBorderWrapper"]:hover {
-        transform: translateY(-4px) !important;
-        border-color: rgba(99, 102, 241, 0.35) !important;
-        box-shadow: 0 20px 40px -15px rgba(79, 70, 229, 0.25), 
-                    inset 0 1px 1px rgba(255, 255, 255, 0.1) !important;
+        transform: translateY(-6px) !important;
+        border-color: rgba(99, 102, 241, 0.6) !important;
+        background: rgba(255, 255, 255, 0.07) !important;
+        box-shadow: 0 20px 40px -10px rgba(79, 70, 229, 0.3), 
+                    0 0 25px rgba(99, 102, 241, 0.15) !important;
     }
 
-    /* 4. SEKMELER (TABS) MODERN TASARIMI */
+    /* 4. CANLI SEKMELER (TABS) TASARIMI */
     button[data-baseweb="tab"] {
         color: #94a3b8 !important;
-        font-weight: 600 !important;
+        font-weight: 700 !important;
+        font-size: 0.92rem !important;
         background: transparent !important;
         border: none !important;
-        padding: 10px 16px !important;
-        transition: all 0.2s ease !important;
+        padding: 12px 20px !important;
+        transition: all 0.3s ease !important;
     }
     button[data-baseweb="tab"]:hover {
-        color: #ffffff !important;
+        color: #818cf8 !important;
+        background: rgba(255, 255, 255, 0.03) !important;
+        border-radius: 8px;
     }
     button[data-baseweb="tab"][aria-selected="true"] {
-        color: #6366f1 !important;
-        border-bottom: 3px solid #6366f1 !important;
+        color: #38bdf8 !important; /* Canlı gökyüzü mavisi aktif sekme */
+        border-bottom: 3px solid #38bdf8 !important;
+        text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
     }
 
-    /* 5. HOVER VE YÖNLENDİRME BUTONLARI (Genel Düzenleme) */
+    /* 5. GÖZ ALICI PREMIUM BUTON MOTORU */
     div.stButton > button:first-child, .stLinkButton a {
-        border-radius: 10px !important;
-        font-weight: 600 !important;
-        transition: all 0.2s ease !important;
+        background: linear-gradient(135deg, #6366f1 0%, #3b82f6 50%, #1d4ed8 100%) !important;
+        color: #ffffff !important;
+        border: none !important;
+        border-radius: 12px !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.5px;
+        padding: 10px 20px !important;
+        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3) !important;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    div.stButton > button:first-child:hover, .stLinkButton a:hover {
+        background: linear-gradient(135deg, #818cf8 0%, #60a5fa 100%) !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5), 0 0 15px rgba(96, 165, 250, 0.3) !important;
+        color: white !important;
     }
     
-    /* Giriş Alanı Mat Ayarı */
+    /* Pasif/Yüklenmedi Butonları İçin Mat Cam Tasarımı */
+    div.stButton > button:disabled {
+        background: rgba(255, 255, 255, 0.05) !important;
+        color: #64748b !important;
+        border: 1px solid rgba(255, 255, 255, 0.05) !important;
+        box-shadow: none !important;
+        transform: none !important;
+    }
+
+    /* Giriş Alanı Tasarımı */
     .stTextInput input {
         background-color: rgba(15, 23, 42, 0.6) !important;
         color: white !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        border-radius: 10px !important;
-    }
-    .stTextInput input:focus {
-        border-color: #6366f1 !important;
-        box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.25) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        border-radius: 12px !important;
     }
     
-    /* 6. KULLANICI HOŞ GELDİN BANNER ALANI */
+    /* 6. KULLANICI HOŞ GELDİN BANNER ALANI (NEON AYARLI) */
     .dashboard-banner {
-        background: linear-gradient(90deg, rgba(79, 70, 229, 0.15) 0%, rgba(99, 102, 241, 0.03) 100%);
-        border: 1px solid rgba(79, 70, 229, 0.25);
-        padding: 24px;
-        border-radius: 16px;
-        margin-bottom: 25px;
+        background: linear-gradient(90deg, rgba(99, 102, 241, 0.2) 0%, rgba(56, 189, 248, 0.05) 100%);
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        padding: 26px;
+        border-radius: 20px;
+        margin-bottom: 30px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
     </style>
     """,
     unsafe_allow_html=True
 )
-
 # --- LOGOYU YAN MENÜYE EKLEME ---
 st.sidebar.image("mc250.png") 
 
