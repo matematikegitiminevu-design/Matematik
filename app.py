@@ -114,29 +114,93 @@ st.set_page_config(
 st.markdown(
     """  
     <style> 
+    /* 1. Tüm Sitenin Arka Plan Devamlılığı */
     .stApp {
-        background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #1e40af 100%);
-        background-attachment: fixed;
+        background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 80%, #030712 100%) !important;
+        background-attachment: fixed !important;
     }
     
-    /* Yazıların daha okunaklı olması için gölge */
-    h1, h2, h3, p, span, label {
+    /* Yazıların Okunurluk Koruması */
+    h1, h2, h3, h4, h5, h6, p, span, label {
         color: white !important;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
     }
 
-    /* 🛠️ GİRİŞ KUTULARINI MAT VE BELİRGİN YAPMA 🛠️ */
+    /* 2. SOL MENÜ (SIDEBAR) MODERNİZASYONU */
+    [data-testid="stSidebar"] {
+        background: rgba(15, 23, 42, 0.55) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+    }
+    [data-testid="stSidebar"] h1, [data-testid="stSidebar"] h3 {
+        background: linear-gradient(135deg, #ffffff 40%, #94a3b8 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    /* 3. ULTRA MODERN CAM KART MOTORU (st.container Yapıları İçin) */
+    div[data-testid="stVerticalBlockBorderWrapper"] {
+        background: rgba(30, 41, 59, 0.4) !important;
+        backdrop-filter: blur(12px) !important;
+        -webkit-backdrop-filter: blur(12px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.06) !important;
+        border-radius: 16px !important;
+        padding: 22px !important;
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5) !important;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    /* Kartların üzerine gelince parıldama ve hafif yukarı esneme efekti */
+    div[data-testid="stVerticalBlockBorderWrapper"]:hover {
+        transform: translateY(-4px) !important;
+        border-color: rgba(99, 102, 241, 0.35) !important;
+        box-shadow: 0 20px 40px -15px rgba(79, 70, 229, 0.25), 
+                    inset 0 1px 1px rgba(255, 255, 255, 0.1) !important;
+    }
+
+    /* 4. SEKMELER (TABS) MODERN TASARIMI */
+    button[data-baseweb="tab"] {
+        color: #94a3b8 !important;
+        font-weight: 600 !important;
+        background: transparent !important;
+        border: none !important;
+        padding: 10px 16px !important;
+        transition: all 0.2s ease !important;
+    }
+    button[data-baseweb="tab"]:hover {
+        color: #ffffff !important;
+    }
+    button[data-baseweb="tab"][aria-selected="true"] {
+        color: #6366f1 !important;
+        border-bottom: 3px solid #6366f1 !important;
+    }
+
+    /* 5. HOVER VE YÖNLENDİRME BUTONLARI (Genel Düzenleme) */
+    div.stButton > button:first-child, .stLinkButton a {
+        border-radius: 10px !important;
+        font-weight: 600 !important;
+        transition: all 0.2s ease !important;
+    }
+    
+    /* Giriş Alanı Mat Ayarı */
     .stTextInput input {
-        background-color: #1e293b !important; /* Şeffaflığı bitiren mat koyu gri/mavi tonu */
-        color: white !important;               /* İçindeki yazı rengi beyaz */
-        border: 1px solid #334155 !important;  /* Kutunun etrafına ince şık bir çerçeve */
-        border-radius: 8px !important;         /* Kenarları hafif yumuşat */
+        background-color: rgba(15, 23, 42, 0.6) !important;
+        color: white !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 10px !important;
     }
-
-    /* Kutunun içine tıklandığında (Focus modunda) çerçevenin parlaması için */
     .stTextInput input:focus {
-        border-color: #FF4B4B !important;      /* Tıklanınca senin ana rengin olan kırmızı yansın */
-        box-shadow: 0 0 0 1px #FF4B4B !important;
+        border-color: #6366f1 !important;
+        box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.25) !important;
+    }
+    
+    /* 6. KULLANICI HOŞ GELDİN BANNER ALANI */
+    .dashboard-banner {
+        background: linear-gradient(90deg, rgba(79, 70, 229, 0.15) 0%, rgba(99, 102, 241, 0.03) 100%);
+        border: 1px solid rgba(79, 70, 229, 0.25);
+        padding: 24px;
+        border-radius: 16px;
+        margin-bottom: 25px;
     }
     </style>
     """,
