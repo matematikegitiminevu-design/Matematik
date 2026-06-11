@@ -273,7 +273,7 @@ if st.session_state["sayfa"] == "ana_menu":
             )
 
 # =========================================================================
-# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (HEM MOBİL HEM MASAÜSTÜ UYUMLU SÜRÜM)
+# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (%100 MOBİL & MASAÜSTÜ ORTALI KESİN SÜRÜM)
 # =========================================================================
 elif st.session_state["sayfa"] == "sifre_kontrol":
     
@@ -318,16 +318,16 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 to { transform: translateY(0); opacity: 1; }
             }
 
-            /* 🎯 MOBİL VE MASAÜSTÜ RESMİ SABİTLEME MOTORU */
+            /* 🎯 GLOBAL RESMİ MERKEZLEME MOTORU */
             div[data-testid="stImage"] {
                 display: flex !important;
                 justify-content: center !important;
                 align-items: center !important;
-                margin: 0 auto 10px auto !important;
+                margin: 0 auto !important;
                 width: 100% !important;
+                text-align: center !important;
             }
             
-            /* max-width ve max-height ekleyerek telefonda devasa büyümesini engelledik */
             div[data-testid="stImage"] img {
                 width: 65px !important;
                 height: 65px !important;
@@ -337,6 +337,22 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 object-fit: cover !important;
                 filter: drop-shadow(0 6px 14px rgba(99, 102, 241, 0.45)) !important;
                 border: 1.5px solid rgba(255, 255, 255, 0.2) !important;
+                display: block !important;
+                margin: 0 auto !important; /* Tarayıcı tabanlı ortalama garantisi */
+            }
+
+            /* 📱 MOBİL İÇİN ÖZEL KİLİTLEME RESPONSIVE MOTORU */
+            /* Sütunlar alt alta yığıldığında sola kaçışı engeller, merkeze zorlar */
+            @media (max-width: 768px) {
+                div[data-testid="column"] {
+                    display: flex !important;
+                    flex-direction: column !important;
+                    align-items: center !important;
+                    justify-content: center !important;
+                }
+                div[data-testid="stImage"] {
+                    margin: 0 auto 15px auto !important;
+                }
             }
 
             /* 4. Tipografi ve Başlıklar */
@@ -454,8 +470,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
     
     with orta_kart_alani:
         
-        # 🎯 SÜTUN MOTORU + CSS MAX-WIDTH SINIRI
-        # Hem kolonlarla yerel hizalama yapıyor hem de CSS üst sınırıyla telefonda küçücük kalıyor.
+        # 🎯 KUSURSUZ COLS + RESPONSIVE GRID DÜZENİ
         sub_sol, sub_merkez, sub_sag = st.columns([1.6, 0.8, 1.6])
         with sub_merkez:
             st.image("mc250.png", use_container_width=True)
