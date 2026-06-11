@@ -273,7 +273,7 @@ if st.session_state["sayfa"] == "ana_menu":
             )
 
 # =========================================================================
-# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (YEREL DOSYALI & %100 ORTALI NİHAİ SÜRÜM)
+# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (%100 SABİTLENMİŞ VE ORTALANMIŞ LOGO)
 # =========================================================================
 elif st.session_state["sayfa"] == "sifre_kontrol":
     
@@ -318,21 +318,12 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 to { transform: translateY(0); opacity: 1; }
             }
 
-            /* 🎯 EVRENSEL RESİM ORTALAMA VE YUVARLAMA MOTORU */
-            /* Streamlit'in ürettiği resim bloğunu yakalar, milimetrik ortalar ve estetik görünmesini sağlar */
-            div[data-testid="stImage"] {
-                display: flex !important;
-                justify-content: center !important;
-                align-items: center !important;
-                margin: 0 auto 10px auto !important;
-                width: 100% !important;
-            }
-            
+            /* 🎯 RESMİN ESTETİK YUVARLAKLIĞI VE GLOW (GÖLGE) EFEKTİ */
             div[data-testid="stImage"] img {
                 border-radius: 50% !important;
                 object-fit: cover !important;
-                filter: drop-shadow(0 6px 12px rgba(99, 102, 241, 0.4)) !important;
-                border: 1.5px solid rgba(255, 255, 255, 0.15) !important;
+                filter: drop-shadow(0 6px 14px rgba(99, 102, 241, 0.45)) !important;
+                border: 1.5px solid rgba(255, 255, 255, 0.2) !important;
             }
 
             /* 4. Tipografi ve Başlıklar */
@@ -450,9 +441,12 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
     
     with orta_kart_alani:
         
-        # 🎯 ST.IMAGE GÜVENLİ VE SABİT MOD: Genişliği 85px olarak çaktık, 
-        # CSS kuralımız da bunu kartın tam ortasına kilitledi. Tertemiz yerel dosya yolu!
-        st.image("mc250.png", width=85)
+        # 🎯 KESİN ÇÖZÜM GRID DÜZENİ:
+        # st.image'ın sola yaslanma huyunu, onu tam merkeze alan 3 küçük alt sütunla çözüyoruz.
+        # Genişlik parametresi vermediğimiz ve sütun genişliğine uy dediğimiz için tam ortada milimetrik 85px kalır!
+        sub_sol, sub_merkez, sub_sag = st.columns([1.6, 0.8, 1.6])
+        with sub_merkez:
+            st.image("mc250.png", use_container_width=True)
         
         # Başlıklar
         st.markdown('<p class="cyhn-title">CYHN MATEMATİK PORTALI</p>', unsafe_allow_html=True)
