@@ -273,7 +273,7 @@ if st.session_state["sayfa"] == "ana_menu":
             )
 
 # =========================================================================
-# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (KESİN ORTALANMIŞ HİBRİT LOGO SÜRÜMÜ)
+# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (MİLİMETRİK ORTALI & GARANTİ SÜRÜM)
 # =========================================================================
 elif st.session_state["sayfa"] == "sifre_kontrol":
     
@@ -293,7 +293,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 background-attachment: fixed !important;
             }
 
-            /* 3. ULTRA MODERN CARD MOTORU */
+            /* 3. ULTRA MODERN CARD MOTORU: Sütunun bizzat kendisini cam karta dönüştürüyoruz */
             div[data-testid="column"]:nth-of-type(2) {
                 background: rgba(15, 23, 42, 0.45) !important;
                 backdrop-filter: blur(25px) saturate(160%) !important;
@@ -318,23 +318,22 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 to { transform: translateY(0); opacity: 1; }
             }
 
-            /* 🎯 SAF HTML LOGO ALANI: Streamlit'ten bağımsız, milimetrik ortalar ve 65px yapar */
-            .cyhn-hybrid-logo-box {
+            /* 🎯 SAF HTML LOGO ALANI: Ortalamayı garanti eder ve boyutu 65px yapar */
+            .cyhn-html-logo-container {
                 display: flex !important;
                 justify-content: center !important;
                 align-items: center !important;
                 width: 100% !important;
                 margin: 0 auto 15px auto !important;
-                text-align: center !important;
             }
-            .cyhn-hybrid-logo-box img {
+            .cyhn-html-logo-container img {
                 width: 65px !important;        /* İstediğin narin küçük boyut */
-                height: 65px !important;       /* Birebir simetri */
+                height: 65px !important;       /* Kare simetri koruması */
                 object-fit: cover !important;
                 border-radius: 50% !important;
+                display: block !important;
                 filter: drop-shadow(0 6px 12px rgba(99, 102, 241, 0.35)) !important;
                 border: 1.5px solid rgba(255, 255, 255, 0.15) !important;
-                display: inline-block !important;
             }
 
             /* 4. Tipografi ve Başlıklar */
@@ -344,7 +343,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 font-weight: 900 !important;
                 font-size: 1.5rem !important;
                 letter-spacing: 0.5px;
-                margin-top: 15px;
+                margin-top: 5px;
                 margin-bottom: 2px;
                 text-align: center;
                 background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
@@ -452,12 +451,12 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
     
     with orta_kart_alani:
         
-        # 🔗 Streamlit'in kendi iç statik linkini bozmadan alan hibrit yapı.
-        # GitHub yedekli link sayesinde asla kırılmaz ve esnemez.
+        # 🎯 KESİNTİSİZ DOĞRUDAN LOGO LİNKİ: Hızlı açılan, engellenemeyen ve tam ortalanmış güvenli URL
+        # Not: Eğer ileride kendi logonuzu güncellerseniz imgur veya i.ibb.co gibi bir servise yükleyip linki değiştirebilirsiniz.
         st.markdown(
             '''
-            <div class="cyhn-hybrid-logo-box">
-                <img src="media/mc250.png" onerror="this.src='https://raw.githubusercontent.com/muharremceyhan/cyhn-matematik/main/mc250.png';">
+            <div class="cyhn-html-logo-container">
+                <img src="https://i.ibb.co/VWVg0YmG/mc250.png" onerror="this.src='https://raw.githubusercontent.com/muharremceyhan/cyhn-matematik/main/mc250.png';">
             </div>
             ''', 
             unsafe_allow_html=True
