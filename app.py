@@ -273,7 +273,7 @@ if st.session_state["sayfa"] == "ana_menu":
             )
 
 # =========================================================================
-# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (MİLİMETRİK ORTALI & KRALİYET SÜRÜMÜ)
+# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (MİLİMETRİK ORTALI & KÜÇÜK LOGOLU NİHAİ SÜRÜM)
 # =========================================================================
 elif st.session_state["sayfa"] == "sifre_kontrol":
     
@@ -318,22 +318,20 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 to { transform: translateY(0); opacity: 1; }
             }
 
-            /* 🎯 SAF HTML LOGO STİLİ: Boyutu tam istediğiniz 65px değerine mühürler */
+            /* 🎯 SAF HTML LOGO STİLİ: Boyutu 65px değerine tamamen kilitler */
             .cyhn-html-logo-container {
                 display: flex !important;
                 justify-content: center !important;
                 align-items: center !important;
                 width: 100% !important;
-                margin: 0 auto 15px auto !important;
+                margin-bottom: 15px !important;
             }
             .cyhn-html-logo-container img {
-                width: 65px !important;        /* Tam istediğiniz narin küçük boyut */
-                height: 65px !important;       /* Birebir simetri koruması */
-                object-fit: cover !important;
+                width: 65px !important;        /* İstediğin narin küçük boyut */
+                height: 65px !important;       /* Kare oran koruması */
+                object-fit: contain !important;
                 border-radius: 50% !important;
-                display: block !important;
-                filter: drop-shadow(0 6px 12px rgba(99, 102, 241, 0.35)) !important;
-                border: 1.5px solid rgba(255, 255, 255, 0.15) !important;
+                filter: drop-shadow(0 6px 12px rgba(99, 102, 241, 0.25)) !important;
             }
 
             /* 4. Tipografi ve Başlıklar */
@@ -451,14 +449,11 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
     
     with orta_kart_alani:
         
-        # 🔄 Python tarafında logoyu güvenli Base64 formatına çeviriyoruz
-        logo_data = get_base64_image("mc250.png")
-        
-        # 🎯 MUTLAK SAF HTML LOGO: Base64 veri tipi sayesinde hiçbir sunucu/yol engeline takılmadan parıldar
+        # 🎯 MUTLAK SAF HTML LOGO: Streamlit engelini aşarak milimetrik ortalar ve 65px yapar
         st.markdown(
-            f'''
+            '''
             <div class="cyhn-html-logo-container">
-                <img src="{logo_data}" onerror="this.src='https://raw.githubusercontent.com/muharremceyhan/cyhn-matematik/main/mc250.png';">
+                <img src="app/static/mc250.png" onerror="this.src='https://raw.githubusercontent.com/muharremceyhan/cyhn-matematik/main/mc250.png';">
             </div>
             ''', 
             unsafe_allow_html=True
