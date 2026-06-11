@@ -114,103 +114,99 @@ st.set_page_config(
 st.markdown(
     """  
     <style> 
-    /* 1. STREAMLIT VARSAYILAN TEMASINI TAMAMEN EZEN GÜÇLÜ ARKA PLAN MOTORU */
+    /* 1. Gözü Yormayan, Asil ve Mat Gece Laciverti Arka Plan */
     html, body, [data-testid="stAppViewContainer"], .stApp {
-        background: linear-gradient(135deg, #091a3a 0%, #0e2954 30%, #1c1045 70%, #1f4068 100%) !important;
-        background-size: 160% 160% !important;
+        background: linear-gradient(135deg, #0b132b 0%, #1c2541 50%, #111827 100%) !important;
+        background-size: cover !important;
         background-attachment: fixed !important;
     }
     
-    /* Siyahlığı tamamen kurutmak için içerik alanının arka planını şeffaflaştırıyoruz */
     [data-testid="stHeader"], [data-testid="stMainSpaceBlockContainer"] {
         background: transparent !important;
     }
 
-    /* 2. OKUNABİLİRLİK VE METİN AYARLARI */
+    /* 2. OKUNABİLİRLİK AYARLARI */
     h1, h2, h3, h4, h5, h6, p, span, label, .stMarkdown {
-        color: #f1f5f9 !important;
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+        color: #f8fafc !important; /* Soft beyaz */
+        text-shadow: none !important; /* Göz tırmalayan gölgeler kaldırıldı */
     }
 
-    /* 3. SOL MENÜ (SIDEBAR) - DERİN SAFİR CAM */
+    /* 3. SOL MENÜ (SIDEBAR) */
     [data-testid="stSidebar"] {
-        background: rgba(9, 22, 48, 0.75) !important;
-        backdrop-filter: blur(30px) !important;
-        -webkit-backdrop-filter: blur(30px) !important;
-        border-right: 1px solid rgba(255, 255, 255, 0.12) !important;
-    }
-
-    /* 4. ULTRA PARLAK VE DIŞA KAVİSLİ PREMIUM CAM KARTLAR */
-    div[data-testid="stVerticalBlockBorderWrapper"] {
-        background: rgba(255, 255, 255, 0.05) !important;
+        background: rgba(11, 19, 43, 0.85) !important;
         backdrop-filter: blur(20px) !important;
         -webkit-backdrop-filter: blur(20px) !important;
-        border: 1px solid rgba(255, 255, 255, 0.15) !important;
-        border-radius: 22px !important;
-        padding: 24px !important;
-        box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.5),
-                    inset 0 1px 2px rgba(255, 255, 255, 0.15) !important;
-        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    }
-    div[data-testid="stVerticalBlockBorderWrapper"]:hover {
-        transform: translateY(-6px) !important;
-        background: rgba(255, 255, 255, 0.09) !important;
-        border-color: #38bdf8 !important; /* Canlı gökyüzü mavisi sınır çizgisi */
-        box-shadow: 0 25px 50px -12px rgba(56, 189, 248, 0.3), 
-                    inset 0 1px 3px rgba(255, 255, 255, 0.3) !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
     }
 
-    /* 5. SEKMELER (TABS) - AKTİF NEON ÇİZGİSİ */
-    button[data-baseweb="tab"] {
-        color: #cbd5e1 !important;
-        font-weight: 700 !important;
-        background: transparent !important;
-        padding: 12px 24px !important;
-    }
-    button[data-baseweb="tab"][aria-selected="true"] {
-        color: #00f5ff !important; /* Elektrik mavisi aktif sekme */
-        border-bottom: 3px solid #00f5ff !important;
-        text-shadow: 0 0 12px rgba(0, 245, 255, 0.6);
-    }
-
-    /* 6. SIFIRDAN TASARLANAN PARILDAYAN GRADYAN BUTONLAR */
-    div.stButton > button:first-child, .stLinkButton a {
-        background: linear-gradient(135deg, #00f5ff 0%, #3b82f6 50%, #8b5cf6 100%) !important;
-        color: #ffffff !important;
-        border: none !important;
-        border-radius: 14px !important;
-        font-weight: 800 !important;
-        text-transform: uppercase;
-        font-size: 0.85rem !important;
-        letter-spacing: 1px;
-        padding: 12px 24px !important;
-        box-shadow: 0 0 20px rgba(0, 245, 255, 0.25), 0 4px 15px rgba(59, 130, 246, 0.3) !important;
+    /* 4. SADE VE ŞIK MAT CAM KARTLAR */
+    div[data-testid="stVerticalBlockBorderWrapper"] {
+        background: rgba(255, 255, 255, 0.03) !important;
+        backdrop-filter: blur(12px) !important;
+        -webkit-backdrop-filter: blur(12px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-radius: 14px !important; /* Daha sade köşeler */
+        padding: 22px !important;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3) !important;
         transition: all 0.3s ease !important;
     }
+    div[data-testid="stVerticalBlockBorderWrapper"]:hover {
+        transform: translateY(-3px) !important;
+        border-color: rgba(255, 255, 255, 0.2) !important; /* Parlama yerine hafif belirginleşme */
+        background: rgba(255, 255, 255, 0.05) !important;
+        box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.4) !important;
+    }
+
+    /* 5. SEKMELER (TABS) - MAT VE DOĞAL GEÇİŞ */
+    button[data-baseweb="tab"] {
+        color: #94a3b8 !important;
+        font-weight: 600 !important;
+        background: transparent !important;
+        padding: 10px 20px !important;
+    }
+    button[data-baseweb="tab"]:hover {
+        color: #f1f5f9 !important;
+    }
+    button[data-baseweb="tab"][aria-selected="true"] {
+        color: #f1f5f9 !important;
+        border-bottom: 2px solid #3b82f6 !important; /* Sade ve net bir mavi çizgi */
+    }
+
+    /* 6. NEONDAN ARNDIRILMIŞ, ASİL MAT PREMIUM BUTONLAR */
+    div.stButton > button:first-child, .stLinkButton a {
+        background: rgba(255, 255, 255, 0.08) !important; /* Yarı şeffaf mat beyaz/gri */
+        color: #f1f5f9 !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        border-radius: 10px !important;
+        font-weight: 600 !important;
+        text-transform: none !important; /* Bağıran büyük harfler kapatıldı */
+        font-size: 0.9rem !important;
+        letter-spacing: 0px;
+        padding: 10px 20px !important;
+        box-shadow: none !important; /* Parlama efektleri tamamen silindi */
+        transition: all 0.2s ease !important;
+    }
     div.stButton > button:first-child:hover, .stLinkButton a:hover {
-        background: linear-gradient(135deg, #00ffff 0%, #60a5fa 50%, #a78bfa 100%) !important;
-        transform: scale(1.03) translateY(-2px) !important;
-        box-shadow: 0 0 30px rgba(0, 245, 255, 0.5), 0 10px 25px rgba(139, 92, 246, 0.4) !important;
+        background: #3b82f6 !important; /* Üzerine gelindiğinde net, kurumsal bir mavi */
+        border-color: #3b82f6 !important;
+        transform: translateY(-1px) !important;
         color: white !important;
     }
     
-    /* Henüz Yüklenmedi (Disabled) Buton Tasarımı */
+    /* Pasif Butonlar */
     div.stButton > button:disabled {
-        background: rgba(255, 255, 255, 0.04) !important;
+        background: rgba(255, 255, 255, 0.02) !important;
         color: #475569 !important;
-        border: 1px solid rgba(255, 255, 255, 0.08) !important;
-        box-shadow: none !important;
-        transform: none !important;
+        border: 1px solid rgba(255, 255, 255, 0.05) !important;
     }
 
-    /* 7. KULLANICI BANNER ALANI (Dynamic Glow) */
+    /* 7. KULLANICI BANNER ALANI (Sadeleştirilmiş) */
     .dashboard-banner {
-        background: linear-gradient(90deg, rgba(0, 245, 255, 0.12) 0%, rgba(139, 92, 246, 0.08) 100%);
-        border: 1px solid rgba(0, 245, 255, 0.25);
-        padding: 28px;
-        border-radius: 22px;
-        margin-bottom: 30px;
-        box-shadow: 0 15px 35px rgba(0,0,0,0.25), inset 0 1px 1px rgba(255,255,255,0.1);
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 24px;
+        border-radius: 14px;
+        margin-bottom: 25px;
     }
     </style>
     """,
