@@ -273,7 +273,7 @@ if st.session_state["sayfa"] == "ana_menu":
             )
 
 # =========================================================================
-# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (MİLİMETRİK ORTALI & GARANTİ SÜRÜM)
+# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (YEREL DOSYALI & %100 ORTALI NİHAİ SÜRÜM)
 # =========================================================================
 elif st.session_state["sayfa"] == "sifre_kontrol":
     
@@ -318,21 +318,20 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 to { transform: translateY(0); opacity: 1; }
             }
 
-            /* 🎯 SAF HTML LOGO ALANI: Ortalamayı garanti eder ve boyutu 65px yapar */
-            .cyhn-html-logo-container {
+            /* 🎯 EVRENSEL RESİM ORTALAMA VE YUVARLAMA MOTORU */
+            /* Streamlit'in ürettiği resim bloğunu yakalar, milimetrik ortalar ve estetik görünmesini sağlar */
+            div[data-testid="stImage"] {
                 display: flex !important;
                 justify-content: center !important;
                 align-items: center !important;
+                margin: 0 auto 10px auto !important;
                 width: 100% !important;
-                margin: 0 auto 15px auto !important;
             }
-            .cyhn-html-logo-container img {
-                width: 65px !important;        /* İstediğin narin küçük boyut */
-                height: 65px !important;       /* Kare simetri koruması */
-                object-fit: cover !important;
+            
+            div[data-testid="stImage"] img {
                 border-radius: 50% !important;
-                display: block !important;
-                filter: drop-shadow(0 6px 12px rgba(99, 102, 241, 0.35)) !important;
+                object-fit: cover !important;
+                filter: drop-shadow(0 6px 12px rgba(99, 102, 241, 0.4)) !important;
                 border: 1.5px solid rgba(255, 255, 255, 0.15) !important;
             }
 
@@ -343,7 +342,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 font-weight: 900 !important;
                 font-size: 1.5rem !important;
                 letter-spacing: 0.5px;
-                margin-top: 5px;
+                margin-top: 15px;
                 margin-bottom: 2px;
                 text-align: center;
                 background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
@@ -451,16 +450,9 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
     
     with orta_kart_alani:
         
-        # 🎯 KESİNTİSİZ DOĞRUDAN LOGO LİNKİ: Hızlı açılan, engellenemeyen ve tam ortalanmış güvenli URL
-        # Not: Eğer ileride kendi logonuzu güncellerseniz imgur veya i.ibb.co gibi bir servise yükleyip linki değiştirebilirsiniz.
-        st.markdown(
-            '''
-            <div class="cyhn-html-logo-container">
-                <img src="https://i.ibb.co/VWVg0YmG/mc250.png" onerror="this.src='https://raw.githubusercontent.com/muharremceyhan/cyhn-matematik/main/mc250.png';">
-            </div>
-            ''', 
-            unsafe_allow_html=True
-        )
+        # 🎯 ST.IMAGE GÜVENLİ VE SABİT MOD: Genişliği 85px olarak çaktık, 
+        # CSS kuralımız da bunu kartın tam ortasına kilitledi. Tertemiz yerel dosya yolu!
+        st.image("mc250.png", width=85)
         
         # Başlıklar
         st.markdown('<p class="cyhn-title">CYHN MATEMATİK PORTALI</p>', unsafe_allow_html=True)
