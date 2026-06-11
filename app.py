@@ -631,68 +631,23 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         time.sleep(1)
     # Sidebar (Yan Menü)
     with st.sidebar: 
-            st.title(f"♾️ Hoş Geldin, {st.session_state['aktif_user'].capitalize()}!")
-            st.markdown("💡 *Bir sorun mu var? Aşağıdaki kanallardan bize hızlıca ulaşabilir veya yapay zeka asistanımıza danışabilirsin.*")
-            # --- ÖZEL BUTON TASARIMLARI (CSS) ---
-            st.markdown("""
-            <style>
-            .sidebar-custom-button {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 10px;
-                background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
-                color: white !important;
-                padding: 12px 20px;
-                border-radius: 12px;
-                text-decoration: none !important;
-                font-weight: bold;
-                transition: all 0.3s ease;
-                border: 1px solid rgba(255,255,255,0.1);
-                margin-bottom: 15px;
-                width: 100%;
-            }
-            .sidebar-custom-button:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-                background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
-                text-decoration: none !important;
-                color: #ffffff !important;
-            }
-            .ai-button {
-                text-decoration: none !important;
-            }
-            .ai-button:hover {
-                text-decoration: none !important;
-            }
-                /* WhatsApp için marka rengi gradyanı */
-            .wp-button {
-                text-decoration: none !important;
-            }
-            .wp-button:hover {
-                text-decoration: none !important;
-            }
-            </style>
-            
-            <!-- İletişim Butonu -->
-            <a href="mailto:matematikegitiminevu@gmail.com" class="sidebar-custom-button">
-                📩 İletişim Maili
-            </a>
-            <a href="https://wa.me/905061905437?text=Merhaba,%20CYHN%20Matematik%20Portalı%20üzerinden%20ulaşıyorum.%20Bir%20konu%20hakkında%20bilgi%20almak%20istiyorum.%0D%0AKonu:%20" target="_blank" class="sidebar-custom-button wp-button">
-                📞 WhatsApp İletişim
-            </a>
+        st.title(f"♾️ Hoş Geldin, {st.session_state['aktif_user'].capitalize()}!")
+        st.markdown("💡 *Sanal kütüphane altyapısı ile ders içeriklerine güvenle erişebilirsin.*")
+        st.markdown("<div style='height: 15px;'></div>", unsafe_allow_html=True)
+        
+        # Yenilenen Minimalist İletişim Kanalları
+        st.link_button("📩 İletişim Maili", "mailto:matematikegitiminevu@gmail.com", use_container_width=True)
+        
+        wp_link = "https://wa.me/905061905437?text=Merhaba,%20CYHN%20Matematik%20Portalı%20üzerinden%20ulaşıyorum."
+        st.link_button("📞 WhatsApp İletişim", wp_link, use_container_width=True)
 
-            <!-- Yapay Zeka Butonu (Aynı Tasarım) -->
-            <a href="https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc" target="_blank" class="sidebar-custom-button ai-button">
-                ✨ cyhnAI'a Sor
-            </a>
-            """, unsafe_allow_html=True)
+        st.link_button("✨ cyhnAI'a Sor", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc", use_container_width=True)
 
-            st.divider()
-            if st.button("🔐 Güvenli Çıkış"):
-                    st.session_state["aktif_user"] = None
-                    st.session_state["sayfa"] = "ana_menu"
-                    st.rerun()
+        st.divider()
+        if st.button("🔐 Güvenli Çıkış", type="secondary", use_container_width=True):
+            st.session_state["aktif_user"] = None
+            st.session_state["sayfa"] = "ana_menu"
+            st.rerun()
             
     st.title("📚 Matematik Ders Notları ve PDF Arşivi")
     kullanici = st.session_state["aktif_user"].capitalize()
