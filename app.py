@@ -273,7 +273,7 @@ if st.session_state["sayfa"] == "ana_menu":
             )
 
 # =========================================================================
-# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (KESİN ÇÖZÜMLÜ PREMIUM LOGIN)
+# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (PREMIUM GLASS CARD - KESİN ÇÖZÜM)
 # =========================================================================
 elif st.session_state["sayfa"] == "sifre_kontrol":
     
@@ -292,18 +292,18 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 background-size: cover !important;
                 background-attachment: fixed !important;
             }
-            
-            /* 3. MODERN CARD MOTORU: Ortadaki sütunun (column) kendisini bizzat karta dönüştürüyoruz */
-            div[data-testid="column"]:nth-of-type(2) {
+
+            /* 3. ULTRA MODERN CARD MOTORU: Sütunun içindeki dikey bloğu karta dönüştürüyoruz */
+            div[data-testid="column"]:nth-of-type(2) > div[data-testid="stVerticalBlock"] {
                 background: rgba(15, 23, 42, 0.45) !important;
-                backdrop-filter: blur(25px) saturate(160%) !important;
-                -webkit-backdrop-filter: blur(25px) saturate(160%) !important;
-                padding: 45px 35px !important;
+                backdrop-filter: blur(20px) saturate(160%) !important;
+                -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+                padding: 40px 35px !important;
                 border-radius: 24px !important;
                 border: 1px solid rgba(255, 255, 255, 0.08) !important;
                 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4),
                             0 30px 60px -15px rgba(0, 0, 0, 0.8),
-                            inset 0 1px 1px rgba(255, 255, 255, 0.1) !important;
+                            inset 0 1px 1px rgba(255, 255, 255, 0.05) !important;
                 animation: popupShow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             }
 
@@ -404,20 +404,23 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 box-shadow: none !important;
             }
 
-            /* 8. KARTIN ALTINDA KALAN ANA MENÜ BUTONU (Kart yapısından tamamen ayrıştırıldı) */
-            .back-to-portal-container {
-                max-width: 460px;
-                margin: 15px auto 0 auto;
-                text-align: center;
+            /* 8. KARTIN ALTINDAKİ GERİ DÖN BUTONU */
+            .back-container {
+                display: flex;
+                justify-content: center;
+                margin-top: 15px;
             }
-            .back-to-portal-container button {
+            .back-container button {
                 background: transparent !important;
                 border: none !important;
                 color: #64748b !important;
                 font-size: 0.85rem !important;
+                font-weight: 500 !important;
                 transition: color 0.2s ease !important;
+                width: auto !important;
+                padding: 5px 20px !important;
             }
-            .back-to-portal-container button:hover {
+            .back-container button:hover {
                 color: #ffffff !important;
                 background: transparent !important;
             }
@@ -429,11 +432,11 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
     # Dengeli üst boşluk
     st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
     
-    # 🎛️ COLS MOTORU: Geniş ekranı ortalamak için 3 sütunlu kusursuz yapı
+    # 🎛️ COLS MOTORU: Geniş ekranı mükemmel simetriye alan 3 sütunlu yapı
     sol_bosluk, orta_kart_alani, sag_bosluk = st.columns([1.1, 1.3, 1.1])
     
     with orta_kart_alani:
-        # Logo (Sütunun en tepesinde)
+        # Logo
         st.markdown('<div style="display: flex; justify-content: center; filter: drop-shadow(0 8px 15px rgba(99, 102, 241, 0.15)); margin-bottom: 10px;">', unsafe_allow_html=True)
         st.image("mc250.png", width=85)
         st.markdown('</div>', unsafe_allow_html=True)
@@ -468,7 +471,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
         
         st.markdown("<div style='height: 25px;'></div>", unsafe_allow_html=True)
         
-        # Butonlar Yan Yana (Kart sınırları içinde mükemmel paylaşım)
+        # Butonlar Grid Düzeni (Kart sınırları içinde mükemmel paylaşım)
         btn_c1, btn_c2 = st.columns(2)
         with btn_c1:
             if st.button("Giriş Yap", use_container_width=True):
@@ -490,12 +493,12 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
             mail_link = f"mailto:matematikegitiminevu@gmail.com?subject={mail_konu}&body={mail_icerik}"
             st.link_button("📩 Şifre İste", mail_link, use_container_width=True)
 
-    # ⬅️ ANA MENÜYE DÖNÜŞ BUTONU (Sütun yapısının tamamen dışında, altta narin görünüm)
-    st.markdown('<div class="back-to-portal-container">', unsafe_allow_html=True)
-    if st.button("← Portal Ana Menüsüne Dön", use_container_width=True, key="back_to_main"):
-        st.session_state["sayfa"] = "ana_menu"
-        st.rerun()
-    st.markdown('</div>', unsafe_allow_html=True)
+        # ⬅️ ANA MENÜYE DÖNÜŞ BUTONU (Kartın hemen altında, tam ortada ve kibar duruş)
+        st.markdown('<div class="back-container">', unsafe_allow_html=True)
+        if st.button("← Portal Ana Menüsüne Dön", key="back_to_main_final"):
+            st.session_state["sayfa"] = "ana_menu"
+            st.rerun()
+        st.markdown('</div>', unsafe_allow_html=True)
             
 # --- 3. AŞAMA: DERS NOTLARI VE PDF ARŞİVİ ---
 elif st.session_state["sayfa"] == "notlar_arsivi":
