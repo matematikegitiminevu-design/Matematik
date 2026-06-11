@@ -698,17 +698,20 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         
 
     with tab1:
+        st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
         st.subheader("Lineer Cebir Ders Notları")
-        st.warning("❗Lineer Cebir 1 PDF dosyası henüz yüklenmemiştir!")
+        
         col1, col2 = st.columns(2)
         with col1:
             with st.container(border=True):
-                st.markdown("**Lineer Cebir 1**")
+                st.markdown("### Lineer Cebir 1")
+                st.caption("Dönem: Güz | Durum: Hazırlanıyor")
                 st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln1")
         with col2:
             with st.container(border=True):
-                st.markdown("**Lineer Cebir 2**")
-                if st.button("📝 Ders Notunu Aç", key="lin2", use_container_width=True):
+                st.markdown("### Lineer Cebir 2")
+                st.caption("Dönem: Bahar | Durum: Aktif")
+                if st.button("📝 Ders Notunu Aç", key="lin2", type="primary", use_container_width=True):
                     pdf_popup_ac("1nXutG6Fz6JtYFGYDlwohTySE6LwTe4Tg")
                     
     with tab2:
