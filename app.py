@@ -273,7 +273,7 @@ if st.session_state["sayfa"] == "ana_menu":
             )
 
 # =========================================================================
-# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (PREMIUM LOG IN - ABSOLUTE SOLUTION)
+# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (LOGONUN KÜÇÜLTÜLMÜŞ & BUTONLARIN EŞİTLENMİŞ HALİ)
 # =========================================================================
 elif st.session_state["sayfa"] == "sifre_kontrol":
     
@@ -293,7 +293,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 background-attachment: fixed !important;
             }
 
-            /* 3. KESİN ÇÖZÜM: Ortadaki sütun alanını (column) bizzat cam karta dönüştürüyoruz */
+            /* 3. ULTRA MODERN CARD MOTORU: Ortadaki sütun alanını cam karta dönüştürüyoruz */
             div[data-testid="column"]:nth-of-type(2) {
                 background: rgba(15, 23, 42, 0.45) !important;
                 backdrop-filter: blur(25px) saturate(160%) !important;
@@ -307,7 +307,6 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 animation: popupShow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             }
 
-            /* Sütun içindeki alt boşlukları ve Streamlit'in kendi transparan container gölgelerini sıfırla */
             div[data-testid="column"]:nth-of-type(2) > div {
                 background: transparent !important;
                 box-shadow: none !important;
@@ -385,7 +384,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.25) !important;
             }
 
-            /* 7. Butonlar */
+            /* 7. Standart Premium Buton Stilleri */
             div.stButton > button:first-child {
                 background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%) !important;
                 color: #ffffff !important;
@@ -402,7 +401,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 box-shadow: 0 6px 20px rgba(79, 70, 229, 0.35) !important;
             }
             
-            /* Şifre İste Butonu */
+            /* İkincil Buton Modeli (Şifre İste Butonu İçin Özel Ayar) */
             div[data-testid="column"] div[data-testid="column"]:nth-of-type(2) div.stButton > button:first-child,
             div[data-testid="column"] div[data-testid="column"]:nth-of-type(2) a {
                 background: rgba(255, 255, 255, 0.03) !important;
@@ -411,44 +410,34 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 box-shadow: none !important;
             }
 
-            /* 8. KARTIN ALTINDAKİ GERİ DÖN BUTONU */
-            .back-container {
-                display: flex;
-                justify-content: center;
-                margin-top: 20px;
+            /* 8. KARTIN İÇİNDEKİ GENİŞ GERİ DÖN BUTONU */
+            .back-container-fixed {
+                margin-top: 15px;
+                width: 100% !important;
             }
-            .back-container button {
-                background: transparent !important;
-                border: none !important;
-                color: #64748b !important;
-                font-size: 0.85rem !important;
-                font-weight: 500 !important;
-                transition: color 0.2s ease !important;
-                width: auto !important;
-                padding: 5px 20px !important;
-            }
-            .back-container button:hover {
+            /* Geri dönüş butonunun rengini Giriş Yap butonuyla aynı tona çektik */
+            .back-container-fixed button {
+                background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%) !important;
                 color: #ffffff !important;
-                background: transparent !important;
+                width: 100% !important;
             }
         </style>
         """, 
         unsafe_allow_html=True
     )
 
-    # Dengeli üst boşluk
+    # Üst boşluk ayarı
     st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
     
-    # 🎛️ COLS MOTORU: Ekranı mükemmel simetriye alan 3 sütunlu yapı
+    # 🎛️ COLS MOTORU: Giriş alanını kusursuz merkezleyen ana grid yapısı
     sol_bosluk, orta_kart_alani, sag_bosluk = st.columns([1.1, 1.3, 1.1])
     
     with orta_kart_alani:
         
-        # 🎯 LOGOYU MİLİMETRİK ORTALAMA MOTORU
-        # Kartın kendi içinde logoyu ortalamak için 3 mini sütun açıyoruz
-        logo_sol, logo_orta, logo_sag = st.columns([1, 1.2, 1])
+        # 🎯 LOGO BOYUTLANDIRMA MOTORU (Daha narin ve kibar olması için oranlar küçültüldü)
+        logo_sol, logo_orta, logo_sag = st.columns([1.3, 1, 1.3])
         with logo_orta:
-            st.markdown('<div style="filter: drop-shadow(0 8px 15px rgba(99, 102, 241, 0.2)); margin-bottom: 5px;">', unsafe_allow_html=True)
+            st.markdown('<div style="filter: drop-shadow(0 6px 12px rgba(99, 102, 241, 0.2)); margin-bottom: 2px;">', unsafe_allow_html=True)
             st.image("mc250.png", use_container_width=True)
             st.markdown('</div>', unsafe_allow_html=True)
         
@@ -482,7 +471,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
         
         st.markdown("<div style='height: 25px;'></div>", unsafe_allow_html=True)
         
-        # Butonlar Grid Düzeni (Kart sınırları içinde mükemmel paylaşım)
+        # Butonlar Grid Düzeni (Giriş Yap & Şifre İste)
         btn_c1, btn_c2 = st.columns(2)
         with btn_c1:
             if st.button("Giriş Yap", use_container_width=True):
@@ -504,9 +493,11 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
             mail_link = f"mailto:matematikegitiminevu@gmail.com?subject={mail_konu}&body={mail_icerik}"
             st.link_button("📩 Şifre İste", mail_link, use_container_width=True)
 
-        # ⬅️ ANA MENÜYE DÖNÜŞ BUTONU (Kartın hemen altında, kibar ve tam ortada)
-        st.markdown('<div class="back-container">', unsafe_allow_html=True)
-        if st.button("← Portal Ana Menüsüne Dön", key="back_to_main_final_fixed"):
+        st.markdown("<div style='height: 5px;'></div>", unsafe_allow_html=True)
+
+        # ⬅️ ANA MENÜYE DÖNÜŞ BUTONU (Kartın içinde, tam genişlikte ve premium yapıda)
+        st.markdown('<div class="back-container-fixed">', unsafe_allow_html=True)
+        if st.button("← Portal Ana Menüsüne Dön", use_container_width=True, key="back_to_main_ultimate"):
             st.session_state["sayfa"] = "ana_menu"
             st.rerun()
         st.markdown('</div>', unsafe_allow_html=True)
