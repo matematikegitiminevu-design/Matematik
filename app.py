@@ -273,7 +273,7 @@ if st.session_state["sayfa"] == "ana_menu":
             )
 
 # =========================================================================
-# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (CIHAZ BAĞIMSIZ HİBRİT PREMIUM SÜRÜM)
+# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (MUKAVEMETLİ MOBİL VE PC SÜRÜMÜ)
 # =========================================================================
 elif st.session_state["sayfa"] == "sifre_kontrol":
     
@@ -293,8 +293,8 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 background-attachment: fixed !important;
             }
 
-            /* 3. EVRENSEL CAM KART (PC ve Mobilde Asla Bozulmaz Yapı) */
-            .cyhn-universal-card {
+            /* 3. ULTRA MODERN CARD MOTORU: Sütunun kendisini bizzat cam karta dönüştürüyoruz */
+            div[data-testid="column"]:nth-of-type(2) {
                 background: rgba(15, 23, 42, 0.45) !important;
                 backdrop-filter: blur(25px) saturate(160%) !important;
                 -webkit-backdrop-filter: blur(25px) saturate(160%) !important;
@@ -304,9 +304,13 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4),
                             0 30px 60px -15px rgba(0, 0, 0, 0.8),
                             inset 0 1px 1px rgba(255, 255, 255, 0.05) !important;
-                max-width: 460px;
-                margin: 40px auto !important;
                 animation: popupShow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+
+            div[data-testid="column"]:nth-of-type(2) > div {
+                background: transparent !important;
+                box-shadow: none !important;
+                border: none !important;
             }
 
             @keyframes popupShow {
@@ -314,15 +318,17 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 to { transform: translateY(0); opacity: 1; }
             }
 
-            /* 📱 KESİN ÇÖZÜM: Logo Boyutu Hem PC Hem Mobilde 75px Olarak Çakıldı */
-            .cyhn-fixed-logo {
-                width: 75px !important;
-                height: 75px !important;
-                object-fit: contain !important;
-                border-radius: 50%;
-                margin: 0 auto 15px auto !important;
-                display: block !important;
-                filter: drop-shadow(0 8px 16px rgba(99, 102, 241, 0.25));
+            /* 🎯 LOGO BOYUTU KİLİTLEME MOTORU (Kritik Alan) */
+            /* Streamlit'in yerel resim kutusunun telefonda devasa olmasını engeller, 70px'e kilitler */
+            div[data-testid="stImage"] {
+                max-width: 70px !important;
+                margin: 0 auto !important;
+                display: flex !important;
+                justify-content: center !important;
+            }
+            div[data-testid="stImage"] img {
+                border-radius: 50% !important;
+                filter: drop-shadow(0 6px 12px rgba(99, 102, 241, 0.25)) !important;
             }
 
             /* 4. Tipografi ve Başlıklar */
@@ -332,7 +338,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 font-weight: 900 !important;
                 font-size: 1.5rem !important;
                 letter-spacing: 0.5px;
-                margin-top: 5px;
+                margin-top: 15px;
                 margin-bottom: 2px;
                 text-align: center;
                 background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
@@ -432,75 +438,77 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
         unsafe_allow_html=True
     )
 
-    # 🎛️ NİHAİ KAPSAYICI: İçeriği sarmalayan ana kart yapısı HTML olarak başlatılıyor
-    st.markdown('<div class="cyhn-universal-card">', unsafe_allow_html=True)
+    # Üst boşluk ayarı
+    st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
     
-    # 🎯 LOGO ENGINE: Güvenli base64 veya doğrudan görsel basan ve boyutu kilitleyen HTML img etiketi
-    st.markdown('<img src="app/static/mc250.png" class="cyhn-fixed-logo" onerror="this.src=\'https://raw.githubusercontent.com/muharremceyhan/cyhn-matematik/main/mc250.png\';">', unsafe_allow_html=True)
+    # 🎛️ COLS MOTORU: Giriş alanını masaüstünde harika merkezleyen stabil 3'lü yapı
+    sol_bosluk, orta_kart_alani, sag_bosluk = st.columns([1.1, 1.3, 1.1])
     
-    # Başlıklar
-    st.markdown('<p class="cyhn-title">CYHN MATEMATİK PORTALI</p>', unsafe_allow_html=True)
-    st.markdown('<p class="cyhn-subtitle">Ders Notları Doğrulama Sistemi</p>', unsafe_allow_html=True)
-    
-    # 📜 Sözleşme
-    with st.expander("🔐 Lisans ve Kullanım Sözleşmesi", expanded=False):
-        st.markdown(
-            """
-            <p style="color: #ef4444 !important; font-weight: 600; margin-bottom: 4px; font-size: 0.8rem; text-transform: uppercase;">Telif Hakkı Bildirimi:</p>
-            <p style="color: #94a3b8 !important; font-size: 0.78rem; line-height: 1.4; text-align: left;">
-            Bu portalda sunulan tüm akademik PDF dokümanlarının mülkiyet ve telif hakları doğrudan <b>Muharrem CEYHAN</b>'a aittir.<br><br>
-            İçeriklerin izinsiz paylaşılması veya kopyalanması yasal işleme tabidir.
-            </p>
-            """, 
-            unsafe_allow_html=True
-        )
-        st.markdown("<div style='height: 5px;'></div>", unsafe_allow_html=True)
-        onay = st.checkbox("Şartları kabul ediyorum.")
+    with orta_kart_alani:
         
-    st.markdown("<div style='height: 5px;'></div>", unsafe_allow_html=True)
-    
-    # Giriş Alanları
-    st.markdown('<span class="cyhn-label">👤 Kullanıcı Adı</span>', unsafe_allow_html=True)
-    kullanici_adi = st.text_input("Kullanıcı Adı Giriş Paneli", label_visibility="collapsed", placeholder="Kullanıcı adınız...").strip().lower()
-    
-    st.markdown('<span class="cyhn-label">🔑 Parola</span>', unsafe_allow_html=True)
-    sifre = st.text_input("Parola Giriş Paneli", type="password", label_visibility="collapsed", placeholder="••••••••")
-    
-    st.markdown("<div style='height: 25px;'></div>", unsafe_allow_html=True)
-    
-    # Butonlar Grid Düzeni (Giriş Yap & Şifre İste)
-    btn_c1, btn_c2 = st.columns(2)
-    with btn_c1:
-        if st.button("Giriş Yap", use_container_width=True):
-            if not onay:
-                st.error("Lütfen önce şartları onaylayınız!")
-            elif kullanici_adi in USERS and USERS[kullanici_adi] == sifre:
-                st.toast(f"Giriş başarılı! Yönlendiriliyorsunuz...", icon="🚀")
-                st.balloons()
-                time.sleep(1.2)
-                st.session_state["aktif_user"] = kullanici_adi
-                st.session_state["sayfa"] = "notlar_arsivi"
-                st.rerun()
-            else:
-                st.error("Hatalı kimlik bilgileri!")
-                
-    with btn_c2:
-        mail_konu = "CYHN%20Portal%20Eri%C5%9Fim%20Talebi"
-        mail_icerik = "Merhaba,%0D%0ACYHN%20Matematik%20Portalı%20için%20erişim%20bilgileri%20talep%20ediyorum.%0D%0A%0D%0AAdım%20Soyadım:%20"
-        mail_link = f"mailto:matematikegitiminevu@gmail.com?subject={mail_konu}&body={mail_icerik}"
-        st.link_button("📩 Şifre İste", mail_link, use_container_width=True)
+        # 🎯 LOGO ALANI: Yerel st.image kullanıyoruz ama CSS ile max-width kuralına bağladık
+        st.image("mc250.png", use_container_width=True)
+        
+        # Başlıklar
+        st.markdown('<p class="cyhn-title">CYHN MATEMATİK PORTALI</p>', unsafe_allow_html=True)
+        st.markdown('<p class="cyhn-subtitle">Ders Notları Doğrulama Sistemi</p>', unsafe_allow_html=True)
+        
+        # 📜 Sözleşme
+        with st.expander("🔐 Lisans ve Kullanım Sözleşmesi", expanded=False):
+            st.markdown(
+                """
+                <p style="color: #ef4444 !important; font-weight: 600; margin-bottom: 4px; font-size: 0.8rem; text-transform: uppercase;">Telif Hakkı Bildirimi:</p>
+                <p style="color: #94a3b8 !important; font-size: 0.78rem; line-height: 1.4; text-align: left;">
+                Bu portalda sunulan tüm akademik PDF dokümanlarının mülkiyet ve telif hakları doğrudan <b>Muharrem CEYHAN</b>'a aittir.<br><br>
+                İçeriklerin izinsiz paylaşılması veya kopyalanması yasal işleme tabidir.
+                </p>
+                """, 
+                unsafe_allow_html=True
+            )
+            st.markdown("<div style='height: 5px;'></div>", unsafe_allow_html=True)
+            onay = st.checkbox("Şartları kabul ediyorum.")
+            
+        st.markdown("<div style='height: 5px;'></div>", unsafe_allow_html=True)
+        
+        # Giriş Alanları
+        st.markdown('<span class="cyhn-label">👤 Kullanıcı Adı</span>', unsafe_allow_html=True)
+        kullanici_adi = st.text_input("Kullanıcı Adı Giriş Paneli", label_visibility="collapsed", placeholder="Kullanıcı adınız...").strip().lower()
+        
+        st.markdown('<span class="cyhn-label">🔑 Parola</span>', unsafe_allow_html=True)
+        sifre = st.text_input("Parola Giriş Paneli", type="password", label_visibility="collapsed", placeholder="••••••••")
+        
+        st.markdown("<div style='height: 25px;'></div>", unsafe_allow_html=True)
+        
+        # Butonlar Grid Düzeni (Giriş Yap & Şifre İste)
+        btn_c1, btn_c2 = st.columns(2)
+        with btn_c1:
+            if st.button("Giriş Yap", use_container_width=True):
+                if not onay:
+                    st.error("Lütfen önce şartları onaylayınız!")
+                elif kullanici_adi in USERS and USERS[kullanici_adi] == sifre:
+                    st.toast(f"Giriş başarılı! Yönlendiriliyorsunuz...", icon="🚀")
+                    st.balloons()
+                    time.sleep(1.2)
+                    st.session_state["aktif_user"] = kullanici_adi
+                    st.session_state["sayfa"] = "notlar_arsivi"
+                    st.rerun()
+                else:
+                    st.error("Hatalı kimlik bilgileri!")
+                    
+        with btn_c2:
+            mail_konu = "CYHN%20Portal%20Eri%C5%9Fim%20Talebi"
+            mail_icerik = "Merhaba,%0D%0ACYHN%20Matematik%20Portalı%20için%20erişim%20bilgileri%20talep%20ediyorum.%0D%0A%0D%0AAdım%20Soyadım:%20"
+            mail_link = f"mailto:matematikegitiminevu@gmail.com?subject={mail_konu}&body={mail_icerik}"
+            st.link_button("📩 Şifre İste", mail_link, use_container_width=True)
 
-    st.markdown("<div style='height: 5px;'></div>", unsafe_allow_html=True)
+        st.markdown("<div style='height: 5px;'></div>", unsafe_allow_html=True)
 
-    # ⬅️ ANA MENÜYE DÖNÜŞ BUTONU (Tam genişlikte premium buton)
-    st.markdown('<div class="back-container-fixed">', unsafe_allow_html=True)
-    if st.button("← Portal Ana Menüsüne Dön", use_container_width=True, key="back_to_main_ultimate_fixed"):
-        st.session_state["sayfa"] = "ana_menu"
-        st.rerun()
-    st.markdown('</div>', unsafe_allow_html=True)
-
-    # Kapsayıcı Kart Kapanışı
-    st.markdown('</div>', unsafe_allow_html=True)
+        # ⬅️ ANA MENÜYE DÖNÜŞ BUTONU (Kartın içinde, tam genişlikte ve premium mavi renkte)
+        st.markdown('<div class="back-container-fixed">', unsafe_allow_html=True)
+        if st.button("← Portal Ana Menüsüne Dön", use_container_width=True, key="back_to_main_final_secured"):
+            st.session_state["sayfa"] = "ana_menu"
+            st.rerun()
+        st.markdown('</div>', unsafe_allow_html=True)
             
 # --- 3. AŞAMA: DERS NOTLARI VE PDF ARŞİVİ ---
 elif st.session_state["sayfa"] == "notlar_arsivi":
