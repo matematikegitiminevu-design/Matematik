@@ -649,14 +649,22 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             st.session_state["sayfa"] = "ana_menu"
             st.rerun()
             
-    st.title("📚 Matematik Ders Notları ve PDF Arşivi")
     kullanici = st.session_state["aktif_user"].capitalize()
-    # --- YENİ EKLENEN MESAJ ---
-    st.markdown(f"""
-    > **Hoş geldin {kullanici}!** Bu arşiv, akademik yolculuğunda sana rehberlik etmek için özenle hazırlanmıştır. 
-    > Aşağıdaki sekmeleri kullanarak ders notlarına erişebilir, çalışmalarını derinleştirebilirsin. 
-    > Bir sorun olduğunda yan menüde bulunan iletişim kanallarından bana ulaşabilirsin. **Başarılar.**
-       """)
+    
+    st.markdown(
+        f"""
+        <div class="dashboard-banner">
+            <h2 style='margin:0; padding:0; color:#fff; font-size:1.65rem; font-weight:800; letter-spacing:0.5px;'>
+                📚 Akademik PDF Arşivi & Kontrol Paneli
+            </h2>
+            <p style='margin:8px 0 0 0; padding:0; color:#94a3b8; font-size:0.92rem; line-height:1.5;'>
+                Hoş geldin, <b>{kullanici}</b>! Bu kütüphane, akademik yolculuğunda sana rehberlik etmek için özenle optimize edilmiştir. 
+                İhtiyacın olan dokümanı ilgili sekmeden seçerek güvenle inceleyebilirsin. Başarılar dilerim.
+            </p>
+        </div>
+        """, 
+        unsafe_allow_html=True
+    )
     # --------------------------
     st.markdown("---")
 
