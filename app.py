@@ -273,7 +273,7 @@ if st.session_state["sayfa"] == "ana_menu":
             )
 
 # =========================================================================
-# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (TAM ORTALANMIŞ PREMIUM KONSEPT)
+# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (KESİN ÇÖZÜMLÜ PREMIUM LOGIN)
 # =========================================================================
 elif st.session_state["sayfa"] == "sifre_kontrol":
     
@@ -281,7 +281,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
     st.markdown(
         """
         <style>
-            /* 1. Yan Menüyü Giriş Ekranında Tamamen Gizle */
+            /* 1. Yan Menüyü Giriş Ekranında Tamamen İzole Et */
             [data-testid="stSidebar"], [data-testid="stSidebarCollapseButton"] {
                 display: none !important;
             }
@@ -293,30 +293,17 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 background-attachment: fixed !important;
             }
             
-            /* Sola hizalamayı ve geniş yayılımı engellemek için Streamlit bloklarını nötrle */
-            [data-testid="element-container"], 
-            [data-testid="stVerticalBlockBorderWrapper"], 
-            [data-testid="stVerticalBlock"] {
-                background-color: transparent !important;
-                box-shadow: none !important;
-                border: none !important;
-            }
-
-            /* 3. PREMIUM POPUP KART: Maksimum genişlik sınırlandı ve ortalandı */
-            .cyhn-popup-card {
+            /* 3. MODERN CARD MOTORU: Ortadaki sütunun (column) kendisini bizzat karta dönüştürüyoruz */
+            div[data-testid="column"]:nth-of-type(2) {
                 background: rgba(15, 23, 42, 0.45) !important;
                 backdrop-filter: blur(25px) saturate(160%) !important;
                 -webkit-backdrop-filter: blur(25px) saturate(160%) !important;
-                width: 100% !important;
-                max-width: 460px !important;
-                margin: 40px auto !important;
-                padding: 40px 35px !important;
+                padding: 45px 35px !important;
                 border-radius: 24px !important;
                 border: 1px solid rgba(255, 255, 255, 0.08) !important;
                 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4),
                             0 30px 60px -15px rgba(0, 0, 0, 0.8),
                             inset 0 1px 1px rgba(255, 255, 255, 0.1) !important;
-                text-align: center;
                 animation: popupShow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             }
 
@@ -325,7 +312,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 to { transform: translateY(0); opacity: 1; }
             }
 
-            /* 4. Tipografi */
+            /* 4. Tipografi ve Başlıklar */
             .cyhn-title {
                 color: #ffffff !important;
                 font-family: 'Inter', sans-serif;
@@ -334,6 +321,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 letter-spacing: 0.5px;
                 margin-top: 15px;
                 margin-bottom: 2px;
+                text-align: center;
                 background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
@@ -351,7 +339,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 font-weight: 600 !important;
                 color: #94a3b8 !important;
                 text-align: left;
-                margin-top: 10px;
+                margin-top: 12px;
                 margin-bottom: 6px;
                 font-size: 0.75rem;
                 text-transform: uppercase;
@@ -359,7 +347,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 display: block;
             }
 
-            /* 5. Modern Şartlar ve Sözleşme Kutusu */
+            /* 5. Sözleşme Kutusu (Expander) */
             .stExpander {
                 background: rgba(2, 6, 23, 0.4) !important;
                 border: 1px solid rgba(255, 255, 255, 0.05) !important;
@@ -371,7 +359,6 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 font-weight: 500 !important;
                 font-size: 0.8rem !important;
             }
-            
             .stCheckbox label span p {
                 color: #cbd5e1 !important;
                 font-size: 0.8rem !important;
@@ -409,28 +396,45 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
             }
             
             /* Şifre İste Butonu */
-            div[data-testid="column"] + div[data-testid="column"] div.stButton > button:first-child,
-            div[data-testid="column"] + div[data-testid="column"] a {
+            div[data-testid="column"] div[data-testid="column"]:nth-of-type(2) div.stButton > button:first-child,
+            div[data-testid="column"] div[data-testid="column"]:nth-of-type(2) a {
                 background: rgba(255, 255, 255, 0.03) !important;
                 color: #e2e8f0 !important;
                 border: 1px solid rgba(255, 255, 255, 0.08) !important;
                 box-shadow: none !important;
+            }
+
+            /* 8. KARTIN ALTINDA KALAN ANA MENÜ BUTONU (Kart yapısından tamamen ayrıştırıldı) */
+            .back-to-portal-container {
+                max-width: 460px;
+                margin: 15px auto 0 auto;
+                text-align: center;
+            }
+            .back-to-portal-container button {
+                background: transparent !important;
+                border: none !important;
+                color: #64748b !important;
+                font-size: 0.85rem !important;
+                transition: color 0.2s ease !important;
+            }
+            .back-to-portal-container button:hover {
+                color: #ffffff !important;
+                background: transparent !important;
             }
         </style>
         """, 
         unsafe_allow_html=True
     )
 
-    # 🎛️ EKRANI ORTALAMA MOTORU (Wide modu sabote etmek için 3 sütunlu yapı)
-    # Giriş paneli tam ortadaki 'orta_sutun' içine kurulacak
-    sol_bosluk, orta_sutun, sag_bosluk = st.columns([1, 1.4, 1])
+    # Dengeli üst boşluk
+    st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
     
-    with orta_sutun:
-        # HTML Kart Başlangıcı
-        st.markdown('<div class="cyhn-popup-card">', unsafe_allow_html=True)
-        
-        # Logo
-        st.markdown('<div style="display: flex; justify-content: center; filter: drop-shadow(0 8px 15px rgba(99, 102, 241, 0.15));">', unsafe_allow_html=True)
+    # 🎛️ COLS MOTORU: Geniş ekranı ortalamak için 3 sütunlu kusursuz yapı
+    sol_bosluk, orta_kart_alani, sag_bosluk = st.columns([1.1, 1.3, 1.1])
+    
+    with orta_kart_alani:
+        # Logo (Sütunun en tepesinde)
+        st.markdown('<div style="display: flex; justify-content: center; filter: drop-shadow(0 8px 15px rgba(99, 102, 241, 0.15)); margin-bottom: 10px;">', unsafe_allow_html=True)
         st.image("mc250.png", width=85)
         st.markdown('</div>', unsafe_allow_html=True)
         
@@ -453,7 +457,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
             st.markdown("<div style='height: 5px;'></div>", unsafe_allow_html=True)
             onay = st.checkbox("Şartları kabul ediyorum.")
             
-        st.markdown("<div style='height: 15px;'></div>", unsafe_allow_html=True)
+        st.markdown("<div style='height: 5px;'></div>", unsafe_allow_html=True)
         
         # Giriş Alanları
         st.markdown('<span class="cyhn-label">👤 Kullanıcı Adı</span>', unsafe_allow_html=True)
@@ -464,7 +468,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
         
         st.markdown("<div style='height: 25px;'></div>", unsafe_allow_html=True)
         
-        # Butonlar Grid Düzeni (Kartın içinde kalması için)
+        # Butonlar Yan Yana (Kart sınırları içinde mükemmel paylaşım)
         btn_c1, btn_c2 = st.columns(2)
         with btn_c1:
             if st.button("Giriş Yap", use_container_width=True):
@@ -485,34 +489,13 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
             mail_icerik = "Merhaba,%0D%0ACYHN%20Matematik%20Portalı%20için%20erişim%20bilgileri%20talep%20ediyorum.%0D%0A%0D%0AAdım%20Soyadım:%20"
             mail_link = f"mailto:matematikegitiminevu@gmail.com?subject={mail_konu}&body={mail_icerik}"
             st.link_button("📩 Şifre İste", mail_link, use_container_width=True)
-        
-        # HTML Kart Kapanışı
-        st.markdown('</div>', unsafe_allow_html=True)
 
-        # ⬅️ ANA MENÜYE DÖNÜŞ BUTONU (Kartın altında narin duruş)
-        st.markdown(
-            """
-            <style>
-            .back-to-portal-btn button {
-                background: transparent !important;
-                border: none !important;
-                color: #64748b !important;
-                font-size: 0.85rem !important;
-                transition: color 0.2s ease !important;
-                margin-top: 10px;
-            }
-            .back-to-portal-btn button:hover {
-                color: #ffffff !important;
-                background: transparent !important;
-            }
-            </style>
-            """, unsafe_allow_html=True
-        )
-        st.markdown('<div class="back-to-portal-btn">', unsafe_allow_html=True)
-        if st.button("← Portal Ana Menüsüne Dön", use_container_width=True):
-            st.session_state["sayfa"] = "ana_menu"
-            st.rerun()
-        st.markdown('</div>', unsafe_allow_html=True)
+    # ⬅️ ANA MENÜYE DÖNÜŞ BUTONU (Sütun yapısının tamamen dışında, altta narin görünüm)
+    st.markdown('<div class="back-to-portal-container">', unsafe_allow_html=True)
+    if st.button("← Portal Ana Menüsüne Dön", use_container_width=True, key="back_to_main"):
+        st.session_state["sayfa"] = "ana_menu"
+        st.rerun()
+    st.markdown('</div>', unsafe_allow_html=True)
             
 # --- 3. AŞAMA: DERS NOTLARI VE PDF ARŞİVİ ---
 elif st.session_state["sayfa"] == "notlar_arsivi":
