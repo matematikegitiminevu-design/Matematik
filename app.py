@@ -327,8 +327,8 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 margin-bottom: 15px !important;
             }
             .cyhn-html-logo-container img {
-                width: 65px !important;        /* İstediğin narin küçük boyut */
-                height: 65px !important;       /* Kare oran koruması */
+                width: 70px !important;        /* İstediğin narin küçük boyut */
+                height: 70px !important;       /* Kare oran koruması */
                 object-fit: contain !important;
                 border-radius: 50% !important;
                 filter: drop-shadow(0 6px 12px rgba(99, 102, 241, 0.25)) !important;
