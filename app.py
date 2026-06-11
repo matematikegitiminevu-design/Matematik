@@ -273,7 +273,7 @@ if st.session_state["sayfa"] == "ana_menu":
             )
 
 # =========================================================================
-# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (PREMIUM GLASS CARD - KESİN ÇÖZÜM)
+# 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (PREMIUM LOG IN - ABSOLUTE SOLUTION)
 # =========================================================================
 elif st.session_state["sayfa"] == "sifre_kontrol":
     
@@ -293,11 +293,11 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 background-attachment: fixed !important;
             }
 
-            /* 3. ULTRA MODERN CARD MOTORU: Sütunun içindeki dikey bloğu karta dönüştürüyoruz */
-            div[data-testid="column"]:nth-of-type(2) > div[data-testid="stVerticalBlock"] {
+            /* 3. KESİN ÇÖZÜM: Ortadaki sütun alanını (column) bizzat cam karta dönüştürüyoruz */
+            div[data-testid="column"]:nth-of-type(2) {
                 background: rgba(15, 23, 42, 0.45) !important;
-                backdrop-filter: blur(20px) saturate(160%) !important;
-                -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+                backdrop-filter: blur(25px) saturate(160%) !important;
+                -webkit-backdrop-filter: blur(25px) saturate(160%) !important;
                 padding: 40px 35px !important;
                 border-radius: 24px !important;
                 border: 1px solid rgba(255, 255, 255, 0.08) !important;
@@ -305,6 +305,13 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                             0 30px 60px -15px rgba(0, 0, 0, 0.8),
                             inset 0 1px 1px rgba(255, 255, 255, 0.05) !important;
                 animation: popupShow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+
+            /* Sütun içindeki alt boşlukları ve Streamlit'in kendi transparan container gölgelerini sıfırla */
+            div[data-testid="column"]:nth-of-type(2) > div {
+                background: transparent !important;
+                box-shadow: none !important;
+                border: none !important;
             }
 
             @keyframes popupShow {
@@ -408,7 +415,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
             .back-container {
                 display: flex;
                 justify-content: center;
-                margin-top: 15px;
+                margin-top: 20px;
             }
             .back-container button {
                 background: transparent !important;
@@ -432,14 +439,18 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
     # Dengeli üst boşluk
     st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
     
-    # 🎛️ COLS MOTORU: Geniş ekranı mükemmel simetriye alan 3 sütunlu yapı
+    # 🎛️ COLS MOTORU: Ekranı mükemmel simetriye alan 3 sütunlu yapı
     sol_bosluk, orta_kart_alani, sag_bosluk = st.columns([1.1, 1.3, 1.1])
     
     with orta_kart_alani:
-        # Logo
-        st.markdown('<div style="display: flex; justify-content: center; filter: drop-shadow(0 8px 15px rgba(99, 102, 241, 0.15)); margin-bottom: 10px;">', unsafe_allow_html=True)
-        st.image("mc250.png", width=85)
-        st.markdown('</div>', unsafe_allow_html=True)
+        
+        # 🎯 LOGOYU MİLİMETRİK ORTALAMA MOTORU
+        # Kartın kendi içinde logoyu ortalamak için 3 mini sütun açıyoruz
+        logo_sol, logo_orta, logo_sag = st.columns([1, 1.2, 1])
+        with logo_orta:
+            st.markdown('<div style="filter: drop-shadow(0 8px 15px rgba(99, 102, 241, 0.2)); margin-bottom: 5px;">', unsafe_allow_html=True)
+            st.image("mc250.png", use_container_width=True)
+            st.markdown('</div>', unsafe_allow_html=True)
         
         # Başlıklar
         st.markdown('<p class="cyhn-title">CYHN MATEMATİK PORTALI</p>', unsafe_allow_html=True)
@@ -493,9 +504,9 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
             mail_link = f"mailto:matematikegitiminevu@gmail.com?subject={mail_konu}&body={mail_icerik}"
             st.link_button("📩 Şifre İste", mail_link, use_container_width=True)
 
-        # ⬅️ ANA MENÜYE DÖNÜŞ BUTONU (Kartın hemen altında, tam ortada ve kibar duruş)
+        # ⬅️ ANA MENÜYE DÖNÜŞ BUTONU (Kartın hemen altında, kibar ve tam ortada)
         st.markdown('<div class="back-container">', unsafe_allow_html=True)
-        if st.button("← Portal Ana Menüsüne Dön", key="back_to_main_final"):
+        if st.button("← Portal Ana Menüsüne Dön", key="back_to_main_final_fixed"):
             st.session_state["sayfa"] = "ana_menu"
             st.rerun()
         st.markdown('</div>', unsafe_allow_html=True)
