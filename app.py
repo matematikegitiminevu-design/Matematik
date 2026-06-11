@@ -668,7 +668,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         st.link_button("✨ cyhnAI'a Sor", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc", use_container_width=True)
 
         st.divider()
-        if st.button("🔐 Güvenli Çıkış", key="sidebar_logout_btn", use_container_width=True):
+        if st.button("🔐 Güvenli Çıkış", type="secondary", use_container_width=True):
             st.session_state["aktif_user"] = None
             st.session_state["sayfa"] = "ana_menu"
             st.rerun()
@@ -678,11 +678,12 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     st.markdown(
         f"""
         <div class="dashboard-banner">
-            <h2 style='margin:0; padding:0; color:#fff; font-size:1.75rem; font-weight:900; letter-spacing:0.5px; background: linear-gradient(to right, #ffffff, #60a5fa); -webkit-background-clip: text; -webkit-text-fill-color: transparent;'>
-                🚀 Akademik Kontrol Paneli & PDF Kütüphanesi
+            <h2 style='margin:0; padding:0; color:#fff; font-size:1.65rem; font-weight:800; letter-spacing:0.5px;'>
+                📚 Akademik PDF Arşivi & Kontrol Paneli
             </h2>
-            <p style='margin:10px 0 0 0; padding:0; color:#cbd5e1; font-size:0.95rem; line-height:1.6;'>
-                Selam <b>{kullanici}</b>, portal tam performansla aktif! Senin için hazırlanan güncel ders içeriklerini, akıllı döküman havuzunu ve duyuruları aşağıdan inceleyebilirsin. Keyifli çalışmalar!
+            <p style='margin:8px 0 0 0; padding:0; color:#94a3b8; font-size:0.92rem; line-height:1.5;'>
+                Hoş geldin, <b>{kullanici}</b>! Bu kütüphane, akademik yolculuğunda sana rehberlik etmek için özenle optimize edilmiştir. 
+                İhtiyacın olan dokümanı ilgili sekmeden seçerek güvenle inceleyebilirsin. Başarılar dilerim.
             </p>
         </div>
         """, 
