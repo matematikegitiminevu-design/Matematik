@@ -177,9 +177,9 @@ st.markdown(
         border-bottom: 2px solid #3b82f6 !important; 
     }
 
-    /* 6. HATA VERMEYEN ASİL MAT PREMIUM BUTONLAR */
+    /* 6. HATA VERMEYEN NET VE GÖZ ALICI AKADEMİK MAVİ BUTONLAR */
     div.stButton > button:first-child, .stLinkButton a {
-        background: rgba(255, 255, 255, 0.08) !important; 
+        background: #1e40af !important; /* Soluk siyah yerine net kurumsal koyu mavi */
         color: #f1f5f9 !important;
         border: 1px solid rgba(255, 255, 255, 0.15) !important;
         border-radius: 10px !important;
@@ -188,14 +188,15 @@ st.markdown(
         font-size: 0.9rem !important;
         letter-spacing: 0px;
         padding: 10px 20px !important;
-        box-shadow: none !important; 
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important; 
         transition: all 0.2s ease !important;
     }
     div.stButton > button:first-child:hover, .stLinkButton a:hover {
-        background: #3b82f6 !important; 
+        background: #2563eb !important; /* Üzerine gelindiğinde canlanan canlı mavi */
         border-color: #3b82f6 !important;
         transform: translateY(-1px) !important;
         color: white !important;
+        box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3) !important;
     }
     
     /* Pasif Butonlar */
