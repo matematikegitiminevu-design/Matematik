@@ -54,8 +54,7 @@ def duyuru_popup():
         </p>
         <div style="text-align: right; margin-top: 20px; color: #64748b; font-size: 0.85rem; font-style: italic;">
             Saygılarımla,<br>
-            <b style="color: #94a3b8; font-style: normal;">Muharrem CEYHAN</b><br>
-            İlköğretim Matematik Öğretmeni Adayı & Yazılım Geliştirici
+            <b style="color: #94a3b8; font-style: normal;">Muharrem CEYHAN</b>
         </div>
         """, 
         unsafe_allow_html=True
