@@ -632,18 +632,18 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     kullanici = st.session_state.get("aktif_user", "Kullanıcı").capitalize()
     
     
-        st.title("📚 Matematik Ders Notları ve PDF Arşivi")
-        st.markdown(f"**Hoş geldin {kullanici}!** Bu arşiv, akademik yolculuğunda sana rehberlik etmek için özenle hazırlanmıştır. Aşağıdaki sekmeleri kullanarak ders notlarına erişebilirsin. Bir sorun olduğunda aşağı menüde bulunan iletişim kanallarından bana ulaşabilirsin. **Başarılar.**")
-        
+    st.title("📚 Matematik Ders Notları ve PDF Arşivi")
+    st.markdown(f"**Hoş geldin {kullanici}!** Bu arşiv, akademik yolculuğunda sana rehberlik etmek için özenle hazırlanmıştır. Aşağıdaki sekmeleri kullanarak ders notlarına erişebilirsin. Bir sorun olduğunda aşağı menüde bulunan iletişim kanallarından bana ulaşabilirsin. **Başarılar.**")
+    
 
-        if st.query_params.get("aksiyon") == "cikis":
-            st.session_state["aktif_user"] = None
-            st.session_state["sayfa"] = "ana_menu"
-            # Parametreyi URL'den temizliyoruz ki sonsuz döngüye girmesin
-            st.query_params.clear()
-            st.toast("Oturum kapatıldı.", icon="👋")
-            time.sleep(1.2)
-            st.rerun()
+    if st.query_params.get("aksiyon") == "cikis":
+        st.session_state["aktif_user"] = None
+        st.session_state["sayfa"] = "ana_menu"
+        # Parametreyi URL'den temizliyoruz ki sonsuz döngüye girmesin
+        st.query_params.clear()
+        st.toast("Oturum kapatıldı.", icon="👋")
+        time.sleep(1.2)
+        st.rerun()
 
 
     
