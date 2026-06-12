@@ -829,20 +829,20 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         with link_col1:
             st.markdown("<p style='margin:0; font-size:0.85rem; font-weight:600; color:#cbd5e1;'>Yapay Zekâ Desteği</p>", unsafe_allow_html=True)
             st.markdown("<p style='margin:0 0 10px 0; font-size:0.75rem; color:#64748b;'>cyhnAI v1.2 Canlı Asistan</p>", unsafe_allow_html=True)
-            st.link_button("✨ cyhnAI'ı Başlat", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc", use_container_width=True)
+            st.link_button("✨ cyhnAI'a Sor", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc", use_container_width=True)
             
         with link_col2:
-            st.markdown("<p style='margin:0; font-size:0.85rem; font-weight:600; color:#cbd5e1;'>Anlık Geri Bildirim</p>", unsafe_allow_html=True)
-            st.markdown("<p style='margin:0 0 10px 0; font-size:0.75rem; color:#64748b;'>WhatsApp Entegrasyonu</p>", unsafe_allow_html=True)
+            st.markdown("<p style='margin:0; font-size:0.85rem; font-weight:600; color:#cbd5e1;'>WhatsApp İletişim</p>", unsafe_allow_html=True)
+            st.markdown("<p style='margin:0 0 10px 0; font-size:0.75rem; color:#64748b;'>Anlık Geri Bildirim</p>", unsafe_allow_html=True)
             st.link_button("📞 Canlı Destek Al", "https://wa.me/905061905437?text=Merhaba,%20CYHN%20Matematik%20Portalı%20üzerinden%20ulaşıyorum.%20Bir%20konu%20hakkında%20bilgi%20almak%20istiyorum.%0D%0AKonu:%20", use_container_width=True)
             
         with link_col3:
-            st.markdown("<p style='margin:0; font-size:0.85rem; font-weight:600; color:#cbd5e1;'>Resmî Yazışma</p>", unsafe_allow_html=True)
-            st.markdown("<p style='margin:0 0 10px 0; font-size:0.75rem; color:#64748b;'>Akademik E-Posta Hattı</p>", unsafe_allow_html=True)
+            st.markdown("<p style='margin:0; font-size:0.85rem; font-weight:600; color:#cbd5e1;'>İletişim Maili</p>", unsafe_allow_html=True)
+            st.markdown("<p style='margin:0 0 10px 0; font-size:0.75rem; color:#64748b;'>E-Posta İletişim</p>", unsafe_allow_html=True)
             st.link_button("📩 E-Posta Gönder", "mailto:matematikegitiminevu@gmail.com", use_container_width=True)
             
         with link_col4:
-            st.markdown("<p style='margin:0; font-size:0.85rem; font-weight:600; color:#cbd5e1;'>Üniversite Servisi</p>", unsafe_allow_html=True)
+            st.markdown("<p style='margin:0; font-size:0.85rem; font-weight:600; color:#cbd5e1;'>NEVÜ UBYS Ekranı</p>", unsafe_allow_html=True)
             st.markdown("<p style='margin:0 0 10px 0; font-size:0.75rem; color:#64748b;'>NEVÜ UBYS Öğrenci Girişi</p>", unsafe_allow_html=True)
             st.link_button("🎓 UBYS'ye Bağlan", "https://ubys.nevsehir.edu.tr", use_container_width=True)
 
