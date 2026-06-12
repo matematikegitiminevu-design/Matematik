@@ -719,23 +719,61 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 """
             )
 
-    # --- 📞 2.5. BÖLÜM: ANA SAYFA HIZLI ERİŞİM VE İLETİŞİM BANDI ---
+    # --- 📢 2.2. BÖLÜM: CANLI BİLDİRİM VE DUYURU BANDI ---
     st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
     
+    # Küçük, zarif bir HTML/CSS bildirim kutusu
+    st.markdown(
+        """
+        <div style="
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 4px solid #3b82f6;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        ">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 1.2rem;">📢</span>
+                <span style="color: #dbeafe !important; font-size: 0.9rem; font-weight: 500;">
+                    <b>Sistem Duyurusu:</b> 2025-2026 Bahar Dönemi bütünleme sınav programı "Güncel Duyurular" sekmesine eklenmiştir.
+                </span>
+            </div>
+            <span style="color: #94a3b8 !important; font-size: 0.8rem; font-weight: 600;">YENİ</span>
+        </div>
+        """, 
+        unsafe_allow_html=True
+    )
+
+    # --- 🔗 2.5. BÖLÜM: PROFESYONEL HIZLI ERİŞİM MATRİSİ ---
     with st.container(border=True):
-        st.markdown("<p style='margin-top:0; margin-bottom:10px; color:#94a3b8; font-size:0.9rem; font-weight:600;'>🔗 HIZLI ERİŞİM VE DESTEK KANALLARI</p>", unsafe_allow_html=True)
+        st.markdown("<p style='margin-top:0; margin-bottom:15px; color:#94a3b8; font-size:0.85rem; font-weight:700; letter-spacing:0.5px;'>🚀 ENTEGRE SİSTEMLER & DESTEK KANALLARI</p>", unsafe_allow_html=True)
+        
         link_col1, link_col2, link_col3, link_col4 = st.columns(4)
         
         with link_col1:
-            st.link_button("✨ cyhnAI Yapay Zekâ Asistanı", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc", use_container_width=True)
+            st.markdown("<p style='margin:0; font-size:0.85rem; font-weight:600; color:#cbd5e1;'>Yapay Zekâ Desteği</p>", unsafe_allow_html=True)
+            st.markdown("<p style='margin:0 0 10px 0; font-size:0.75rem; color:#64748b;'>cyhnAI v1.2 Canlı Asistan</p>", unsafe_allow_html=True)
+            st.link_button("✨ cyhnAI'ı Başlat", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc", use_container_width=True)
+            
         with link_col2:
-            st.link_button("📞 WhatsApp Canlı Destek", "https://wa.me/905061905437?text=Merhaba...", use_container_width=True)
+            st.markdown("<p style='margin:0; font-size:0.85rem; font-weight:600; color:#cbd5e1;'>Anlık Geri Bildirim</p>", unsafe_allow_html=True)
+            st.markdown("<p style='margin:0 0 10px 0; font-size:0.75rem; color:#64748b;'>WhatsApp Entegrasyonu</p>", unsafe_allow_html=True)
+            st.link_button("📞 Canlı Destek Al", "https://wa.me/905061905437?text=Merhaba...", use_container_width=True)
+            
         with link_col3:
-            st.link_button("📩 Akademik İletişim Maili", "mailto:matematikegitiminevu@gmail.com", use_container_width=True)
+            st.markdown("<p style='margin:0; font-size:0.85rem; font-weight:600; color:#cbd5e1;'>Resmî Yazışma</p>", unsafe_allow_html=True)
+            st.markdown("<p style='margin:0 0 10px 0; font-size:0.75rem; color:#64748b;'>Akademik E-Posta Hattı</p>", unsafe_allow_html=True)
+            st.link_button("📩 E-Posta Gönder", "mailto:matematikegitiminevu@gmail.com", use_container_width=True)
+            
         with link_col4:
-            st.link_button("🎓 NEVÜ UBYS Sistemi", "https://ubys.nevsehir.edu.tr", use_container_width=True)
+            st.markdown("<p style='margin:0; font-size:0.85rem; font-weight:600; color:#cbd5e1;'>Üniversite Servisi</p>", unsafe_allow_html=True)
+            st.markdown("<p style='margin:0 0 10px 0; font-size:0.75rem; color:#64748b;'>NEVÜ UBYS Öğrenci Girişi</p>", unsafe_allow_html=True)
+            st.link_button("🎓 UBYS'ye Bağlan", "https://ubys.nevsehir.edu.tr", use_container_width=True)
 
-    st.markdown("<span style='margin-top:15px; display:block;'></span>", unsafe_allow_html=True)
+    st.markdown("<div style='height: 15px;'></div>", unsafe_allow_html=True)
     
     # --------------------------
     st.markdown("---")
