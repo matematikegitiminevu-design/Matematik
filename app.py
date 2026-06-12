@@ -52,6 +52,11 @@ def duyuru_popup():
         Platform altyapısını güçlendirerek hem görsel hem de işlevsel olarak tamamen yeni nesil bir standarda geçiş yaptık. 
         Sürekli gelişen yapımızla, eğitim yolculuğunuzda her an yanınızda olmaya devam ediyoruz.
         </p>
+        <div style="text-align: right; margin-top: 20px; color: #64748b; font-size: 0.85rem; font-style: italic;">
+            Saygılarımla,<br>
+            <b style="color: #94a3b8; font-style: normal;">Muharrem CEYHAN</b><br>
+            İlköğretim Matematik Öğretmeni Adayı & Yazılım Geliştirici
+        </div>
         """, 
         unsafe_allow_html=True
     )
