@@ -44,12 +44,11 @@ def duyuru_popup():
     st.markdown(
         """
         <p style="color: #cbd5e1; font-size: 1rem; line-height: 1.6;">
-        Merhaba, platformumuza hoş geldiniz! Sizlere daha akıcı ve modern bir deneyim sunabilmek adına 
-        <b>CYHN Matematik Portalı</b> altyapısını tamamen yeniledik. 
+        Merhaba, platformumuza hoş geldiniz!
         </p>
         <p style="color: #94a3b8; font-size: 0.9rem; line-height: 1.5;">
         Sizlere daha akıcı, modern ve kusursuz bir akademik deneyim sunabilmek adına 
-        CYHN Matematik Portalı'nı baştan aşağı yeniledik! 
+        </b>CYHN Matematik Portalı</b> altyapısını baştan aşağı yeniledik! 
         Platform altyapısını güçlendirerek hem görsel hem de işlevsel olarak tamamen yeni nesil bir standarda geçiş yaptık. 
         Sürekli gelişen yapımızla, eğitim yolculuğunuzda her an yanınızda olmaya devam ediyoruz.
         </p>
