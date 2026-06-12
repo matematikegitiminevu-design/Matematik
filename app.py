@@ -628,11 +628,27 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         import time
         time.sleep(1)
     
-    kullanici = st.session_state["aktif_user"].capitalize()
+    kullanici = st.session_state.get("aktif_user", "Kullanıcı").capitalize()
     
-    # --- 🏢 1. BÖLÜM: ANA BAŞLIK ---
-    st.title("📊 CYHN Akademik Kontrol Paneli")
+    # Sağ üst köşeye çıkış butonu yerleştirmek için 2 sütun oluşturuyoruz
+    baslik_col, cikis_col = st.columns([3.5, 1])
+    
+    with baslik_col:
+        st.title("📊 CYHN Akademik Kontrol Paneli")
+        st.markdown(f"**Hoş geldiniz, {kullanici}**")
+        
+    with cikis_col:
+        # Sayfa yukarısından hizalamak için boşluk bırakıyoruz
+        st.markdown("<div style='height: 25px;'></div>", unsafe_allow_html=True)
+        if st.button("🚪 Oturumu Kapat", key="logout_top_right", use_container_width=True):
+            st.session_state["aktif_user"] = None
+            st.session_state["sayfa"] = "ana_menu"
+            st.toast("Oturum güvenli bir şekilde kapatıldı.", icon="👋")
+            time.sleep(0.8)
+            st.rerun()
+            
     st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
+    
     
     # --- 📢 2. BÖLÜM (YENİ YERİ): CANLI BİLDİRİM VE DUYURU BANDI ---
     st.markdown(
