@@ -630,24 +630,50 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     
     kullanici = st.session_state.get("aktif_user", "Kullanıcı").capitalize()
     
-    # Sağ üst köşeye çıkış butonu yerleştirmek için 2 sütun oluşturuyoruz
-    baslik_col, cikis_col = st.columns([3.5, 1])
+    # Başlık ve minimal çıkış butonunun yerleşimi
+    baslik_col, cikis_col = st.columns([4, 1])
     
     with baslik_col:
         st.title("📊 CYHN Akademik Kontrol Paneli")
         st.markdown(f"**Hoş geldiniz, {kullanici}**")
         
     with cikis_col:
-        # Sayfa yukarısından hizalamak için boşluk bırakıyoruz
         st.markdown("<div style='height: 25px;'></div>", unsafe_allow_html=True)
-        if st.button("🚪 Oturumu Kapat", key="logout_top_right", use_container_width=True):
+        
+        # --- MİNİMAL VE MODERN ÇIKIŞ BUTONU (CSS ÖZELLEŞTİRMELİ) ---
+        html_logout = """
+        <style>
+            .minimal-logout-btn div input, .minimal-logout-btn button {
+                background-color: transparent !important;
+                color: #94a3b8 !important; /* Soluk gri renk */
+                border: 1px solid rgba(148, 163, 184, 0.2) !important;
+                border-radius: 8px !important;
+                font-size: 0.85rem !important;
+                font-weight: 500 !important;
+                padding: 6px 12px !important;
+                transition: all 0.2s ease-in-out !important;
+                box-shadow: none !important;
+                transform: none !important;
+            }
+            .minimal-logout-btn button:hover {
+                color: #ef4444 !important; /* Üzerine gelince soft kırmızı */
+                background-color: rgba(239, 68, 68, 0.08) !important; /* Hafif kırmızı arka plan */
+                border-color: rgba(239, 68, 68, 0.3) !important;
+            }
+        </style>
+        <div class="minimal-logout-btn">
+        """
+        st.markdown(html_logout, unsafe_allow_html=True)
+        
+        # Butonun kendisi (CSS sınıfının içine sarmalandı)
+        if st.button("🔴 Oturumu Kapat", key="logout_top_right_minimal", use_container_width=True):
             st.session_state["aktif_user"] = None
             st.session_state["sayfa"] = "ana_menu"
-            st.toast("Oturum güvenli bir şekilde kapatıldı.", icon="👋")
-            time.sleep(1.2)
+            st.toast("Oturum kapatıldı.", icon="👋")
+            time.sleep(0.6)
             st.rerun()
             
-    st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
+        st.markdown("</div>", unsafe_allow_html=True)
     
     
     # --- 📢 2. BÖLÜM (YENİ YERİ): CANLI BİLDİRİM VE DUYURU BANDI ---
