@@ -691,22 +691,22 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     st.markdown(
         """
         <div style="
-            background: rgba(59, 130, 246, 0.1);
-            border-left: 4px solid #3b82f6;
-            padding: 12px 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid #10b981;
+            padding: 14px 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         ">
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <span style="font-size: 1.2rem;">📢</span>
-                <span style="color: #ffffff !important; font-size: 0.92rem; font-weight: 500; letter-spacing: 0.3px;">
-                    <b>Sistem Duyurusu:</b> 2025-2026 Bahar Dönemi bütünleme sınav programı "Güncel Duyurular" sekmesine eklenmiştir.
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="font-size: 1.3rem;">🚀</span>
+                <span style="color: #ffffff !important; font-size: 0.92rem; font-weight: 500; letter-spacing: 0.3px; line-height: 1.5;">
+                    <b>Sistem Yeniliği (v2.0 Beta):</b> CYHN Matematik Portalı tamamen yenilendi! Yeni nesil karanlık tema mimarisine geçiş yapıldı, ders notları için <b>"Güvenli Canlı Önizleme Motoru"</b> entegre edildi ve sağ üst köşeye <b>minimal hızlı oturum kapatma</b> özelliği eklendi. Gelişmiş matematiksel algoritmalarla donatılan asistanımız <b>cyhnAI</b> alt panelde sizleri bekliyor.
                 </span>
             </div>
-            <span style="color: #94a3b8 !important; font-size: 0.8rem; font-weight: 600;">YENİ</span>
+            <span style="color: #10b981 !important; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; margin-left: 15px;">YENİLİK</span>
         </div>
         """, 
         unsafe_allow_html=True
