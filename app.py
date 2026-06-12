@@ -627,6 +627,14 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
             
 # --- 3. AŞAMA: DERS NOTLARI VE PDF ARŞİVİ ---
 elif st.session_state["sayfa"] == "notlar_arsivi":
+
+    # ─── 📢 ADIM 3: POPUP KONTROLÜ (TAM OLARAK BURAYA GELİYOR) ───
+    # Eğer kullanıcı giriş yaptıysa ve duyuruyu henüz görmediyse popup'ı aç
+    if "duyuru_gosterildi" in st.session_state and not st.session_state["duyuru_gosterildi"]:
+        duyuru_popup()
+        st.stop()  # Popup kapanana kadar sayfanın geri kalanını (bakım modu dahil) yüklemeyi durdurur
+    # ───────────────────────────────────────────────────────────
+    
     # 🌟 BURADAN: (BAKIM MODU KONTROLÜ)
     if ARSIV_BAKIM_MODU and not gizli_yonetici_izni:
         with st.sidebar:
