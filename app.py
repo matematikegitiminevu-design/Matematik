@@ -136,12 +136,21 @@ st.markdown(
         text-shadow: none !important; /* Göz tırmalayan gölgeler kaldırıldı */
     }
 
-    /* 3. SOL MENÜ (SIDEBAR) */
+    /* 3. SOL MENÜ (SIDEBAR) & ZARİF LOGO BOYUTLANDIRMA */
     [data-testid="stSidebar"] {
         background: rgba(11, 19, 43, 0.85) !important;
         backdrop-filter: blur(20px) !important;
         -webkit-backdrop-filter: blur(20px) !important;
         border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+    }
+    
+    /* Sidebardaki logoyu otomatik olarak küçülten ve ortalayan yeni kural */
+    [data-testid="stSidebar"] [data-testid="stImage"] img {
+        max-width: 65% !important; /* Logoyu sidebar genişliğinin %65'ine çeker */
+        height: auto !important;
+        margin: 0 auto !important;
+        display: block !important;
+        border-radius: 8px !important; /* Eğer logo köşeliyse hafif yumuşatır */
     }
 
     /* 4. SORUNSUZ ÇALIŞAN SADE VE ŞIK MAT CAM KARTLAR */
