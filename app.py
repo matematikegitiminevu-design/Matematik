@@ -640,40 +640,51 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     with cikis_col:
         st.markdown("<div style='height: 25px;'></div>", unsafe_allow_html=True)
         
-        # --- MİNİMAL VE MODERN ÇIKIŞ BUTONU (CSS ÖZELLEŞTİRMELİ) ---
-        html_logout = """
-        <style>
-            .minimal-logout-btn div input, .minimal-logout-btn button {
+        # --- MAVİ KUTUYU KESİN OLARAK SİLEN AGRESİF CSS ---
+        st.markdown(
+            """
+            <style>
+            /* Streamlit'in genel buton kurallarını bu özel buton için tamamen eziyoruz */
+            div.stButton > button[key*="logout_top_right_minimal"] {
+                background: transparent !important;
                 background-color: transparent !important;
-                color: #94a3b8 !important; /* Soluk gri renk */
-                border: 1px solid rgba(148, 163, 184, 0.2) !important;
+                color: #94a3b8 !important;
+                border: 1px solid rgba(148, 163, 184, 0.25) !important;
                 border-radius: 8px !important;
                 font-size: 0.85rem !important;
                 font-weight: 500 !important;
                 padding: 6px 12px !important;
-                transition: all 0.2s ease-in-out !important;
                 box-shadow: none !important;
                 transform: none !important;
+                transition: all 0.2s ease-in-out !important;
             }
-            .minimal-logout-btn button:hover {
-                color: #ef4444 !important; /* Üzerine gelince soft kırmızı */
-                background-color: rgba(239, 68, 68, 0.08) !important; /* Hafif kırmızı arka plan */
-                border-color: rgba(239, 68, 68, 0.3) !important;
+            
+            /* Üzerine gelindiğinde tetiklenecek modern hover efekti */
+            div.stButton > button[key*="logout_top_right_minimal"]:hover {
+                color: #ef4444 !important;
+                background: rgba(239, 68, 68, 0.08) !important;
+                background-color: rgba(239, 68, 68, 0.08) !important;
+                border-color: rgba(239, 68, 68, 0.4) !important;
+                box-shadow: 0 4px 12px rgba(239, 68, 68, 0.1) !important;
             }
-        </style>
-        <div class="minimal-logout-btn">
-        """
-        st.markdown(html_logout, unsafe_allow_html=True)
+            
+            /* Tıklanma anındaki (active) mavi parlamayı da engelliyoruz */
+            div.stButton > button[key*="logout_top_right_minimal"]:active {
+                background: rgba(239, 68, 68, 0.15) !important;
+                background-color: rgba(239, 68, 68, 0.15) !important;
+            }
+            </style>
+            """,
+            unsafe_allow_html=True
+        )
         
-        # Butonun kendisi (CSS sınıfının içine sarmalandı)
-        if st.button("🔴 Oturumu Kapat", key="logout_top_right_minimal", use_container_width=True):
+        # Butonun kendisi (Anahtar kelime eşleşmesi için key ismine dikkat)
+        if st.button("🚪 Oturumu Kapat", key="logout_top_right_minimal", use_container_width=True):
             st.session_state["aktif_user"] = None
             st.session_state["sayfa"] = "ana_menu"
             st.toast("Oturum kapatıldı.", icon="👋")
             time.sleep(0.6)
             st.rerun()
-            
-        st.markdown("</div>", unsafe_allow_html=True)
     
     
     # --- 📢 2. BÖLÜM (YENİ YERİ): CANLI BİLDİRİM VE DUYURU BANDI ---
