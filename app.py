@@ -665,7 +665,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 font-weight: 500 !important;
                 padding: 4px 6px !important;
                 cursor: pointer;
-                width: 100%;
+                width: auto;
                 text-align: center;
                 transition: all 0.2s ease-in-out !important;
                 display: inline-block;
