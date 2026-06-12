@@ -114,7 +114,7 @@ st.set_page_config(
 st.markdown(
     """  
     <style> 
-    /* 1. AKADEMİK DOKULU VE PREMIUM ARKA PLAN (Siyah Değil, Canlı Lacivert/Safir) */
+    /* 1. AKADEMİK DOKULU VE PREMIUM ARKA PLAN */
     html, body, [data-testid="stAppViewContainer"], .stApp {
         background-color: #0b1426 !important;
         background-image: 
@@ -130,13 +130,13 @@ st.markdown(
         background: transparent !important;
     }
 
-    /* 2. NET VE GÖZÜ YORMAYAN YAZI SİSTEMİ */
+    /* 2. NET YAZI SİSTEMİ */
     h1, h2, h3, h4, h5, h6, p, span, label {
         color: #f8fafc !important;
         font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
     }
 
-    /* 3. KURUMSUR SOL MENÜ (SIDEBAR) */
+    /* 3. KURUMSAL SOL MENÜ (SIDEBAR) */
     [data-testid="stSidebar"] {
         background: rgba(11, 20, 38, 0.8) !important;
         backdrop-filter: blur(20px) !important;
@@ -180,41 +180,48 @@ st.markdown(
         border-bottom: 2px solid #6366f1 !important;
     }
 
-    /* 6. DENGELİ, AKADEMİK SAFİR BUTONLAR (GÖZÜ İRİTE ETMEYEN ŞIK MAVİ) */
+    /* 6. DENGELİ, AKADEMİK SAFİR BUTONLAR VE METİN KORUMASI */
     div.stButton > button:first-child, .stLinkButton a {
         background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%) !important;
-        color: #ffffff !important;
         border: 1px solid rgba(255, 255, 255, 0.1) !important;
         border-radius: 10px !important;
-        font-weight: 600 !important;
-        font-size: 0.9rem !important;
         padding: 10px 22px !important;
         box-shadow: 0 4px 12px rgba(30, 64, 175, 0.2) !important;
         transition: all 0.25s ease !important;
     }
+    
+    /* Buton içindeki metinlerin görünürlüğünü kesin olarak garanti altına alıyoruz */
+    div.stButton > button:first-child p, 
+    div.stButton > button:first-child span, 
+    div.stButton > button:first-child div {
+        color: #ffffff !important;
+        font-size: 0.95rem !important;
+        font-weight: 600 !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
     div.stButton > button:first-child:hover, .stLinkButton a:hover {
         background: linear-gradient(135deg, #2563eb 0%, #60a5fa 100%) !important;
         transform: translateY(-1px) !important;
         box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35) !important;
-        color: white !important;
-    }
-    
-    /* Pasif Butonlar */
-    div.stButton > button:disabled {
-        background: rgba(255, 255, 255, 0.03) !important;
-        color: #475569 !important;
-        border: 1px solid rgba(255, 255, 255, 0.05) !important;
     }
 
-    /* Sol Menü Çıkış Butonu */
-    div[data-testid="stSidebar"] div.stButton > button {
-        background: rgba(239, 68, 68, 0.08) !important;
-        border: 1px solid rgba(239, 68, 68, 0.2) !important;
-        color: #fca5a5 !important;
+    /* 7. SOL ÜSTTEKİ YAZIYI BUTONLARI BOZMADAN NOKTA ATIŞI SİLME */
+    [data-testid="stSidebarCollapsedControl"] {
+        font-size: 0px !important;
+        color: transparent !important;
     }
-    div[data-testid="stSidebar"] div.stButton > button:hover {
-        background: rgba(239, 68, 68, 0.2) !important;
-        color: #ffffff !important;
+    /* Çeviri eklentilerinin sızdırdığı metin katmanlarını tamamen sıfırla */
+    [data-testid="stSidebarCollapsedControl"] * {
+        font-size: 0px !important;
+        color: transparent !important;
+        display: none !important;
+    }
+    /* Orijinal açma kapama butonunun çizgilerini koru */
+    [data-testid="stSidebarCollapsedControl"] button {
+        display: flex !important;
     }
 
     /* BANNER ALANI */
@@ -225,24 +232,6 @@ st.markdown(
         padding: 24px;
         border-radius: 12px;
         margin-bottom: 25px;
-    }
-
-    /* --- KRİTİK HATA DÜZELTME MOTORU (DOUBLE_ARROW GİZLEME) --- */
-    [data-testid="stSidebarCollapsedControl"] span, 
-    [data-testid="stSidebarCollapsedControl"]::before,
-    .st-emotion-cache-6q9sum, 
-    .st-emotion-cache-1wbqy5l,
-    [class*="st-emotion-cache"] div:dir(ltr) > span {
-        font-size: 0px !important;
-        color: transparent !important;
-        display: none !important;
-        visibility: hidden !important;
-    }
-    summary span {
-        font-size: inherit !important;
-    }
-    summary::marker {
-        color: #3b82f6 !important;
     }
     </style>
     """,
