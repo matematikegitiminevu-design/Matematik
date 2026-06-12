@@ -634,7 +634,8 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     
     st.title("📚 Matematik Ders Notları ve PDF Arşivi")
     st.markdown(f"**Hoş geldin {kullanici}!** Bu arşiv, akademik yolculuğunda sana rehberlik etmek için özenle hazırlanmıştır. Aşağıdaki sekmeleri kullanarak ders notlarına erişebilirsin. Bir sorun olduğunda aşağı menüde bulunan iletişim kanallarından bana ulaşabilirsin. **Başarılar.**")
-    
+
+    st.markdown("---")
 
     if st.query_params.get("aksiyon") == "cikis":
         st.session_state["aktif_user"] = None
@@ -842,7 +843,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             }
         </style>
         <a href="?aksiyon=cikis" target="_self" class="pure-logout-btn">
-            🚪 Oturumu Kapat
+            🔐 Güvenli Çıkış
         </a>
         """
         st.markdown(html_bottom_logout, unsafe_allow_html=True)
