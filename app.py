@@ -35,7 +35,7 @@ HEDEF_ZAMAN_GENEL = "2026-06-14 00:00:00"
 HEDEF_ZAMAN_ARSIV = "2026-06-08 00:00:00"
 
 # 📢 POPUP DUYURU AYARI
-DUYURU_POPUP_AKTIF = False  # Popup duyuruyu açmak için True, kapatmak için False yapın
+DUYURU_POPUP_AKTIF = True  # Popup duyuruyu açmak için True, kapatmak için False yapın
 # =========================================================================
 
 # --- POPUP (DİYALOG) PENCERESİ FONKSİYONU ---
@@ -48,8 +48,10 @@ def duyuru_popup():
         <b>CYHN Matematik Portalı</b> altyapısını tamamen yeniledik. 
         </p>
         <p style="color: #94a3b8; font-size: 0.9rem; line-height: 1.5;">
-        Ders notları paneli, yeni nesil güvenlik protokolleri ve mobil cihazlarla tam uyumlu 
-        minimal arayüz güncellemeleri aktif edilmiştir. Keyifli çalışmalar dileriz!
+        Sizlere daha akıcı, modern ve kusursuz bir akademik deneyim sunabilmek adına 
+        CYHN Matematik Portalı'nı baştan aşağı yeniledik! 
+        Platform altyapısını güçlendirerek hem görsel hem de işlevsel olarak tamamen yeni nesil bir standarda geçiş yaptık. 
+        Sürekli gelişen yapımızla, eğitim yolculuğunuzda her an yanınızda olmaya devam ediyoruz.
         </p>
         """, 
         unsafe_allow_html=True
