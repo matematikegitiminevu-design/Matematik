@@ -2,18 +2,27 @@ import streamlit as st
 from datetime import datetime
 from zoneinfo import ZoneInfo
 import time
+import os
 
 # =========================================================================
-# 🔍 GOOGLE SEARCH CONSOLE DOĞRULAMA KODU (Görünmez Katman)
+# 🔍 GOOGLE SEARCH CONSOLE - HTML DOSYA SUNUCU MOTORU
 # =========================================================================
-st.markdown(
-    """
-    <div style="display: none;">
-        <meta name="google-site-verification" content="O9e2wXECkBmV8edl91Ov0QPjWT9qakF70z9H3fGBgVI" />
-    </div>
-    """, 
-    unsafe_allow_html=True
-)
+# Adres çubuğunda Google dosyası arandığında Streamlit'i durdurup dosyayı okutur.
+if "mod" in st.query_params:
+    pass # Mevcut admin kontrolün için açık kalsın
+
+# Google botu burayı tetiklediğinde çalışır:
+# Tırnak içindeki ismi Google'dan indirdiğin dosyanın adıyla BİREBİR değiştir!
+google_dosya_adi = "googlea1b2c3d4e5f6.html" 
+
+# Tarayıcı adres çubuğunu kontrol ediyoruz
+# Eğer url sonuna bir şekilde yansırsa ya da sorgu olarak yakalayabilirsek yönlendiriyoruz
+# Streamlit Cloud üzerinde doğrudan dosya tetiklemek için en garanti yöntem:
+if os.path.exists(google_dosya_adi):
+    with open(google_dosya_adi, "r", encoding="utf-8") as f:
+        html_icerik = f.read()
+        # Google'a aradığı içeriği yalın olarak sunuyoruz
+        st.write(f"", unsafe_allow_html=True)
 # =========================================================================
 
 #---KULLANICI İSİMLERİ VE ŞİFRELERİ ---
