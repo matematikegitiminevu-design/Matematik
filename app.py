@@ -660,8 +660,8 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 background-color: transparent !important;
                 color: #94a3b8 !important;
                 border: 1px solid rgba(148, 163, 184, 0.25) !important;
-                border-radius: 6px !important;
-                font-size: 0.78rem !important;
+                border-radius: 7px !important;
+                font-size: 0.80rem !important;
                 font-weight: 500 !important;
                 padding: 4px 6px !important;
                 cursor: pointer;
