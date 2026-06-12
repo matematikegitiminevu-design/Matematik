@@ -631,18 +631,11 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     
     kullanici = st.session_state.get("aktif_user", "Kullanıcı").capitalize()
     
-    # Başlık ve minimal çıkış butonunun yerleşimi
-    baslik_col, cikis_col = st.columns([4, 1])
     
-    with baslik_col:
         st.title("📚 Matematik Ders Notları ve PDF Arşivi")
         st.markdown(f"**Hoş geldin {kullanici}!** Bu arşiv, akademik yolculuğunda sana rehberlik etmek için özenle hazırlanmıştır. Aşağıdaki sekmeleri kullanarak ders notlarına erişebilirsin. Bir sorun olduğunda aşağı menüde bulunan iletişim kanallarından bana ulaşabilirsin. **Başarılar.**")
         
-    with cikis_col:
-        st.markdown("<div style='height: 25px;'></div>", unsafe_allow_html=True)
-        
-        # --- URL PARAMETRESİ KONTROLÜ (GÖRÜNMEZ TETİKLEYİCİ) ---
-        # Eğer URL'de "aksiyon=cikis" parametresi varsa oturumu kapatıp temizliyoruz
+
         if st.query_params.get("aksiyon") == "cikis":
             st.session_state["aktif_user"] = None
             st.session_state["sayfa"] = "ana_menu"
@@ -652,40 +645,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             time.sleep(1.2)
             st.rerun()
 
-        # --- SAF HTML & CSS MİNİMAL BUTON ---
-        # Tıklandığında sayfaya sadece ufak bir URL parametresi ekleyip yeniler
-        html_perfect_logout = """
-        <style>
-            .pure-logout-btn {
-                background: transparent !important;
-                background-color: transparent !important;
-                color: #94a3b8 !important;
-                border: 1px solid rgba(148, 163, 184, 0.25) !important;
-                border-radius: 7px !important;
-                font-size: 0.80rem !important;
-                font-weight: 500 !important;
-                padding: 4px 6px !important;
-                cursor: pointer;
-                width: auto !important;
-                text-align: center;
-                transition: all 0.2s ease-in-out !important;
-                display: inline-block;
-                text-decoration: none !important;
-                box-sizing: border-box;
-            }
-            .pure-logout-btn:hover {
-                color: #ef4444 !important;
-                background-color: rgba(239, 68, 68, 0.08) !important;
-                border-color: rgba(239, 68, 68, 0.4) !important;
-            }
-        </style>
-        
-        <a href="?aksiyon=cikis" target="_self" class="pure-logout-btn">
-            🔐 Güvenli Çıkış
-        </a>
-        """
-        st.markdown(html_perfect_logout, unsafe_allow_html=True)
-    
+
     
     # --- 📢 2. BÖLÜM (YENİ YERİ): CANLI BİLDİRİM VE DUYURU BANDI ---
     st.markdown(
@@ -843,6 +803,50 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             st.link_button("🎓 UBYS'ye Bağlan", "https://ubys.nevsehir.edu.tr", use_container_width=True)
 
     st.markdown("<div style='height: 15px;'></div>", unsafe_allow_html=True)
+
+    # --- 🎯 EN ALT KISIM: SAF HTML & CSS MİNİMAL ÇIKISH BUTONU ---
+    # URL Parametresi Dinleyicisi (Arka planda çalışır, buton üretmez)
+    if st.query_params.get("aksiyon") == "cikis":
+        st.session_state["aktif_user"] = None
+        st.session_state["sayfa"] = "ana_menu"
+        st.query_params.clear()
+        st.toast("Oturum kapatıldı.", icon="👋")
+        time.sleep(0.5)
+        st.rerun()
+
+    # Ekranın tam ortasında kibar durması için 3 sütun açıyoruz, butonu ortaya koyuyoruz
+    bos_sol, buton_orta, bos_sag = st.columns([1.5, 1, 1.5])
+    with buton_orta:
+        html_bottom_logout = """
+        <style>
+            .pure-logout-btn {
+                background: transparent !important;
+                background-color: transparent !important;
+                color: #94a3b8 !important;
+                border: 1px solid rgba(148, 163, 184, 0.25) !important;
+                border-radius: 6px !important;
+                font-size: 0.78rem !important;
+                padding: 5px 12px !important;
+                cursor: pointer;
+                width: 100% !important;
+                text-align: center;
+                transition: all 0.2s ease-in-out !important;
+                display: inline-block;
+                text-decoration: none !important;
+                box-sizing: border-box;
+            }
+            .pure-logout-btn:hover {
+                color: #ef4444 !important;
+                background-color: rgba(239, 68, 68, 0.08) !important;
+                border-color: rgba(239, 68, 68, 0.4) !important;
+            }
+        </style>
+        <a href="?aksiyon=cikis" target="_self" class="pure-logout-btn">
+            🚪 Oturumu Kapat
+        </a>
+        """
+        st.markdown(html_bottom_logout, unsafe_allow_html=True)
+        
     
     # Alt Bilgi
     st.markdown("---")
