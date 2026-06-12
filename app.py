@@ -33,6 +33,9 @@ ARSIV_BAKIM_MODU = False     # Sadece ders arşivini kapatmak için True yapın
 
 HEDEF_ZAMAN_GENEL = "2026-06-14 00:00:00"
 HEDEF_ZAMAN_ARSIV = "2026-06-08 00:00:00"
+
+# 📢 POPUP DUYURU AYARI
+DUYURU_POPUP_AKTIF = True  # Popup duyuruyu açmak için True, kapatmak için False yapın
 # =========================================================================
 
 # --- POPUP (DİYALOG) PENCERESİ FONKSİYONU ---
@@ -630,7 +633,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
 
     # ─── 📢 ADIM 3: POPUP KONTROLÜ (TAM OLARAK BURAYA GELİYOR) ───
     # Eğer kullanıcı giriş yaptıysa ve duyuruyu henüz görmediyse popup'ı aç
-    if "duyuru_gosterildi" in st.session_state and not st.session_state["duyuru_gosterildi"]:
+    if DUYURU_POPUP_AKTIF and "duyuru_gosterildi" in st.session_state and not st.session_state["duyuru_gosterildi"]:
         duyuru_popup()
         st.stop()  # Popup kapanana kadar sayfanın geri kalanını (bakım modu dahil) yüklemeyi durdurur
     # ───────────────────────────────────────────────────────────
