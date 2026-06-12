@@ -692,6 +692,35 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             st.markdown(f"<h2 style='margin:0; padding-top:5px; color:#f59e0b !important;'>{datetime.now().strftime('%H:%M')} TR</h2>", unsafe_allow_html=True)
 
     st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
+
+    # --- 🏛️ 2. BÖLÜM: HOŞ GELDİNİZ VE HAFTANIN TEOREMİ ---
+    panel_sol, panel_sag = st.columns([1.8, 1.2])
+    
+    with panel_sol:
+        with st.container(border=True):
+            st.markdown(f"### 👋 Hoş Geldin, {kullanici}!")
+            st.markdown(
+                """
+                Bu portal, matematik eğitimi yolculuğunda akademik kaynakları daha düzenli takip edebilmen, 
+                ders notlarına hızlıca göz atabilmen ve takıldığın yerde yapay zekâ desteği alabilmen için tasarlandı.
+                
+                Aşağıdaki sekmelerden ilgili dersin içeriğini genişletebilir, **"Ders Notunu Aç"** butonuna tıklayarak 
+                indirme kısıtlamalı güvenli önizleme modunda dökümanları inceleyebilirsin.
+                """
+            )
+            
+    with panel_sag:
+        with st.container(border=True):
+            st.markdown("### 📐 Günün Matematik Notu")
+            st.markdown(
+                """
+                **Euler Özdeşliği:** `e^(i*π) + 1 = 0`  
+                *Analiz, trigonometri ve karmaşık sayıları tek bir denklemde birleştiren, matematiğin en asil formüllerinden biri.*
+                """
+            )
+
+    st.markdown("<span style='margin-top:15px; display:block;'></span>", unsafe_allow_html=True)
+    
     # --------------------------
     st.markdown("---")
 
