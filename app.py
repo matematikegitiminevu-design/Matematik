@@ -227,30 +227,8 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-# --- LOGOYU YAN MENÜYE EKLEME ---
-st.sidebar.image("mc250.png") 
 
-# Logonun altına ince bir ayırıcı çizgi ve başlık 
-st.sidebar.markdown("---")
-st.sidebar.write("### CYHN Matematik Portalı")
-# İmza tarzı, ince yazı tasarımı
-st.sidebar.markdown(
-    """
-    <style>
-    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap');
-    .signature {
-        font-family: 'Dancing Script', cursive;
-        font-size: 24px;
-        font-weight: 400;
-        color: #555555;
-        margin-top: -10px;
-    }
-    </style>
-    <p class="signature">Muharrem Ceyhan</p>
-    """, 
-    unsafe_allow_html=True
-)
-st.sidebar.markdown("---")
+
 
 
 # --- DURUM YÖNETİMİ (Session State) ---
