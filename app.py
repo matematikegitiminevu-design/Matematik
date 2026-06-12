@@ -699,11 +699,11 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         col1, col2 = st.columns(2)
         with col1:
             with st.container(border=True):
-                st.markdown("### Lineer Cebir 1")
+                st.markdown("**Lineer Cebir 1**")
                 st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln1")
         with col2:
             with st.container(border=True):
-                st.markdown("### Lineer Cebir 2")
+                st.markdown("**Lineer Cebir 2**")
                 if st.button("📝 Ders Notunu Aç", key="lin2", type="primary", use_container_width=True):
                     pdf_popup_ac("1nXutG6Fz6JtYFGYDlwohTySE6LwTe4Tg")
                     
