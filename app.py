@@ -719,6 +719,22 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 """
             )
 
+    # --- 📞 2.5. BÖLÜM: ANA SAYFA HIZLI ERİŞİM VE İLETİŞİM BANDI ---
+    st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
+    
+    with st.container(border=True):
+        st.markdown("<p style='margin-top:0; margin-bottom:10px; color:#94a3b8; font-size:0.9rem; font-weight:600;'>🔗 HIZLI ERİŞİM VE DESTEK KANALLARI</p>", unsafe_allow_html=True)
+        link_col1, link_col2, link_col3, link_col4 = st.columns(4)
+        
+        with link_col1:
+            st.link_button("✨ cyhnAI Yapay Zekâ Asistanı", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc", use_container_width=True)
+        with link_col2:
+            st.link_button("📞 WhatsApp Canlı Destek", "https://wa.me/905061905437?text=Merhaba...", use_container_width=True)
+        with link_col3:
+            st.link_button("📩 Akademik İletişim Maili", "mailto:matematikegitiminevu@gmail.com", use_container_width=True)
+        with link_col4:
+            st.link_button("🎓 NEVÜ UBYS Sistemi", "https://ubys.nevsehir.edu.tr", use_container_width=True)
+
     st.markdown("<span style='margin-top:15px; display:block;'></span>", unsafe_allow_html=True)
     
     # --------------------------
