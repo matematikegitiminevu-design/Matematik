@@ -729,7 +729,6 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
 
     with tab0:
         st.subheader("Güncel Duyurular Bölümü")
-        st.warning("❗Bu kısımda Matematik Eğitimi Anabilimdalının güncel bilgileri paylaşılmaktadır.")
         col1, col2, col3 = st.columns(3)
         with col1:
             with st.container(border=True):
@@ -762,7 +761,6 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                     
     with tab2:
         st.subheader("Analiz Dersi Ders Notları")
-        st.warning("❗Analiz 1 PDF dosyası henüz yüklenmemiştir!")
         col1, col2, col3 = st.columns(3)
         with col1:
             with st.container(border=True):
@@ -780,7 +778,6 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 
     with tab3:
         st.subheader("Soyut Matematik Ders Notu")
-        st.warning("❗Soyut matematik dersinde kullanılmış olan notlar aşağıdadır.")
         if st.button("📝 Ders Notunu Aç", key="soyut1", use_container_width=True):
             pdf_popup_ac("1pyaZAD35q0kIpXduqdjxpz4ylaFd4B5z")
 
