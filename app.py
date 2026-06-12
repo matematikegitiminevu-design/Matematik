@@ -601,6 +601,9 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                     st.toast(f"🔑 Giriş Başarılı! Hoş geldin {kullanici_adi.capitalize()}.", icon="🎉")
                     st.balloons()
                     time.sleep(1.2)
+                    # --- POPUP TETİKLEYİCİ BAYRAĞI ---
+                    # Kullanıcı yeni girdi, duyuru henüz gösterilmedi diyoruz
+                    st.session_state["duyuru_gosterildi"] = False
                     st.session_state["aktif_user"] = kullanici_adi
                     st.session_state["sayfa"] = "notlar_arsivi"
                     st.rerun()
