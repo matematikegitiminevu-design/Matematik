@@ -644,7 +644,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             st.session_state["aktif_user"] = None
             st.session_state["sayfa"] = "ana_menu"
             st.toast("Oturum güvenli bir şekilde kapatıldı.", icon="👋")
-            time.sleep(0.8)
+            time.sleep(1.2)
             st.rerun()
             
     st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
