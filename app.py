@@ -700,12 +700,10 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         with col1:
             with st.container(border=True):
                 st.markdown("### Lineer Cebir 1")
-                st.caption("Dönem: Güz | Durum: Hazırlanıyor")
                 st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln1")
         with col2:
             with st.container(border=True):
                 st.markdown("### Lineer Cebir 2")
-                st.caption("Dönem: Bahar | Durum: Aktif")
                 if st.button("📝 Ders Notunu Aç", key="lin2", type="primary", use_container_width=True):
                     pdf_popup_ac("1nXutG6Fz6JtYFGYDlwohTySE6LwTe4Tg")
                     
