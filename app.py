@@ -3,6 +3,19 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 import time
 
+# =========================================================================
+# 🔍 GOOGLE SEARCH CONSOLE DOĞRULAMA KODU (Görünmez Katman)
+# =========================================================================
+st.markdown(
+    """
+    <div style="display: none;">
+        <meta name="google-site-verification" content="O9e2wXECkBmV8edl91Ov0QPjWT9qakF70z9H3fGBgVI" />
+    </div>
+    """, 
+    unsafe_allow_html=True
+)
+# =========================================================================
+
 #---KULLANICI İSİMLERİ VE ŞİFRELERİ ---
 USERS = {
     "muharrem": "mat2026",
@@ -28,7 +41,7 @@ USERS = {
 # =========================================================================
 # 🛠️ BAKIM MODU AYARLARI
 # =========================================================================
-BAKIM_MODU = True          # Tüm siteyi kapatmak için True yapın
+BAKIM_MODU = False          # Tüm siteyi kapatmak için True yapın
 ARSIV_BAKIM_MODU = False     # Sadece ders arşivini kapatmak için True yapın
 
 HEDEF_ZAMAN_GENEL = "2026-06-14 00:00:00"
