@@ -640,10 +640,22 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     with cikis_col:
         st.markdown("<div style='height: 25px;'></div>", unsafe_allow_html=True)
         
-        # --- JS TETİKLEMELİ GERÇEK MİNİMAL BUTON ---
-        html_final_logout = """
+        # --- URL PARAMETRESİ KONTROLÜ (GÖRÜNMEZ TETİKLEYİCİ) ---
+        # Eğer URL'de "aksiyon=cikis" parametresi varsa oturumu kapatıp temizliyoruz
+        if st.query_params.get("aksiyon") == "cikis":
+            st.session_state["aktif_user"] = None
+            st.session_state["sayfa"] = "ana_menu"
+            # Parametreyi URL'den temizliyoruz ki sonsuz döngüye girmesin
+            st.query_params.clear()
+            st.toast("Oturum kapatıldı.", icon="👋")
+            time.sleep(0.5)
+            st.rerun()
+
+        # --- SAF HTML & CSS MİNİMAL BUTON ---
+        # Tıklandığında sayfaya sadece ufak bir URL parametresi ekleyip yeniler
+        html_perfect_logout = """
         <style>
-            .custom-logout-btn {
+            .pure-logout-btn {
                 background: transparent !important;
                 background-color: transparent !important;
                 color: #94a3b8 !important;
@@ -651,46 +663,27 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 border-radius: 8px !important;
                 font-size: 0.85rem !important;
                 font-weight: 500 !important;
-                padding: 6px 16px !important;
+                padding: 7px 16px !important;
                 cursor: pointer;
                 width: 100%;
                 text-align: center;
                 transition: all 0.2s ease-in-out !important;
                 display: inline-block;
+                text-decoration: none !important;
+                box-sizing: border-box;
             }
-            .custom-logout-btn:hover {
+            .pure-logout-btn:hover {
                 color: #ef4444 !important;
                 background-color: rgba(239, 68, 68, 0.08) !important;
                 border-color: rgba(239, 68, 68, 0.4) !important;
             }
-            
-            /* Streamlit'in kendi mavi butonunu ekrandan tamamen siliyoruz */
-            .hidden-trigger-container div.stButton > button {
-                opacity: 0 !important;
-                height: 0px !important;
-                width: 0px !important;
-                padding: 0 !important;
-                margin: 0 !important;
-                border: none !important;
-                position: absolute !important;
-            }
         </style>
         
-        <div class="custom-logout-btn" onclick="document.querySelector('.hidden-trigger-container button').click();">
+        <a href="?aksiyon=cikis" target="_self" class="pure-logout-btn">
             🚪 Oturumu Kapat
-        </div>
+        </a>
         """
-        st.markdown(html_final_logout, unsafe_allow_html=True)
-        
-        # Tamamen görünmez yapılan ve yer kaplamayan Streamlit tetikleyicisi
-        st.markdown('<div class="hidden-trigger-container">', unsafe_allow_html=True)
-        if st.button("Gizli", key="final_hidden_logout_trigger"):
-            st.session_state["aktif_user"] = None
-            st.session_state["sayfa"] = "ana_menu"
-            st.toast("Oturum kapatıldı.", icon="👋")
-            time.sleep(0.6)
-            st.rerun()
-        st.markdown('</div>', unsafe_allow_html=True)
+        st.markdown(html_perfect_logout, unsafe_allow_html=True)
     
     
     # --- 📢 2. BÖLÜM (YENİ YERİ): CANLI BİLDİRİM VE DUYURU BANDI ---
