@@ -35,6 +35,29 @@ HEDEF_ZAMAN_GENEL = "2026-06-14 00:00:00"
 HEDEF_ZAMAN_ARSIV = "2026-06-08 00:00:00"
 # =========================================================================
 
+# --- POPUP (DİYALOG) PENCERESİ FONKSİYONU ---
+@st.dialog("📢 ÖNEMLİ SİSTEM DUYURUSU", width="large")
+def duyuru_popup():
+    st.markdown(
+        """
+        <p style="color: #cbd5e1; font-size: 1rem; line-height: 1.6;">
+        Merhaba, platformumuza hoş geldiniz! Sizlere daha akıcı ve modern bir deneyim sunabilmek adına 
+        <b>CYHN Matematik Portalı</b> altyapısını tamamen yeniledik. 
+        </p>
+        <p style="color: #94a3b8; font-size: 0.9rem; line-height: 1.5;">
+        Ders notları paneli, yeni nesil güvenlik protokolleri ve mobil cihazlarla tam uyumlu 
+        minimal arayüz güncellemeleri aktif edilmiştir. Keyifli çalışmalar dileriz!
+        </p>
+        """, 
+        unsafe_allow_html=True
+    )
+    st.markdown("---")
+    # Kullanıcı bu butona basınca popup kapanır ve sayfayı yenileyerek içeriği açar
+    if st.button("Anladım, Kapat", use_container_width=True):
+        st.session_state["duyuru_gosterildi"] = True
+        st.rerun()
+# =========================================================================        
+
 # 🔐 GİZLI URL PARAMETRESİ KONTROLÜ (Adres çubuğunda ?mod=admin araması yapar)
 gizli_yonetici_izni = str(st.query_params.get("mod")).lower() == "admin"
 
