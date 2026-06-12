@@ -575,7 +575,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 if not onay:
                     st.error("Lütfen önce şartları onaylayınız!")
                 elif kullanici_adi in USERS and USERS[kullanici_adi] == sifre:
-                    st.toast(f"Giriş başarılı! Yönlendiriliyorsunuz...", icon="🚀")
+                    st.toast(f"🔑 Giriş Başarılı! Hoş geldin {kullanici_adi.capitalize()}.", icon="🎉")
                     st.balloons()
                     time.sleep(1.2)
                     st.session_state["aktif_user"] = kullanici_adi
