@@ -3,20 +3,6 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 import time
 
-# =========================================================================
-# 🔍 YENİ GOOGLE SEARCH CONSOLE DOĞRULAMA KODU (Görünmez Katman)
-# =========================================================================
-# Google'ın sitenizi keşfetmesi ve onaylaması için gereken yeni güncel kod.
-# Görünmez bir HTML alanı olarak sayfanın en tepesinde çalışır.
-st.markdown(
-    """
-    <div style="display: none;">
-        <meta name="google-site-verification" content="wNAumckjM4eN9vioHceei9lRx_jOj4-2498qu3Mz1Es" />
-    </div>
-    """, 
-    unsafe_allow_html=True
-)
-# =========================================================================
 
 
 #---KULLANICI İSİMLERİ VE ŞİFRELERİ ---
