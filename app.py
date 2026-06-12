@@ -35,7 +35,7 @@ HEDEF_ZAMAN_GENEL = "2026-06-14 00:00:00"
 HEDEF_ZAMAN_ARSIV = "2026-06-08 00:00:00"
 
 # 📢 POPUP DUYURU AYARI
-DUYURU_POPUP_AKTIF = True  # Popup duyuruyu açmak için True, kapatmak için False yapın
+DUYURU_POPUP_AKTIF = False  # Popup duyuruyu açmak için True, kapatmak için False yapın
 # =========================================================================
 
 # --- POPUP (DİYALOG) PENCERESİ FONKSİYONU ---
