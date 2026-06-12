@@ -556,12 +556,11 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 """, 
                 unsafe_allow_html=True
             )
-            st.markdown("<div style='height: 5px;'></div>", unsafe_allow_html=True)
-            onay = st.checkbox("Şartları kabul ediyorum.")
+            # 2. Onay Kutusu (Sözleşmenin hemen dışına, görünür yere aldık)
+        st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
+        onay = st.checkbox("Lisans ve kullanım sözleşmesini okudum, kabul ediyorum.")
             
         st.markdown("<div style='height: 5px;'></div>", unsafe_allow_html=True)
-        
-        # Giriş Alanları
         st.markdown('<span class="cyhn-label">👤 Kullanıcı Adı</span>', unsafe_allow_html=True)
         kullanici_adi = st.text_input("Kullanıcı Adı Giriş Paneli", label_visibility="collapsed", placeholder="Kullanıcı adınız...").strip().lower()
         
@@ -570,7 +569,6 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
         
         st.markdown("<div style='height: 25px;'></div>", unsafe_allow_html=True)
         
-        # Butonlar Grid Düzeni (Giriş Yap & Şifre İste)
         btn_c1, btn_c2 = st.columns(2)
         with btn_c1:
             if st.button("Giriş Yap", use_container_width=True):
