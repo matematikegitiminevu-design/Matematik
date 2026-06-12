@@ -634,8 +634,8 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     baslik_col, cikis_col = st.columns([4, 1])
     
     with baslik_col:
-        st.title("📊 CYHN Akademik Kontrol Paneli")
-        st.markdown(f"**Hoş geldin {kullanici}!** Bu arşiv, akademik yolculuğunda sana rehberlik etmek için özenle hazırlanmıştır. Aşağıdaki sekmeleri kullanarak ders notlarına erişebilir, çalışmalarını derinleştirebilirsin. Bir sorun olduğunda yan menüde bulunan iletişim kanallarından bana ulaşabilirsin. **Başarılar.****")
+        st.title("📚 Matematik Ders Notları ve PDF Arşivi")
+        st.markdown(f"**Hoş geldin {kullanici}!** Bu arşiv, akademik yolculuğunda sana rehberlik etmek için özenle hazırlanmıştır. Aşağıdaki sekmeleri kullanarak ders notlarına erişebilirsin. Bir sorun olduğunda aşağı menüde bulunan iletişim kanallarından bana ulaşabilirsin. **Başarılar.**")
         
     with cikis_col:
         st.markdown("<div style='height: 25px;'></div>", unsafe_allow_html=True)
@@ -680,7 +680,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         </style>
         
         <a href="?aksiyon=cikis" target="_self" class="pure-logout-btn">
-            🚪 Oturumu Kapat
+            🔐 Güvenli Çıkış
         </a>
         """
         st.markdown(html_perfect_logout, unsafe_allow_html=True)
