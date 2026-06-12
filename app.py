@@ -715,73 +715,9 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln1")
         with col2:
             with st.container(border=True):
-                st.markdown(
-        """
-        <style>
-            /* Kartın Genel Kutusu */
-            .math-card {
-                background: rgba(30, 41, 59, 0.4) !important; /* Gece mavisi şeffaf arka plan */
-                backdrop-filter: blur(8px);
-                border: 1px solid rgba(148, 163, 184, 0.1) !important;
-                border-radius: 12px !important;
-                padding: 20px !important;
-                margin-vertical: 15px !important;
-                transition: all 0.3s ease-in-out !important;
-                position: relative;
-                overflow: hidden;
-            }
-            
-            /* Fareyle Üzerine Gelindiğinde (Hover Efekti) */
-            .math-card:hover {
-                transform: translateY(-5px) !important; /* Kartı hafif yukarı kaldırır */
-                border-color: rgba(59, 130, 246, 0.4) !important; /* Kenarlıkları mavi parlatır */
-                box-shadow: 0 10px 25px rgba(59, 130, 246, 0.1) !important; /* Hafif neon gölge */
-                background: rgba(30, 41, 59, 0.6) !important;
-            }
-            
-            /* Kart Başlığı */
-            .math-card h3 {
-                color: #f8fafc !important;
-                margin: 0 0 8px 0 !important;
-                font-size: 1.2rem !important;
-                font-weight: 600 !important;
-            }
-            
-            /* Kart Açıklaması */
-            .math-card p {
-                color: #94a3b8 !important;
-                margin: 0 0 15px 0 !important;
-                font-size: 0.88rem !important;
-                line-height: 1.4 !important;
-            }
-            
-            /* Sağ Alttaki Küçük Rozet (Badge) */
-            .card-badge {
-                background: rgba(59, 130, 246, 0.15) !important;
-                color: #3b82f6 !important;
-                padding: 4px 10px !important;
-                border-radius: 6px !important;
-                font-size: 0.75rem !important;
-                font-weight: 600 !important;
-                display: inline-block;
-                border: 1px solid rgba(59, 130, 246, 0.3) !important;
-            }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-
-    # 2. KARTIN KENDİSİ (HTML Yapısı)
-    st.markdown(
-        """
-        <div class="math-card">
-            <h3>📐 Lineer Cebir II</h3>
-            <p>Matrisler, Vektör Uzayları ve Lineer Dönüşümler Akademik Not Arşivi.</p>
-            <span class="card-badge">5 PDF Dökümanı</span>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+                st.markdown("**Lineer Cebir 2**")
+                if st.button("📝 Ders Notunu Aç", key="lin2", type="primary", use_container_width=True):
+                    pdf_popup_ac("1nXutG6Fz6JtYFGYDlwohTySE6LwTe4Tg")
                     
     with tab2:
         st.subheader("Analiz Dersi Ders Notları")
