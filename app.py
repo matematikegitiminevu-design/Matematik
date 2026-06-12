@@ -671,20 +671,27 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             
     kullanici = st.session_state["aktif_user"].capitalize()
     
-    st.markdown(
-        f"""
-        <div class="dashboard-banner">
-            <h2 style='margin:0; padding:0; color:#fff; font-size:1.65rem; font-weight:800; letter-spacing:0.5px;'>
-                📚 Akademik PDF Arşivi & Kontrol Paneli
-            </h2>
-            <p style='margin:8px 0 0 0; padding:0; color:#94a3b8; font-size:0.92rem; line-height:1.5;'>
-                Hoş geldin, <b>{kullanici}</b>! Bu kütüphane, akademik yolculuğunda sana rehberlik etmek için özenle optimize edilmiştir. 
-                İhtiyacın olan dokümanı ilgili sekmeden seçerek güvenle inceleyebilirsin. Başarılar dilerim.
-            </p>
-        </div>
-        """, 
-        unsafe_allow_html=True
-    )
+    # --- 📈 1. BÖLÜM: ÜST DURUM METRİK KARTLARI ---
+    kullanici = st.session_state["aktif_user"].capitalize()
+    
+    st.title("📊 CYHN Akademik Kontrol Paneli")
+    st.markdown(f"Güncel akademik durumunuzu gözden geçirin ve ders dokümanlarına erişim sağlayın.")
+    
+    m1, m2, m3 = st.columns(3)
+    with m1:
+        with st.container(border=True):
+            st.markdown("<p style='margin:0; color:#94a3b8; font-size:0.9rem;'>📚 Toplam Aktif Doküman</p>", unsafe_allow_html=True)
+            st.markdown("<h2 style='margin:0; padding-top:5px; color:#3b82f6 !important;'>12+ Akademik PDF</h2>", unsafe_allow_html=True)
+    with m2:
+        with st.container(border=True):
+            st.markdown("<p style='margin:0; color:#94a3b8; font-size:0.9rem;'>✨ Yapay Zekâ Modülü</p>", unsafe_allow_html=True)
+            st.markdown("<h2 style='margin:0; padding-top:5px; color:#10b981 !important;'>cyhnAI Aktif v1.2</h2>", unsafe_allow_html=True)
+    with m3:
+        with st.container(border=True):
+            st.markdown("<p style='margin:0; color:#94a3b8; font-size:0.9rem;'>⏰ Sistem Zaman Dilimi</p>", unsafe_allow_html=True)
+            st.markdown(f"<h2 style='margin:0; padding-top:5px; color:#f59e0b !important;'>{datetime.now().strftime('%H:%M')} TR</h2>", unsafe_allow_html=True)
+
+    st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
     # --------------------------
     st.markdown("---")
 
