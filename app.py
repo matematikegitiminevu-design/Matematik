@@ -114,7 +114,7 @@ st.set_page_config(
 st.markdown(
     """  
     <style> 
-    /* 1. AKADEMİK DOKULU VE PREMIUM ARKA PLAN */
+    /* 1. ÇOK BEĞENİLEN AKADEMİK DOKULU VE PREMIUM ARKA PLAN (Tam İstediğin Renk) */
     html, body, [data-testid="stAppViewContainer"], .stApp {
         background-color: #0b1426 !important;
         background-image: 
@@ -130,118 +130,88 @@ st.markdown(
         background: transparent !important;
     }
 
-    /* 2. NET YAZI SİSTEMİ */
-    h1, h2, h3, h4, h5, h6, p, span, label {
-        color: #f8fafc !important;
-        font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+    /* 2. OKUNABİLİRLİK AYARLARI */
+    h1, h2, h3, h4, h5, h6, p, span, label, .stMarkdown {
+        color: #f8fafc !important; /* Soft beyaz */
+        text-shadow: none !important; /* Göz tırmalayan gölgeler kaldırıldı */
     }
 
-    /* 3. KURUMSAL SOL MENÜ (SIDEBAR) */
+    /* 3. SOL MENÜ (SIDEBAR) */
     [data-testid="stSidebar"] {
-        background: rgba(11, 20, 38, 0.8) !important;
+        background: rgba(11, 19, 43, 0.85) !important;
         backdrop-filter: blur(20px) !important;
         -webkit-backdrop-filter: blur(20px) !important;
-        border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
     }
 
-    /* 4. SEÇKİN ÜNİVERSİTE HAVASI VEREN CAM KARTLAR */
+    /* 4. SORUNSUZ ÇALIŞAN SADE VE ŞIK MAT CAM KARTLAR */
     div[data-testid="stVerticalBlockBorderWrapper"] {
-        background: rgba(15, 23, 42, 0.45) !important;
-        backdrop-filter: blur(16px) !important;
-        -webkit-backdrop-filter: blur(16px) !important;
-        border: 1px solid rgba(255, 255, 255, 0.09) !important;
-        border-radius: 16px !important;
-        padding: 24px !important;
-        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5),
-                    inset 0 1px 1px rgba(255, 255, 255, 0.05) !important;
-        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+        background: rgba(255, 255, 255, 0.03) !important;
+        backdrop-filter: blur(12px) !important;
+        -webkit-backdrop-filter: blur(12px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-radius: 14px !important; 
+        padding: 22px !important;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3) !important;
+        transition: all 0.3s ease !important;
     }
     div[data-testid="stVerticalBlockBorderWrapper"]:hover {
-        transform: translateY(-4px) !important;
-        border-color: rgba(99, 102, 241, 0.4) !important;
-        background: rgba(15, 23, 42, 0.55) !important;
-        box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6),
-                    0 0 20px rgba(99, 102, 241, 0.1) !important;
+        transform: translateY(-3px) !important;
+        border-color: rgba(255, 255, 255, 0.2) !important; 
+        background: rgba(255, 255, 255, 0.05) !important;
+        box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.4) !important;
     }
 
-    /* 5. SEKMELER (TABS) */
+    /* 5. SEKMELER (TABS) - MAT VE DOĞAL GEÇİŞ */
     button[data-baseweb="tab"] {
         color: #94a3b8 !important;
         font-weight: 600 !important;
-        font-size: 0.95rem !important;
-        padding: 12px 24px !important;
-        transition: all 0.2s ease !important;
+        background: transparent !important;
+        padding: 10px 20px !important;
     }
     button[data-baseweb="tab"]:hover {
-        color: #ffffff !important;
+        color: #f1f5f9 !important;
     }
     button[data-baseweb="tab"][aria-selected="true"] {
-        color: #6366f1 !important;
-        border-bottom: 2px solid #6366f1 !important;
+        color: #f1f5f9 !important;
+        border-bottom: 2px solid #3b82f6 !important; 
     }
 
-    /* 6. DENGELİ AKADEMİK SAFİR BUTONLAR VE KORUNAN YAZILAR */
+    /* 6. HATA VERMEYEN ASİL MAT PREMIUM BUTONLAR */
     div.stButton > button:first-child, .stLinkButton a {
-        background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%) !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        background: rgba(255, 255, 255, 0.08) !important; 
+        color: #f1f5f9 !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
         border-radius: 10px !important;
-        padding: 10px 22px !important;
-        box-shadow: 0 4px 12px rgba(30, 64, 175, 0.2) !important;
-        transition: all 0.25s ease !important;
-    }
-    
-    div.stButton > button:first-child p, 
-    div.stButton > button:first-child span, 
-    div.stButton > button:first-child div {
-        color: #ffffff !important;
-        font-size: 0.95rem !important;
         font-weight: 600 !important;
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
+        text-transform: none !important; 
+        font-size: 0.9rem !important;
+        letter-spacing: 0px;
+        padding: 10px 20px !important;
+        box-shadow: none !important; 
+        transition: all 0.2s ease !important;
     }
-    
     div.stButton > button:first-child:hover, .stLinkButton a:hover {
-        background: linear-gradient(135deg, #2563eb 0%, #60a5fa 100%) !important;
+        background: #3b82f6 !important; 
+        border-color: #3b82f6 !important;
         transform: translateY(-1px) !important;
-        box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35) !important;
+        color: white !important;
+    }
+    
+    /* Pasif Butonlar */
+    div.stButton > button:disabled {
+        background: rgba(255, 255, 255, 0.02) !important;
+        color: #475569 !important;
+        border: 1px solid rgba(255, 255, 255, 0.05) !important;
     }
 
-    /* BANNER ALANI */
+    /* 7. KULLANICI BANNER ALANI (Sadeleştirilmiş) */
     .dashboard-banner {
-        background: linear-gradient(90deg, rgba(30, 58, 138, 0.25) 0%, rgba(15, 23, 42, 0.4) 100%);
+        background: rgba(255, 255, 255, 0.02);
         border: 1px solid rgba(255, 255, 255, 0.08);
-        border-left: 4px solid #3b82f6;
         padding: 24px;
-        border-radius: 12px;
+        border-radius: 14px;
         margin-bottom: 25px;
-    }
-
-    /* --- DOĞAL VE DOĞRU ÇÖZÜM: ÇEVİRİ MOTORUNU ENGELLEME VE METİN SIFIRLAMA --- */
-    /* Sol üst kontrol butonunun konumunu bozmadan, eklentinin ürettiği metinlerin yüksekliğini ve görünürlüğünü sıfırlıyoruz */
-    [data-testid="stSidebarCollapsedControl"] {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-    }
-    
-    /* İçerideki tüm metin katmanlarını ez ve gizle (Orijinal SVG ikon hariç) */
-    [data-testid="stSidebarCollapsedControl"] span,
-    [data-testid="stSidebarCollapsedControl"] div,
-    font {
-        font-size: 0px !important;
-        line-height: 0 !important;
-        color: transparent !important;
-        text-indent: -999px !important;
-        visibility: hidden !important;
-        display: inline-block !important;
-        height: 0px !important;
-        width: 0px !important;
-    }
-    
-    /* Lisans Sözleşmesi Akordeon Oku Ayarı */
-    summary::marker {
-        color: #3b82f6 !important;
     }
     </style>
     """,
