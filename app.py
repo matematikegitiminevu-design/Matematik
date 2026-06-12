@@ -767,34 +767,8 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         st.link_button("Videoları Görüntüle", "https://bulut.nevsehir.edu.tr/index.php/s/eMP56Ty6dfeCdFc", use_container_width=True)
     
 
-    # --- 📢 2.2. BÖLÜM: CANLI BİLDİRİM VE DUYURU BANDI ---
-    st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
+    st.markdown("---")
     
-    # Küçük, zarif bir HTML/CSS bildirim kutusu
-    st.markdown(
-        """
-        <div style="
-            background: rgba(59, 130, 246, 0.1);
-            border-left: 4px solid #3b82f6;
-            padding: 12px 20px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        ">
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <span style="font-size: 1.2rem;">📢</span>
-                <span style="color: #dbeafe !important; font-size: 0.9rem; font-weight: 500;">
-                    <b>Sistem Duyurusu:</b> 2025-2026 Bahar Dönemi bütünleme sınav programı "Güncel Duyurular" sekmesine eklenmiştir.
-                </span>
-            </div>
-            <span style="color: #94a3b8 !important; font-size: 0.8rem; font-weight: 600;">YENİ</span>
-        </div>
-        """, 
-        unsafe_allow_html=True
-    )
-
     # --- 🔗 2.5. BÖLÜM: PROFESYONEL HIZLI ERİŞİM MATRİSİ ---
     with st.container(border=True):
         st.markdown("<p style='margin-top:0; margin-bottom:15px; color:#94a3b8; font-size:0.85rem; font-weight:700; letter-spacing:0.5px;'>🚀 ENTEGRE SİSTEMLER & DESTEK KANALLARI</p>", unsafe_allow_html=True)
