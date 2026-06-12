@@ -627,27 +627,6 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     with st.spinner("Matematik Portalı Hazırlanıyor..."):
         import time
         time.sleep(1)
-    # Sidebar (Yan Menü)
-    with st.sidebar: 
-        st.title(f"♾️ Hoş Geldin, {st.session_state['aktif_user'].capitalize()}!")
-        st.markdown("💡 *Sanal kütüphane altyapısı ile ders içeriklerine güvenle erişebilirsin.*")
-        st.markdown("<div style='height: 15px;'></div>", unsafe_allow_html=True)
-        
-        # Yenilenen Minimalist İletişim Kanalları
-        st.link_button("📩 İletişim Maili", "mailto:matematikegitiminevu@gmail.com", use_container_width=True)
-        
-        wp_link = "https://wa.me/905061905437?text=Merhaba,%20CYHN%20Matematik%20Portalı%20üzerinden%20ulaşıyorum."
-        st.link_button("📞 WhatsApp İletişim", wp_link, use_container_width=True)
-
-        st.link_button("✨ cyhnAI'a Sor", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc", use_container_width=True)
-
-        st.divider()
-        if st.button("🔐 Güvenli Çıkış", type="secondary", use_container_width=True):
-            st.session_state["aktif_user"] = None
-            st.session_state["sayfa"] = "ana_menu"
-            st.rerun()
-            
-    kullanici = st.session_state["aktif_user"].capitalize()
     
     # --- 📈 1. BÖLÜM: ÜST DURUM METRİK KARTLARI ---
     kullanici = st.session_state["aktif_user"].capitalize()
@@ -676,7 +655,16 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     
     with panel_sol:
         with st.container(border=True):
-            st.markdown(f"### 👋 Hoş Geldin, {kullanici}!")
+            # Çıkış butonunu sağ üst köşeye şıkça yerleştirmek için iç sütun açıyoruz
+            c_isim, c_cikis = st.columns([3, 1])
+            with c_isim:
+                st.markdown(f"### 👋 Hoş Geldin, {kullanici}!")
+            with c_cikis:
+                if st.button("🔐 Güvenli Çıkış", use_container_width=True):
+                    st.session_state["aktif_user"] = None
+                    st.session_state["sayfa"] = "ana_menu"
+                    st.rerun()
+                    
             st.markdown(
                 """
                 Bu portal, matematik eğitimi yolculuğunda akademik kaynakları daha düzenli takip edebilmen, 
@@ -684,16 +672,6 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 
                 Aşağıdaki sekmelerden ilgili dersin içeriğini genişletebilir, **"Ders Notunu Aç"** butonuna tıklayarak 
                 indirme kısıtlamalı güvenli önizleme modunda dökümanları inceleyebilirsin.
-                """
-            )
-            
-    with panel_sag:
-        with st.container(border=True):
-            st.markdown("### 📐 Günün Matematik Notu")
-            st.markdown(
-                """
-                **Euler Özdeşliği:** `e^(i*π) + 1 = 0`  
-                *Analiz, trigonometri ve karmaşık sayıları tek bir denklemde birleştiren, matematiğin en asil formüllerinden biri.*
                 """
             )
 
