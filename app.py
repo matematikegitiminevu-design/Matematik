@@ -833,7 +833,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         with link_col2:
             st.markdown("<p style='margin:0; font-size:0.85rem; font-weight:600; color:#cbd5e1;'>Anlık Geri Bildirim</p>", unsafe_allow_html=True)
             st.markdown("<p style='margin:0 0 10px 0; font-size:0.75rem; color:#64748b;'>WhatsApp Entegrasyonu</p>", unsafe_allow_html=True)
-            st.link_button("📞 Canlı Destek Al", "https://wa.me/905061905437?text=Merhaba...", use_container_width=True)
+            st.link_button("📞 Canlı Destek Al", "https://wa.me/905061905437?text=Merhaba,%20CYHN%20Matematik%20Portalı%20üzerinden%20ulaşıyorum.%20Bir%20konu%20hakkında%20bilgi%20almak%20istiyorum.%0D%0AKonu:%20", use_container_width=True)
             
         with link_col3:
             st.markdown("<p style='margin:0; font-size:0.85rem; font-weight:600; color:#cbd5e1;'>Resmî Yazışma</p>", unsafe_allow_html=True)
