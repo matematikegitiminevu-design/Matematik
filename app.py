@@ -640,12 +640,17 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     with cikis_col:
         st.markdown("<div style='height: 25px;'></div>", unsafe_allow_html=True)
         
-        # --- MAVİ KUTUYU KESİN OLARAK SİLEN AGRESİF CSS ---
-        st.markdown(
-            """
-            <style>
-            /* Streamlit'in genel buton kurallarını bu özel buton için tamamen eziyoruz */
-            div.stButton > button[key*="logout_top_right_minimal"] {
+        # --- %100 KESİN ÇÖZÜM: CUSTOM HTML BUTON VE GİZLİ TETİKLEYİCİ ---
+        # 1. Burası tamamen bizim kontrolümüzdeki şık, minimal buton tasarımı
+        html_custom_button = """
+        <style>
+            .custom-logout-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+            }
+            .custom-logout-btn {
                 background: transparent !important;
                 background-color: transparent !important;
                 color: #94a3b8 !important;
@@ -653,38 +658,48 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 border-radius: 8px !important;
                 font-size: 0.85rem !important;
                 font-weight: 500 !important;
-                padding: 6px 12px !important;
-                box-shadow: none !important;
-                transform: none !important;
+                padding: 6px 16px !important;
+                cursor: pointer;
+                width: 100%;
+                text-align: center;
                 transition: all 0.2s ease-in-out !important;
+                display: inline-block;
             }
-            
-            /* Üzerine gelindiğinde tetiklenecek modern hover efekti */
-            div.stButton > button[key*="logout_top_right_minimal"]:hover {
+            .custom-logout-btn:hover {
                 color: #ef4444 !important;
-                background: rgba(239, 68, 68, 0.08) !important;
                 background-color: rgba(239, 68, 68, 0.08) !important;
                 border-color: rgba(239, 68, 68, 0.4) !important;
-                box-shadow: 0 4px 12px rgba(239, 68, 68, 0.1) !important;
             }
             
-            /* Tıklanma anındaki (active) mavi parlamayı da engelliyoruz */
-            div.stButton > button[key*="logout_top_right_minimal"]:active {
-                background: rgba(239, 68, 68, 0.15) !important;
-                background-color: rgba(239, 68, 68, 0.15) !important;
+            /* Streamlit'in kendi görünmez butonunu tamamen şeffaf yapıp üstüne bindiriyoruz */
+            .invisible-bridge-container div.stButton > button {
+                position: absolute !important;
+                top: 0;
+                left: 0;
+                width: 100% !important;
+                height: 100% !important;
+                opacity: 0 !important; /* BUTON TAMAMEN GÖRÜNMEZ OLUYOR */
+                z-index: 10 !important;
+                cursor: pointer !important;
             }
-            </style>
-            """,
-            unsafe_allow_html=True
-        )
+        </style>
         
-        # Butonun kendisi (Anahtar kelime eşleşmesi için key ismine dikkat)
-        if st.button("🚪 Oturumu Kapat", key="logout_top_right_minimal", use_container_width=True):
+        <div style="position: relative; width: 100%;">
+            <div class="custom-logout-btn">🚪 Oturumu Kapat</div>
+        </div>
+        """
+        st.markdown(html_custom_button, unsafe_allow_html=True)
+        
+        # 2. Üstteki şık butonun tam üzerine binen ama %100 GÖRÜNMEZ olan Streamlit butonu.
+        # Kullanıcı ekranda sadece bizim gri butonumuzu görecek ama tıkladığında bu görünmez buton tetiklenecek.
+        st.markdown('<div class="invisible-bridge-container">', unsafe_allow_html=True)
+        if st.button("Gizli Buton", key="invisible_logout_trigger", use_container_width=True):
             st.session_state["aktif_user"] = None
             st.session_state["sayfa"] = "ana_menu"
             st.toast("Oturum kapatıldı.", icon="👋")
-            time.sleep(0.6)
+            time.sleep(1.2)
             st.rerun()
+        st.markdown('</div>', unsafe_allow_html=True)
     
     
     # --- 📢 2. BÖLÜM (YENİ YERİ): CANLI BİLDİRİM VE DUYURU BANDI ---
