@@ -2,23 +2,7 @@ import streamlit as st
 from datetime import datetime
 from zoneinfo import ZoneInfo
 import time
-import os
 
-# =========================================================================
-# 🎯 %100 KESİN ÇÖZÜM: GOOGLE BOT YAKALAMA MOTORU
-# =========================================================================
-# Google botu sitenize gizli linkle istek attığında Streamlit'i bypass eder.
-try:
-    # Sitenin adres çubuğundaki parametreleri kontrol ediyoruz
-    parametreler = st.query_params
-    
-    # Google botları bazen URL sonuna doğrudan dosya adını sorgu olarak ekler
-    if "googleda6033a641a920b8.html" in str(parametreler) or "googleda6033a641a920b8" in str(parametreler):
-        st.write("google-site-verification: googleda6033a641a920b8.html")
-        st.stop() # Kodun geri kalanını (tüm siteyi) çalıştırmayı durdurur!
-except Exception:
-    pass
-# =========================================================================
 
 #---KULLANICI İSİMLERİ VE ŞİFRELERİ ---
 USERS = {
