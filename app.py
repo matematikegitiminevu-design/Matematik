@@ -121,7 +121,6 @@ st.markdown(
             radial-gradient(at 0% 0%, rgba(30, 58, 138, 0.3) 0px, transparent 50%),
             radial-gradient(at 100% 100%, rgba(15, 23, 42, 0.8) 0px, transparent 50%),
             radial-gradient(at 50% 0%, rgba(79, 70, 229, 0.15) 0px, transparent 40%),
-            /* Akademik teknolojik doku simülasyonu (Zarif Nokta Matrisi) */
             radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0) !important;
         background-size: 100% 100%, 100% 100%, 100% 100%, 24px 24px !important;
         background-attachment: fixed !important;
@@ -137,7 +136,7 @@ st.markdown(
         font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
     }
 
-    /* 3. KURUMSAL SOL MENÜ (SIDEBAR) */
+    /* 3. KURUMSUR SOL MENÜ (SIDEBAR) */
     [data-testid="stSidebar"] {
         background: rgba(11, 20, 38, 0.8) !important;
         backdrop-filter: blur(20px) !important;
@@ -145,7 +144,7 @@ st.markdown(
         border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
     }
 
-    /* 4. SEÇKİN ÜNİVERSİTE HAVASI VEREN CAM KARTLAR (Pürüzsüz Kontrast) */
+    /* 4. SEÇKİN ÜNİVERSİTE HAVASI VEREN CAM KARTLAR */
     div[data-testid="stVerticalBlockBorderWrapper"] {
         background: rgba(15, 23, 42, 0.45) !important;
         backdrop-filter: blur(16px) !important;
@@ -159,13 +158,13 @@ st.markdown(
     }
     div[data-testid="stVerticalBlockBorderWrapper"]:hover {
         transform: translateY(-4px) !important;
-        border-color: rgba(99, 102, 241, 0.4) !important; /* İndigo dokunuş */
+        border-color: rgba(99, 102, 241, 0.4) !important;
         background: rgba(15, 23, 42, 0.55) !important;
         box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6),
                     0 0 20px rgba(99, 102, 241, 0.1) !important;
     }
 
-    /* 5. SEKMELER (TABS) - PROFESYONEL VE ÇİZGİSEL */
+    /* 5. SEKMELER (TABS) */
     button[data-baseweb="tab"] {
         color: #94a3b8 !important;
         font-weight: 600 !important;
@@ -177,13 +176,13 @@ st.markdown(
         color: #ffffff !important;
     }
     button[data-baseweb="tab"][aria-selected="true"] {
-        color: #6366f1 !important; /* Ağırbaşlı akıllı mavi */
+        color: #6366f1 !important;
         border-bottom: 2px solid #6366f1 !important;
     }
 
-    /* 6. NE ORTA NE PARLAK: DENGELİ, AKADEMİK SAFİR BUTONLAR */
+    /* 6. DENGELİ, AKADEMİK SAFİR BUTONLAR (GÖZÜ İRİTE ETMEYEN ŞIK MAVİ) */
     div.stButton > button:first-child, .stLinkButton a {
-        background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%) !important; /* Klasik, güven veren kurumsal mavi */
+        background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%) !important;
         color: #ffffff !important;
         border: 1px solid rgba(255, 255, 255, 0.1) !important;
         border-radius: 10px !important;
@@ -194,41 +193,56 @@ st.markdown(
         transition: all 0.25s ease !important;
     }
     div.stButton > button:first-child:hover, .stLinkButton a:hover {
-        background: linear-gradient(135deg, #2563eb 0%, #60a5fa 100%) !important; /* Hafif, tatlı bir canlanma */
+        background: linear-gradient(135deg, #2563eb 0%, #60a5fa 100%) !important;
         transform: translateY(-1px) !important;
         box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35) !important;
         color: white !important;
     }
     
-    /* Henüz Yüklenmedi / Pasif Butonlar */
+    /* Pasif Butonlar */
     div.stButton > button:disabled {
         background: rgba(255, 255, 255, 0.03) !important;
         color: #475569 !important;
         border: 1px solid rgba(255, 255, 255, 0.05) !important;
-        box-shadow: none !important;
-        transform: none !important;
     }
 
-    /* Sol Menü Çıkış Butonu Optimizasyonu */
+    /* Sol Menü Çıkış Butonu */
     div[data-testid="stSidebar"] div.stButton > button {
         background: rgba(239, 68, 68, 0.08) !important;
         border: 1px solid rgba(239, 68, 68, 0.2) !important;
         color: #fca5a5 !important;
-        box-shadow: none !important;
     }
     div[data-testid="stSidebar"] div.stButton > button:hover {
         background: rgba(239, 68, 68, 0.2) !important;
         color: #ffffff !important;
     }
 
-    /* 7. REKTÖRLÜK/DASHBOARD TARZI BANNER ALANI */
+    /* BANNER ALANI */
     .dashboard-banner {
         background: linear-gradient(90deg, rgba(30, 58, 138, 0.25) 0%, rgba(15, 23, 42, 0.4) 100%);
         border: 1px solid rgba(255, 255, 255, 0.08);
-        border-left: 4px solid #3b82f6; /* Akademik vurgu çizgisi */
+        border-left: 4px solid #3b82f6;
         padding: 24px;
         border-radius: 12px;
         margin-bottom: 25px;
+    }
+
+    /* --- KRİTİK HATA DÜZELTME MOTORU (DOUBLE_ARROW GİZLEME) --- */
+    [data-testid="stSidebarCollapsedControl"] span, 
+    [data-testid="stSidebarCollapsedControl"]::before,
+    .st-emotion-cache-6q9sum, 
+    .st-emotion-cache-1wbqy5l,
+    [class*="st-emotion-cache"] div:dir(ltr) > span {
+        font-size: 0px !important;
+        color: transparent !important;
+        display: none !important;
+        visibility: hidden !important;
+    }
+    summary span {
+        font-size: inherit !important;
+    }
+    summary::marker {
+        color: #3b82f6 !important;
     }
     </style>
     """,
