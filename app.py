@@ -180,7 +180,7 @@ st.markdown(
         border-bottom: 2px solid #6366f1 !important;
     }
 
-    /* 6. DENGELİ, AKADEMİK SAFİR BUTONLAR VE METİN KORUMASI */
+    /* 6. DENGELİ AKADEMİK SAFİR BUTONLAR VE KORUNAN YAZILAR */
     div.stButton > button:first-child, .stLinkButton a {
         background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%) !important;
         border: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -190,7 +190,6 @@ st.markdown(
         transition: all 0.25s ease !important;
     }
     
-    /* Buton içindeki metinlerin görünürlüğünü kesin olarak garanti altına alıyoruz */
     div.stButton > button:first-child p, 
     div.stButton > button:first-child span, 
     div.stButton > button:first-child div {
@@ -208,22 +207,6 @@ st.markdown(
         box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35) !important;
     }
 
-    /* 7. SOL ÜSTTEKİ YAZIYI BUTONLARI BOZMADAN NOKTA ATIŞI SİLME */
-    [data-testid="stSidebarCollapsedControl"] {
-        font-size: 0px !important;
-        color: transparent !important;
-    }
-    /* Çeviri eklentilerinin sızdırdığı metin katmanlarını tamamen sıfırla */
-    [data-testid="stSidebarCollapsedControl"] * {
-        font-size: 0px !important;
-        color: transparent !important;
-        display: none !important;
-    }
-    /* Orijinal açma kapama butonunun çizgilerini koru */
-    [data-testid="stSidebarCollapsedControl"] button {
-        display: flex !important;
-    }
-
     /* BANNER ALANI */
     .dashboard-banner {
         background: linear-gradient(90deg, rgba(30, 58, 138, 0.25) 0%, rgba(15, 23, 42, 0.4) 100%);
@@ -232,6 +215,33 @@ st.markdown(
         padding: 24px;
         border-radius: 12px;
         margin-bottom: 25px;
+    }
+
+    /* --- DOĞAL VE DOĞRU ÇÖZÜM: ÇEVİRİ MOTORUNU ENGELLEME VE METİN SIFIRLAMA --- */
+    /* Sol üst kontrol butonunun konumunu bozmadan, eklentinin ürettiği metinlerin yüksekliğini ve görünürlüğünü sıfırlıyoruz */
+    [data-testid="stSidebarCollapsedControl"] {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    /* İçerideki tüm metin katmanlarını ez ve gizle (Orijinal SVG ikon hariç) */
+    [data-testid="stSidebarCollapsedControl"] span,
+    [data-testid="stSidebarCollapsedControl"] div,
+    font {
+        font-size: 0px !important;
+        line-height: 0 !important;
+        color: transparent !important;
+        text-indent: -999px !important;
+        visibility: hidden !important;
+        display: inline-block !important;
+        height: 0px !important;
+        width: 0px !important;
+    }
+    
+    /* Lisans Sözleşmesi Akordeon Oku Ayarı */
+    summary::marker {
+        color: #3b82f6 !important;
     }
     </style>
     """,
