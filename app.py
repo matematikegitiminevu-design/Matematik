@@ -648,7 +648,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             # Parametreyi URL'den temizliyoruz ki sonsuz döngüye girmesin
             st.query_params.clear()
             st.toast("Oturum kapatıldı.", icon="👋")
-            time.sleep(0.5)
+            time.sleep(1.2)
             st.rerun()
 
         # --- SAF HTML & CSS MİNİMAL BUTON ---
