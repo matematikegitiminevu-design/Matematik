@@ -48,7 +48,7 @@ def duyuru_popup():
         </p>
         <p style="color: #94a3b8; font-size: 0.9rem; line-height: 1.5;">
         Sizlere daha akıcı, modern ve kusursuz bir akademik deneyim sunabilmek adına 
-        </b>CYHN Matematik Portalı</b> altyapısını baştan aşağı yeniledik! 
+        **CYHN Matematik Portalı** altyapısını baştan aşağı yeniledik! 
         Platform altyapısını güçlendirerek hem görsel hem de işlevsel olarak tamamen yeni nesil bir standarda geçiş yaptık. 
         Sürekli gelişen yapımızla, eğitim yolculuğunuzda her an yanınızda olmaya devam ediyoruz.
         </p>
