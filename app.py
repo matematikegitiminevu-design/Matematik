@@ -640,16 +640,9 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     with cikis_col:
         st.markdown("<div style='height: 25px;'></div>", unsafe_allow_html=True)
         
-        # --- %100 KESİN ÇÖZÜM: CUSTOM HTML BUTON VE GİZLİ TETİKLEYİCİ ---
-        # 1. Burası tamamen bizim kontrolümüzdeki şık, minimal buton tasarımı
-        html_custom_button = """
+        # --- JS TETİKLEMELİ GERÇEK MİNİMAL BUTON ---
+        html_final_logout = """
         <style>
-            .custom-logout-container {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 100%;
-            }
             .custom-logout-btn {
                 background: transparent !important;
                 background-color: transparent !important;
@@ -671,33 +664,31 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 border-color: rgba(239, 68, 68, 0.4) !important;
             }
             
-            /* Streamlit'in kendi görünmez butonunu tamamen şeffaf yapıp üstüne bindiriyoruz */
-            .invisible-bridge-container div.stButton > button {
+            /* Streamlit'in kendi mavi butonunu ekrandan tamamen siliyoruz */
+            .hidden-trigger-container div.stButton > button {
+                opacity: 0 !important;
+                height: 0px !important;
+                width: 0px !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                border: none !important;
                 position: absolute !important;
-                top: 0;
-                left: 0;
-                width: 100% !important;
-                height: 100% !important;
-                opacity: 0 !important; /* BUTON TAMAMEN GÖRÜNMEZ OLUYOR */
-                z-index: 10 !important;
-                cursor: pointer !important;
             }
         </style>
         
-        <div style="position: relative; width: 100%;">
-            <div class="custom-logout-btn">🚪 Oturumu Kapat</div>
+        <div class="custom-logout-btn" onclick="document.querySelector('.hidden-trigger-container button').click();">
+            🚪 Oturumu Kapat
         </div>
         """
-        st.markdown(html_custom_button, unsafe_allow_html=True)
+        st.markdown(html_final_logout, unsafe_allow_html=True)
         
-        # 2. Üstteki şık butonun tam üzerine binen ama %100 GÖRÜNMEZ olan Streamlit butonu.
-        # Kullanıcı ekranda sadece bizim gri butonumuzu görecek ama tıkladığında bu görünmez buton tetiklenecek.
-        st.markdown('<div class="invisible-bridge-container">', unsafe_allow_html=True)
-        if st.button("Gizli Buton", key="invisible_logout_trigger", use_container_width=True):
+        # Tamamen görünmez yapılan ve yer kaplamayan Streamlit tetikleyicisi
+        st.markdown('<div class="hidden-trigger-container">', unsafe_allow_html=True)
+        if st.button("Gizli", key="final_hidden_logout_trigger"):
             st.session_state["aktif_user"] = None
             st.session_state["sayfa"] = "ana_menu"
             st.toast("Oturum kapatıldı.", icon="👋")
-            time.sleep(1.2)
+            time.sleep(0.6)
             st.rerun()
         st.markdown('</div>', unsafe_allow_html=True)
     
