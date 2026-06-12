@@ -547,8 +547,11 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
                 """
                 <p style="color: #ef4444 !important; font-weight: 600; margin-bottom: 4px; font-size: 0.8rem; text-transform: uppercase;">Telif Hakkı Bildirimi:</p>
                 <p style="color: #94a3b8 !important; font-size: 0.78rem; line-height: 1.4; text-align: left;">
-                Bu portalda sunulan tüm akademik PDF dokümanlarının mülkiyet ve telif hakları doğrudan <b>Muharrem CEYHAN</b>'a aittir.<br><br>
-                İçeriklerin izinsiz paylaşılması veya kopyalanması yasal işleme tabidir.
+                Bu platformda paylaşılan tüm ders PDF notlarının telif hakları doğrudan <b>Muharrem CEYHAN</b>'a aittir. <br>
+                Tüm hakları saklıdır. <br><br>
+                İçeriklerin tamamının veya bir kısmının, yazarın yazılı izni olmaksızın kopyalanması, çoğaltılması, işlenmesi veya herhangi bir dijital/basılı mecrada paylaşılması <b>kesinlikle yasaktır</b>. <br><br>
+                Sadece kişisel eğitim amaçlıdır..! <br>
+                <span style="color: #94a3b8 !important; font-size: 0.75rem; display: block; margin-top: 6px;">(© 2026)</span>
                 </p>
                 """, 
                 unsafe_allow_html=True
