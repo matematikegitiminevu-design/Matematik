@@ -663,7 +663,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 border-radius: 6px !important;
                 font-size: 0.78rem !important;
                 font-weight: 500 !important;
-                padding: 4px 10px !important;
+                padding: 4px 6px !important;
                 cursor: pointer;
                 width: 100%;
                 text-align: center;
