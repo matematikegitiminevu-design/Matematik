@@ -723,13 +723,12 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
 
 
     # Konulara göre sekmeler (Tablar)
-    tab0, tab1, tab2, tab3, tab4, tab5 = st.tabs([
+    tab0, tab1, tab2, tab3, tab4 = st.tabs([
         "📢 Güncel Duyurular",
         "🔢 Lineer Cebir PDF Notları", 
         "🎲 Analiz PDF Notları", 
         "📐 Soyut Matematik PDF Notları",
-        "💻 Algoritma ve Programlama",
-        "📖 Türk Dili 2 Videoları"
+        "💻 Algoritma ve Programlama"
     ])
 
     with tab0:
@@ -813,10 +812,6 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 if st.button("📝 Ders Notunu Aç", key="alg6", use_container_width=True):
                     pdf_popup_ac("1NCqgJKWM0Xs2M1vp9xnUFYpTGioPhZ8v")
                     
-    with tab5:
-        st.subheader("Türk Dili 2 Videoları")
-        st.warning("❗Türk Dili 2 dersine ait UBYS sisteminde de yüklü olan videolara aşağıdaki bağlantıdan tıklayarak ulaşabilirsiniz.")
-        st.link_button("Videoları Görüntüle", "https://bulut.nevsehir.edu.tr/index.php/s/eMP56Ty6dfeCdFc", use_container_width=True)
     
 
     st.markdown("---")
