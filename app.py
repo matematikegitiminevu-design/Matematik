@@ -653,7 +653,8 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         <div style="text-align: center; background-color: #1e293b; padding: 25px 15px; border-radius: 16px; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.5); font-family: sans-serif; margin-top: 30px;">
             <h2 style="color: white !important; margin-bottom: 15px;">🚧 Ders Notları Arşivi Bakımda</h2>
             <p style="font-size: 1.1rem; margin-top: 15px; color: #cbd5e1 !important; text-align: center;">
-                Ders notları, PDF dokümanları ve haftalık programlar optimize edilmektedir. Arşivimiz kısa süre sonra erişime açılacaktır.
+                Sizlere daha hızlı, güvenli ve performanslı bir deneyim sunabilmek amacıyla <b>CYHN Matematik Portalı</b> genel bir güncelleme çalışmasındadır. 
+                Ders notları, PDF dokümanları ve haftalık programlar optimize edilmektedir. Arşivimiz aşağıda belirtilen süre zarfında erişime açılacaktır.
             </p>
             {sayaç_arsiv_html}
             <div style="margin-top: 30px; border-top: 1px solid #334155; padding-top: 15px; text-align: center;">
