@@ -723,11 +723,12 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
 
 
     # Konulara göre sekmeler (Tablar)
-    tab0, tab1, tab2, tab3, tab4 = st.tabs([
+    tab0, tab1, tab2, tab3, tab4, tab5 = st.tabs([
         "📢 Güncel Duyurular",
         "🔢 Lineer Cebir PDF Notları", 
-        "🎲 Analiz PDF Notları", 
-        "📐 Soyut Matematik PDF Notları",
+        "📈 Analiz PDF Notları", 
+        "🌌 Soyut Matematik PDF Notları",
+        "📐 Analitik Geometri PDF Notları",
         "💻 Algoritma ve Programlama"
     ])
 
@@ -785,6 +786,10 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             pdf_popup_ac("1pyaZAD35q0kIpXduqdjxpz4ylaFd4B5z")
 
     with tab4:
+        st.subheader("Analitik Geometri Ders Notu")
+        st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln5")
+        
+    with tab5:
         st.subheader("Algoritma ve Programlama Ders Notu")
         st.info("💻 Python ve Algoritmaya Giriş dersi kaynak dökümanları.")
         
