@@ -647,10 +647,6 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     
     # 🌟 BURADAN: (BAKIM MODU KONTROLÜ)
     if ARSIV_BAKIM_MODU and not gizli_yonetici_izni:
-        with st.sidebar:
-            if st.button("⬅ Ana Menüye Dön / Çıkış"):
-                st.session_state["aktif_user"] = None
-                ana_menuye_don()
                 
         sayaç_arsiv_html = kalan_sure_html_hazirla(HEDEF_ZAMAN_ARSIV)
         tam_sayfa_arsiv_html = f"""
