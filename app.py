@@ -663,7 +663,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             </div>
         </div>
         """
-        st.components.v1.html(tam_sayfa_arsiv_html, height=560, scrolling=False)
+        st.components.v1.html(tam_sayfa_arsiv_html, height=620, scrolling=False)
         st.stop()
         
     with st.spinner("Matematik Portalı Hazırlanıyor..."):
