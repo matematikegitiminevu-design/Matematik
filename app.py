@@ -654,7 +654,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 
         sayaç_arsiv_html = kalan_sure_html_hazirla(HEDEF_ZAMAN_ARSIV)
         tam_sayfa_arsiv_html = f"""
-        <div style="text-align: center; background-color: #1e293b; padding: 40px; border-radius: 16px; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.5); font-family: sans-serif; margin-top: 30px;">
+        <div style="text-align: center; background-color: #1e293b; padding: 25px 15px; border-radius: 16px; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.5); font-family: sans-serif; margin-top: 30px;">
             <h2 style="color: white !important; margin-bottom: 15px;">🚧 Ders Notları Arşivi Bakımda</h2>
             <p style="font-size: 1.1rem; margin-top: 15px; color: #cbd5e1 !important; text-align: center;">
                 Ders notları, PDF dokümanları ve haftalık programlar optimize edilmektedir. Arşivimiz kısa süre sonra erişime açılacaktır.
@@ -666,7 +666,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             </div>
         </div>
         """
-        st.components.v1.html(tam_sayfa_arsiv_html, height=450, scrolling=False)
+        st.components.v1.html(tam_sayfa_arsiv_html, height=560, scrolling=False)
         st.stop()
         
     with st.spinner("Matematik Portalı Hazırlanıyor..."):
