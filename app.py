@@ -115,7 +115,7 @@ if BAKIM_MODU and not gizli_yonetici_izni:
     
     sayaç_html = kalan_sure_html_hazirla(HEDEF_ZAMAN_GENEL)
     tam_sayfa_html = f"""
-    <div style="text-align: center; background-color: #1e293b; padding: 40px; border-radius: 16px; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.5); font-family: sans-serif; margin-top: 30px;">
+    <div style="text-align: center; background-color: #1e293b; padding: 25px 15px; border-radius: 16px; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.5); font-family: sans-serif; margin-top: 30px;">
         <h2 style="color: white !important; margin-bottom: 15px;">🚧 Sistem Genel Bakım Çalışması</h2>
         <p style="font-size: 1.1rem; margin-top: 15px; color: #cbd5e1 !important; text-align: center;">
             Sizlere daha hızlı, güvenli ve performanslı bir deneyim sunabilmek amacıyla <b>CYHN Matematik Portalı</b> genel bir güncelleme çalışmasındadır.
@@ -130,7 +130,7 @@ if BAKIM_MODU and not gizli_yonetici_izni:
         </div>
     </div>
     """
-    st.components.v1.html(tam_sayfa_html, height=520, scrolling=False)
+    st.components.v1.html(tam_sayfa_html, height=620, scrolling=False)
     st.stop()
 
 
