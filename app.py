@@ -823,7 +823,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     
     # --- 🔗 2.5. BÖLÜM: PROFESYONEL HIZLI ERİŞİM MATRİSİ ---
     with st.container(border=True):
-        st.markdown("<p style='margin-top:0; margin-bottom:15px; color:#94a3b8; font-size:0.85rem; font-weight:700; letter-spacing:0.5px;'>🚀 ENTEGRE SİSTEMLER & DESTEK KANALLARI</p>", unsafe_allow_html=True)
+        st.markdown("<p style='margin-top:0; margin-bottom:15px; color:#94a3b8; font-size:0.85rem; font-weight:700; letter-spacing:0.5px;'>🚀 DESTEK KANALLARI</p>", unsafe_allow_html=True)
         
         link_col1, link_col2, link_col3, link_col4 = st.columns(4)
         
