@@ -764,7 +764,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                     pdf_popup_ac("1nXutG6Fz6JtYFGYDlwohTySE6LwTe4Tg")
                     
     with tab2:
-        st.subheader("Analiz Dersi Ders Notları")
+        st.subheader("Analiz Ders Notları")
         col1, col2, col3 = st.columns(3)
         with col1:
             with st.container(border=True):
