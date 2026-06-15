@@ -318,40 +318,7 @@ if st.session_state["sayfa"] == "ana_menu":
             Bilgiye açılan kapıya hoş geldiniz..! Akademik ders notları arşivimize ulaşmak veya yapay zeka asistanımızdan destek almak için lütfen bir işlem seçiniz.
             """
         )
-        st.write("") # İki kart ile yeni kart arasında ufak bir nefes alma boşluğu
-
-        # ====================================================================
-        # YENİ EKLENEN ALAN: PLATFORM & GELİŞTİRİCİ HAKKINDA KARTI
-        # ====================================================================
-        with st.container(border=True):
-            st.markdown("### 🚀 Platform & Geliştirici Hakkında")
-            
-            # Profil fotoğrafı koymak istersen sol tarafa, metni sağ tarafa almak için iki kolon
-            # Fotoğraf kullanmayacaksan doğrudan metni de yazabilirsin.
-            h_col1, h_col2 = st.columns([1, 4])
-            
-            with h_col1:
-                # Buraya bir avatar, emoji veya sitenin logosunu/profil resmini yerleştirebilirsin
-                st.markdown("<h1 style='text-align: center; margin: 0;'>👨‍🏫</h1>", unsafe_allow_html=True)
-                
-            with h_col2:
-                st.markdown(
-                    """
-                    **Merhaba! Ben Muharrem Ceyhan.** İlköğretim Matematik Öğretmeni Adayı ve Yazılım Geliştiriciyim. 
-                    **CYHN Matematik Portalı**'nı; matematik eğitiminin soyut dünyasını teknolojinin imkanlarıyla somutlaştırmak, 
-                    akademik ders notlarına erişimi kolaylaştırmak ve yapay zeka destekli yenivelikçi çözümler üretmek amacıyla tamamen sıfırdan geliştirdim.
-                    
-                    Eğitim teknolojileri ve açık kaynak vizyonuyla hazırladığım bu platform hakkındaki soru, öneri veya iş birlikleri için benimle iletişime geçebilirsiniz.
-                    """
-                )
-                # İletişim / Sosyal Medya Linkleri için küçük şık butonlar
-                l1, l2, _ = st.columns([1, 1, 2])
-                with l1:
-                    st.link_button("🌐 GitHub", "https://github.com/muharremceyhan", use_container_width=True)
-                with l2:
-                    st.link_button("💼 LinkedIn", "https://linkedin.com", use_container_width=True)
-        # ====================================================================
-        st.divider()
+        st.divider() 
 
         # İki büyük seçenek butonu
         c1, c2 = st.columns(2)
