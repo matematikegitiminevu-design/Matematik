@@ -573,8 +573,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
         # Başlıklar
         st.markdown('<p class="cyhn-title">CYHN MATEMATİK PORTALI</p>', unsafe_allow_html=True)
         st.markdown('<p class="cyhn-subtitle">Ders Notları Doğrulama Sistemi</p>', unsafe_allow_html=True)
-        st.markdown('<p style="text-align:center; color:#7f8c8d; font-family: \"Georgia\", serif; font-style: italic; font-size: 15px; letter-spacing: 1px;">by Muharrem Ceyhan</p>', unsafe_allow_html=True)
-
+        st.markdown('<p style="text-align:center; color:#95a5a6; font-style: italic; font-size: 14px; font-weight: 300;">— Muharrem Ceyhan —</p>', unsafe_allow_html=True)
         
         # 📜 Sözleşme
         with st.expander("🔐 Lisans ve Kullanım Sözleşmesi", expanded=False):
