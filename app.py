@@ -571,18 +571,8 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
             st.image("mc250.png", use_container_width=True)
         
         # Başlıklar
-        st.markdown(
-            """
-            <div style="text-align: center; margin-bottom: 15px;">
-                <p class="cyhn-title" style="margin: 0; padding: 0;">CYHN MATEMATİK PORTALI</p>
-                <p class="cyhn-subtitle" style="margin: 5px 0 0 0; padding: 0; opacity: 0.8;">Ders Arşivi Erişim Paneli</p>
-                <p style="margin: 8px 0 0 0; padding: 0; color: #95a5a6; font-style: italic; font-size: 14px; font-weight: 300; letter-spacing: 0.5px;">
-                    — Muharrem Ceyhan —
-                </p>
-            </div>
-            """, 
-            unsafe_allow_html=True
-        )
+        st.markdown('<p class="cyhn-title">CYHN MATEMATİK PORTALI</p>', unsafe_allow_html=True)
+        st.markdown('<p class="cyhn-subtitle">Ders Notları Doğrulama Sistemi</p>', unsafe_allow_html=True)
         
         # 📜 Sözleşme
         with st.expander("🔐 Lisans ve Kullanım Sözleşmesi", expanded=False):
