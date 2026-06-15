@@ -636,8 +636,8 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
         st.markdown('</div>', unsafe_allow_html=True)
 
 
-    st.markdown('---') # İnce bir ayraç çizgisi
-    st.markdown('<p style="text-align:center; color:#888; font-size:12px;">© 2026 CYHN Matematik Portalı | Muharrem Ceyhan tarafından geliştirilmiştir.</p>', unsafe_allow_html=True)
+        st.markdown('---') # İnce bir ayraç çizgisi
+        st.markdown('<p style="text-align:center; color:#888; font-size:12px;">© 2026 CYHN Matematik Portalı | Muharrem Ceyhan tarafından geliştirilmiştir.</p>', unsafe_allow_html=True)
             
 # --- 3. AŞAMA: DERS NOTLARI VE PDF ARŞİVİ ---
 elif st.session_state["sayfa"] == "notlar_arsivi":
