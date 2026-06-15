@@ -573,6 +573,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
         # Başlıklar
         st.markdown('<p class="cyhn-title">CYHN MATEMATİK PORTALI</p>', unsafe_allow_html=True)
         st.markdown('<p class="cyhn-subtitle">Ders Notları Doğrulama Sistemi</p>', unsafe_allow_html=True)
+        st.markdown('<p style="text-align:center; color:gray; font-size:14px;">Geliştirici: Muharrem Ceyhan</p>', unsafe_allow_html=True)
         
         # 📜 Sözleşme
         with st.expander("🔐 Lisans ve Kullanım Sözleşmesi", expanded=False):
@@ -635,10 +636,7 @@ elif st.session_state["sayfa"] == "sifre_kontrol":
             st.rerun()
         st.markdown('</div>', unsafe_allow_html=True)
 
-
-        st.markdown('---') # İnce bir ayraç çizgisi
-        st.markdown('<p style="text-align:center; color:#888; font-size:12px;">© 2026 CYHN Matematik Portalı | Muharrem Ceyhan tarafından geliştirilmiştir.</p>', unsafe_allow_html=True)
-            
+   
 # --- 3. AŞAMA: DERS NOTLARI VE PDF ARŞİVİ ---
 elif st.session_state["sayfa"] == "notlar_arsivi":
 
