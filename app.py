@@ -345,6 +345,27 @@ if st.session_state["sayfa"] == "ana_menu":
         
         st.divider()
 
+        # İki büyük seçenek butonunun bittiği yerin hemen altına (st.divider'ın üstüne):
+        st.write("") # Küçük bir boşluk
+
+        # Expander varsayılan olarak kapalı gelir ve çok az yer kaplar
+        with st.expander("🚀 Platform & Geliştirici Hakkında"):
+            st.markdown(
+                """
+                **Merhaba! Ben Muharrem Ceyhan.** İlköğretim Matematik Öğretmeni Adayı ve Yazılım Geliştiriciyim. 
+                **CYHN Matematik Portalı**'nı; matematik eğitiminin soyut dünyasını teknolojinin imkanlarıyla somutlaştırmak, 
+                akademik ders notlarına erişimi kolaylaştırmak ve yapay zeka destekli yenilikçi çözümler üretmek amacıyla tamamen sıfırdan geliştirdim.
+                
+                Eğitim teknolojileri ve açık kaynak vizyonuyla hazırladığım bu platform hakkındaki soru, öneri veya iş birlikleri için bana ulaşabilirsiniz.
+                """
+            )
+            # Linkleri yan yana küçük butonlar olarak alt satıra şıkça diziyoruz
+            l1, l2, _ = st.columns([1, 1, 3])
+            with l1:
+                st.link_button("🌐 GitHub", "https://github.com/muharremceyhan", use_container_width=True)
+            with l2:
+                st.link_button("💼 LinkedIn", "https://linkedin.com", use_container_width=True)
+
 # Alt Bilgi (Footer) Tasarımı
         c_left, c_right = st.columns(2)
         with c_left:
