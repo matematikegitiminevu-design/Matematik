@@ -319,10 +319,10 @@ if st.session_state["sayfa"] == "ana_menu":
             """
             <div style="background-color: #111a2e; border: 1px solid #1e293b; border-radius: 8px; padding: 15px 20px; margin: 15px 0 20px 0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                 <p style="margin: 0; font-size: 0.95rem; color: #cbd5e1; line-height: 1.5;">
-                    ℹ️ <b>Sistem Bilgisi:</b> Bu platform, <b>Sistem Sahibi Muharrem CEYHAN</b> tarafından ilköğretim matematik eğitimi süreçlerini dijitalleştirmek ve modern yapay zekâ entegrasyonunu somutlaştırmak amacıyla geliştirilmiş akademik odaklı bir projedir.
+                    ℹ️ <b>Sistem Bilgisi:</b> Bu platform, <b>Muharrem CEYHAN</b> tarafından ilköğretim matematik eğitimi süreçlerini dijitalleştirmek ve modern yapay zekâ entegrasyonunu somutlaştırmak amacıyla geliştirilmiş akademik odaklı bir projedir.
                 </p>
                 <p style="margin: 12px 0 0 0; font-size: 0.95rem; color: white; font-weight: 500; text-align: center; border-top: 1px solid #1e293b; padding-top: 10px;">
-                    👇 Lütfen işlem yapmak istediğiniz modülü aşağıdan seçiniz:
+                    👇 Lütfen devam etmek için aşağıdan bir işlem seçiniz:
                 </p>
             </div>
             """, 
