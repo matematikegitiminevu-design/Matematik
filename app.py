@@ -345,27 +345,27 @@ if st.session_state["sayfa"] == "ana_menu":
        
 
         with st.sidebar:
-    # Sol menüdeki mevcut elementlerinin en altına gelebilir:
-    st.markdown("---") # İnce bir ayraç
-    
-    # Şık ve dikey yer kaplamayan mini künye
-    st.markdown(
-        """
-        <div style="border-left: 3px solid #FF4B4B; padding-left: 12px; margin: 10px 0;">
-            <span style="font-size: 0.75rem; color: gray; text-transform: uppercase; letter-spacing: 1px; font-weight: bold;">Sistem Sahibi</span><br>
-            <strong style="font-size: 1.05rem; color: white;">Muharrem CEYHAN</strong><br>
-            <span style="font-size: 0.8rem; color: #cbd5e1; font-style: italic;">İlköğretim Matematik Öğretmeni Adayı</span>
+            # Sol menüdeki mevcut elementlerinin en altına gelebilir:
+            st.markdown("---") # İnce bir ayraç
             
-            <br><br>
-            
-            <span style="font-size: 0.75rem; color: gray; text-transform: uppercase; letter-spacing: 1px; font-weight: bold;">Platform Hakkında</span><br>
-            <p style="font-size: 0.8rem; color: #cbd5e1; margin: 0; line-height: 1.3;">
-                Eğitim teknolojileri ve modern yapay zekâ entegrasyonu amacıyla geliştirilmiş akademik odaklı bir web platformudur.
-            </p>
-        </div>
-        """, 
-        unsafe_allow_html=True
-    )
+            # Şık ve dikey yer kaplamayan mini künye
+            st.markdown(
+                """
+                <div style="border-left: 3px solid #FF4B4B; padding-left: 12px; margin: 10px 0;">
+                    <span style="font-size: 0.75rem; color: gray; text-transform: uppercase; letter-spacing: 1px; font-weight: bold;">Sistem Sahibi</span><br>
+                    <strong style="font-size: 1.05rem; color: white;">Muharrem CEYHAN</strong><br>
+                    <span style="font-size: 0.8rem; color: #cbd5e1; font-style: italic;">İlköğretim Matematik Öğretmeni Adayı</span>
+                    
+                    <br><br>
+                    
+                    <span style="font-size: 0.75rem; color: gray; text-transform: uppercase; letter-spacing: 1px; font-weight: bold;">Platform Hakkında</span><br>
+                    <p style="font-size: 0.8rem; color: #cbd5e1; margin: 0; line-height: 1.3;">
+                        Eğitim teknolojileri ve modern yapay zekâ entegrasyonu amacıyla geliştirilmiş akademik odaklı bir web platformudur.
+                    </p>
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
 
 
         st.divider()
