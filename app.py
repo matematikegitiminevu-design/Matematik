@@ -344,44 +344,28 @@ if st.session_state["sayfa"] == "ana_menu":
                 st.link_button("Yapay Zekayı Başlat", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc", use_container_width=True)
        
 
-        # İki büyük seçenek butonunun bittiği yerin hemen altına (st.divider'ın üstüne):
-        st.write("") 
-
-        # Sade, kurumsal ve vizyon odaklı expander alanı
-        with st.expander("ℹ️ Platform Hakkında & Sistem Künyesi"):
+        with st.sidebar:
+    # Sol menüdeki mevcut elementlerinin en altına gelebilir:
+    st.markdown("---") # İnce bir ayraç
+    
+    # Şık ve dikey yer kaplamayan mini künye
+    st.markdown(
+        """
+        <div style="border-left: 3px solid #FF4B4B; padding-left: 12px; margin: 10px 0;">
+            <span style="font-size: 0.75rem; color: gray; text-transform: uppercase; letter-spacing: 1px; font-weight: bold;">Sistem Sahibi</span><br>
+            <strong style="font-size: 1.05rem; color: white;">Muharrem CEYHAN</strong><br>
+            <span style="font-size: 0.8rem; color: #cbd5e1; font-style: italic;">İlköğretim Matematik Öğretmeni Adayı</span>
             
-            # İçeriği dengeli sunmak için iki kolon
-            k1, k2 = st.columns([3.2, 1.8])
+            <br><br>
             
-            with k1:
-                st.markdown(
-                    """
-                    **CYHN Matematik Portalı**, ilköğretim matematik eğitimi süreçlerini dijitalleştirmek, akademik kaynaklara 
-                    erişimi kolaylaştırmak ve modern yapay zekâ entegrasyonunu somutlaştırmak amacıyla geliştirilmiş 
-                    akademik odaklı bir web platformudur. 
-                    
-                    Geliştirilen dinamik modüller ve **cyhnAI** desteği sayesinde, kullanıcıların öğrenme, kaynak tarama ve 
-                    dijital materyal yönetim süreçlerinde maksimum verimlilik elde etmesi hedeflenmektedir.
-                    """
-                )
-                
-            with k2:
-                # İsmini ve "Sistem Sahibi" vurgusunu ön plana çıkaran kurumsal imza
-                st.markdown(
-                    """
-                    <div style="border-left: 3px solid #FF4B4B; padding-left: 15px; margin-top: 5px;">
-                        <span style="font-size: 0.85rem; color: gray; text-transform: uppercase; letter-spacing: 1.2px; font-weight: bold;">Sistem Sahibi</span><br>
-                        <strong style="font-size: 1.25rem; color: white; letter-spacing: 0.5px;">Muharrem CEYHAN</strong><br>
-                        <span style="font-size: 0.9rem; color: #cbd5e1; font-style: italic;">İlköğretim Matematik Öğretmeni Adayı</span>
-                        
-                        <br><br>
-                        
-                        <span style="font-size: 0.85rem; color: gray; text-transform: uppercase; letter-spacing: 1.2px; font-weight: bold;">Proje Mimarisi</span><br>
-                        <span style="font-size: 0.95rem; color: #cbd5e1;">Python & Streamlit Cloud Entegrasyonu</span>
-                    </div>
-                    """, 
-                    unsafe_allow_html=True
-                )
+            <span style="font-size: 0.75rem; color: gray; text-transform: uppercase; letter-spacing: 1px; font-weight: bold;">Platform Hakkında</span><br>
+            <p style="font-size: 0.8rem; color: #cbd5e1; margin: 0; line-height: 1.3;">
+                Eğitim teknolojileri ve modern yapay zekâ entegrasyonu amacıyla geliştirilmiş akademik odaklı bir web platformudur.
+            </p>
+        </div>
+        """, 
+        unsafe_allow_html=True
+    )
 
 
         st.divider()
