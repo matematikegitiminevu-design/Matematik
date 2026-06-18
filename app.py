@@ -342,7 +342,54 @@ if st.session_state["sayfa"] == "ana_menu":
                 st.write("") # Küçük bir boşluk
                 # link_button zaten varsayılan olarak şık durur
                 st.link_button("Yapay Zekayı Başlat", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc", use_container_width=True)
-        
+       
+
+        # --------------------------------------------------------------------
+        # TAM OLARAK BURAYA: İKİ KARTIN BİTTİĞİ YERE YAZILIYOR
+        # --------------------------------------------------------------------
+        st.write("") # Kartlar ile expander arasında hafif bir boşluk
+
+        with st.expander("ℹ️ Platform Hakkında & Akademik Künye"):
+            
+            k1, k2 = st.columns([3.3, 1.7])
+            
+            with k1:
+                st.markdown(
+                    """
+                    **CYHN Matematik Portalı**, ilköğretim matematik eğitimi süreçlerini dijitalleştirmek, akademik kaynaklara 
+                    erişimi kolaylaştırmak ve modern eğitim teknolojilerinin entegrasyonunu somutlaştırmak amacıyla 
+                    geliştirilmiş akademik odaklı bir web platformudur.
+                    
+                    Platform iki temel yapı üzerinde şekillenmiştir:
+                    * **Akademik Arşiv Yönetimi:** Dönem içi ders notları, güncel sınav takvimleri, haftalık programlar ve bölüm duyurularının tek bir merkezden, güvenli ve organize bir şekilde kullanıcılarla paylaşılmasını sağlar.
+                    * **Yapay Zekâ Entegrasyonu (cyhnAI):** Matematiksel problem çözümü, formül analizi ve pedagojik yaklaşımlara destek sunmak amacıyla optimize edilmiş özel bir asistan yapısı barındırır. Bu modül, dijital çağda öğretmen adaylarının ve öğrencilerin kaynak tarama verimliliğini artırmayı hedefler.
+                    """
+                )
+                
+            with k2:
+                st.markdown(
+                    """
+                    <div style="border-left: 3px solid #FF4B4B; padding-left: 15px; margin-top: 5px;">
+                        <span style="font-size: 0.85rem; color: gray; text-transform: uppercase; letter-spacing: 1px;">Proje Sahibi & Geliştirici</span><br>
+                        <strong style="font-size: 1.1rem; color: white;">Muharrem CEYHAN</strong><br>
+                        <span style="font-size: 0.9rem; color: #cbd5e1; font-style: italic;">İlköğretim Matematik Öğretmeni Adayı</span>
+                        
+                        <br><br>
+                        
+                        <span style="font-size: 0.85rem; color: gray; text-transform: uppercase; letter-spacing: 1px;">Sistem Altyapısı</span><br>
+                        <span style="font-size: 0.95rem; color: #cbd5e1;">Python 3.x / Streamlit Cloud</span>
+                        
+                        <br><br>
+                        
+                        <span style="font-size: 0.85rem; color: gray; text-transform: uppercase; letter-spacing: 1px;">Odak Alanı</span><br>
+                        <span style="font-size: 0.95rem; color: #cbd5e1; font-style: italic;">Eğitim Teknolojileri & Dijital Materyal Yönetimi</span>
+                    </div>
+                    """, 
+                    unsafe_allow_html=True
+                )
+        # --------------------------------------------------------------------
+
+
         st.divider()
 
 
