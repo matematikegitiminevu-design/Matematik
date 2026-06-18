@@ -312,12 +312,12 @@ if st.session_state["sayfa"] == "ana_menu":
     
     with col2:
         st.markdown(
-    """
-    <h1 style='margin-bottom: 0; padding-bottom: 0; font-size: 2.8rem; color: #FF4B4B;'>CYHN</h1>
-    <h2 style='margin-top: 0; padding-top: 0; font-size: 2rem; font-weight: normal; color: white;'>Matematik Portalı</h2>
-    """, 
-    unsafe_allow_True=True
-)
+            """
+            <h1 style='margin-bottom: 0; padding-bottom: 0; font-size: 2.8rem; color: #FF4B4B;'>CYHN</h1>
+            <h2 style='margin-top: 0; padding-top: 0; font-size: 2rem; font-weight: normal; color: white;'>Matematik Portalı</h2>
+            """, 
+            unsafe_allow_True=True
+        )
         # --------------------------------------------------------------------
         # ESKİ METİN SİLİNDİ, YERİNE ŞIK SİSTEM BİLGİSİ VE YÖNLENDİRME GELDİ
         # --------------------------------------------------------------------
