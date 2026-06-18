@@ -318,6 +318,21 @@ if st.session_state["sayfa"] == "ana_menu":
             Bilgiye açılan kapıya hoş geldiniz..! Akademik ders notları arşivimize ulaşmak veya yapay zeka asistanımızdan destek almak için lütfen bir işlem seçiniz.
             """
         )
+
+        # --------------------------------------------------------------------
+        # YENİ YERİ: BAŞLIĞIN HEMEN ALTI, BUTONLARIN ÜSTÜ
+        # --------------------------------------------------------------------
+        st.markdown(
+            """
+            <div style="background-color: #111a2e; border: 1px solid #1e293b; border-radius: 6px; padding: 12px 15px; margin: 15px 0;">
+                <p style="margin: 0; font-size: 0.9rem; color: #cbd5e1; line-height: 1.4;">
+                    ℹ️ <b>Sistem Bilgisi:</b> Bu platform, <b>Sistem Sahibi Muharrem CEYHAN</b> tarafından ilköğretim matematik eğitimi süreçlerini dijitalleştirmek ve modern yapay zekâ entegrasyonunu somutlaştırmak amacıyla geliştirilmiş akademik odaklı bir projedir.
+                </p>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
+        # --------------------------------------------------------------------
         st.divider() 
 
         # İki büyük seçenek butonu
@@ -344,28 +359,6 @@ if st.session_state["sayfa"] == "ana_menu":
                 st.link_button("Yapay Zekayı Başlat", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc", use_container_width=True)
        
 
-        with st.sidebar:
-            # Sol menüdeki mevcut elementlerinin en altına gelebilir:
-            st.markdown("---") # İnce bir ayraç
-            
-            # Şık ve dikey yer kaplamayan mini künye
-            st.markdown(
-                """
-                <div style="border-left: 3px solid #FF4B4B; padding-left: 12px; margin: 10px 0;">
-                    <span style="font-size: 0.75rem; color: gray; text-transform: uppercase; letter-spacing: 1px; font-weight: bold;">Sistem Sahibi</span><br>
-                    <strong style="font-size: 1.05rem; color: white;">Muharrem CEYHAN</strong><br>
-                    <span style="font-size: 0.8rem; color: #cbd5e1; font-style: italic;">İlköğretim Matematik Öğretmeni Adayı</span>
-                    
-                    <br><br>
-                    
-                    <span style="font-size: 0.75rem; color: gray; text-transform: uppercase; letter-spacing: 1px; font-weight: bold;">Platform Hakkında</span><br>
-                    <p style="font-size: 0.8rem; color: #cbd5e1; margin: 0; line-height: 1.3;">
-                        Eğitim teknolojileri ve modern yapay zekâ entegrasyonu amacıyla geliştirilmiş akademik odaklı bir web platformudur.
-                    </p>
-                </div>
-                """, 
-                unsafe_allow_html=True
-            )
 
 
         st.divider()
