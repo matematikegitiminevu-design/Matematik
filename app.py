@@ -344,14 +344,14 @@ if st.session_state["sayfa"] == "ana_menu":
                 st.link_button("Yapay Zekayı Başlat", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc", use_container_width=True)
        
 
-        # --------------------------------------------------------------------
-        # TAM OLARAK BURAYA: İKİ KARTIN BİTTİĞİ YERE YAZILIYOR
-        # --------------------------------------------------------------------
-        st.write("") # Kartlar ile expander arasında hafif bir boşluk
+        # İki büyük seçenek butonunun bittiği yerin hemen altına (st.divider'ın üstüne):
+        st.write("") 
 
+        # Tamamen içerik ve vizyon odaklı profesyonel expander alanı
         with st.expander("ℹ️ Platform Hakkında & Akademik Künye"):
             
-            k1, k2 = st.columns([3.3, 1.7])
+            # İçeriği düzenli sunmak için iki kolon
+            k1, k2 = st.columns([3.5, 1.5])
             
             with k1:
                 st.markdown(
@@ -367,27 +367,20 @@ if st.session_state["sayfa"] == "ana_menu":
                 )
                 
             with k2:
+                # Sağ tarafta net ve profesyonel künye bilgisi
                 st.markdown(
                     """
-                    <div style="border-left: 3px solid #FF4B4B; padding-left: 15px; margin-top: 5px;">
-                        <span style="font-size: 0.85rem; color: gray; text-transform: uppercase; letter-spacing: 1px;">Proje Sahibi & Geliştirici</span><br>
-                        <strong style="font-size: 1.1rem; color: white;">Muharrem CEYHAN</strong><br>
-                        <span style="font-size: 0.9rem; color: #cbd5e1; font-style: italic;">İlköğretim Matematik Öğretmeni Adayı</span>
-                        
-                        <br><br>
-                        
-                        <span style="font-size: 0.85rem; color: gray; text-transform: uppercase; letter-spacing: 1px;">Sistem Altyapısı</span><br>
-                        <span style="font-size: 0.95rem; color: #cbd5e1;">Python 3.x / Streamlit Cloud</span>
-                        
-                        <br><br>
-                        
-                        <span style="font-size: 0.85rem; color: gray; text-transform: uppercase; letter-spacing: 1px;">Odak Alanı</span><br>
-                        <span style="font-size: 0.95rem; color: #cbd5e1; font-style: italic;">Eğitim Teknolojileri & Dijital Materyal Yönetimi</span>
-                    </div>
-                    """, 
-                    unsafe_allow_html=True
+                    **Geliştirici & Yönetim:**  
+                    Muharrem CEYHAN  
+                    *İlköğretim Matematik Öğretmeni Adayı*
+                    
+                    **Teknik Altyapı:**  
+                    Python / Streamlit Cloud
+                    
+                    **Sistem Amacı:**  
+                    Eğitim Teknolojileri Entegrasyonu & Dijital Materyal Yönetimi
+                    """
                 )
-        # --------------------------------------------------------------------
 
 
         st.divider()
