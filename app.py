@@ -347,39 +347,40 @@ if st.session_state["sayfa"] == "ana_menu":
         # İki büyük seçenek butonunun bittiği yerin hemen altına (st.divider'ın üstüne):
         st.write("") 
 
-        # Tamamen içerik ve vizyon odaklı profesyonel expander alanı
-        with st.expander("ℹ️ Platform Hakkında & Akademik Künye"):
+        # Sade, kurumsal ve vizyon odaklı expander alanı
+        with st.expander("ℹ️ Platform Hakkında & Sistem Künyesi"):
             
-            # İçeriği düzenli sunmak için iki kolon
-            k1, k2 = st.columns([3.5, 1.5])
+            # İçeriği dengeli sunmak için iki kolon
+            k1, k2 = st.columns([3.2, 1.8])
             
             with k1:
                 st.markdown(
                     """
                     **CYHN Matematik Portalı**, ilköğretim matematik eğitimi süreçlerini dijitalleştirmek, akademik kaynaklara 
-                    erişimi kolaylaştırmak ve modern eğitim teknolojilerinin entegrasyonunu somutlaştırmak amacıyla 
-                    geliştirilmiş akademik odaklı bir web platformudur.
+                    erişimi kolaylaştırmak ve modern yapay zekâ entegrasyonunu somutlaştırmak amacıyla geliştirilmiş 
+                    akademik odaklı bir web platformudur. 
                     
-                    Platform iki temel yapı üzerinde şekillenmiştir:
-                    * **Akademik Arşiv Yönetimi:** Dönem içi ders notları, güncel sınav takvimleri, haftalık programlar ve bölüm duyurularının tek bir merkezden, güvenli ve organize bir şekilde kullanıcılarla paylaşılmasını sağlar.
-                    * **Yapay Zekâ Entegrasyonu (cyhnAI):** Matematiksel problem çözümü, formül analizi ve pedagojik yaklaşımlara destek sunmak amacıyla optimize edilmiş özel bir asistan yapısı barındırır. Bu modül, dijital çağda öğretmen adaylarının ve öğrencilerin kaynak tarama verimliliğini artırmayı hedefler.
+                    Geliştirilen dinamik modüller ve **cyhnAI** desteği sayesinde, kullanıcıların öğrenme, kaynak tarama ve 
+                    dijital materyal yönetim süreçlerinde maksimum verimlilik elde etmesi hedeflenmektedir.
                     """
                 )
                 
             with k2:
-                # Sağ tarafta net ve profesyonel künye bilgisi
+                # İsmini ve "Sistem Sahibi" vurgusunu ön plana çıkaran kurumsal imza
                 st.markdown(
                     """
-                    **Geliştirici & Yönetim:**  
-                    Muharrem CEYHAN  
-                    *İlköğretim Matematik Öğretmeni Adayı*
-                    
-                    **Teknik Altyapı:**  
-                    Python / Streamlit Cloud
-                    
-                    **Sistem Amacı:**  
-                    Eğitim Teknolojileri Entegrasyonu & Dijital Materyal Yönetimi
-                    """
+                    <div style="border-left: 3px solid #FF4B4B; padding-left: 15px; margin-top: 5px;">
+                        <span style="font-size: 0.85rem; color: gray; text-transform: uppercase; letter-spacing: 1.2px; font-weight: bold;">Sistem Sahibi</span><br>
+                        <strong style="font-size: 1.25rem; color: white; letter-spacing: 0.5px;">Muharrem CEYHAN</strong><br>
+                        <span style="font-size: 0.9rem; color: #cbd5e1; font-style: italic;">İlköğretim Matematik Öğretmeni Adayı</span>
+                        
+                        <br><br>
+                        
+                        <span style="font-size: 0.85rem; color: gray; text-transform: uppercase; letter-spacing: 1.2px; font-weight: bold;">Proje Mimarisi</span><br>
+                        <span style="font-size: 0.95rem; color: #cbd5e1;">Python & Streamlit Cloud Entegrasyonu</span>
+                    </div>
+                    """, 
+                    unsafe_allow_html=True
                 )
 
 
