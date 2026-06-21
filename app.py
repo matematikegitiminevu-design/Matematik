@@ -159,9 +159,9 @@ st.markdown("""
     }
     </style>
 """, unsafe_allow_html=True)
-
+# ==========================================
 st.markdown("""
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mr+De+Haviland&family=Poppins:wght@300;400;600&display=swap">
     <style>
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
@@ -184,7 +184,7 @@ st.markdown("""
         align-items: center;
         gap: 15px;
     ">
-        <span style="color: #ffffff !important; font-family: 'Great Vibes', cursive !important; font-size: 2.3rem !important; font-weight: normal !important; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); line-height: 1;">
+        <span style="color: #ffffff !important; font-family: 'Mr De Haviland', cursive !important; font-size: 3.2rem !important; font-weight: normal !important; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); line-height: 1;">
             Muharrem Ceyhan
         </span>
         <span style="color: #60a5fa !important; font-size: 1.2rem !important; font-family: 'Poppins', sans-serif !important;">|</span>
