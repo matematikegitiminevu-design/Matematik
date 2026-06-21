@@ -160,29 +160,52 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Kendi özel şeridini çizer
+# Kendi özel şeridini çizer (İmza Tarzı)
 st.markdown("""
+    <!-- Google Fonts'tan İmza Yazı Tipini Yüklüyoruz -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap">
+
     <div style="
         background: linear-gradient(90deg, #1e3a8a 0%, #1e40af 100%) !important; /* Mavi geçişli arka plan */
-        padding: 14px 20px; 
+        padding: 10px 20px; 
         border-radius: 0px 0px 12px 12px; 
         margin-bottom: 30px;
         text-align: center;
         box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
         border-bottom: 2px solid #3b82f6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px; /* İmza ile unvan arasındaki boşluk */
     ">
+        <!-- İmza Kısmı -->
         <span style="
             color: #ffffff !important; 
-            font-size: 0.2rem !important; 
-            font-weight: bold !important;
-            letter-spacing: 2px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Great Vibes', cursive !important; /* İmza Fontu */
+            font-size: 2.3rem !important; /* İmza fontları genelde küçük görünür, o yüzden büyüttük */
+            font-weight: normal !important;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            line-height: 1;
         ">
-            MUHARREM CEYHAN | FOUNDER & DEVELOPER
+            Muharrem Ceyhan
+        </span>
+        
+        <!-- Ayraç Çizgisi -->
+        <span style="color: #60a5fa !important; font-size: 1.2rem !important; font-family: 'Poppins', sans-serif !important;">|</span>
+        
+        <!-- Unvan Kısmı -->
+        <span style="
+            color: #93c5fd !important; 
+            font-family: 'Poppins', sans-serif !important; /* Kurumsal modern font */
+            font-size: 0.9rem !important; 
+            font-weight: 600 !important;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        ">
+            Founder & Developer
         </span>
     </div>
 """, unsafe_allow_html=True)
-# ==========================================
 
 # --- SAYFA ARKA PLANI ---
 st.markdown(
