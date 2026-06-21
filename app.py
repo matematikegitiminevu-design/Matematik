@@ -153,10 +153,10 @@ ust_bar_tasarim = (
     "header {visibility: hidden;}"
     ".block-container {padding-top: 0rem !important; padding-bottom: 0rem !important;}"
     "</style>"
-    "<div style='background: linear-gradient(90deg, #111827 0%, #1f2937 100%) !important; padding: 10px 20px; border-radius: 0px 0px 12px 12px; margin-bottom: 30px; text-align: center; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4); border-bottom: 2px solid #3b82f6; display: flex; justify-content: center; align-items: center; gap: 15px;'>"
-    "<span style='color: #ffffff !important; font-family: \"Mr De Haviland\", cursive !important; font-size: 3.2rem !important; font-weight: normal !important; text-shadow: 0 0 10px rgba(59, 130, 246, 0.3), 1px 1px 2px rgba(0,0,0,0.8); line-height: 1; letter-spacing: 1px;'>Muharrem Ceyhan</span>"
-    "<span style='color: #3b82f6 !important; font-size: 1.2rem !important; font-family: \"Poppins\", sans-serif !important; font-weight: bold;'>|</span>"
-    "<span style='color: #9ca3af !important; font-family: \"Poppins\", sans-serif !important; font-size: 0.85rem !important; font-weight: 600 !important; letter-spacing: 2.5px; text-transform: uppercase;'>Founder & Developer</span>"
+    "<div style='background: linear-gradient(90deg, #111827 0%, #1f2937 100%) !important; padding: 10px 15px; border-radius: 0px 0px 12px 12px; margin-bottom: 25px; text-align: center; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4); border-bottom: 2px solid #3b82f6; display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap;'>"
+    "<span style='color: #ffffff !important; font-family: \"Mr De Haviland\", cursive !important; font-size: 3.0rem !important; font-weight: normal !important; text-shadow: 0 0 10px rgba(59, 130, 246, 0.3), 1px 1px 2px rgba(0,0,0,0.8); line-height: 1; letter-spacing: 1px;'>Muharrem Ceyhan</span>"
+    "<span style='color: #3b82f6 !important; font-size: 1.0rem !important; font-family: \"Poppins\", sans-serif !important; font-weight: bold;'>|</span>"
+    "<span style='color: #9ca3af !important; font-family: \"Poppins\", sans-serif !important; font-size: 0.72rem !important; font-weight: 600 !important; letter-spacing: 3px; text-transform: uppercase;'>Founder & Developer</span>"
     "</div>"
 )
 
