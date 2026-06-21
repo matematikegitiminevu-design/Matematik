@@ -152,6 +152,13 @@ ust_bar_tasarim = (
     "footer {visibility: hidden;}"
     "header {visibility: hidden;}"
     ".block-container {padding-top: 0rem !important; padding-bottom: 0rem !important;}"
+    
+    /* 🎯 SAĞ ALTTAKİ LOGOLARI VE BUTONLARI KALDIRAN CSS KURALLARI */
+    "button[data-testid='stActionButton'] {visibility: hidden !important; display: none !important;}"
+    "div[data-testid='stStatusWidget'] {visibility: hidden !important; display: none !important;}"
+    "#connection-status {visibility: hidden !important; display: none !important;}"
+    ".stAppDeployButton {display: none !important;}"
+    
     "@media (max-width: 768px) {"
     "    .custom-bar {flex-direction: column !important; gap: 2px !important; padding: 5px 10px !important;}"
     "    .custom-bar .ayrac {display: none !important;}"
@@ -168,6 +175,7 @@ ust_bar_tasarim = (
 # Listeyi tek bir metne dönüştürerek güvenli şekilde basıyoruz
 st.markdown("".join(ust_bar_tasarim), unsafe_allow_html=True)
 # ==========================================
+
 
 
 # --- SAYFA ARKA PLANI ---
