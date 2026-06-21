@@ -153,16 +153,15 @@ ust_bar_tasarim = (
     "header {visibility: hidden;}"
     ".block-container {padding-top: 0rem !important; padding-bottom: 0rem !important;}"
     "</style>"
-    "<div style='background-color: #111827 !important; padding: 8px 20px; border-radius: 0px 0px 8px 8px; margin-bottom: 25px; text-align: center; box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2); border-bottom: 1px solid #1f2937; display: flex; justify-content: center; align-items: center; gap: 12px;'>"
-    "<span style='color: #f3f4f6 !important; font-family: \"Mr De Haviland\", cursive !important; font-size: 2.5rem !important; font-weight: normal !important; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); line-height: 1; opacity: 0.95;'>Muharrem Ceyhan</span>"
-    "<span style='color: #4b5563 !important; font-size: 1rem !important; font-family: \"Poppins\", sans-serif !important;'>|</span>"
-    "<span style='color: #9ca3af !important; font-family: \"Poppins\", sans-serif !important; font-size: 0.8rem !important; font-weight: 500 !important; letter-spacing: 2.5px; text-transform: uppercase;'>Founder & Developer</span>"
+    "<div style='background: linear-gradient(90deg, #111827 0%, #1f2937 100%) !important; padding: 10px 20px; border-radius: 0px 0px 12px 12px; margin-bottom: 30px; text-align: center; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4); border-bottom: 2px solid #3b82f6; display: flex; justify-content: center; align-items: center; gap: 15px;'>"
+    "<span style='color: #ffffff !important; font-family: \"Mr De Haviland\", cursive !important; font-size: 3.2rem !important; font-weight: normal !important; text-shadow: 0 0 10px rgba(59, 130, 246, 0.3), 1px 1px 2px rgba(0,0,0,0.8); line-height: 1; letter-spacing: 1px;'>Muharrem Ceyhan</span>"
+    "<span style='color: #3b82f6 !important; font-size: 1.2rem !important; font-family: \"Poppins\", sans-serif !important; font-weight: bold;'>|</span>"
+    "<span style='color: #9ca3af !important; font-family: \"Poppins\", sans-serif !important; font-size: 0.85rem !important; font-weight: 600 !important; letter-spacing: 2.5px; text-transform: uppercase;'>Founder & Developer</span>"
     "</div>"
 )
 
 st.markdown(ust_bar_tasarim, unsafe_allow_html=True)
 # ==========================================
-
 # --- SAYFA ARKA PLANI ---
 st.markdown(
     """  
