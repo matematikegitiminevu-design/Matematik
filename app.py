@@ -188,7 +188,7 @@ st.markdown("""
             Muharrem Ceyhan
         </span>
         <span style="color: #60a5fa !important; font-size: 1.2rem !important; font-family: 'Poppins', sans-serif !important;">|</span>
-        <span style="color: #93c5fd !important; font-family: 'Poppins', sans-serif !important; font-size: 0.9rem !important; font-weight: 600 !important; letter-spacing: 2px; text-transform: uppercase;">
+        <span style="color: #93c5fd !important; font-family: 'Poppins', sans-serif !important; font-size: 0.2rem !important; font-weight: 600 !important; letter-spacing: 2px; text-transform: uppercase;">
             Founder & Developer
         </span>
     </div>
