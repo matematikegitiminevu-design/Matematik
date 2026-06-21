@@ -161,7 +161,8 @@ st.markdown("""
 """, unsafe_allow_html=True)
 # ==========================================
 st.markdown("""
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mr+De+Haviland&family=Poppins:wght@300;400;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mr+De+Haviland&family=Poppins:wght@300;400;500;600&display=swap">
+    
     <style>
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
@@ -171,24 +172,42 @@ st.markdown("""
         padding-bottom: 0rem !important;
     }
     </style>
+    
     <div style="
-        background: linear-gradient(90deg, #1e3a8a 0%, #1e40af 100%) !important;
-        padding: 10px 20px; 
-        border-radius: 0px 0px 12px 12px; 
-        margin-bottom: 30px;
+        background-color: #111827 !important; /* Göze batmayan, asil ve koyu bir arka plan */
+        padding: 8px 20px; 
+        border-radius: 0px 0px 8px 8px; 
+        margin-bottom: 25px;
         text-align: center;
-        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
-        border-bottom: 2px solid #3b82f6;
+        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2); /* Gölge hafifletildi */
+        border-bottom: 1px solid #1f2937; /* Parlak çizgi yerine çok hafif bir sınır çizgisi */
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 15px;
+        gap: 12px;
     ">
-        <span style="color: #ffffff !important; font-family: 'Mr De Haviland', cursive !important; font-size: 2.8rem !important; font-weight: normal !important; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); line-height: 1;">
+        <span style="
+            color: #f3f4f6 !important; 
+            font-family: 'Mr De Haviland', cursive !important; 
+            font-size: 2.5rem !important; 
+            font-weight: normal !important; 
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            line-height: 1;
+            opacity: 0.95;
+        ">
             Muharrem Ceyhan
         </span>
-        <span style="color: #60a5fa !important; font-size: 1.2rem !important; font-family: 'Poppins', sans-serif !important;">|</span>
-        <span style="color: #93c5fd !important; font-family: 'Poppins', sans-serif !important; font-size: 0.9rem !important; font-weight: 600 !important; letter-spacing: 2px; text-transform: uppercase;">
+        
+        <span style="color: #4b5563 !important; font-size: 1rem !important; font-family: 'Poppins', sans-serif !important;">|</span>
+        
+        <span style="
+            color: #9ca3af !important; 
+            font-family: 'Poppins', sans-serif !important; 
+            font-size: 0.8rem !important; 
+            font-weight: 500 !important; 
+            letter-spacing: 2.5px; 
+            text-transform: uppercase;
+        ">
             Founder & Developer
         </span>
     </div>
