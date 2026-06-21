@@ -142,6 +142,47 @@ st.set_page_config(
     initial_sidebar_state="collapsed" 
 )
 
+# ==========================================
+# 🗺️ ÖZEL ÜST ŞERİT BAR TANIMLAMASI
+# ==========================================
+st.markdown("""
+    <style>
+    /* Streamlit'in kendi üst barını ve menülerini gizler */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    
+    /* Sayfanın en üstündeki boşluğu sıfırlayarak şeridi tepeye yapıştırır */
+    .block-container {
+        padding-top: 0rem !important;
+        padding-bottom: 0rem !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+# Kendi özel şeridini çizer
+st.markdown("""
+    <div style="
+        background: linear-gradient(90deg, #1e3a8a 0%, #1e40af 100%) !important; /* Mavi geçişli arka plan */
+        padding: 14px 20px; 
+        border-radius: 0px 0px 12px 12px; 
+        margin-bottom: 30px;
+        text-align: center;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
+        border-bottom: 2px solid #3b82f6;
+    ">
+        <span style="
+            color: #ffffff !important; 
+            font-size: 1.3rem !important; 
+            font-weight: bold !important;
+            letter-spacing: 2px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        ">
+            MUHARREM CEYHAN
+        </span>
+    </div>
+""", unsafe_allow_html=True)
+# ==========================================
 
 # --- SAYFA ARKA PLANI ---
 st.markdown(
