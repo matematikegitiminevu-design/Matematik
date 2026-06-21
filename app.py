@@ -415,7 +415,7 @@ if st.session_state["sayfa"] == "ana_menu":
                 unsafe_allow_html=True
             )
 
-    st.markdown("---")
+        st.markdown("---")
 
 # =========================================================================
 # 🔒 2. AŞAMA: ŞİFRE KONTROL EKRANI (%100 MOBİL & MASAÜSTÜ ORTALI KESİN SÜRÜM)
