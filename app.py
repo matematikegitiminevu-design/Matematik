@@ -30,7 +30,7 @@ USERS = {
 # =========================================================================
 # 🛠️ BAKIM MODU AYARLARI
 # =========================================================================
-BAKIM_MODU = True         # Tüm siteyi kapatmak için True yapın
+BAKIM_MODU = False         # Tüm siteyi kapatmak için True yapın
 ARSIV_BAKIM_MODU = False      # Sadece ders arşivini kapatmak için True yapın
 
 HEDEF_ZAMAN_GENEL = "2026-06-19 00:00:00"
@@ -160,13 +160,12 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Kendi özel şeridini çizer (İmza Tarzı)
 st.markdown("""
     <!-- Google Fonts'tan İmza Yazı Tipini Yüklüyoruz -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap">
 
     <div style="
-        background: linear-gradient(90deg, #1e3a8a 0%, #1e40af 100%) !important; /* Mavi geçişli arka plan */
+        background: linear-gradient(90deg, #1e3a8a 0%, #1e40af 100%) !important;
         padding: 10px 20px; 
         border-radius: 0px 0px 12px 12px; 
         margin-bottom: 30px;
@@ -176,13 +175,13 @@ st.markdown("""
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 15px; /* İmza ile unvan arasındaki boşluk */
+        gap: 15px;
     ">
         <!-- İmza Kısmı -->
         <span style="
             color: #ffffff !important; 
-            font-family: 'Great Vibes', cursive !important; /* İmza Fontu */
-            font-size: 2.3rem !important; /* İmza fontları genelde küçük görünür, o yüzden büyüttük */
+            font-family: 'Great Vibes', cursive !important;
+            font-size: 2.3rem !important;
             font-weight: normal !important;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             line-height: 1;
@@ -196,7 +195,7 @@ st.markdown("""
         <!-- Unvan Kısmı -->
         <span style="
             color: #93c5fd !important; 
-            font-family: 'Poppins', sans-serif !important; /* Kurumsal modern font */
+            font-family: 'Poppins', sans-serif !important;
             font-size: 0.9rem !important; 
             font-weight: 600 !important;
             letter-spacing: 2px;
