@@ -145,73 +145,23 @@ st.set_page_config(
 # ==========================================
 # 🗺️ ÖZEL ÜST ŞERİT BAR TANIMLAMASI
 # ==========================================
-st.markdown("""
-    <style>
-    /* Streamlit'in kendi üst barını ve menülerini gizler */
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
-    
-    /* Sayfanın en üstündeki boşluğu sıfırlayarak şeridi tepeye yapıştırır */
-    .block-container {
-        padding-top: 0rem !important;
-        padding-bottom: 0rem !important;
-    }
-    </style>
-""", unsafe_allow_html=True)
+ust_bar_tasarim = (
+    "<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Mr+De+Haviland&family=Poppins:wght@300;400;500;600&display=swap'>"
+    "<style>"
+    "#MainMenu {visibility: hidden;}"
+    "footer {visibility: hidden;}"
+    "header {visibility: hidden;}"
+    ".block-container {padding-top: 0rem !important; padding-bottom: 0rem !important;}"
+    "</style>"
+    "<div style='background-color: #111827 !important; padding: 8px 20px; border-radius: 0px 0px 8px 8px; margin-bottom: 25px; text-align: center; box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2); border-bottom: 1px solid #1f2937; display: flex; justify-content: center; align-items: center; gap: 12px;'>"
+    "<span style='color: #f3f4f6 !important; font-family: \"Mr De Haviland\", cursive !important; font-size: 2.5rem !important; font-weight: normal !important; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); line-height: 1; opacity: 0.95;'>Muharrem Ceyhan</span>"
+    "<span style='color: #4b5563 !important; font-size: 1rem !important; font-family: \"Poppins\", sans-serif !important;'>|</span>"
+    "<span style='color: #9ca3af !important; font-family: \"Poppins\", sans-serif !important; font-size: 0.8rem !important; font-weight: 500 !important; letter-spacing: 2.5px; text-transform: uppercase;'>Founder & Developer</span>"
+    "</div>"
+)
+
+st.markdown(ust_bar_tasarim, unsafe_allow_html=True)
 # ==========================================
-st.markdown("""
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mr+De+Haviland&family=Poppins:wght@300;400;500;600&display=swap">
-    
-    <style>
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
-    .block-container {
-        padding-top: 0rem !important;
-        padding-bottom: 0rem !important;
-    }
-    </style>
-    
-    <div style="
-        background-color: #111827 !important; /* Göze batmayan, asil ve koyu bir arka plan */
-        padding: 8px 20px; 
-        border-radius: 0px 0px 8px 8px; 
-        margin-bottom: 25px;
-        text-align: center;
-        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2); /* Gölge hafifletildi */
-        border-bottom: 1px solid #1f2937; /* Parlak çizgi yerine çok hafif bir sınır çizgisi */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 12px;
-    ">
-        <span style="
-            color: #f3f4f6 !important; 
-            font-family: 'Mr De Haviland', cursive !important; 
-            font-size: 2.5rem !important; 
-            font-weight: normal !important; 
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-            line-height: 1;
-            opacity: 0.95;
-        ">
-            Muharrem Ceyhan
-        </span>
-        
-        <span style="color: #4b5563 !important; font-size: 1rem !important; font-family: 'Poppins', sans-serif !important;">|</span>
-        
-        <span style="
-            color: #9ca3af !important; 
-            font-family: 'Poppins', sans-serif !important; 
-            font-size: 0.8rem !important; 
-            font-weight: 500 !important; 
-            letter-spacing: 2.5px; 
-            text-transform: uppercase;
-        ">
-            Founder & Developer
-        </span>
-    </div>
-""", unsafe_allow_html=True)
 
 # --- SAYFA ARKA PLANI ---
 st.markdown(
