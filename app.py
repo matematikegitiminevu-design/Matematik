@@ -161,9 +161,16 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.markdown("""
-    <!-- Google Fonts'tan İmza Yazı Tipini Yüklüyoruz -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap">
-
+    <style>
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    .block-container {
+        padding-top: 0rem !important;
+        padding-bottom: 0rem !important;
+    }
+    </style>
     <div style="
         background: linear-gradient(90deg, #1e3a8a 0%, #1e40af 100%) !important;
         padding: 10px 20px; 
@@ -177,30 +184,11 @@ st.markdown("""
         align-items: center;
         gap: 15px;
     ">
-        <!-- İmza Kısmı -->
-        <span style="
-            color: #ffffff !important; 
-            font-family: 'Great Vibes', cursive !important;
-            font-size: 2.3rem !important;
-            font-weight: normal !important;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            line-height: 1;
-        ">
+        <span style="color: #ffffff !important; font-family: 'Great Vibes', cursive !important; font-size: 2.3rem !important; font-weight: normal !important; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); line-height: 1;">
             Muharrem Ceyhan
         </span>
-        
-        <!-- Ayraç Çizgisi -->
         <span style="color: #60a5fa !important; font-size: 1.2rem !important; font-family: 'Poppins', sans-serif !important;">|</span>
-        
-        <!-- Unvan Kısmı -->
-        <span style="
-            color: #93c5fd !important; 
-            font-family: 'Poppins', sans-serif !important;
-            font-size: 0.9rem !important; 
-            font-weight: 600 !important;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        ">
+        <span style="color: #93c5fd !important; font-family: 'Poppins', sans-serif !important; font-size: 0.9rem !important; font-weight: 600 !important; letter-spacing: 2px; text-transform: uppercase;">
             Founder & Developer
         </span>
     </div>
