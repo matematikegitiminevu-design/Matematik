@@ -173,7 +173,7 @@ st.markdown("""
     ">
         <span style="
             color: #ffffff !important; 
-            font-size: 1.0rem !important; 
+            font-size: 0.6rem !important; 
             font-weight: bold !important;
             letter-spacing: 2px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
