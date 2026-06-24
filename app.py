@@ -41,20 +41,17 @@ DUYURU_POPUP_AKTIF = True  # Popup duyuruyu açmak için True, kapatmak için Fa
 # =========================================================================
 
 # --- POPUP (DİYALOG) PENCERESİ FONKSİYONU ---
-@st.dialog("📢 ÖNEMLİ SİSTEM DUYURUSU", width="large")
+@st.dialog("📢 CYHN MATEMATİK PORTALI", width="large")
 def duyuru_popup():
     st.markdown(
         """
-        <p style="color: #cbd5e1; font-size: 1rem; line-height: 1.6;">
-        Merhaba, platformumuza hoş geldiniz!
+        <p style="color: #cbd5e1; font-size: 1.1rem; font-weight: 600; line-height: 1.6; margin-bottom: 15px;">
+        Hoş Geldiniz!
         </p>
-        <p style="color: #94a3b8; font-size: 0.9rem; line-height: 1.5;">
-        Sizlere daha akıcı, modern ve kusursuz bir akademik deneyim sunabilmek adına 
-        <b style="color: #3b82f6;">CYHN Matematik Portalı</b> altyapısını baştan aşağı yeniledik! 
-        Platform altyapısını güçlendirerek hem görsel hem de işlevsel olarak tamamen yeni nesil bir standarda geçiş yaptık. 
-        Sürekli gelişen yapımızla, eğitim yolculuğunuzda her an yanınızda olmaya devam ediyoruz.
+        <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.6; text-align: justify;">
+        Geleceğin matematik eğitimini, modern dijital araçlar ve yapay zekâ teknolojileriyle buluşturan yeni nesil akademik portalımıza adım attınız. Ders notları arşivimize erişmek ve akıllı destek sistemimizi deneyimlemek için hazırsınız. Sürdürülebilir bir başarı yolculuğu dileriz.
         </p>
-        <div style="text-align: right; margin-top: 20px; color: #64748b; font-size: 0.85rem; font-style: italic;">
+        <div style="text-align: right; margin-top: 25px; color: #64748b; font-size: 0.85rem; font-style: italic;">
             Saygılarımla,<br>
             <b style="color: #cbd5e1; font-style: normal; font-size: 0.95rem;">Muharrem CEYHAN</b>
         </div>
