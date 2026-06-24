@@ -753,8 +753,8 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             <div style="display: flex; align-items: center; gap: 12px;">
                 <span style="font-size: 1.3rem;">🚀</span>
                 <span style="color: #ffffff !important; font-size: 0.92rem; font-weight: 500; letter-spacing: 0.3px; line-height: 1.5;">
-                    <b>Büyük Sistem Güncellemesi:</b> Sizlere daha akıcı, modern ve kusursuz bir akademik deneyim sunabilmek adına CYHN Matematik Portalı'nı baştan aşağı yeniledik! Platform altyapısını güçlendirerek hem görsel hem de işlevsel olarak tamamen yeni nesil bir standarda geçiş yaptık. Sürekli gelişen yapımızla, eğitim yolculuğunuzda her an yanınızda olmaya devam ediyoruz.
-                </span>
+                    <b>Hızlı Başlangıç Rehberi:</b> Platformumuzda yer alan akademik ders notları, PDF arşivleri ve güncel duyurular arasında geçiş yapmak için aşağıdaki sekmeleri kullanabilir; cyhnAI destek modüllerini anında deneyimleyebilirsiniz.
+                                </span>
             </div>
             <span style="color: #10b981 !important; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; margin-left: 15px;">YENİLİK</span>
         </div>
