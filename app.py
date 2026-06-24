@@ -33,7 +33,7 @@ USERS = {
 BAKIM_MODU = True         # Tüm siteyi kapatmak için True yapın
 ARSIV_BAKIM_MODU = False      # Sadece ders arşivini kapatmak için True yapın
 
-HEDEF_ZAMAN_GENEL = "2026-06-24 20:30:00"
+HEDEF_ZAMAN_GENEL = "2026-06-24 22:00:00"
 HEDEF_ZAMAN_ARSIV = "2026-06-17 00:00:00"
 
 # 📢 POPUP DUYURU AYARI
