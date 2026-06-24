@@ -408,11 +408,11 @@ if st.session_state["sayfa"] == "ana_menu":
                 st.markdown("### ✨ cyhnAI Destek")
                 st.write("Matematik sorularınıza, formüllere ve takıldığınız tüm konularda yapay zeka desteğimiz ile anında çözüm bulun.")
                 st.write("") # Küçük bir boşluk
-                # link_button zaten varsayılan olarak şık durur
-                st.link_button("Yapay Zekayı Başlat", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc", use_container_width=True)
+                
+                # ESKİ st.link_button YERİNE MERKEZİ POPUP'I TETİKLEYEN NORMAL BUTON:
+                if st.button("Yapay Zekayı Başlat", use_container_width=True, key="giris_oncesi_ai_btn"):
+                    yapay_zeka_secim_popup()
        
-
-
 
         st.divider()
 
