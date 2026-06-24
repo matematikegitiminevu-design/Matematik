@@ -63,7 +63,33 @@ def duyuru_popup():
     if st.button("Anladım, Kapat", use_container_width=True):
         st.session_state["duyuru_gosterildi"] = True
         st.rerun()
-# =========================================================================        
+# =========================================================================  
+
+# --- 🤖 YAPAY ZEKÂ MODEL SEÇİM PENCERESİ ---
+@st.dialog("🤖 YAPAY ZEKÂ MERKEZİ", width="middle")
+def yapay_zeka_secim_popup():
+    st.markdown(
+        """
+        <p style="color: #cbd5e1; font-size: 1.1rem; font-weight: 600; line-height: 1.6; margin-bottom: 15px; text-align: center;">
+        Model Seçimi
+        </p>
+        <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.6; text-align: center; margin-bottom: 25px;">
+        Platform üzerinde deneyimlemek istediğiniz yapay zekâ modelini seçerek sohbet ekranına geçiş yapabilirsiniz:
+        </p>
+        """, 
+        unsafe_allow_html=True
+    )
+    
+    # Butonları yan yana kusursuz hizalamak için iki eşit sütun
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.link_button("🚀 cyhnAI Asistan", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc", use_container_width=True)
+            
+    with col2:
+        st.link_button("🧠 Gemini Pro", "https://gemini.google.com", use_container_width=True)
+# =========================================================================
+
 
 # 🔐 GİZLI URL PARAMETRESİ KONTROLÜ (Adres çubuğunda ?mod=admin araması yapar)
 gizli_yonetici_izni = str(st.query_params.get("mod")).lower() == "admin"
@@ -874,8 +900,10 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         
         with link_col1:
             st.markdown("<p style='margin:0; font-size:0.85rem; font-weight:600; color:#cbd5e1;'>Yapay Zekâ Desteği</p>", unsafe_allow_html=True)
-            st.markdown("<p style='margin:0 0 10px 0; font-size:0.75rem; color:#64748b;'>cyhnAI v1.2 Canlı Asistan</p>", unsafe_allow_html=True)
-            st.link_button("✨ cyhnAI'a Sor", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc", use_container_width=True)
+            st.markdown("<p style='margin:0 0 10px 0; font-size:0.75rem; color:#64748b;'>Gelişmiş Asistan Seçenekleri</p>", unsafe_allow_html=True)
+            # Link butonu yerine popup tetikleyen normal buton koyduk:
+            if st.button("✨ Yapay Zekâya Sor", use_container_width=True):
+                yapay_zeka_secim_popup()
             
         with link_col2:
             st.markdown("<p style='margin:0; font-size:0.85rem; font-weight:600; color:#cbd5e1;'>WhatsApp İletişim</p>", unsafe_allow_html=True)
