@@ -405,7 +405,7 @@ if st.session_state["sayfa"] == "ana_menu":
         with c2:
             # cyhnAI Destek Kartı
             with st.container(border=True):
-                st.markdown("### ✨ cyhnAI Destek")
+                st.markdown("### ✨ Yapay Zekâ Desteği")
                 st.write("Matematik sorularınıza, formüllere ve takıldığınız tüm konularda yapay zeka desteğimiz ile anında çözüm bulun.")
                 st.write("") # Küçük bir boşluk
                 
