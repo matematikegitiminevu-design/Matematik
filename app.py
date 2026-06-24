@@ -87,7 +87,7 @@ def yapay_zeka_secim_popup():
         st.link_button("🚀 cyhnAI Asistan", "https://agent.jotform.com/019c71e214af725e8ca84db422ebe7088bfc", use_container_width=True)
             
     with col2:
-        st.link_button("🧠 Gemini Pro", "https://gemini.google.com", use_container_width=True)
+        st.link_button("🧠 Gemini Asistan", "https://gemini.google.com", use_container_width=True)
 # =========================================================================
 
 
