@@ -49,7 +49,7 @@ def duyuru_popup():
         Hoş Geldiniz!
         </p>
         <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.6; text-align: justify;">
-        Geleceğin matematik eğitimini, modern dijital araçlar ve yapay zekâ teknolojileriyle buluşturan yeni nesil akademik portalımıza adım attınız. Ders notları arşivimize erişmek ve akıllı destek sistemimizi deneyimlemek için hazırsınız. Sürdürülebilir bir başarı yolculuğu dileriz.
+        Geleceğin matematik eğitimini, modern dijital araçlar ve yapay zekâ teknolojileriyle buluşturan yeni nesil akademik portala adım attınız. Ders notları arşivine erişmek ve akıllı destek sistemini deneyimlemek için hazırsınız. Sürdürülebilir bir başarı yolculuğu dilerim.
         </p>
         <div style="text-align: right; margin-top: 25px; color: #64748b; font-size: 0.85rem; font-style: italic;">
             Saygılarımla,<br>
