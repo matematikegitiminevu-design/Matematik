@@ -821,32 +821,35 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln3")
 
     with tab1:
-        st.markdown("<p style='margin-top:0; margin-bottom:15px; color:#94a3b8; font-size:0.85rem; font-weight:700; letter-spacing:0.5px;'>🚀 DESTEK KANALLARI</p>", unsafe_allow_html=True)
+        st.subheader("Destek ve İletişim Kanalları")
+    
+        # Görseldeki 4'lü yapıyı yan yana kusursuz dizmek için 4 sütun oluşturuyoruz
+        destek_col1, destek_col2, destek_col3, destek_col4 = st.columns(4)
         
-        link_col1, link_col2, link_col3, link_col4 = st.columns(4)
-        
-        with link_col1:
-            st.markdown("<p style='margin:0; font-size:0.85rem; font-weight:600; color:#cbd5e1;'>Yapay Zekâ Desteği</p>", unsafe_allow_html=True)
-            st.markdown("<p style='margin:0 0 10px 0; font-size:0.75rem; color:#64748b;'>Gelişmiş Asistan Seçenekleri</p>", unsafe_allow_html=True)
-            # Link butonu yerine popup tetikleyen normal buton koyduk:
-            if st.button("✨ Yapay Zekâya Sor", use_container_width=True):
-                yapay_zeka_secim_popup()
+        with destek_col1:
+            with st.container(border=True):
+                st.markdown("**Yapay Zekâ Desteği**\n\nGelişmiş Asistan Seçenekleri")
+                # Kendi fonksiyonun veya yönlendirmen varsa buton içine bağlayabilirsin
+                if st.button("✨ Yapay Zekâya Sor", use_container_width=True, key="destek_ai_btn"):
+                    yapay_zeka_secim_popup() # Önceki kodundaki fonksiyon
+                    
+        with destek_col2:
+            with st.container(border=True):
+                st.markdown("**WhatsApp İletişim**\n\nAnlık Geri Bildirim")
+                # Telefon numaranı buraya entegre edebilirsin
+                st.link_button("💬 Canlı Destek Al", "https://wa.me/90XXXXXXXXXX", use_container_width=True)
+                
+        with destek_col3:
+            with st.container(border=True):
+                st.markdown("**İletişim Maili**\n\nE-Posta İletişimi")
+                mail_link_destek = "mailto:matematikegitiminevu@gmail.com?subject=Portal%20Destek"
+                st.link_button("📩 E-Posta Gönder", mail_link_destek, use_container_width=True)
+                
+        with destek_col4:
+            with st.container(border=True):
+                st.markdown("**NEVÜ UBYS Ekranı**\n\nNEVÜ UBYS Öğrenci Girişi")
+                st.link_button("🦅 UBYS'ye Bağlan", "https://ubys.nevsehir.edu.tr/", use_container_width=True)
             
-        with link_col2:
-            st.markdown("<p style='margin:0; font-size:0.85rem; font-weight:600; color:#cbd5e1;'>WhatsApp İletişim</p>", unsafe_allow_html=True)
-            st.markdown("<p style='margin:0 0 10px 0; font-size:0.75rem; color:#64748b;'>Anlık Geri Bildirim</p>", unsafe_allow_html=True)
-            st.link_button("📞 Canlı Destek Al", "https://wa.me/905061905437?text=Merhaba,%20CYHN%20Matematik%20Portalı%20üzerinden%20ulaşıyorum.%20Bir%20konu%20hakkında%20bilgi%20almak%20istiyorum.%0D%0AKonu:%20", use_container_width=True)
-            
-        with link_col3:
-            st.markdown("<p style='margin:0; font-size:0.85rem; font-weight:600; color:#cbd5e1;'>İletişim Maili</p>", unsafe_allow_html=True)
-            st.markdown("<p style='margin:0 0 10px 0; font-size:0.75rem; color:#64748b;'>E-Posta İletişim</p>", unsafe_allow_html=True)
-            st.link_button("📩 E-Posta Gönder", "mailto:matematikegitiminevu@gmail.com", use_container_width=True)
-            
-        with link_col4:
-            st.markdown("<p style='margin:0; font-size:0.85rem; font-weight:600; color:#cbd5e1;'>NEVÜ UBYS Ekranı</p>", unsafe_allow_html=True)
-            st.markdown("<p style='margin:0 0 10px 0; font-size:0.75rem; color:#64748b;'>NEVÜ UBYS Öğrenci Girişi</p>", unsafe_allow_html=True)
-            st.link_button("🎓 UBYS'ye Bağlan", "https://ubys.nevsehir.edu.tr", use_container_width=True)
-
 
     with tab2:
         st.subheader("Lineer Cebir Ders Notları")
