@@ -803,9 +803,6 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             text-align: center; 
             margin-bottom: 25px;
         ">
-            <h2 style="margin: 0; color: #f1f5f9; font-size: 1.5rem; font-weight: 600;">
-                📚 Akademik Kaynaklar ve Destek Merkezi
-            </h2>
             <p style="margin: 5px 0 0 0; color: #94a3b8; font-size: 0.9rem;">
                 Ders notlarına, güncel duyurulara ve iletişim kanallarına aşağıdaki menüden ulaşabilirsiniz.
             </p>
