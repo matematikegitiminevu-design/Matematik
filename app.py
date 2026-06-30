@@ -794,8 +794,9 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
 
 
     # Konulara göre sekmeler (Tablar)
-    tab0, tab1, tab2, tab3, tab4, tab5 = st.tabs([
+    tab0, tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
         "📢 Güncel Duyurular",
+        "🛠️ Destek & İletişim Kanalları",
         "🔢 Lineer Cebir PDF Notları", 
         "📈 Analiz PDF Notları", 
         "🌌 Soyut Matematik PDF Notları",
@@ -818,9 +819,36 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             with st.container(border=True):
                 st.markdown("**Ders Programı**")
                 st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln3")
-        
 
     with tab1:
+        st.markdown("<p style='margin-top:0; margin-bottom:15px; color:#94a3b8; font-size:0.85rem; font-weight:700; letter-spacing:0.5px;'>🚀 DESTEK KANALLARI</p>", unsafe_allow_html=True)
+        
+        link_col1, link_col2, link_col3, link_col4 = st.columns(4)
+        
+        with link_col1:
+            st.markdown("<p style='margin:0; font-size:0.85rem; font-weight:600; color:#cbd5e1;'>Yapay Zekâ Desteği</p>", unsafe_allow_html=True)
+            st.markdown("<p style='margin:0 0 10px 0; font-size:0.75rem; color:#64748b;'>Gelişmiş Asistan Seçenekleri</p>", unsafe_allow_html=True)
+            # Link butonu yerine popup tetikleyen normal buton koyduk:
+            if st.button("✨ Yapay Zekâya Sor", use_container_width=True):
+                yapay_zeka_secim_popup()
+            
+        with link_col2:
+            st.markdown("<p style='margin:0; font-size:0.85rem; font-weight:600; color:#cbd5e1;'>WhatsApp İletişim</p>", unsafe_allow_html=True)
+            st.markdown("<p style='margin:0 0 10px 0; font-size:0.75rem; color:#64748b;'>Anlık Geri Bildirim</p>", unsafe_allow_html=True)
+            st.link_button("📞 Canlı Destek Al", "https://wa.me/905061905437?text=Merhaba,%20CYHN%20Matematik%20Portalı%20üzerinden%20ulaşıyorum.%20Bir%20konu%20hakkında%20bilgi%20almak%20istiyorum.%0D%0AKonu:%20", use_container_width=True)
+            
+        with link_col3:
+            st.markdown("<p style='margin:0; font-size:0.85rem; font-weight:600; color:#cbd5e1;'>İletişim Maili</p>", unsafe_allow_html=True)
+            st.markdown("<p style='margin:0 0 10px 0; font-size:0.75rem; color:#64748b;'>E-Posta İletişim</p>", unsafe_allow_html=True)
+            st.link_button("📩 E-Posta Gönder", "mailto:matematikegitiminevu@gmail.com", use_container_width=True)
+            
+        with link_col4:
+            st.markdown("<p style='margin:0; font-size:0.85rem; font-weight:600; color:#cbd5e1;'>NEVÜ UBYS Ekranı</p>", unsafe_allow_html=True)
+            st.markdown("<p style='margin:0 0 10px 0; font-size:0.75rem; color:#64748b;'>NEVÜ UBYS Öğrenci Girişi</p>", unsafe_allow_html=True)
+            st.link_button("🎓 UBYS'ye Bağlan", "https://ubys.nevsehir.edu.tr", use_container_width=True)
+
+
+    with tab2:
         st.subheader("Lineer Cebir Ders Notları")
         
         col1, col2 = st.columns(2)
@@ -834,7 +862,7 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 if st.button("📝 Ders Notunu Aç", key="lin2", type="primary", use_container_width=True):
                     pdf_popup_ac("1nXutG6Fz6JtYFGYDlwohTySE6LwTe4Tg")
                     
-    with tab2:
+    with tab3:
         st.subheader("Analiz Ders Notları")
         col1, col2, col3 = st.columns(3)
         with col1:
@@ -851,16 +879,16 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
                 st.markdown("**Analiz 3**")
                 st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln4")
                 
-    with tab3:
+    with tab4:
         st.subheader("Soyut Matematik Ders Notu")
         if st.button("📝 Ders Notunu Aç", key="soyut1", use_container_width=True):
             pdf_popup_ac("1pyaZAD35q0kIpXduqdjxpz4ylaFd4B5z")
 
-    with tab4:
+    with tab5:
         st.subheader("Analitik Geometri Ders Notu")
         st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln5")
         
-    with tab5:
+    with tab6:
         st.subheader("Algoritma ve Programlama Ders Notu")
         st.info("💻 Python ve Algoritmaya Giriş dersi kaynak dökümanları.")
         
