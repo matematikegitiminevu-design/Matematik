@@ -795,8 +795,8 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
 
     # Konulara göre sekmeler (Tablar)
     tab0, tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
-        "📢 Güncel Duyurular",
         "🛠️ Destek & İletişim Kanalları",
+        "📢 Güncel Duyurular",
         "🔢 Lineer Cebir PDF Notları", 
         "📈 Analiz PDF Notları", 
         "🌌 Soyut Matematik PDF Notları",
@@ -804,26 +804,9 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         "💻 Algoritma ve Programlama"
     ])
 
-    with tab0:
-        st.subheader("Güncel Duyurular Bölümü")
-        col1, col2, col3 = st.columns(3)
-        with col1:
-            with st.container(border=True):
-                st.markdown("**NEVÜ MAFET**")
-                st.link_button("🌐 MAFET Resmî Web Sitesi", "https://mafet.nevsehir.edu.tr/", use_container_width=True)
-        with col2:
-            with st.container(border=True):
-                st.markdown("**Bütünleme Sınav Takvimi**")
-                st.link_button("📝 Bütünleme Sınav Takvimi (PDF)", "https://dosyalar.nevsehir.edu.tr/78816a5e3b323ca077fa388d5a7bbcdc/matematik-egitimi-2025-2026-bahar-donemi-butunleme-programi-1.pdf", use_container_width=True)
-        with col3:
-            with st.container(border=True):
-                st.markdown("**Ders Programı**")
-                st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln3")
 
-    with tab1:
+    with tab0:
         st.subheader("Destek ve İletişim Kanalları")
-    
-        # Görseldeki 4'lü yapıyı yan yana kusursuz dizmek için 4 sütun oluşturuyoruz
         destek_col1, destek_col2, destek_col3, destek_col4 = st.columns(4)
         
         with destek_col1:
@@ -849,8 +832,25 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
             with st.container(border=True):
                 st.markdown("**NEVÜ UBYS Ekranı**\n\nNEVÜ UBYS Öğrenci Girişi")
                 st.link_button("🦅 UBYS'ye Bağlan", "https://ubys.nevsehir.edu.tr/", use_container_width=True)
-            
 
+    with tab1:
+        st.subheader("Güncel Duyurular Bölümü")
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            with st.container(border=True):
+                st.markdown("**NEVÜ MAFET**")
+                st.link_button("🌐 MAFET Resmî Web Sitesi", "https://mafet.nevsehir.edu.tr/", use_container_width=True)
+        with col2:
+            with st.container(border=True):
+                st.markdown("**Bütünleme Sınav Takvimi**")
+                st.link_button("📝 Bütünleme Sınav Takvimi (PDF)", "https://dosyalar.nevsehir.edu.tr/78816a5e3b323ca077fa388d5a7bbcdc/matematik-egitimi-2025-2026-bahar-donemi-butunleme-programi-1.pdf", use_container_width=True)
+        with col3:
+            with st.container(border=True):
+                st.markdown("**Ders Programı**")
+                st.button("⏳ Henüz Yüklenmedi", disabled=True, use_container_width=True, key="ln3")
+                
+
+    
     with tab2:
         st.subheader("Lineer Cebir Ders Notları")
         
