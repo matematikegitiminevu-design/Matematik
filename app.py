@@ -791,7 +791,23 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     
     # --------------------------
     st.markdown("---")
-
+    # ---- SEKMELERİN HEMEN ÜZERİNE GELECEK BAŞLIK ----
+    st.markdown(
+        """
+        <div style='margin-top: 20px; margin-bottom: 10px;'>
+            <span style='color: #3b82f6 !important; font-weight: 700; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; display: block; margin-bottom: 4px;'>
+                📖 AKADEMİK ARŞİV KATEGORİLERİ
+            </span>
+            <h3 style='margin: 0; font-size: 1.4rem; font-weight: 600; color: #f8fafc !important;'>
+                Müfredat ve Ders Notu Seçimi
+            </h3>
+            <p style='margin: 4px 0 15px 0; font-size: 0.85rem; color: #64748b !important;'>
+                İlgilendiğiniz dersin notlarına, duyurularına veya destek kanallarına aşağıdaki sekmelerden geçiş yapabilirsiniz.
+            </p>
+        </div>
+        """, 
+        unsafe_allow_html=True
+    )
 
     # Konulara göre sekmeler (Tablar)
     tab0, tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
