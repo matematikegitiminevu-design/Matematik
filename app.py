@@ -811,7 +811,9 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
         unsafe_allow_html=True
     )
 
+    st.markdown("---")
 
+    
     # Konulara göre sekmeler (Tablar)
     tab0, tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
         "🛠️ Destek & İletişim Kanalları",
