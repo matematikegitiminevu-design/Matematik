@@ -794,22 +794,26 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
 
     # --- 🧭 SEKMELERİN ÜSTÜNE BİRLEŞTİRİCİ BAŞLIK ---
     st.markdown(
-        """
-        <div style="
-            background: rgba(255, 255, 255, 0.02); 
-            padding: 20px; 
-            border-radius: 12px; 
-            border: 1px solid rgba(255, 255, 255, 0.05); 
-            text-align: center; 
-            margin-bottom: 25px;
-        ">
-            <p style="margin: 5px 0 0 0; color: #94a3b8; font-size: 0.9rem;">
-                Ders notlarına, güncel duyurulara ve iletişim kanallarına aşağıdaki menüden ulaşabilirsiniz.
-            </p>
-        </div>
-        """, 
-        unsafe_allow_html=True
-    )
+    """
+    <div style="
+        background: rgba(30, 41, 59, 0.7) !important; 
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding: 18px 20px; 
+        border-radius: 12px; 
+        border: 1px solid rgba(255, 255, 255, 0.1); 
+        border-left: 5px solid #3b82f6; /* Sol taraftaki şık mavi odak çizgisi */
+        text-align: left; /* Metni sola hizalamak çizgiyle daha uyumlu durur */
+        margin-bottom: 20px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    ">
+        <p style="margin: 0; color: #f1f5f9; font-size: 0.95rem; font-weight: 500; letter-spacing: 0.3px;">
+            ℹ️ Ders notlarına, güncel duyurulara ve iletişim kanallarına aşağıdaki menüden ulaşabilirsiniz.
+        </p>
+    </div>
+    """, 
+    unsafe_allow_html=True
+)
 
     st.markdown("---")
 
