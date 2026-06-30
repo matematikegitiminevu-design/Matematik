@@ -791,7 +791,30 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     
     # --------------------------
     st.markdown("---")
-    
+
+    # --- 🧭 SEKMELERİN ÜSTÜNE BİRLEŞTİRİCİ BAŞLIK ---
+    st.markdown(
+        """
+        <div style="
+            background: rgba(255, 255, 255, 0.02); 
+            padding: 20px; 
+            border-radius: 12px; 
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+            text-align: center; 
+            margin-bottom: 25px;
+        ">
+            <h2 style="margin: 0; color: #f1f5f9; font-size: 1.5rem; font-weight: 600;">
+                📚 Akademik Kaynaklar ve Destek Merkezi
+            </h2>
+            <p style="margin: 5px 0 0 0; color: #94a3b8; font-size: 0.9rem;">
+                Ders notlarına, güncel duyurulara ve iletişim kanallarına aşağıdaki menüden ulaşabilirsiniz.
+            </p>
+        </div>
+        """, 
+        unsafe_allow_html=True
+    )
+
+
     # Konulara göre sekmeler (Tablar)
     tab0, tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
         "🛠️ Destek & İletişim Kanalları",
