@@ -797,8 +797,8 @@ elif st.session_state["sayfa"] == "notlar_arsivi":
     tab0, tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
         "🛠️ Destek & İletişim Kanalları",
         "📢 Güncel Duyurular",
-        "🔢 Lineer Cebir", 
-        "📈 Analiz", 
+        "🔢 Lineer Cebir Notları", 
+        "📈 Analiz Notları", 
         "🌌 Soyut Matematik",
         "📐 Analitik Geometri",
         "💻 Algoritma ve Programlama"
